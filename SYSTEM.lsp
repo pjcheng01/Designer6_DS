@@ -228,7 +228,7 @@
 ;      (prompt "\n                   TEL:(04)230-7650   FAX:(04)231-4708")
 ;    )
 ;    (progn
-;      (princ "\n錯誤訊息 !! POWER DESIGN 機械設計家安裝不正確 !!!")
+  (princ "\nLoading Power Design System...")
 ;      (PRINC "\n請檢查安裝程序. 若需要服務,請電: (04)230-7650 藝祥資訊 客服部")
 ;    )
 ;  )
@@ -277,8 +277,8 @@
    (get_bomlistdef)           ;材料清單欄位定義
 ;; (get_sheetatt)             ;圖框相關定義
 
-  (princ "\n藝祥資訊 POWER系列機械設計系統載入 ! 請稍待...")
-  (princ "\n系統發展: 藝祥資訊工程有限公司    TEL:04-2307650   FAX:04-2314708")
+  (princ "\nLoading Power Design System...")
+  (princ "\nPower Design System - TEL:04-2307650  FAX:04-2314708")
 
 ;;萬寶至馬達股份有限公司
 ;;(princ "\n本系統合法使用於 萬寶至馬達股份有限公司")
@@ -301,7 +301,7 @@
   (C:#SETTING)
 
 ;    );progn
-;    (princ "\n很抱歉! POWER DESIGN 機械設計家試用期已過, 請電洽 04-2307650 藝祥資訊")
+  (princ "\nLoading Power Design System...")
 ;  );IF
 
 
