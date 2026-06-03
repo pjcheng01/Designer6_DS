@@ -267,9 +267,13 @@
 ;    (progn
 
    (setq autocad_ver (substr (getvar "acadver") 1 2))
+   (princ "\n[SYS DEBUG 1] get_layerdef")
    (get_layerdef)             ;圖層定義
+   (princ "\n[SYS DEBUG 2] get_ltypedef")
    (get_ltypedef)             ;線型定義
+   (princ "\n[SYS DEBUG 3] get_bomdef")
    (get_bomdef)               ;指標圓球與材料清單定義
+   (princ "\n[SYS DEBUG 4] get_bomlistdef")
    (get_bomlistdef)           ;材料清單欄位定義
 ;; (get_sheetatt)             ;圖框相關定義
 
@@ -293,6 +297,7 @@
  ;       &&&&&&% (substr &&&&&&% 26 9))        ;WINDOWS 98 CHINESE,DOS
  ;
 
+  (princ "\n[SYS DEBUG 5] C:#SETTING")
   (C:#SETTING)
 
 ;    );progn
