@@ -79,6 +79,21 @@
 )
 
 ;;----------------------------------------------------------------
+;; 去除字串末尾的 \r（Windows CRLF 問題）
+;;----------------------------------------------------------------
+(defun strip_cr (txt / len)
+  (if (and txt (/= "" txt))
+    (progn
+      (setq len (strlen txt))
+      (if (= "\r" (substr txt len 1))
+        (setq txt (substr txt 1 (- len 1)))
+      )
+    )
+  )
+  txt
+)
+
+;;----------------------------------------------------------------
 ;; 讀取 config.doc（英文 key）
 ;;----------------------------------------------------------------
 (defun config_des50_system (/ OUT_LSPPATH)
@@ -93,39 +108,37 @@
       (setq *designer6_ready* nil)
     )
     (progn
-      (setq POWDESIGN_path (getfile_val config_des50_systemdoc "DESIGN_PATH"))
+      (setq POWDESIGN_path (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "DESIGN_PATH")))))
       (if POWDESIGN_path
         (progn
-          (setq POWDESIGN_sld_path  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "DESIGN_SLD_PATH"))))
-          (setq POWDESIGN_dcl_path  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "DESIGN_DCL_PATH"))))
-          (setq POWDESIGN_dwg_path  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "DESIGN_DWG_PATH"))))
-          (setq POWDESIGN_DATA_path (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "DESIGN_DATA_PATH"))))
-          (setq USERMENU_PATH       (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "USERMENU_PATH"))))
-          (setq func_col            (atoi (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "FUNC_COL")))))
-          (setq word1_data_path     (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "WORD_DATA_PATH"))))
-          (setq BMANAGER_PATH       (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "BMANAGER_PATH"))))
-          (setq BMANAGER_ITEM_PATH  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "BMANAGER_ITEM_PATH"))))
-          (setq autoplot_dwgpath    (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "AUTOPLOT_DWGPATH"))))
-          (setq autoplot_filepath   (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "AUTOPLOT_FILEPATH"))))
+          (setq POWDESIGN_sld_path  (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "DESIGN_SLD_PATH")))))
+          (setq POWDESIGN_dcl_path  (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "DESIGN_DCL_PATH")))))
+          (setq POWDESIGN_dwg_path  (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "DESIGN_DWG_PATH")))))
+          (setq POWDESIGN_DATA_path (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "DESIGN_DATA_PATH")))))
+          (setq USERMENU_PATH       (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "USERMENU_PATH")))))
+          (setq func_col            (atoi (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "FUNC_COL"))))))
+          (setq word1_data_path     (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "WORD_DATA_PATH")))))
+          (setq BMANAGER_PATH       (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "BMANAGER_PATH")))))
+          (setq BMANAGER_ITEM_PATH  (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "BMANAGER_ITEM_PATH")))))
+          (setq autoplot_dwgpath    (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "AUTOPLOT_DWGPATH")))))
+          (setq autoplot_filepath   (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "AUTOPLOT_FILEPATH")))))
           (setq powdesign_ini_path  (strcat POWDESIGN_path "ini\\"))
           (setq base_dimscale 1)
         )
       )
       ;; POWER MANAGER
-      (setq fmpath (getfile_val config_des50_systemdoc "POWERMANAGER_PATH"))
+      (setq fmpath (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERMANAGER_PATH")))))
       (if (and fmpath (/= "" fmpath))
         (progn
-          (setq fmpath (getrealstr2 (sys_getstring fmpath)))
           (load "fm")
-          (setq VER_LSP (atoi (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERMANAGER_VER")))))
+          (setq VER_LSP (atoi (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERMANAGER_VER"))))))
           (if (= 1 ver_lsp) (setq ver_lsp T))
         )
       )
       ;; POWERISO
-      (setq poweriso_path (getfile_val config_des50_systemdoc "POWERISO_PATH"))
+      (setq poweriso_path (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERISO_PATH")))))
       (if (and poweriso_path (/= "" poweriso_path))
         (progn
-          (setq poweriso_path (getrealstr2 (sys_getstring poweriso_path)))
           (defun c:isomenu1 () (setq sld1$$ 1 dirpt (strcat poweriso_path "isomenu1\\")) (cond ((null C:sld1) (load "sld1")) (t (princ))) (C:sld1))
           (defun c:isomenu2 () (setq sld1$$ 1 dirpt (strcat poweriso_path "isomenu2\\")) (cond ((null C:sld1) (load "sld1")) (t (princ))) (C:sld1))
           (defun c:isoblk1  () (setq dclmenu_path bmanager_path) (princ) (cond ((null userblkm) (load "userblkm")) (t (princ))) (userblkm "userblkm" "userblkm" "ISODWG" "poweriso" 0))
@@ -133,20 +146,20 @@
         )
       )
       ;; POWERPARTS
-      (setq POWPARTS_path (getfile_val config_des50_systemdoc "POWERPARTS_PATH"))
+      (setq POWPARTS_path (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_PATH")))))
       (if (and POWPARTS_path (/= "" POWPARTS_path))
         (progn
-          (setq POWPARTS_path      (getrealstr2 (sys_getstring POWPARTS_path)))
-          (setq POWPARTS_sld_path  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_SLD_PATH"))))
-          (setq POWPARTS_dcl_path  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_DCL_PATH"))))
-          (setq POWPARTS_dwg_path  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_DWG_PATH"))))
-          (setq POWPARTS_DATA_path (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_DATA_PATH"))))
+          (setq POWPARTS_sld_path  (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_SLD_PATH")))))
+          (setq POWPARTS_dcl_path  (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_DCL_PATH")))))
+          (setq POWPARTS_dwg_path  (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_DWG_PATH")))))
+          (setq POWPARTS_DATA_path (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_DATA_PATH")))))
           (load "FUNCTION")
-          (setq powparts_block   (atoi (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWPARTS_BLOCK")))))
-          (setq powparts_BLKNAME (atoi (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWPARTS_BLKNAME")))))
+          (setq powparts_block   (atoi (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWPARTS_BLOCK"))))))
+          (setq powparts_BLKNAME (atoi (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWPARTS_BLKNAME"))))))
         )
       )
       (setq *designer6_ready* t)
+      (princ (strcat "\n[機械設計家] 系統載入完成。路徑：" POWDESIGN_path))
     )
   )
 )
