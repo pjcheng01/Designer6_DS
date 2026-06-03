@@ -202,7 +202,7 @@
 
 ;=============================================================================================
 
-;(defun c:#setting()       ;; AUTOCAD R14 (WIN95,98,     OLD KEYPRO)
+;(defun c:ds_setting()       ;; AUTOCAD R14 (WIN95,98,     OLD KEYPRO)
 ;  (setvar "cmdecho" 0)
 ;  (setvar "limcheck" 0)
 
@@ -236,7 +236,7 @@
 ;  (princ)
 ;)
 
-(defun c:#setting()    ;; AUTOCAD 2000 (WINNT,   NEW KEYPRO)
+(defun c:ds_setting()    ;; AUTOCAD 2000 (WINNT,   NEW KEYPRO)
   ;; removed: loadsys
   ;; removed: check_which_app
 
@@ -298,7 +298,7 @@
  ;
 
   (princ "\n[SYS DEBUG 5] C:#SETTING")
-  (C:#SETTING)
+  (c:ds_setting)
 
 ;    );progn
   (princ "\nLoading Power Design System...")
