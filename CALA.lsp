@@ -12,7 +12,7 @@
 
 ;(defun c:cala(/ exeok chk)
 (defun c:cala(/ exeok )
-   ;; DraftSight: 移除加密狗 WHILE 迴圈
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (setvar "cmdecho" 0)
  (actdcl "cala" "cala")
 
@@ -51,7 +51,7 @@
  (action_tile "accept" "(done_dialog)")
  (start_dialog)
  (setvar "cmdecho" 1)
-   ;; removed FFF
+   ;; removed FFF)
  (prin1)
 )
 
@@ -167,7 +167,7 @@
 
 ;(defun c:cale(/ exeok chk)
 (defun c:cale(/ exeok )
-   ;; DraftSight: 移除加密狗 WHILE 迴圈
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (setvar "cmdecho" 0)
  (actdcl "cala" "cale")
 
@@ -223,7 +223,7 @@
  (action_tile "accept" "(done_dialog)")
  (start_dialog)
  (setvar "cmdecho" 1)
-   ;; removed FFF
+   ;; removed FFF)
  (prin1)
 )
 
