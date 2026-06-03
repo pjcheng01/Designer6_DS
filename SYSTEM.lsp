@@ -168,17 +168,21 @@
 
 ;線型定義=(("粗連續線" "CONTINUOUS" 7)("細連續線" "CONTINUOUS" 4)("虛線" "DASHED" 3)("標準中心線(長度20)" "CENTER" 1)("短中心線(長度10)" "CENTER1" 1)("假想線" "PHANTOM" 5)("剖面線" "CONTINUOUS" 6)("假想線" "PHANTOM" 5)("投影線" "CONTINUOUS" 143 "PROJ"))
 (defun get_ltypedef()
-   (redefine_ltype)
-
-;載入線型
-   (setq count 0)
-   (repeat (length defltype_list)
-      (setq beload_ltype (strcase (nth 1 (nth count defltype_list))))
-      (if (tblsearch "LTYPE" beload_ltype)
-         (command "linetype" "l" beload_ltype (strcat powdesign_path "acad.lin") "y" "")
-         (command "linetype" "l" beload_ltype (strcat powdesign_path "acad.lin") "")
-      )(setq count (1+ count))
-   );repeat
+  (redefine_ltype)
+  ;; DraftSight: linetype loading
+  (if (findfile (strcat powdesign_path "acad.lin"))
+    (progn
+      (setq count 0)
+      (repeat (length defltype_list)
+        (setq beload_ltype (strcase (nth 1 (nth count defltype_list))))
+        (if (tblsearch "LTYPE" beload_ltype)
+          (command "linetype" "l" beload_ltype (strcat powdesign_path "acad.lin") "y" "")
+          (command "linetype" "l" beload_ltype (strcat powdesign_path "acad.lin") "")
+        )
+        (setq count (1+ count))
+      )
+    )
+  )
 );defun
 
 (defun redefine_ltype()
