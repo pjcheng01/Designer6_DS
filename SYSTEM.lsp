@@ -242,7 +242,8 @@
   ;; removed: loadsys
   ;; removed: check_which_app
 
-)  
+  (princ)
+)
 
 ;取得系統預設值
 ;╭═════════════════════════════════════════════╮
