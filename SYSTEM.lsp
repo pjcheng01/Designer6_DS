@@ -228,7 +228,7 @@
 ;      (prompt "\n                   TEL:(04)230-7650   FAX:(04)231-4708")
 ;    )
 ;    (progn
-  (princ "\nLoading Power Design System...")
+;; (princ "\nLoading Power Design System...")
 ;      (PRINC "\n請檢查安裝程序. 若需要服務,請電: (04)230-7650 藝祥資訊 客服部")
 ;    )
 ;  )
