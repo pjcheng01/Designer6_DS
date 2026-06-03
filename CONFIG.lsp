@@ -24,6 +24,7 @@
 )
 
 (defun sys_getstring (string / count txt chktxt utxt)
+  (if (null string)(setq string ""))
   (setq count 1 txt "" chktxt t)
   (while chktxt
     (setq utxt (substr string count 1))
