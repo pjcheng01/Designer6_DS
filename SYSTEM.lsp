@@ -160,7 +160,9 @@
 
 )
 
-(setq system_dwg_libpath (getval "���ɺ޲z�w�]���|"))
+(if *designer6_ready*
+  (setq system_dwg_libpath (getval "圖檔管理預設路徑"))
+)
 
 ;�u���w�q=(("�ʳs��u" "CONTINUOUS" 7)("�ӳs��u" "CONTINUOUS" 4)("��u" "DASHED" 3)("�зǤ��߽u(����20)" "CENTER" 1)("�u���߽u(����10)" "CENTER1" 1)("���Q�u" "PHANTOM" 5)("�孱�u" "CONTINUOUS" 6)("���Q�u" "PHANTOM" 5)("��v�u" "CONTINUOUS" 143 "PROJ"))
 (defun get_ltypedef()
@@ -216,8 +218,12 @@
 
 )
 
-(setq partindel_layer (read (getval "�s��զX�ɧR�����ϼh")))
-(setq partindel_BLOCK (read (getval "�s��զX�ɧR�����϶�")))
+(if *designer6_ready*
+  (progn
+    (setq partindel_layer (read (getval "插件組合後刪除用圖層")))
+    (setq partindel_BLOCK (read (getval "插件組合後刪除用圖塊")))
+  )
+)
 
 ;=============================================================================================
 
@@ -276,6 +282,7 @@
       (prompt "\n                   TEL:(04)230-7650   FAX:(04)231-4708")
 )
 
+(if *designer6_ready*
 (apply '(lambda()
 ;(defun c:aaaa()
    (setvar "cmdecho" 0)
@@ -322,4 +329,5 @@
    (princ)
    )'()
 )
+) ;; 結束 if *designer6_ready*
 
