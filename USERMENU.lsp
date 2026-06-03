@@ -1,6 +1,6 @@
 ;;;;
 (defun usermenu(dclmenu_mnu dclmenu_dcl dialog_name backcol func_id / flag)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight 移植：移除加密狗 WHILE 迴圈
    (actdcl (strcat usermenu_path dclmenu_dcl) dialog_name)
    (set_tile "title" "POWER TOOLS   開放式功能表                                        系統發展: 藝祥資訊")
    (if (null usermenu_function_list)
@@ -41,8 +41,6 @@
    (action_tile "accept" "(setq funcflag nil)(done_dialog)")
    (start_dialog)
    (if funcflag (usermenu_exefunc funcflag))
-
-   (SETQ FFF nil))
    (princ)
 );defun
 
@@ -196,7 +194,7 @@
 ;;=============================================================================================
 
 (defun c:manamenu(dclmenu_mnu dclmenu_dcl dialog_name)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
    (setq count nil)
    (actdcl (strcat usermenu_path dclmenu_dcl) dialog_name)
    (set_tile "title" "客戶化功能表  V1.1 版            系統發展:藝祥資訊  04-4372371")
@@ -229,7 +227,7 @@
    (start_dialog)
 
    (setq usermenu_function_list nil detail_funclist nil anyone_list nil)
-   (SETQ FFF nil))
+     ;; removed FFF
    (princ)
 )
 

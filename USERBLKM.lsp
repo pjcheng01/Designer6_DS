@@ -74,7 +74,7 @@
      (dd_action)
      (unload_dialog dcl_id)
      (if addflag (progn (setq addflag nil)(userblkm "userblkm" "userblkm" nnname sldname typ)))
-   (SETQ FFF nil))
+   ;; removed FFF
 
     (setq it nil readfile nil outfile nil nnname nil key_list nil item_data_list nil ipath nil dd nil addflag nil block_name nil yesno nil
           openfile nil blk_data nil item_list nil page_now nil ff nil)

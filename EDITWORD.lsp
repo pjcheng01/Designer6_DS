@@ -9,7 +9,7 @@
 ;║相關檔案: pub-dcl.dcl(word)             ║
 ;╰════════════════════╯
 (defun editword(fname)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
   (setvar "highlight" 0)
   (setvar "cmdecho" 0)
   (actdcl "pub-dcl" "word")
@@ -34,7 +34,7 @@
   (action_tile "accept" "(done_dialog)")
   (start_dialog)
   (setvar "cmdecho" 1)
-   (SETQ FFF nil))
+   ;; removed FFF
   (princ)
 )
 

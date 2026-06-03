@@ -17,7 +17,7 @@
 ;(defun c:c-slot(/ p1 p2 p3 p4 p5 p6 p7 p12 p13 cr r ang s-ang oldosmode)
 (defun c:c-slot()
   (setvar "cmdecho" 0)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
 
     (defun *error* (msg)
      (princ msg)
@@ -82,7 +82,7 @@
 ; (command "arc" "c" p1 cp1 cp2)
   (c:&sl&)
   (setvar "osmode" oldosmode)
-  (SETQ FFF nil))
+  ;; removed FFF
   (setvar "cmdecho" 1)
   (princ)
 )
@@ -91,7 +91,7 @@
 (defun c:bshaft(/ oldcolor os oldltype oldbli e1 e2 r p1 p2 p3 p4 p5 p6 en1
                   en2 oldosmode ang ent1 ent1data 10data 11data)
 ;(defun c:bshaft()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
    (setq olderr *error*)
 
    (defun *error* (msg)
@@ -156,7 +156,7 @@
   (setvar "cmdecho" 1)
   (setvar "osmode" os)
   (setq *error* olderr)
-  (SETQ FFF nil))(princ)
+  ;; removed FFF(princ)
 )
 
 ;;OFFSET 變換線型
@@ -170,7 +170,7 @@
 ;║相關檔案:                                                                               ║
 ;╰════════════════════════════════════════════╯
 (defun c:aoff(/ aoff_fg)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
  (setvar "cmdecho" 0)
 
  (actdcl (strcat POWDESIGN_dcl_path "auxdraw") "aoff")
@@ -186,7 +186,7 @@
  (if aoff_fg (draw_aoff))
 
  (setvar "cmdecho" 1)
-   (SETQ FFF nil))
+   ;; removed FFF
  (prin1)
 )
 
@@ -253,7 +253,7 @@
 ;;OFFSET 變換圖層
 (defun c:offl(/ ent bl name8 color62 d p1 last8 last62 last)
    (setvar "cmdecho" 0)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
    (setq BL (entsel "\n選擇新層圖素: "))
    (setq BL (entget (car BL)) name8 (assoc 8 BL) color62 (assoc 62 BL))
    (setq ent (entsel "\n選擇平移圖素: "))
@@ -269,7 +269,7 @@
    )
    (entmod last)
    (setvar "cmdecho" 1)
-   (SETQ FFF nil))
+   ;; removed FFF
    (princ)
 )
 
@@ -277,7 +277,7 @@
 ;;;
 (defun c:c&r&la(/ sel bpnt laname ta ty type)
  (setvar "cmdecho" 0)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
  (setq sel (ssget))
  (setq bpnt (getpoint "\n選擇拷貝基準點: "))
  (if sel
@@ -301,7 +301,7 @@
   )
  )
  (setvar "cmdecho" 1)
- (SETQ FFF nil))
+ ;; removed FFF
  (princ)
 )
 ;;;
@@ -338,7 +338,7 @@
           (command "change" "p" "" "p" "lt" ttype ""))))
  )
  (setvar "cmdecho" 1)
- (SETQ FFF nil))
+ ;; removed FFF
  (princ)
 )
 ;╭════════════════════════════════════════════╮
@@ -350,7 +350,7 @@
 ;╰════════════════════════════════════════════╯
 (defun c:c&s (/ sel bpnt)
  (setvar "cmdecho" 0)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
  (setq sel (ssget))
  (setq bpnt (getpoint "\n選擇拷貝基準點: "))
  (if sel
@@ -366,7 +366,7 @@
    (command "scale" "p" "" (getvar "lastpoint") pause)
   )
  )
- (SETQ FFF nil))
+ ;; removed FFF
  (setvar "cmdecho" 1)
  (princ)
 )
@@ -398,7 +398,7 @@
 ;         col-ent1 lty-ent1 ent-data st-ent2 end-ent2 lay-ent2 col-ent2
 ;         c-layer c-color c-linetype)
 (defun c:1cham()
-;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+;; DraftSight: 移除加密狗 WHILE 迴圈
   (setvar "cmdecho" 0)
 
   (setq old_osmode (getvar "osmode"))
@@ -461,7 +461,7 @@
   (command "linetype" "s" c-linetype "")
   (command "layer" "s" c-layer "")
   (setvar "osmode" old_osmode)
-  (SETQ FFF nil))
+  ;; removed FFF
   (setvar "cmdecho" 1)(princ)
 )
 ;;=============================================================================================
@@ -474,7 +474,7 @@
 ;╰════════════════════════════════════════════╯
 (defun c:1fill(/ col typ aye fiivr frea1 sfes1 sfes11 sfes2 sfcar srss6 srss8 srss62)
    (setvar "cmdecho" 1)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
    (setq col (getvar "cecolor") typ (getvar "celtype") aye (getvar "clayer"))
    (setq fiivr (getvar "filletrad"))
    (setq old_osmode (getvar "osmode"))
@@ -521,14 +521,14 @@
    );while
    (setvar "cmdecho" 1)
    (setvar "osmode" old_osmode)
- (SETQ FFF nil))
+ ;; removed FFF
    (princ)
 )
 
 ;;========================================================================================================================
 ;;功能說明: Power Offset 變換線型
 (defun aoff_to_which_ltype(newltype newcolor / offent ent1 data0 offent10 p1 entnum)
-;   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+;   ;; DraftSight: 移除加密狗 WHILE 迴圈
    (setvar "cmdecho" 1)
    (cond
      ((or (= "T" ofdist)(null ofdist))
@@ -566,7 +566,7 @@
          (setq offent (entsel "\n選擇要偏移複製的物件或 <結束>:"))
    );if
    (setvar "cmdecho" 1)
-;  (SETQ FFF nil))
+;  ;; removed FFF
    (princ)
 )
 

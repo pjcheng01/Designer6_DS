@@ -276,7 +276,7 @@
 ;-------------------------------- MAIN PROGRAM -------------------------------|
 
 (defun c:lexplode (/ oce ohl e0 en e1 s0)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
 (setq olderr *error*
       *error* lexerr)
 (setq oce (getvar "cmdecho"))         ; save value of cmdecho
@@ -304,7 +304,7 @@
 (setvar "highlight" ohl)              ; restore old highlight value
 (setvar "cmdecho" oce)                ; restore old cmdecho value
 (setq *error* olderr)                 ; restore old *error* handler
-   (SETQ FFF nil))
+   ;; removed FFF
 (prin1))
 
 ;------------------------------------ END ------------------------------------|
@@ -806,7 +806,7 @@
 ;;│                                                                │
 ;;└────────────────────────────────┘
 (defun c:chg_dim(/ dcl_id tolnum_list)
-;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+;; DraftSight: 移除加密狗 WHILE 迴圈
    (setvar "dimtdec" 8)
    (defun *error* (msg)
       (princ msg)
@@ -842,7 +842,7 @@
    (setvar "dimtfac" cl_tfac)
    (setvar "dimtol" cl_tol)
    (redraw)
-  (SETQ FFF nil))
+  ;; removed FFF
       (princ)
 );defun
 
@@ -1072,7 +1072,7 @@
 
 
 (defun c:cns_finish()
-;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+;; DraftSight: 移除加密狗 WHILE 迴圈
  (setvar "cmdecho" 1)
  (actdcl (strcat powdesign_dcl_path "auxdim") "cns_finish")
 
@@ -1167,7 +1167,7 @@
  );while  
  (setvar "osmode" oldosmode)
  (setvar "cmdecho" 1)
- (SETQ FFF nil));while
+ ;; removed FFF;while
  (prin1)
 )
 
@@ -1286,7 +1286,7 @@
 ;║相關檔案:pub-lisp.lsp                                                                   ║
 ;╰════════════════════════════════════════════╯
 (defun c:jis_finish(/ func os)
-;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+;; DraftSight: 移除加密狗 WHILE 迴圈
  (setvar "cmdecho" 0)
  (setq os (getvar "osmode"))
  (setvar "osmode" 0)
@@ -1336,7 +1336,7 @@
  (setvar "osmode" os)
  (setq *error* olderr)
  (setvar "cmdecho" 1)
-  (SETQ FFF nil))
+  ;; removed FFF
  (prin1)
 )
 
@@ -1571,7 +1571,7 @@
 (setq sym_list (list "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q"
                      "R" "S" "T" "U" "V" "W" "X" "Y" "Z"))
 (defun c:dim-gbase(/ sym_fg)
-;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+;; DraftSight: 移除加密狗 WHILE 迴圈
  (setvar "cmdecho" 0)
 
  (actdcl (strcat powdesign_dcl_path "auxdim") "dim_gbase")
@@ -1593,7 +1593,7 @@
  (if sym_fg (draw_gbase))
 
  (setvar "cmdecho" 1)
-  (SETQ FFF nil))
+  ;; removed FFF
  (prin1)
 )
 
@@ -1619,7 +1619,7 @@
 );defun
 
 ;(defun draw_gbase()
-;   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+;   ;; DraftSight: 移除加密狗 WHILE 迴圈
 ;  (c:&d&)(command "exit")
 ;  (setvar "orthomode" 1)
 ;  (setq scal (getvar "dimscale"))
@@ -1695,12 +1695,12 @@
 ;  );cond
 ;  (command "pline" p1 p2 p3 p4 "c")
 ;  (reset_sysvar)
-;   (SETQ FFF nil))
+;   ;; removed FFF
 ;  (princ)
 ;)
 
 (defun draw_gbase()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
   (c:&d&)
   (setvar "orthomode" 1)
   (setq scal (* (/ 1 base_dimscale) (getvar "dimscale")))
@@ -1768,7 +1768,7 @@
   (command "pline" p1 p2 p3 p4 "c")
   (reset_sysvar)
   (setvar "osmode" oldos)
-   (SETQ FFF nil))
+   ;; removed FFF
   (princ)
 )
 
@@ -1783,7 +1783,7 @@
 ;║相關檔案:                                                                                 ║
 ;╰═════════════════════════════════════════════╯
 (defun c:bsline(/ bsp bep lastp ang arrang arrl scal)
-;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+;; DraftSight: 移除加密狗 WHILE 迴圈
   (save_sysvar)
   (setvar "cmdecho" 0)
   (setvar "osmode" 512)
@@ -1806,7 +1806,7 @@
 
   (reset_sysvar)
   (setvar "cmdecho" 1)
-  (SETQ FFF nil))
+  ;; removed FFF
   (princ)
 )
 ;;指引線
@@ -1820,7 +1820,7 @@
 ;║相關檔案:                                                                                 ║
 ;╰═════════════════════════════════════════════╯
 (defun c:lealine()
-;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+;; DraftSight: 移除加密狗 WHILE 迴圈
   (save_sysvar)
   (setvar "cmdecho" 0)
   (setvar "osmode" 512)
@@ -1843,7 +1843,7 @@
 
   (reset_sysvar)
   (setvar "cmdecho" 1)
-  (SETQ FFF nil))
+  ;; removed FFF
   (princ)
 )
 
@@ -1987,7 +1987,7 @@
 
 
 ;(defun c:dimgeo()
-;;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+;;; DraftSight: 移除加密狗 WHILE 迴圈
 ;  (setq scal (* (/ 1 base_dimscale) (getvar "dimscale")))
 ;  (setq bsp (getpoint "\n從哪一點:  "))
 ;  (setvar "osmode" 0)
@@ -2006,7 +2006,7 @@
 ;  (setq bep lastp)
 ;  (command "tolerance" bep)
 ;  (setvar "osmode" 1)
-;  (SETQ FFF nil))
+;  ;; removed FFF
 ;  (princ)
 ;)
 
@@ -2019,7 +2019,7 @@
    (princ)
 )
 (defun c:dimgeo2(/ geotype gtype dimgeo_fg chk1 chk2 lastkey lastsld)
-;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+;; DraftSight: 移除加密狗 WHILE 迴圈
  (setvar "cmdecho" 0)
 
  (actdcl (strcat powdesign_dcl_path "auxdim") "dimgeo")
@@ -2076,7 +2076,7 @@
  (if dimgeo_fg (draw_dimgeo))
 
  (setvar "cmdecho" 1)
-  (SETQ FFF nil))
+  ;; removed FFF
  (prin1)
 )
 
@@ -2602,7 +2602,7 @@
 ;╰═════════════════════════════════════════════╯
 ;(defun wedding(tit sld)
 (defun wedding(tit)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
 
  (setvar "cmdecho" 0)
  (setq int_os(getvar "osmode"))
@@ -2677,7 +2677,7 @@
        ((and (= flag 1) (= tit 3)) (wed_draw3))
    );cond
 
-   (SETQ FFF nil))
+   ;; removed FFF
  (setvar "cmdecho" 1)
  (setvar "osmode" int_os)
  (prinC)
@@ -2804,7 +2804,7 @@
 ;箭頭邊熔接標註
 ;*******************************************************
  (defun wed_draw1()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
        (c:&d&)
        (setq p1(getpoint "\n點取起始點:"))
 
@@ -3012,7 +3012,7 @@
                     (c:&sl&)
                   )
                 );if
-   (SETQ FFF nil))
+   ;; removed FFF
    (PRINC)
  );defun wed_draw1
 
@@ -3022,7 +3022,7 @@
 ;***************************************************************
 
 (defun wed_draw2()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
        (setq p1(getpoint "\n點取起始點:"))
        (setvar "osmode" 0)
        (setq p2(getpoint P1 "\n點取第二點:"))
@@ -3230,7 +3230,7 @@
                     (c:&sl&)
  ;                 )
  ;               );if
-   (SETQ FFF nil))
+   ;; removed FFF
    (PRINC)
  );defun wed_draw2
 
@@ -3241,7 +3241,7 @@
 ;************************************************************
 
 (defun wed_draw3()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
      (setvar "mirrtext" 0)
        (setq p1(getpoint "\n點取起始點:"))
        (setvar "osmode" 0)
@@ -3427,14 +3427,14 @@
                     );progn
                );if
 
-   (SETQ FFF nil))
+   ;; removed FFF
    (PRINC)
 );wed_draw3
 
 ;;;
 ;;; 自動水平標註
 (defun c:adh()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
    (setvar "cmdecho" 0)
    (initget 0 "1 2")
    (setq dimtype (getkword "\n(1)連續式標註/(2)基準式標註<1>: "))
@@ -3546,14 +3546,14 @@
       );progn
    );if
 
-   (SETQ FFF nil))
+   ;; removed FFF
    (setvar "cmdecho" 1)(princ)
 )
 
 ;;=============================================================================================
 ;;; 自動垂直標註
 (defun c:adv()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
    (setvar "cmdecho" 0)
    (initget 0 "1 2")
    (setq dimtype (getkword "\n(1)連續式標註/(2)基準式標註<1>: "))
@@ -3651,7 +3651,7 @@
    );if
 
 
-   (SETQ FFF nil))
+   ;; removed FFF
    (setvar "cmdecho" 1)(princ)
 )
 
@@ -3666,7 +3666,7 @@
 ;║相關檔案:                                                                                 ║
 ;╰═════════════════════════════════════════════╯
 (defun c:uptxt()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
    (setq n 1)
    (setq scl(getvar "dimscale"))
    (setq txt_list '())
@@ -3706,7 +3706,7 @@
      (command "text" "j" "ml" pc2 (* 3 scl) 0 date3 "")
      (command "text" "j" "ml" pc3 (* 3 scl) 0 date4 "")
      (command "text" "j" "ml" pc4 (* 3 scl) 0 date5 "")
-   (SETQ FFF nil))
+   ;; removed FFF
    (PRINC)
 );defun
 
@@ -4493,7 +4493,7 @@
 ;typ=0 使用於 45 度倒角
 (defun c:autolead() (autolead 1))
 (defun autolead(typ)
-  ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+  ;; DraftSight: 移除加密狗 WHILE 迴圈
   (if (null c:useword)(load "wordlib1"))
   (setvar "cmdecho" 0)
   (setq cecol (getvar "cecolor"))
@@ -4613,7 +4613,7 @@
    (command "pline" p1 "w" "0" scal a1 "w" "0" "0" p4 p5 "")
    (change_color_autolead "dimclrd")
    (rt_to_old_set)
-   (SETQ FFF nil))
+   ;; removed FFF
    (setvar "cmdecho" 1)
     (princ)
 
@@ -4768,7 +4768,7 @@
 
 ;;熔接符號
 (defun c:wedmark(/ p2 p1 p3 ~d1 ~d2)
-  ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+  ;; DraftSight: 移除加密狗 WHILE 迴圈
   (setvar "cmdecho" 0)
   (mem_curset)
 
@@ -4788,7 +4788,7 @@
   ;-----------------------------------------
   (rt_to_old_set)
   (setvar "cmdecho" 1)
-   (SETQ FFF nil))
+   ;; removed FFF
    (princ)
 )
 

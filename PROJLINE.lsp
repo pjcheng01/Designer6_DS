@@ -42,7 +42,7 @@
 
 (defun rotproj(typ typ1 / curlayer curcolor curltype la bl flag s-bl e-bl y p1 p102 p103 p104
                           tl ang p1 ph pv interh interv int_y1 int_y2 p-high p-lower)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
   (setq curlayer (getvar "clayer"))
   (setq curcolor (getvar "cecolor"))
   (setq curltype (getvar "celtype"))
@@ -195,7 +195,7 @@
     (setvar "osmode" oldosmode)
     (setq P1 (getpoint "\n選擇投影點: "))
   );while
-  (SETQ FFF nil))
+  ;; removed FFF
   (princ)
 )
 
@@ -214,7 +214,7 @@
 (defun c:ofpjline(/ ent dist p) (setproj_layer)(hvpjline 7))
 
 (defun hvpjline(typ)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
    (setvar "CMDECHO" 0)
    (setq oldosmode (getvar "osmode"))
    (setq curlayer (getvar "clayer"))
@@ -371,7 +371,7 @@
       )
    )
    (setvar "CMDECHO" 1)
-  (SETQ FFF nil))
+  ;; removed FFF
    (princ)
 )
 

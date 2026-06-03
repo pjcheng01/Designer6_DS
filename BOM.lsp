@@ -830,7 +830,7 @@
 ;╰════════════════════════════════════════════╯
 (defun c:in(/ op part papt lay1 lay col ff fl ptxt fg data prts col_list)
  (setvar "cmdecho" 0)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
 
 ;(setq partindel_layer '("DIM" "BORDER" "SHEET" "TEMP" "PROJ" "TEXT"))  ; part in 時自動刪除之圖層
  (setq partindel_layer (read (getfile_val (strcat powdesign_path "system.ini") "零件組合時刪除之圖層")))
@@ -1001,7 +1001,7 @@
                   " 分" (rtos sec 2 0) " 秒!"))
   )
  )
- (SETQ FFF nil))
+ ;; removed FFF
  (princ)
 )
 
@@ -1175,7 +1175,7 @@
 ;;向左定距指標球(連續編號)  (AUTObom 0)
 ;;向右定距指標球(連續編號)  (AUTObom 180)
 (defun autoBOM(btype)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
    (setvar "cmdecho" 0)
    (defun *error* (msg)
       (princ msg)
@@ -1306,7 +1306,7 @@
       (setq bomnum (1+ bomnum))
    );while
    (setvar "cmdecho" 1)
-   (SETQ FFF nil))
+   ;; removed FFF
    (princ)
 )
 
@@ -1338,7 +1338,7 @@
 (defun keyin_BOM(btype)
    (setvar "cmdecho" 0)
    (bomdata_yesno)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
    (make_layer sys_ball_layer sys_ball_layercol)
    (cond
      ((= btype 0)   (setq ballang 0))
@@ -1409,7 +1409,7 @@
       (if p1 (setq bomnum (getint (strcat "\n輸入件號:" firsttxt))))
       (if (and (/= btype 1) p1) (setq bomtxtp (polar bomtxtp ballang balldist)))
    );while
-   (SETQ FFF nil))
+   ;; removed FFF
    (setvar "cmdecho" 1)
    (princ)
 )
@@ -1426,7 +1426,7 @@
 ;║相關檔案: wordlib.lsp (pub_useword)                                                       ║
 ;╰═════════════════════════════════════════════╯
 (defun add_bomball_xdata(ent partnum / flag)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
   (actdcl (strcat POWDESIGN_dcl_path "bom") "bomball_xdata")
   (setq count 1)
   (foreach nn defbomlist_list
@@ -1470,7 +1470,7 @@
  (start_dialog)
 
  (if flag (ad1xdata ent "BOMLIST_DATA" xdata))
-   (SETQ FFF nil))
+   ;; removed FFF
  (prin1)
 )
 
@@ -1485,7 +1485,7 @@
 ;║相關檔案: wordlib.lsp (pub_useword)                                                       ║
 ;╰═════════════════════════════════════════════╯
 (defun mod_bomball_xdata(ent XXDATA / flag)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
   (actdcl (strcat POWDESIGN_dcl_path "bom") "bomball_xdata")
   (setq count 1)
   (foreach nn defbomlist_list
@@ -1545,7 +1545,7 @@
 
     )
   )
-   (SETQ FFF nil))
+   ;; removed FFF
  (prin1)
 )
 
@@ -1587,7 +1587,7 @@
 ;║相關檔案: bom.dcl, system.lsp(deflayer)                                                 ║
 ;╰════════════════════════════════════════════╯
 (defun c:drawbom_list(/ flag bomtype)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
  (setvar "cmdecho" 0)
 
 ; (setq firsttxt (getstring "\n按 ENTER 鍵略過/<輸入件號前置文字>: "))
@@ -1615,7 +1615,7 @@
  (if flag (drawbom_list_ok))
 
  (setvar "cmdecho" 1)
-   (SETQ FFF nil))
+   ;; removed FFF
  (prin1)
 
 )
@@ -1669,7 +1669,7 @@
 ;;=============================================================================================
 ;; 取得指標數字之 xdata 串列
 (defun getbomtxt_list()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
   (setq insert_grp (ssget "x" (list (cons 8 sys_ball_layer)(cons 0 "TEXT"))))
   (if insert_grp
     (progn
@@ -1767,7 +1767,7 @@
       (princ "\n   找不到件號球!!")
     );progn
   );if
-   (SETQ FFF nil))
+   ;; removed FFF
    (princ)
 )
 
@@ -1784,7 +1784,7 @@
 ;║相關檔案: system.lsp(deflayer)                                                          ║
 ;╰════════════════════════════════════════════╯
 (defun c:delbom_list()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
   (setvar "cmdecho" 0)
   (if (setq bomgroup (ssget "x" (list (cons 8 sys_bomlist_layer))))
     (progn
@@ -1804,7 +1804,7 @@
 
   );if
   (setvar "cmdecho" 1)
-   (SETQ FFF nil))
+   ;; removed FFF
   (princ)
 )
 
@@ -1813,7 +1813,7 @@
 ;;;編輯指標球
 ;;=============================================================================================
 (defun c:addbomtxt_xdata(/ ent_data bomtxt partnum)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
    (setq bomtxt (car (entsel "\n選擇件號文字: ")))
    (if bomtxt
       (setq ent_data (cdr (cadr (assoc -3 (getxdata bomtxt "BOMLIST_DATA")))))
@@ -1834,7 +1834,7 @@
      );progn
      (princ "\n您選擇的不是件號文字!!")
    );progn
-   (SETQ FFF nil))
+   ;; removed FFF
    (princ)
 )
 
@@ -1854,7 +1854,7 @@
 ;╰════════════════════════════════════════════╯
 ; defbomlist_list : (("件號" "15")("品名" "20")("材質" "10")("料號" "10")("數量" "10")("備註" "30"))
 (defun c:bomlist_txt()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
 
    (getbomtxt_list)
    (if tdata_list
@@ -1888,7 +1888,7 @@
         (editword fname)
      );progn
    );if
-   (SETQ FFF nil))
+   ;; removed FFF
    (princ)
 )
 

@@ -43,7 +43,7 @@
 
  (action_tile "accept" "(done_dialog)")
  (start_dialog)
-  (SETQ FFF nil))
+  ;; removed FFF
  (setvar "cmdecho" 1)
 
  (setq type_val nil word_val nil stm nil belonw_group nil type_list nil word_list nil belong_group nil worddata nil type_id nil type_name nil data_list nil)
@@ -534,7 +534,7 @@
      (princ)
    );progn
  );if
-  (SETQ FFF nil))
+  ;; removed FFF
  (setvar "cmdecho" 1)
  (if get_wordlibdata
    (progn

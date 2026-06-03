@@ -92,7 +92,7 @@
   (start_dialog)
  (if blockuse_id (blockuse_ok))
  (prin1)
-  (SETQ FFF nil))
+  ;; removed FFF
   (princ)
 )
 

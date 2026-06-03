@@ -83,7 +83,7 @@
    (princ)
 )
 (defun c:setorg()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
   (prompt "\n原點..")
   (setq $$$org (getpoint ": "))
   (setq org1 (strcat "(" (rtos (car $$$org)) "," (rtos (cadr $$$org)) ")"))
@@ -132,7 +132,7 @@
      (command "line" (polar basep $$ang (getvar "dimscale")) XD-pend "")
     )
   );cond
-   (SETQ FFF nil))
+   ;; removed FFF
 )
 (defun c:reorg()
   (setq entity (car (entsel "\n選擇新尺寸線: "))
@@ -158,7 +158,7 @@
 )
 (defun c:mdim()
 ;(PRINC "\nSYSTEM DEVOLPED: POWERTECH INFORMATION ENGINEERING CORP")
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
  (setvar "attdia" 0)
  (setq scale (getvar "dimscale"))
  (setq old-unit (getvar "luprec"))
@@ -330,6 +330,6 @@
  (setvar "luprec" old-unit)
  (setvar "attdia" 1)
  (princ)
-   (SETQ FFF nil))
+   ;; removed FFF
 );defun
 

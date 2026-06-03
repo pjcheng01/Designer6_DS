@@ -13,7 +13,7 @@
 ;║相關檔案:pub-lisp.lsp                                                                   ║
 ;╰════════════════════════════════════════════╯
 (defun carqury(type)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
  (setvar "cmdecho" 1)
  (actdcl (strcat powdesign_dcl_path "aux-qury") "carqury")
  (cond
@@ -96,7 +96,7 @@
  (start_dialog)
 
  (setvar "cmdecho" 1)
-   (SETQ FFF nil))
+   ;; removed FFF
  (prin1)
 )
 
@@ -111,7 +111,7 @@
 ;║相關檔案:                               ║
 ;╰════════════════════╯
 (defun c:arclen()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
    (setq selent (entsel "\n選擇 圓弧 :"))
 
    (if selent
@@ -136,7 +136,7 @@
         (c:arclen)
      );progn
    );if
-   (SETQ FFF nil))
+   ;; removed FFF
    (princ)
 )
 
@@ -154,7 +154,7 @@
 ;║                                                                                        ║
 ;╰════════════════════════════════════════════╯
 (defun ironsize(type)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
  (setvar "cmdecho" 0)
  (actdcl (strcat powdesign_dcl_path "aux-qury") "ironsize")
  (cond
@@ -452,12 +452,12 @@
  (start_dialog)
 
  (setvar "cmdecho" 1)
-   (SETQ FFF nil))
+   ;; removed FFF
  (prin1)
 )
 
 (defun c:funcc()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
  (setvar "cmdecho" 0)
  (actdcl (strcat powdesign_dcl_path "aux-qury") "function")
   (set_tile "title" "鐵板重量計算法")
@@ -466,7 +466,7 @@
   (action_tile "accept" "(done_dialog)")
  (start_dialog)
  (setvar "cmdecho" 1)
-   (SETQ FFF nil))
+   ;; removed FFF
  (princ)
 )
 
@@ -480,9 +480,9 @@
 ;║相關檔案:                                                                               ║
 ;╰════════════════════════════════════════════╯
 (defun c:scal()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
  (setvar "cmdecho" 0)
-  ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+  ;; DraftSight: 移除加密狗 WHILE 迴圈
   (actdcl "pub-dcl" "allert")
 
    (setq tttxth (getvar "dimscale"))
@@ -504,8 +504,8 @@
  (start_dialog)
 
 
- (SETQ FFF nil))
-   (SETQ FFF nil))
+ ;; removed FFF
+   ;; removed FFF
  (setvar "cmdecho" 1)
  (princ)
 )
@@ -536,7 +536,7 @@
 
  (action_tile "accept" "(done_dialog)")
  (start_dialog)
-   (SETQ FFF nil))
+   ;; removed FFF
  (princ)
 )
 
@@ -550,7 +550,7 @@
 ;╰════════════════════════════════════════════╯
 (defun c:e-len(/ ent sp ep d in dtxt intxt word)
  (setvar "cmdecho" 0)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
  (prompt "\n======= 選擇一條直線,以計算這條直線之英制距離 !! =======")
  (setq ent (entget (car (entsel "\n選擇欲計算的直線: ")))
        sp (cdr (assoc 10 ent))
@@ -568,7 +568,7 @@
  (action_tile "accept" "(done_dialog)")
  (start_dialog)
 
- (SETQ FFF nil))
+ ;; removed FFF
  (setvar "cmdecho" 1)
  (princ)
 )

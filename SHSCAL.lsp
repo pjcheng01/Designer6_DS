@@ -17,7 +17,7 @@
 ;║               A0HOR.DWGA,4VER.DWG,A3VER.DWG,A2VER.DWG,A1VER.DWG,A0VER.DWG║
 ;╰═════════════════════════════════════╯
 (defun c:shscal()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
     (setvar "cmdecho" 0)
     (command "select" "ALL" "")
     (comp_cur_limits)
@@ -49,7 +49,7 @@
     (action_tile "accept" "(setscal_ok)")
     (start_dialog)
     (if check_p (insert_sheet))
-    (SETQ FFF nil))
+    ;; removed FFF
     (princ)
 )
 
@@ -221,7 +221,7 @@
 
 ; 重定比例
 (defun c:resetting(/ resetting_fg allup sheet_blk)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
    (setq olddimscal (getvar "dimscale"))
    (resetscal_val)
    (if (/= nil (ssget "x" (list (cons 8 sys_sheet_layer) (cons 0 "INSERT"))))
@@ -247,7 +247,7 @@
          (princ (strcat "\n比例重新設定完成!!"))
      );progn
    )
-   (SETQ FFF nil))
+   ;; removed FFF
    (PRINC)
 )
 
@@ -592,7 +592,7 @@
                       data_list type_list ini_file stype_flag
                       )
 ;(defun ATOshscal(typ)
-  ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+  ;; DraftSight: 移除加密狗 WHILE 迴圈
 
     (setvar "cmdecho" 0)
     (setq &oldos (getvar "osmode"))
@@ -679,7 +679,7 @@
        );cond
      );progn
     );if
-    (SETQ FFF nil))
+    ;; removed FFF
     (setvar "osmode" &oldos)
     (setq instype nil sheet_typedata nil &&sheet_id nil)
     (princ)

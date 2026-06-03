@@ -128,7 +128,7 @@
           );if
                     (setvar "cmdecho" 1)
                     (setvar "osmode" old_osmode)
-   (SETQ FFF nil))
+   ;; removed FFF
    (princ)
 )
 
@@ -359,7 +359,7 @@
           );if
                     (setvar "cmdecho" 1)
                     (setvar "osmode" old_osmode)
-   (SETQ FFF nil))
+   ;; removed FFF
    (princ)
 )
 

@@ -1,7 +1,7 @@
 ;;;
 (defun c:cir_enLg(/ s_dat c_cor moveent c_rad c_ent spt1 spt2 ss_get man_lst s_sca s_loc
               cecmd boundary ss_list)
-  ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+  ;; DraftSight: 移除加密狗 WHILE 迴圈
   (setq cecmd (getvar "cmdecho"))
 
   (setq osmode_OLD    (getvar "osmode"))
@@ -43,7 +43,7 @@
   (setvar "osmode"    osmode_OLD)
   (setvar "plinewid"  plinewid_OLD)
   (setvar "orthomode" orthomode_OLD)
-  (SETQ FFF nil))
+  ;; removed FFF
 )
 
 (defun *error_CirEnLg(msg)

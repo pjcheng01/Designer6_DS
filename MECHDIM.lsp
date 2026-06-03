@@ -9,7 +9,7 @@
 ;版本:
 ;公司:POWERSOFT
   (defun c:cringdim()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
     (setvar "cmdecho" 0)
     (setq dcl_id (load_dialog (strcat powdesign_dcl_path "auxdraw.dcl")))
     (if (< dcl_id 0)(exit))
@@ -35,7 +35,7 @@
 
     )
     (unload_dialog dcl_id)
-   (SETQ FFF nil))
+   ;; removed FFF
     );end
 
 
@@ -114,7 +114,7 @@
 ;版本:
 ;公司:POWERSOFT
   (defun c:dringdim()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
     (setvar "cmdecho" 0)
     (setq dcl_id (load_dialog (strcat powdesign_dcl_path "auxdraw.dcl")))
     (if (< dcl_id 0)(exit))
@@ -140,7 +140,7 @@
 
     )
     (unload_dialog dcl_id)
-   (SETQ FFF nil))
+   ;; removed FFF
     );end
 
     (defun dringok()
@@ -217,7 +217,7 @@
 ;版本:
 ;公司:POWERSOFT
   (defun c:eringdim()
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
     (setvar "cmdecho" 0)
     (setq dcl_id (load_dialog (strcat powdesign_dcl_path "auxdraw.dcl")))
     (if (< dcl_id 0)(exit))
@@ -243,7 +243,7 @@
 
     )
     (unload_dialog dcl_id)
-   (SETQ FFF nil))
+   ;; removed FFF
     );end
 
 

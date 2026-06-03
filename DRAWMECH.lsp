@@ -108,7 +108,7 @@
 ;;╰════════════════════════════════════════════╯
 (defun c:slot5(/ p1 p2 p3 p4 p5 p6 p7 p102 p103 p104 p105 y r d ang)
    (setvar "cmdecho" 0)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
    (setq p1 (getpoint "\n選擇插入點: "))
   (if p1 (progn
     (setq r (getdist "\n輸入半徑: "))
@@ -146,7 +146,7 @@
    (setvar "osmode" oldosmode)
    ))
    (setvar "cmdecho" 1)
- (SETQ FFF nil))
+ ;; removed FFF
    (princ)
 )
 ;╭════════════════════════════════════════════╮
@@ -158,7 +158,7 @@
 ;╰════════════════════════════════════════════╯
 (defun c:slot4(/ y p1 p2 p3 p4 p5 p6 p7 p102 p103 p104 p105 r d ang)
    (setvar "cmdecho" 0)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
     (setq p1 (getpoint "\n輸入插入點: "))
   (if p1 (progn
     (setq r (getdist "\n輸入半徑: "))
@@ -196,7 +196,7 @@
    (setvar "osmode" oldosmode)
    ))
    (setvar "cmdecho" 1)
- (SETQ FFF nil))
+ ;; removed FFF
    (princ)
 )
 ;╭════════════════════════════════════════════╮
@@ -207,7 +207,7 @@
 ;║相關檔案:                                                                               ║
 ;╰════════════════════════════════════════════╯
 (defun c:slot3(/ y p1 p2 p3 p4 p5 p6 p102 p103 p104 p105 r flag d1 d ang)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
    (setvar "cmdecho" 0)
    (setq p1 (getpoint "\n選擇插入點: "))
   (if p1 (progn
@@ -246,7 +246,7 @@
 
    (setvar "osmode" oldosmode)
    ))
-   (SETQ FFF nil))
+   ;; removed FFF
    (setvar "cmdecho" 1)(princ)
 )
 ;╭════════════════════════════════════════════╮
@@ -258,7 +258,7 @@
 ;╰════════════════════════════════════════════╯
 (defun c:slot2(/ y p p1 p2 p3 p4 p5 p6 p102 p103 p104 p105 flat r d)
    (setvar "cmdecho" 0)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
    (setq p1 (getpoint "\n輸入插入點: "))
   (if p1 (progn
    (setq r (getdist "\n輸入半徑: "))
@@ -295,7 +295,7 @@
    (command "line" p5 p2 "")
    (setvar "osmode" oldosmode)
    ))
-   (SETQ FFF nil))
+   ;; removed FFF
    (setvar "cmdecho" 1)
    (princ)
 )
@@ -308,7 +308,7 @@
 ;╰════════════════════════════════════════════╯
 (defun c:slot1()
    (setvar "cmdecho" 0)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
     (setq p1 (getpoint "\n請選擇插入點: "))
   (if p1 (progn
      (setq r (getdist "\n輸入半徑: "))
@@ -336,7 +336,7 @@
    (command "line" p5 p2 "")
    (setvar "osmode" oldosmode)
    ))
-   (SETQ FFF nil))
+   ;; removed FFF
    (setvar "cmdecho" 1)
    (princ)
 )

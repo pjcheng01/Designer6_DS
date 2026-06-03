@@ -10,7 +10,7 @@
 ;;鑽孔 drill5
 (defun c:drill5(/ p1 d h1 ang ltp p2 p3 p4 p5 p6 oldvar)
   (setvar "cmdecho" 0)
-  ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+  ;; DraftSight: 移除加密狗 WHILE 迴圈
     (setq oldcol (getvar "cecolor")
           oldlty (getvar "celtype" )
           oldlos (getvar "osmode"))
@@ -74,14 +74,14 @@
   ))
    (setq *error* olderr)
   (setvar "cmdecho" 1)
-  (SETQ FFF nil))
+  ;; removed FFF
   (princ)
 )
 
 ;;鑽孔
 (defun c:drill4()
   (setvar "cmdecho" 0)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
     (setq oldcol (getvar "cecolor")
           oldlty (getvar "celtype" )
           oldlos (getvar "osmode"))
@@ -141,7 +141,7 @@
 
   ))
    (setq *error* olderr)
-  (SETQ FFF nil))
+  ;; removed FFF
   (setvar "cmdecho" 1)
   (princ)
 )
@@ -510,7 +510,7 @@
 ;║相關檔案: thrillc1.SLD,,thrillc2.SLD,,thrillc3.SLD,AUXDRAW.DCL                          ║
 ;╰════════════════════════════════════════════╯
 (defun c:thrill(/ zz)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
  (setvar "cmdecho" 0)
   (setq drsize nil thh nil drh nil drawfg nil matfg nil)
  (actdcl (strcat powdesign_dcl_path "auxdraw") "thrill")
@@ -606,7 +606,7 @@
  );if
     (setq zz nil)
 
-   (SETQ FFF nil))
+   ;; removed FFF
  (prin1)
 )
 
@@ -944,7 +944,7 @@
 ;║相關檔案: mmsize.dat, inchsize.dat                                                      ║
 ;╰════════════════════════════════════════════╯
 (defun c:thrill2(/ flag ltype)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
     (setvar "cmdecho" 0)
     (setq oldcol (getvar "cecolor")
           oldlty (getvar "celtype")
@@ -973,7 +973,7 @@
     (if flag (thrill2_exe ltype))
     (setvar "cmdecho" 1)
    (setq *error* olderr)
-   (SETQ FFF nil))
+   ;; removed FFF
     (PRINC)
 )
 
@@ -1077,7 +1077,7 @@
 ;║相關檔案: mmsize.dat, inchsize.dat                                                      ║
 ;╰════════════════════════════════════════════╯
 (defun c:thrill3(/ flag ltype view_id wucs)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
     (setvar "cmdecho" 0)
     (setq wucs nil
           oldcol (getvar "cecolor")
@@ -1127,7 +1127,7 @@
     );if
 ;    (if (= wucs 0) (command "ucs" "n" ucsorg));if
     (setvar "cmdecho" 1)
-    (SETQ FFF nil))
+    ;; removed FFF
     (setq *error* olderr)
     (PRINC)
 )
@@ -1248,7 +1248,7 @@
 ;║相關檔案: mmsize.dat, inchsize.dat                                                      ║
 ;╰════════════════════════════════════════════╯
 (defun c:thrill4(/ flag ltype view_id)
-   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+   ;; DraftSight: 移除加密狗 WHILE 迴圈
     (setvar "cmdecho" 0)
     (setq oldcol (getvar "cecolor")
           oldlty (getvar "celtype" )
@@ -1283,7 +1283,7 @@
       )
     )
     (setvar "cmdecho" 1)
-   (SETQ FFF nil))
+   ;; removed FFF
    (setq *error* olderr)
     (PRINC)
 )
@@ -1378,7 +1378,7 @@
                  ap1 ap2 p1_1 p1_2 ang1 ang2 midp1
                  midp1_1 midp1_2 midp1_3 midp1_4
                  midp2_1 midp2_2 midp2_3 midp2_4)
-  ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+  ;; DraftSight: 移除加密狗 WHILE 迴圈
   (setvar "cmdecho" 0)
   (mem_curset)
   (setvar "osmode" 512)
@@ -1427,12 +1427,12 @@
   (command "pline" p1_1 "w" "0" "0" midp2_1 midp2_2 midp2_3 midp2_4 p1_2 "")
   (rt_to_old_set)
   (setvar "cmdecho" 1)
-   (SETQ FFF nil))
+   ;; removed FFF
    (princ)
 )
 
 (defun c:pipscrew()
-  ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
+  ;; DraftSight: 移除加密狗 WHILE 迴圈
    (setvar "cmdecho" 0)
    (actdcl (strcat powdesign_dcl_path "auxdraw") "pipscrew")
    (setq view_id nil)
@@ -1464,7 +1464,7 @@
      );progn
    );if
    (setvar "cmdecho" 1)
-   (SETQ FFF nil))
+   ;; removed FFF
    (prin1)
 
 );defun
