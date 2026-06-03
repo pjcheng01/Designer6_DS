@@ -197,8 +197,10 @@
 )
 
 
+(princ "\n[SYS PRE-200] before partindel setq")
 (setq partindel_layer (list "3" "BORDER" "DIM" "PROJ" "SHEET" "TEMP" "TEXT"))
 (setq partindel_BLOCK (list "A0HOR" "A0VER" "A1" "A2" "A3" "A4"))
+(princ "\n[SYS POST-201] after partindel setq")
 
 ;=============================================================================================
 
