@@ -10,8 +10,8 @@
 ;刪除零件
 (defun c:delparts(/ alllent beselent beselent_def player set_partdef set_partref bol_partref bol_partdef ent_partref
 		    ent_obj pnt_base pnt_move int_num)
-        (if (and (= jin "#$%")(= #### 85))(setq FFF t))
-        (WHILE (/= FFF nil)
+        ;; 已移除加密狗判斷
+        (progn ;; DraftSight: 移除加密狗 WHILE 迴圈
                (setvar "cmdecho" 0)
                (initget "S A P")
                (setq sora (getkword "刪除零件: 前次所選圖元(P)/單一範圍(S)/所有圖元<A>"))
@@ -102,8 +102,8 @@
 
 ;移動零件
 (defun c:moveparts(/ allent beselent oldpt newpt)
-        (if (and (= jin "#$%")(= #### 85))(setq FFF t))
-        (WHILE (/= FFF nil)
+        ;; 已移除加密狗判斷
+        (progn ;; DraftSight: 移除加密狗 WHILE 迴圈
                (setvar "cmdecho" 0)
                (initget "S A P")
                (setq sora (getkword "移動零件: 前次所選圖元(P)/單一範圍(S)/所有圖元<A>"))
@@ -120,8 +120,8 @@
 
 ;旋轉零件
 (defun c:roteparts(/ allent beselent)
-        (if (and (= jin "#$%")(= #### 85))(setq FFF t))
-        (WHILE (/= FFF nil)
+        ;; 已移除加密狗判斷
+        (progn ;; DraftSight: 移除加密狗 WHILE 迴圈
                (setvar "cmdecho" 0)
                (initget "S A P")
                (setq sora (getkword "旋轉零件: 前次所選圖元(P)/單一範圍(S)/所有圖元<A>"))
@@ -138,8 +138,8 @@
 ;複製零件
 (defun c:copyparts(/ allent beselent player set_partdef set_partref pnt_bomp flt_bompx flt_bompy
 		     alllent ent_obj set_lay pnt_base pnt_move)
-        (if (and (= jin "#$%")(= #### 85))(setq FFF t))
-        (WHILE (/= FFF nil)
+        ;; 已移除加密狗判斷
+        (progn ;; DraftSight: 移除加密狗 WHILE 迴圈
                (setvar "cmdecho" 0)
                (initget "S A P")
                (setq sora (getkword "複製零件: 前次所選圖元(P)/單一範圍(S)/所有圖元<A>"))
@@ -235,8 +235,8 @@
 ;鏡射零件
 (defun c:mirparts(/ allent beselent player set_partdef set_partref pnt_bomp flt_bompx flt_bompy
 		    alllent ent_obj set_lay pnt_base pnt_move str_rt)
-        (if (and (= jin "#$%")(= #### 85))(setq FFF t))
-        (WHILE (/= FFF nil)
+        ;; 已移除加密狗判斷
+        (progn ;; DraftSight: 移除加密狗 WHILE 迴圈
                (setvar "cmdecho" 0)
                (initget "S A P")
                (setq sora (getkword "鏡射零件: 前次所選圖元(P)/單一範圍(S)/所有圖元<A>"))

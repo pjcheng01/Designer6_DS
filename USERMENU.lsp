@@ -1,6 +1,6 @@
 ;;;;
 (defun usermenu(dclmenu_mnu dclmenu_dcl dialog_name backcol func_id / flag)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (actdcl (strcat usermenu_path dclmenu_dcl) dialog_name)
    (set_tile "title" "POWER TOOLS   開放式功能表                                        系統發展: 藝祥資訊")
    (if (null usermenu_function_list)
@@ -206,7 +206,7 @@
 ;;=============================================================================================
 
 (defun c:manamenu(dclmenu_mnu dclmenu_dcl dialog_name)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setq count nil)
    (actdcl (strcat usermenu_path dclmenu_dcl) dialog_name)
    (set_tile "title" "客戶化功能表  V1.1 版            系統發展:藝祥資訊  04-4372371")

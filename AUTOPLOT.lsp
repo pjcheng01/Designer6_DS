@@ -27,7 +27,7 @@ AUTOPLOT 程式共有以下檔案:
 ;╰════════════════════════════════════════════╯
 (defun c:autoplot(/ autoplot_list)
 ;(defun c:autoplot()
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (setvar "cmdecho" 0)
 ; (princ "\nAUTOPLOT 連續自動出圖  Ver:1.0      系統設計:藝祥資訊 04-4372371")
  (princ (get_language 10001110))

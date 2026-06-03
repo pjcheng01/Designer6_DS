@@ -10,8 +10,8 @@
 ;;;╰════════════════════════════════════════════╯
 (defun c:sheetset(/ flag attflag i id attgrp logo_list txt_list lib_list code_list total_list shty name size hwid vwid filename)
        (setvar "cmdecho" 0)
-       (if (and (= jin "#$%")(= #### 85))(setq FFF t))
-       (while (/= FFF nil)
+       ;; 已移除加密狗判斷
+       (progn ;; DraftSight: 移除加密狗 WHILE 迴圈
               (alert "請先確認圖框檔案(包含圖框與屬性)已開啟 ! 且屬性為非 BLOCK")
               (setq attflag "0" flag "start" i 0 logo_list '() txt_list '() id nil lib_list '() code_list '() logo_maxlen 0 txt_maxlen 0 total_list '())
               (setq tcode_list (list "" "檔名(F)" "日期(D)" "比例(S)"))
@@ -599,8 +599,8 @@
 ;;;╰════════════════════════════════════════════╯
 (defun c:modsheetset( / flag attflag i id attgrp logo_list txt_list lib_list code_list total_list shty name size hwid vwid filename name_type sheet_type sheet_typelist)
        (setvar "cmdecho" 0)
-       (if (and (= jin "#$%")(= #### 85))(setq FFF t))
-       (while (/= FFF nil)
+       ;; 已移除加密狗判斷
+       (progn ;; DraftSight: 移除加密狗 WHILE 迴圈
               (setq attflag "0" flag "start" sh_id "0" logo_list '() txt_list '() id nil lib_list '() code_list '() total_list '() name_type '())
               (setq tcode_list (list "" "檔名(F)" "日期(D)" "比例(S)"))
 

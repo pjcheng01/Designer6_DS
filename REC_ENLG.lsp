@@ -76,7 +76,7 @@
 ;--------------------------------------
 ;;;
 (defun c:rec_enLg  ( / ss1 ss2 aa polyent p1 p3 scl d0 d180)
-  (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+  ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
   ---------- Internal error handler
       (defun myerror ()
          (if (/= S "Function cancelled")

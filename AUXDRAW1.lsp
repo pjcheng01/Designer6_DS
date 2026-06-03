@@ -35,7 +35,7 @@
 
 (defun c:holemark(/ curcolor curltype ent e la r cenp)
    (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (getoldvar)
    (setq curcolor (getvar "cecolor"))
    (setq curltype (getvar "celtype"))
@@ -82,7 +82,7 @@
 (defun c:cen1(/ ppss_v selmode oker ORTHOMODE_v)
    (setvar "cmdecho" 0)
    (setq ppss_v nil)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (getoldvar)
    (setq curcolor (getvar "cecolor"))
    (setq curltype (getvar "celtype"))
@@ -167,7 +167,7 @@
                                              (setvar "clayer" oldlavar))
 (defun c:cen2(/ selmode oker cp1 c_rad *error*)
    (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
 	(defun *error*(msg);
 	  	(retoldvar);
 	  	(princ msg);2002.05.30 SAM
@@ -252,7 +252,7 @@
 ;;輔助畫三視圖
 (defun c:stock(/ a b c d p1 p2 p3 p4 p5 p6 p7 p8 p9 p10 p11 p12 p13 p14 p15 p16 p17)
 (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
 (command "vslide" (strcat POWDESIGN_sld_path "stocksld"))
 (setq A(getdist "\n輸入長度值: "))
 (setq B(getdist "\n輸入寬度值: "))
@@ -292,7 +292,7 @@
 ;;同心圓 MCIR
 (defun c:mcir(/ y p p1 p2 p3 p4 p5 p102 p103 p104 p105 flag d lt)
   (setvar "cmdecho" 0)
-  (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+  ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
   (setq Y (getvar "viewsize"))
   (setq p1 (getpoint "\n選擇中心點: "))
   (setq p3 (polar p1 (* pi 0.25) (/ Y 22))
@@ -370,7 +370,7 @@
 (defun c:sec5(/ y min max minl maxr name p p1 p2 pp1 pp2 pp3 pp4 pp5 ang1 ang2  ent1 ent2 ent3 ent4
                 sp1 sp2 lin1 flag pp 2c 4c 5c 6c 7c 8c 1c *error*)
   (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setq olderr *error*)
    (defun *error* (msg)
       (princ msg)
@@ -476,7 +476,7 @@
 ;int1 int2 angint angp a1 a2 a3 a4 t2 t4 a4 a6 a7 a8 t6 t8 os sscc 2c 4c 6c 8c)
 (defun c:sec1()
 
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
 
     (setq olderr *error*)
   (defun *error* (msg)
@@ -626,7 +626,7 @@
 ;;剖面文字 sec2
 (defun c:sec2(/ name p1)
   (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
   (setq sss (getvar "dimscale"))
   (setvar "attdia" 0)
   (setq name (strcase (getstring "\n輸入剖面名稱: ")))
@@ -645,7 +645,7 @@
 ;;詳圖文字
 (defun c:sec3(/ name p1)
   (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
   (setq sss (getvar "dimscale"))
   (setvar "attdia" 0)
   (setq name (strcase (getstring "\n輸入剖面名稱: ")))
@@ -663,7 +663,7 @@
 ;詳圖指標
 (defun c:sec4(/ ssc name y p1 p102 p103 p104 p105 ang wb wh wbb whh ph ww)
   (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
   (setq ssc (getvar "dimscale"))
   (setq name (strcase (getstring "\n輸入英文名稱: ")))
 ; (setq Y (getvar "viewsize"))
@@ -702,7 +702,7 @@
 ;詳圖指標( ? 矢視圖 )
 (defun c:sec6(/ ssc name y p1 p102 p103 p104 p105 ang wb wh wbb whh ph ww)
   (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
   (setq ssc (getvar "dimscale"))
   (setq name (strcase (getstring "\n輸入英文名稱: ")))
   (setq p1 (getpoint "\n輸入插入點: "))
@@ -741,8 +741,8 @@
 ;;軸剖面 ho1
 (defun c:ho1(/ y p p1 p2 p3 p4 p5 p102 p103 p104 p105 ang l ds de2 1st_flag cens cene $p $p4 $p5 $p102 $p103 $p104 $p105)
    (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))
-   (WHILE (/= FFF nil)
+   ;; 已移除加密狗判斷
+   (progn ;; DraftSight: 移除加密狗 WHILE 迴圈
           (setq ppss sspp
                 ccolor (getvar "cecolor")
                 cltype (getvar "celtype")
@@ -959,8 +959,8 @@
 ;;軸剖面
 (defun c:ho2(/ y p p1 p2 p3 p4 p5 p102 p103 p104 p105 ang l ds de2 1st_flag cens cene $p $p4 $p5 $p102 $p103 $p104 $p105)
    (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))
-   (WHILE (/= FFF nil)
+   ;; 已移除加密狗判斷
+   (progn ;; DraftSight: 移除加密狗 WHILE 迴圈
           (setq ppss sspp
                 ccolor (getvar "cecolor")
                 cltype (getvar "celtype")
@@ -1194,8 +1194,8 @@
 ;;軸外形
 (defun c:ho(/ y p p1 p2 p3 p4 p5 p102 p103 p104 p105 ang l ds de2 1st_flag cens cene $p $p4 $p5 $p102 $p103 $p104 $p105)
    (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))
-   (WHILE (/= FFF nil)
+   ;; 已移除加密狗判斷
+   (progn ;; DraftSight: 移除加密狗 WHILE 迴圈
           (setq ppss sspp
                 ccolor (getvar "cecolor")
                 cltype (getvar "celtype")
@@ -1401,8 +1401,8 @@
 ;;軸外形
 (defun c:sha(/ y p p1 p2 p3 p4 p5 p102 p103 p104 p105 ang l ds de2 1st_flag cens cene $p $p4 $p5 $p102 $p103 $p104 $p105)
    (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))
-   (WHILE (/= FFF nil)
+   ;; 已移除加密狗判斷
+   (progn ;; DraftSight: 移除加密狗 WHILE 迴圈
           (setq ppss sspp
                 ccolor (getvar "cecolor")
                 cltype (getvar "celtype")
@@ -1614,7 +1614,7 @@
    (setq curcolor (getvar "cecolor"))
    (setq curltype (getvar "celtype"))
    (setq oldosmode (getvar "osmode"))
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setq olderr *error*)
    (defun *error* (msg)
       (princ msg)
@@ -1692,7 +1692,7 @@
    (setq curcolor (getvar "cecolor"))
    (setq curltype (getvar "celtype"))
    (setq oldosmode (getvar "osmode"))
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setq olderr *error*)
    (defun *error* (msg)
       (princ msg)
@@ -1757,7 +1757,7 @@
 ;連續原點截斷
 (defun c:mbreak(/ ent p1 os)
    (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setq olderr *error*)
    (defun *error* (msg)
       (princ msg)
@@ -1783,7 +1783,7 @@
 (defun c:ext(/ oldltype oldcolor curlayer ent entity data 6ent 8ent 10ent
          10ent 11ent 62ent dist dist1 dist2 len p1 p2)
   (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
   (setq oldltype (getvar "celtype"))
   (setq oldcolor (getvar "cecolor"))
    (setq curlayer (getvar "clayer"))
@@ -2205,7 +2205,7 @@
 
 (defun c:m1hid(/ c-layer c-color c-linetype ent1 10ent1 11ent1 ent2 10ent2 10ent2 ent3 10ent3 11ent3 lay-ent3
                 int1 int2 p1 p2 os)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setvar "cmdecho" 0)
    (setq os (getvar "osmode"))
    (setq olderr *error*)
@@ -2304,7 +2304,7 @@
 ;;圓形被前景遮住
 (defun c:cirhi(/ ent entt ep sp cenp oldosmode)
   (setvar "cmdecho" 0)
-  (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+  ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
   (setq ent (entsel "\n選擇一個圓: ")
         entt (entget (car ent))
         sp (osnap (getpoint "\n選擇第一點: ") "nea")
@@ -2326,7 +2326,7 @@
 ;;連續截斷交差點
 (defun c:mbrl(/ p1 p2 p3 p4 objs cont intp)
  (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (prompt "\n選擇截斷目標線: ")
  (while (setq objs (entsel ""))
   (if (= (cdr (assoc 0 (entget (car objs)))) "LINE")
@@ -2369,7 +2369,7 @@
 ;;矩行 mrect
 (defun c:mrect(/ y pnt pnt1 os p1 p2 p3 p4 p102 p103 p104 p105 l w ang)
    (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setq Y (getvar "viewsize"))
    (setq pnt1 (getpoint "\n輸入中間點: "))
    (setq p103 (polar pnt1 (* pi 0.25) (/ Y 22))
@@ -2403,7 +2403,7 @@
 
 ;;矩行 crect
 (defun c:crect(/ y pnt p1 p2 p3 p4 os p102 p103 p104 p105 w h ang)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setvar "cmdecho" 0)
    (setq Y (getvar "viewsize"))
    (setq pnt (getpoint "\n選擇插入中心點: "))
@@ -2439,7 +2439,7 @@
 ;;矩行 srect1
 (defun c:srect1()
  (setvar "cmdecho" 0)(setvar "highlight" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (setq Y (getvar "viewsize"))
  (setq p1 (getpoint "\n插入點: "))
  (setq p103 (polar p1 (* pi 0.25) (/ Y 22))
@@ -2470,7 +2470,7 @@
 ;;矩行 srect
 (defun c:srect(/ y p1 p2 p3 p4 p102 p103 p104 p105 l w ang os)
  (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (setq Y (getvar "viewsize"))
  (setq p1 (getpoint "\n選擇插入點: "))
  (setq p103 (polar p1 (* pi 0.25) (/ Y 22))
@@ -2503,7 +2503,7 @@
 ;矩行 3e
 (defun c:3e(/ y p1 p2 p3 p4 p5 p102 p103 p104 p105 w h ang)
    (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
     (setq Y (getvar "viewsize"))
     (setq p1 (getpoint "\n選擇插入點: "))
     (setq p103 (polar p1 (* pi 0.25) (/ Y 22))
@@ -2542,7 +2542,7 @@
 ;;ORIGINAL.DWG,2CIR.SLD
 ;;畫環形圓
 (defun c:mc(/ p1 p2 p3 p4 p102 p103 p104 p105 y d n ang abc lt )
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setvar "cmdecho" 0)
    (setq osmode (getvar "osmode"))             ;;2003.07.08 SAM
    (setq p1 (getpoint "\n選擇中心點: "))
@@ -2599,7 +2599,7 @@
 ;寫出座標(x,y),寫出座標(x/y)
 ;typ=1 => x,y typ=3 => (x,y)
 (defun c:wcood(typ)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setvar "cmdecho" 0)
    (setq txth (* (getvar "dimscale") (getvar "dimtxt")))
    (setq txthh (getdist (strcat "\n輸入字高<" (rtos txth 2 2) ">: ")))
@@ -2656,7 +2656,7 @@
 
 ;X-Y 圓
 (defun c:xycir(/ oricir cirrad xdist ydist cir_x cir_y)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setvar "cmdecho" 0)
    (setq oricir (getpoint "\n選擇基準點: "))
    (while (null oricir)
@@ -2691,7 +2691,7 @@
 
 ;距離-角度 圓
 (defun c:polcir(/ oricir cirrad aangle dist)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setvar "cmdecho" 0)
    (setq oricir (getpoint "\n選擇基準點: "))
    (while (null oricir)
@@ -2724,7 +2724,7 @@
 ;;等角度畫圓
 (defun c:2cir(/ basecir basecir_cen basecir_rad cir2 cir2_cen cirang cirqty cirrad cenline_ang
                 s_ang ang_per)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setq oldos(getvar "osmode"))
    (setq olderr *error*)
 

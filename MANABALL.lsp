@@ -14,8 +14,8 @@
 ;;;向左定距指標球(連續編號)  (AUTObom_info 0)
 ;;;向右定距指標球(連續編號)  (AUTObom_info 180)
 (defun autobom_info(btype / autob_fg ent)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))
-   (WHILE (/= FFF nil)
+   ;; 已移除加密狗判斷
+   (progn ;; DraftSight: 移除加密狗 WHILE 迴圈
           (setq ppss sspp autob_fg nil ent nil)
           (setvar "cmdecho" 0)
 
@@ -243,8 +243,8 @@
 ;向右定距指標球(不連續編號)  (keyin_bom_info 180)
 
 (defun keyin_bom_info(btype)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))
-   (WHILE (/= FFF nil)
+   ;; 已移除加密狗判斷
+   (progn ;; DraftSight: 移除加密狗 WHILE 迴圈
           (setq ppss sspp autob_fg nil ent nil)
           (setvar "cmdecho" 0)
 

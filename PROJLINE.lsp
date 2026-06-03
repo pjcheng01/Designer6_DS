@@ -42,7 +42,7 @@
 
 (defun rotproj(typ typ1 / curlayer curcolor curltype la bl flag s-bl e-bl y p1 p102 p103 p104
                           tl ang p1 ph pv interh interv int_y1 int_y2 p-high p-lower)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
   (setq curlayer (getvar "clayer"))
   (setq curcolor (getvar "cecolor"))
   (setq curltype (getvar "celtype"))
@@ -214,7 +214,7 @@
 (defun c:ofpjline(/ ent dist p) (setproj_layer)(hvpjline 7))
 
 (defun hvpjline(typ)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setvar "CMDECHO" 0)
    (setq oldosmode (getvar "osmode"))
    (setq curlayer (getvar "clayer"))

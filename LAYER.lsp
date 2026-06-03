@@ -64,7 +64,7 @@
    (setq layname (strcase (getstring "\n輸入新層名: ")))
    (princ "\n由螢幕選擇新層顏色!!")
    (setq search (tblsearch "layer" layname))
-    (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+    ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (if (/= search nil) (command "layer" "s" layname "")
       (progn
          (setq col (acad_colordlg 1))
@@ -88,7 +88,7 @@
 
 ;;全部顯示 ashow
 (defun c:ashow ()
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (setvar "cmdecho" 0)
  (command "layer" "on" "*" "")
  (SETQ FFF nil))
@@ -314,7 +314,7 @@
 
 ;;指定目前層  slay
 (defun c:slay()
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
   (prompt "\n選擇欲設定現行工作層的圖素: ")
   (setq a (entsel))
   (setq e (car a))
@@ -328,7 +328,7 @@
 
 ;;刪除層 DLAY
 (defun c:dlay(/ entt ent)
-(if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
   (setvar "cmdecho" 0)
   (prompt "\n選擇要刪除層的圖素: ")
   (setq ent (entsel " "))
@@ -422,7 +422,7 @@
 
 ;;解凍層 thraw
 (defun c:thraw()
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (setvar "cmdecho" 0)
  (command "layer" "t" "*" "")
  (setvar "cmdecho" 1)
@@ -433,7 +433,7 @@
 ;;冷凍層 pfree
 (defun c:pfree(/ showlay showlay)
  (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (setq showlay (entsel "\n選擇圖素,以便將該層冷凍: "))
  (setq showlay (car showlay))
  (princ "\n選擇圖素,以便將該層冷凍: ")
@@ -453,7 +453,7 @@
 ;;顯示 BLOCK bshow
 (defun c:bshow()
   (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
   (grclear)
   (setq showent (ssget "X" '((0 . "INSERT"))))
   (if (/= nil showent)
@@ -468,8 +468,8 @@
 
 ;;隱藏層 phide
 (defun c:phide (/ oex lay str)
-       (if (and (= jin "#$%")(= #### 85))(setq FFF t))
-       (WHILE (/= FFF nil)
+       ;; 已移除加密狗判斷
+       (progn ;; DraftSight: 移除加密狗 WHILE 迴圈
               (setq ppss sspp) (setvar "cmdecho" 0)
               (setq oex (getvar "expert"))
               (setvar "expert" 1)
@@ -537,8 +537,8 @@
  (setq lay_total (length lalst) count (- lay_total 1))
 )
 (defun c:pshow(/ ccc aaa showlay yesno txt_id setla shla)
-       (if (and (= jin "#$%")(= #### 85))(setq FFF t))
-       (WHILE (/= FFF nil)
+       ;; 已移除加密狗判斷
+       (progn ;; DraftSight: 移除加密狗 WHILE 迴圈
               (setq ppss sspp) (setvar "cmdecho" 0)
               (setq aaa nil nword nil)
               (setq oex (getvar "expert"))
@@ -723,7 +723,7 @@
 ;║相關檔案: auxdisp.dcl, pub-lisp.lsp(coll_layer)                                           ║
 ;╰═════════════════════════════════════════════╯
 (defun c:lcontrol(/ lcontrolfg)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (setvar "cmdecho" 0)
 
  (actdcl (strcat POWDESIGN_dcl_path "auxdisp") "lcontrol")
@@ -802,7 +802,7 @@
 ;╰═════════════════════════════════════════════╯
 (defun c:ltcontrol(/ ltcontrolfg ltlist data count lt_on lt_off ltname sellist kw)
 ;(defun c:ltc(/ ltcontrolfg ltlist data count)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (setvar "cmdecho" 1)
 
  (actdcl (strcat POWDESIGN_dcl_path "auxdisp") "ltcontrol")

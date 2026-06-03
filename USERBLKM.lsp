@@ -30,7 +30,7 @@
 ;(defun userblkm(dclfilename dialogname itemname sldname typ)
 (defun userblkm(dclfilename dialogname itemname sldname typ / it readfile outfile nnname key_list
                 item_data_list ipath dd addflag block_name yesno openfile blk_data headname)
-(if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)
+;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈
       (setvar "cmdecho" 0)
       (if (null block_system)  (c:get_block_set))
       (if readfile (setq readfile nil))

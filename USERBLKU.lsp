@@ -45,7 +45,7 @@
 
 
 (defun userblku(dclfilename dialogname itemname sldname typ)
- (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)
+ ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈
  (setvar "cmdecho" 0)
  (setq blk_name nil)
  (setq blockuse_id nil)

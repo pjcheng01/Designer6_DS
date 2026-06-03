@@ -14,7 +14,7 @@
 ;;;使用到該程式之檔案 sheetset.lsp
 (defun c:creatword(/ type_val word_val stm belonw_group type_list word_list belong_group worddata type_id type_name alldata_list )
  (setvar "cmdecho" 0)
- (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)
+ ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈
  (actdcl "wordlib1" "creat_word")
  (creat_wordlib_list)
  (reset_tile)
@@ -408,7 +408,7 @@
                          ang  get_wordlibdata write_list
               )
  (setvar "cmdecho" 0)
-(if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)
+;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈
  (actdcl "wordlib1" "use_word")
  (setq useword_txt_type (list "左" "中" "右" "對齊" "中央" "定高對齊" "左上" "中上" "右上"
                         "左中" "正中" "右中" "左下" "中下" "右下"))

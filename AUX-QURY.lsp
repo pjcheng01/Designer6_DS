@@ -13,7 +13,7 @@
 ;║相關檔案:pub-lisp.lsp                                                                   ║
 ;╰════════════════════════════════════════════╯
 (defun carqury(type)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (setvar "cmdecho" 1)
  (actdcl (strcat powdesign_dcl_path "aux-qury") "carqury")
  (cond
@@ -111,7 +111,7 @@
 ;║相關檔案:                               ║
 ;╰════════════════════╯
 (defun c:arclen()
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setq selent (entsel "\n選擇 圓弧 :"))
 
    (if selent
@@ -154,7 +154,7 @@
 ;║                                                                                        ║
 ;╰════════════════════════════════════════════╯
 (defun ironsize(type)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (setvar "cmdecho" 0)
  (actdcl (strcat powdesign_dcl_path "aux-qury") "ironsize")
  (cond
@@ -457,7 +457,7 @@
 )
 
 (defun c:funcc()
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (setvar "cmdecho" 0)
  (actdcl (strcat powdesign_dcl_path "aux-qury") "function")
   (set_tile "title" "鐵板重量計算法")
@@ -480,9 +480,9 @@
 ;║相關檔案:                                                                               ║
 ;╰════════════════════════════════════════════╯
 (defun c:scal()
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (setvar "cmdecho" 0)
-  (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+  ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
   (actdcl "pub-dcl" "allert")
 
    (setq tttxth (getvar "dimscale"))
@@ -521,7 +521,7 @@
 ;╰════════════════════════════════════════════╯
 (defun c:d-2p(/ p1 d in mm-txt in-txt word)
  (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈
  (prompt "\n======= 請選擇任意兩點以查詢其英制距離 !! =======")
  (setq p1 (getpoint "\n第一點 :")
        d (getdist p1 "\n第二點 :")
@@ -550,7 +550,7 @@
 ;╰════════════════════════════════════════════╯
 (defun c:e-len(/ ent sp ep d in dtxt intxt word)
  (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (prompt "\n======= 選擇一條直線,以計算這條直線之英制距離 !! =======")
  (setq ent (entget (car (entsel "\n選擇欲計算的直線: ")))
        sp (cdr (assoc 10 ent))

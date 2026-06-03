@@ -1,7 +1,7 @@
 ;;;
 (defun c:cir_enLg(/ s_dat c_cor moveent c_rad c_ent spt1 spt2 ss_get man_lst s_sca s_loc
               cecmd boundary ss_list)
-  (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+  ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
   (setq cecmd (getvar "cmdecho"))
 
   (setq osmode_OLD    (getvar "osmode"))

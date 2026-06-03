@@ -2,7 +2,7 @@
 
  (defun dclmenu(dclmenu_mnu dclmenu_dcl dialog_name func_id / exec_id)
 
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
 
   (cond ((null actdcl) (load "pub-lisp")) (t (princ)))
   (actdcl (strcat dclmenu_path dclmenu_dcl) dialog_name)

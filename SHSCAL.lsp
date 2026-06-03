@@ -17,7 +17,7 @@
 ;║               A0HOR.DWGA,4VER.DWG,A3VER.DWG,A2VER.DWG,A1VER.DWG,A0VER.DWG║
 ;╰═════════════════════════════════════╯
 (defun c:shscal()
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
     (setvar "cmdecho" 0)
     (command "select" "ALL" "")
     (comp_cur_limits)
@@ -221,7 +221,7 @@
 
 ; 重定比例
 (defun c:resetting(/ resetting_fg allup sheet_blk)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setq olddimscal (getvar "dimscale"))
    (resetscal_val)
    (if (/= nil (ssget "x" (list (cons 8 sys_sheet_layer) (cons 0 "INSERT"))))
@@ -592,7 +592,7 @@
                       data_list type_list ini_file stype_flag
                       )
 ;(defun ATOshscal(typ)
-  (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+  ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
 
     (setvar "cmdecho" 0)
     (setq &oldos (getvar "osmode"))

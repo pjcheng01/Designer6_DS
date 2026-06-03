@@ -17,7 +17,7 @@
 ;(defun c:c-slot(/ p1 p2 p3 p4 p5 p6 p7 p12 p13 cr r ang s-ang oldosmode)
 (defun c:c-slot()
   (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
 
     (defun *error* (msg)
      (princ msg)
@@ -91,7 +91,7 @@
 (defun c:bshaft(/ oldcolor os oldltype oldbli e1 e2 r p1 p2 p3 p4 p5 p6 en1
                   en2 oldosmode ang ent1 ent1data 10data 11data)
 ;(defun c:bshaft()
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setq olderr *error*)
 
    (defun *error* (msg)
@@ -170,7 +170,7 @@
 ;║相關檔案:                                                                               ║
 ;╰════════════════════════════════════════════╯
 (defun c:aoff(/ aoff_fg)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (setvar "cmdecho" 0)
 
  (actdcl (strcat POWDESIGN_dcl_path "auxdraw") "aoff")
@@ -253,7 +253,7 @@
 ;;OFFSET 變換圖層
 (defun c:offl(/ ent bl name8 color62 d p1 last8 last62 last)
    (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setq BL (entsel "\n選擇新層圖素: "))
    (setq BL (entget (car BL)) name8 (assoc 8 BL) color62 (assoc 62 BL))
    (setq ent (entsel "\n選擇平移圖素: "))
@@ -277,7 +277,7 @@
 ;;;
 (defun c:c&r&la(/ sel bpnt laname ta ty type)
  (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (setq sel (ssget))
  (setq bpnt (getpoint "\n選擇拷貝基準點: "))
  (if sel
@@ -313,7 +313,7 @@
 ;║相關檔案:                                                                               ║
 ;╰════════════════════════════════════════════╯
 (defun c:c&r&lt(/ sel bpnt ta tt ty type)
-   (if (or (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   (if (or (= jin "#$%")(= #### 85))(setq FFF t))(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (setvar "cmdecho" 0)
  (setq sel (ssget))
  (setq bpnt (getpoint "\n選擇拷貝基準點: "))
@@ -350,7 +350,7 @@
 ;╰════════════════════════════════════════════╯
 (defun c:c&s (/ sel bpnt)
  (setvar "cmdecho" 0)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
  (setq sel (ssget))
  (setq bpnt (getpoint "\n選擇拷貝基準點: "))
  (if sel
@@ -398,7 +398,7 @@
 ;         col-ent1 lty-ent1 ent-data st-ent2 end-ent2 lay-ent2 col-ent2
 ;         c-layer c-color c-linetype)
 (defun c:1cham()
-(if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
   (setvar "cmdecho" 0)
 
   (setq old_osmode (getvar "osmode"))
@@ -474,7 +474,7 @@
 ;╰════════════════════════════════════════════╯
 (defun c:1fill(/ col typ aye fiivr frea1 sfes1 sfes11 sfes2 sfcar srss6 srss8 srss62)
    (setvar "cmdecho" 1)
-   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setq col (getvar "cecolor") typ (getvar "celtype") aye (getvar "clayer"))
    (setq fiivr (getvar "filletrad"))
    (setq old_osmode (getvar "osmode"))
@@ -528,7 +528,7 @@
 ;;========================================================================================================================
 ;;功能說明: Power Offset 變換線型
 (defun aoff_to_which_ltype(newltype newcolor / offent ent1 data0 offent10 p1 entnum)
-;   (if (and (= jin "#$%")(= #### 85))(setq FFF t))(WHILE (/= FFF nil)(setq ppss sspp)
+;   ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈(setq ppss sspp)
    (setvar "cmdecho" 1)
    (cond
      ((or (= "T" ofdist)(null ofdist))
