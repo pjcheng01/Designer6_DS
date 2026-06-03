@@ -30,11 +30,17 @@
       (setq k_path nil)
       (if support_path
         (setq support_path (strcat support_path "\\"))
-        (setq support_path (strcat disk_path "\\"))  ; fallback: 使用程式安裝路徑
+        (if disk_path
+          (setq support_path (strcat disk_path "\\"))
+          (setq support_path "C:\\DESIGNER6_DS\\")
+        )
       )
     )
-    ;; SRCHPATH 無法取得時，fallback 使用 disk_path
-    (setq support_path (strcat disk_path "\\"))
+    ;; SRCHPATH 無法取得時，fallback
+    (if disk_path
+      (setq support_path (strcat disk_path "\\"))
+      (setq support_path "C:\\DESIGNER6_DS\\")
+    )
   )
   support_path
 )
