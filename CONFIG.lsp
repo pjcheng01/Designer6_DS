@@ -163,7 +163,7 @@
           (setq POWPARTS_dwg_path  (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_DWG_PATH")))))
           (setq POWPARTS_DATA_path (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_DATA_PATH")))))
           (princ "\n[DEBUG 11] 載入 FUNCTION.lsp")
-          (load "FUNCTION")
+          (load (strcat POWPARTS_path "FUNCTION"))
           (setq powparts_block   (atoi (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWPARTS_BLOCK"))))))
           (setq powparts_BLKNAME (atoi (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWPARTS_BLKNAME"))))))
         )
