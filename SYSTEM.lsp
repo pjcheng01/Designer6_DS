@@ -253,8 +253,8 @@
 ;שר¬Ûֳצְֹ®׳: system.ini, pub-lisp.lsp (get_word)                                             שר
 ;¢¢שששששששששששששששששששששששששששששששששששששששששששששששששששששששששששששששששששששששששששששששששששששששששש¢£
 (defun right()
-      (prompt "\n              ¥»¨t²־¥ְֳׁ²»¸ך°T₪uµ{¦³­­₪½¥q   ³¯«a¹F µo®i§¹¦¨.")
-      (prompt "\n                   TEL:(04)230-7650   FAX:(04)231-4708")
+  (princ "\nPower Design System - All Rights Reserved")
+  (princ)
 )
 
 (if *designer6_ready*
