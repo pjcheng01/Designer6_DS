@@ -49,7 +49,7 @@
 ;
 ;;=============================================================================================
 (defun getval(initxt)
-   (if (or (null POWDESIGN_path)(/= jin "#$%")(/= #### 85))(c:autoload))
+   ;; 已移除：加密狗判斷 (if (or (null POWDESIGN_path)(/= jin "#$%")(/= #### 85))(c:autoload))
    (setq ff (open (strcat powdesign_path "system.ini") "r"))
   ;(setq ff (open (strcat "p:\\designer6\\" "system.ini") "r"))
   (setq data (read-line ff))
