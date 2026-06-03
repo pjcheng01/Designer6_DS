@@ -5,3 +5,7 @@
 (load "quickey")
 (c:autoload)
 (princ)
+(load "command")
+(load "quickey")
+(c:autoload)
+;DS_CONFIG_WRITTEN

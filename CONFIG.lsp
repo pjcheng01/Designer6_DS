@@ -99,27 +99,20 @@
 ;; 讀取 config.doc（英文 key）- 診斷版本
 ;;----------------------------------------------------------------
 (defun config_des50_system (/ OUT_LSPPATH)
-  (princ "\n[DEBUG 1] config_des50_system 開始")
   (setq OUT_LSPPATH (get_support_path))
-  (princ (strcat "\n[DEBUG 2] OUT_LSPPATH=" (if OUT_LSPPATH OUT_LSPPATH "NIL")))
   (setq config_des50_systemdoc (strcat OUT_LSPPATH "config.doc"))
-  (princ (strcat "\n[DEBUG 3] config_des50_systemdoc=" config_des50_systemdoc))
   (if (null (findfile config_des50_systemdoc))
     (setq config_des50_systemdoc (findfile "config.doc"))
   )
-  (princ (strcat "\n[DEBUG 4] findfile result=" (if config_des50_systemdoc config_des50_systemdoc "NIL")))
   (if (null config_des50_systemdoc)
     (progn
       (princ "\n[機械設計家] 尚未設定系統路徑，請執行 SETUP 指令進行初始設定。")
       (setq *designer6_ready* nil)
     )
     (progn
-      (princ "\n[DEBUG 5] 開始讀取 DESIGN_PATH")
       (setq POWDESIGN_path (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "DESIGN_PATH")))))
-      (princ (strcat "\n[DEBUG 6] POWDESIGN_path=" (if POWDESIGN_path POWDESIGN_path "NIL")))
       (if POWDESIGN_path
         (progn
-          (princ "\n[DEBUG 7] 讀取其他路徑變數")
           (setq POWDESIGN_sld_path  (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "DESIGN_SLD_PATH")))))
           (setq POWDESIGN_dcl_path  (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "DESIGN_DCL_PATH")))))
           (setq POWDESIGN_dwg_path  (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "DESIGN_DWG_PATH")))))
@@ -133,10 +126,8 @@
           (setq autoplot_filepath   (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "AUTOPLOT_FILEPATH")))))
           (setq powdesign_ini_path  (strcat POWDESIGN_path "ini\\"))
           (setq base_dimscale 1)
-          (princ "\n[DEBUG 8] 路徑變數讀取完成")
         )
       )
-      (princ "\n[DEBUG 9] 讀取模組路徑")
       (setq fmpath (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERMANAGER_PATH")))))
       (if (and fmpath (/= "" fmpath))
         (progn
@@ -155,14 +146,12 @@
         )
       )
       (setq POWPARTS_path (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_PATH")))))
-      (princ (strcat "\n[DEBUG 10] POWPARTS_path=" (if POWPARTS_path POWPARTS_path "NIL")))
       (if (and POWPARTS_path (/= "" POWPARTS_path))
         (progn
           (setq POWPARTS_sld_path  (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_SLD_PATH")))))
           (setq POWPARTS_dcl_path  (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_DCL_PATH")))))
           (setq POWPARTS_dwg_path  (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_DWG_PATH")))))
           (setq POWPARTS_DATA_path (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_DATA_PATH")))))
-          (princ "\n[DEBUG 11] 載入 FUNCTION.lsp")
           (load "FUNCTION")
           (setq powparts_block   (atoi (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWPARTS_BLOCK"))))))
           (setq powparts_BLKNAME (atoi (strip_cr (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWPARTS_BLKNAME"))))))
