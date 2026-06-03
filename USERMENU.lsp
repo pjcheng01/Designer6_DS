@@ -90,33 +90,23 @@
 )
 
 (defun userMENU_EXEfunc(word)
-  (setq  word (read word))
+  ;; DraftSight 移植：改用 eval/load 取代 script 檔案方式
+  (setq word (read word))
   (setq kword (nth 2 word))
   (cond
     ((= KWORD "*")
       (setq C_TYPE (nth 3 word))
-      (setq acad_ver (getvar "acadver"))
-      (setq fff (open (strcat usermenu_path "usermenu.scr") "w"))
-      (if (> (strlen acad_ver) 5)
-        (progn
-          (setq load_file (car C_TYPE))         ;load file
-          (setq EXE_TYPE (cadr C_TYPE))         ;exe type
-          (setq EXE_COMM (caddr C_TYPE))         ;exe command
-          (setq txt (strcat "(cond ((null " EXE_TYPE ")(load " "\"" load_file "\"" "))(t (princ)))"))
-          (write-line txt fff)
-          (write-line EXE_COMM fff)
-        );progn
-        (write-line (nth 4 word) fff) ;配合 autocadLT 版之簡易指令
-      );if
-      (close fff)
-      (setvar "cmdecho" 0)
-      (command "script" (strcat usermenu_path "usermenu.scr"))
+      (setq load_file (car C_TYPE))    ;; 要載入的 lsp 檔名
+      (setq EXE_TYPE (cadr C_TYPE))    ;; 函式名稱（用來判斷是否已載入）
+      (setq EXE_COMM (caddr C_TYPE))   ;; 要執行的指令字串
+      ;; 先確認函式是否已載入，若無則載入
+      (eval (read (strcat "(cond ((null " EXE_TYPE ")(load "" load_file ""))(t (princ)))")))
+      ;; 直接執行指令
+      (eval (read EXE_COMM))
     )
     ((= KWORD "@")
-      (setq fff (open (strcat usermenu_path "usermenu.scr") "w"))
-      (setq aa word)
-      (write-line (nth 3 word) fff) (close fff)
-      (command "script" (strcat usermenu_path "usermenu.scr"))
+      ;; 直接執行指令字串
+      (eval (read (nth 3 word)))
     )
   )
 )
