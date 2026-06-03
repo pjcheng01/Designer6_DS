@@ -1,0 +1,25 @@
+//
+//      AutoCAD LT 功能表檔 - D:\POWERPDM\AUTOCAD\POWERPDM.MNC
+//
+
+***MENUGROUP=POWERPDM
+
+***POP14
+               [連結PowerPDM]
+               [開啟舊圖]^C^C(c:autoload) &pdmopen
+               [插入舊圖]^C^C(c:autoload) &pdminsdwg
+               [--]
+               [叫出批注檔]^C^C(c:autoload) &redline_in
+               [--]
+               [刪除批注檔]^C^C(c:autoload) &del_redline
+               [--]
+               [圖框資料寫入PDM]^C^C(c:autoload) caddata_to_pdm
+               [更新圖框資料]^c^c(c:autoload) input_pdm_attdata
+         //    [--]
+         //    [--]
+         //    [電子簽核]^C^C&autosign
+
+//
+//      AutoCAD LT 功能表檔結尾 - D:\POWERPDM\AUTOCAD\POWERPDM.MNC
+//
+

@@ -1,0 +1,442 @@
+
+***TOOLBARS
+**藝祥資訊機械設計家族(二)
+               [_Toolbar("藝祥資訊機械設計家族(二)", _Floating, _Hide, 166, 273, 1)]
+               [_Flyout("輔助繪圖(一)", AUXDRAW1.bmp, BUXDRAW1.bmp, _OtherIcon, POWERSOFT.AUXDRAW1)]
+               [_Flyout("輔助繪圖(二)", AUXDRAW2.bmp, BUXDRAW2.bmp, _OtherIcon, POWERSOFT.AUXDRAW2)]
+               [_Flyout("輔助編輯(一)", AUXEDIT1.bmp, BUXEDIT1.bmp, _OtherIcon, POWERSOFT.AUXEDIT1)]
+               [_Flyout("輔助編輯(二)", AUXEDIT2.bmp, BUXEDIT2.bmp, _OtherIcon, POWERSOFT.AUXEDIT2)]
+               [--]
+               [_Flyout("投影線", PROJLINE.bmp, BROJLINE.bmp, _OtherIcon, POWERSOFT.PROJLINE)]
+               [_Flyout("作圖線性設定", SETLINE.bmp, BSETLINE.bmp, _OtherIcon, POWERSOFT.SETLINE)]
+               [--]
+               [_Flyout("輔助標註一", AUXDIM1.bmp, BAUXDIM1.bmp, _OtherIcon, POWERSOFT.AUXDIM1)]
+               [_Flyout("輔助標註二", AUXDIM3.bmp, BAUXDIM1.bmp, _OtherIcon, POWERSOFT.AUXDIM3)]
+               [_Flyout("幾合公差標註", AUXDIM2.bmp, BAUXDIM2.bmp, _OtherIcon, POWERSOFT.AUXDIM2)]
+               [--]
+               [_Flyout("組合圖與材料清單", BOM1.bmp, BBOM1.bmp, _OtherIcon, POWERSOFT.BOM1)]
+               [_Flyout("圖層控制", AUXDISP1.bmp, BUXDISP1.bmp, _OtherIcon, POWERSOFT.AUXDISP1)]
+               [--]
+               [_Flyout("資料查詢", DESDATA1.bmp, BESDATA1.bmp, _OtherIcon, POWERSOFT.AUXQURY1)]
+               [_Flyout("鍵槽與螺紋", MECDRAW1.bmp, BECDRAW1.bmp, _OtherIcon, POWERSOFT.MECDRAW1)]
+               [_Flyout("軸產生器", MECDRAW2.bmp, BECDRAW2.bmp, _OtherIcon, POWERSOFT.MECDRAW2)]
+
+**AUXDRAW1
+**輔助繪圖(一)
+               [_Toolbar("輔助繪圖(一)", _Floating, _Hide, 396, 149, 1)]
+               [_Button("輔助繪圖(一)", "AUXDRAW1.BMP", "BUXDRAW1.BMP")]^C^C000 
+               [_Button("畫環形圓", "polcir.bmp", "bpolcir.bmp")]^C^C&mc 
+               [_Button("距離-角度 圓", "drcir1.bmp", "bdrcir1.bmp")]^C^C&POLCIR 
+               [_Button("X-Y 圓", "drcir2.bmp", "bdrcir2.bmp")]^C^C&XYCIR 
+               [_Button("等角度畫圓", "drcir3.bmp", "bdrcir3.bmp")]^C^C&2cir 
+               [_Button("矩形", "drrect1.bmp", "bdrrect1.bmp")]^C^C&3e 
+               [_Button("矩形", "drrect2.bmp", "bdrrect2.bmp")]^C^C&srect 
+               [_Button("矩形", "drrect3.bmp", "bdrrect3.bmp")]^C^C&crect 
+               [_Button("矩形", "drrect4.bmp", "bdrrect4.bmp")]^C^C&srect1 
+               [_Button("矩形", "drrect5.bmp", "bdrrect5.bmp")]^C^C&mrect 
+               [_Button("圓角輔助標註圖形", "drco1.bmp", "bdrco1.bmp")]^C^C&co 
+               [_Button("鈑金件彎形孔", "auxcc.bmp", "bauxcc.bmp")]^C^C&c-slot 
+
+**AUXDRAW2
+**輔助繪圖(二)
+               [_Toolbar("輔助繪圖(二)", _Floating, _Hide, 354, 142, 1)]
+               [_Button("輔助繪圖(二)", "AUXDRAW2.bmp", "BUXDRAW2.bmp")]^C^C111 
+               [_Button("連續剖面", "drsec1.bmp", "bdrsec1.bmp")]^C^C&sec5 
+               [_Button("剖面", "drsec2.bmp", "bdrsec2.bmp")]^C^C&sec1 
+               [_Button("剖面文字", "drsec3.bmp", "bdrsec3.bmp")]^C^C&sec2 
+               [_Button("詳圖文字", "drsec4.bmp", "bdrsec4.bmp")]^C^C&sec3 
+               [_Button("詳圖指標", "drapat.bmp", "bdrapat.bmp")]^C^C&sec4 
+               [_Button("軸中心線", "drcen1.bmp", "bdrcen1.bmp")]^C^C&cen1 
+               [_Button("圓中心線", "drcen2.bmp", "bdrcen2.bmp")]^C^C&cen2 
+               [_Button("輔助畫三視圖", "dr3box.bmp", "bdr3box.bmp")]^C^C&stock 
+               [_Button("同心圓", "drmcir.bmp", "bdrmcir.bmp")]^C^C&mcir 
+               [_Button("熔接點", "wedmark.bmp", "bwedmark.bmp")]^C^C&wedmark 
+               [_Button("精準孔符號", "holemark.bmp", "bholemar.bmp")]^C^C&holemark 
+
+**AUXEDIT1
+**輔助編輯(一)
+               [_Toolbar("輔助編輯(一)", _Floating, _Hide, 257, 147, 1)]
+               [_Button("輔助編輯(一)", "AUXEDIT1.bmp", "BUXEDIT1.bmp")]^C^C222 
+               [_Button("變換成BYLAYER線性", "auxbl.bmp", "bauxbl.bmp")]^C^C&chtobyl 
+               [_Button("變換成BYBLOCK線性", "auxbb.bmp", "bauxbb.bmp")]^C^C&chtobylk 
+               [_Button("變換粗連續線性", "auxsl.bmp", "bauxsl.bmp")]^C^C&chtosl 
+               [_Button("變換標準中心線性", "auxcl.bmp", "bauxcl.bmp")]^C^C&chtocl 
+               [_Button("變換短中心線性", "auxscl.bmp", "bauxscl.bmp")]^C^C&chtocl2 
+               [_Button("變換細連續線性", "auxtl.bmp", "bauxtl.bmp")]^C^C&chtotl 
+               [_Button("變換虛線性", "auxdl.bmp", "bauxdl.bmp")]^C^C&chtodl 
+               [_Button("變換假想線性", "auxpl.bmp", "bauxpl.bmp")]^C^C&chtopl 
+               [_Button("變換剖面線性", "auxhl.bmp", "bauxhl.bmp")]^C^C&chtohl 
+               [_Button("保留一邊導角", "auxch.bmp", "bauxch.bmp")]^C^C&1CHAM 
+               [_Button("保留一邊圓角", "auxfil.bmp", "bauxfil.bmp")]^C^C&1FILL 
+               [_Button("拷貝,旋轉換線性", "auxcr.bmp", "bauxcr.bmp")]^C^C&c&r&lt 
+               [_Button("拷貝,旋轉換圖層", "auxcal.bmp", "bauxcal.bmp")]^C^C&c&r&la 
+               [_Button("拷貝並縮放比例", "auxcas.bmp", "bauxcas.bmp")]^C^C&c&s 
+
+**AUXEDIT2
+**輔助編輯(二)
+               [_Toolbar("輔助編輯(二)", _Floating, _Hide, 323, 221, 1)]
+               [_Button("輔助編輯(二)", "AUXEDIT2.bmp", "BUXEDIT2.bmp")]^C^C333 
+               [_Button("截斷軸", "auxbrs.bmp", "bauxbrs.bmp")]^C^C&bshaft 
+               [_Button("鈑金截斷線", "sheetbrk.bmp", "bsheetbr.bmp")]^C^C&sheetbrk 
+               [_Button("連續原點截斷", "AUXMBK.BMP", "bAUXMBK.bmp")]^C^C&mbreak 
+               [_Button("連續截斷交叉點", "drbreak.bmp", "bdrbreak.bmp")]^C^C&mbrl 
+               [_Button("圓形被前景遮住", "AUXCHID.BMP", "bAUXCHID.bmp")]^C^C&cirhi 
+               [_Button("線段被前景遮住", "AUXHID.BMP", "bAUXHID.bmp")]^C^C&1hid 
+               [_Button("延伸線段", "AUXEXT.BMP", "bAUXEXT.bmp")]^C^C&ext 
+               [_Button("OFFSET變換線型", "AUXOFLT.BMP", "bAUXOFLT.bmp")]^C^C&aoff 
+               [_Button("OFFSET變換圖層", "AUXOFLA.BMP", "bAUXOFLA.bmp")]^C^C&offl 
+
+**PROJLINE
+**投影線
+               [_Toolbar("投影線", _Floating, _Hide, 353, 141, 1)]
+               [_Button("投影線", "PROJLINE.BMP", "BROJLINE.BMP")]^C^C444 
+               [_Button("旋轉投影線", "PRLUL.bmp", "bPRLUL.bmp")]^C^C&pul 
+               [_Button("旋轉投影線", "PRLUR.bmp", "bPRLUR.bmp")]^C^C&pur 
+               [_Button("旋轉投影線", "PRLDL.bmp", "bPRLDL.bmp")]^C^C&pdl 
+               [_Button("旋轉投影線", "PRLDR.bmp", "bPRLDR.bmp")]^C^C&pdr 
+               [--]
+               [_Button("消除投影線", "DELPRL.bmp", "bDELPRL.bmp")]^C^C&delproj 
+               [_Button("水平投影線", "PRLHLINE.bmp", "bPRLHLIN.bmp")]^C^C&hline 
+               [_Button("垂直投影線", "PRLVLINE.bmp", "bPRLVLIN.bmp")]^C^C&vline 
+               [_Button("十字投影線", "PRhVL.bmp", "bPRhVL.bmp")]^C^C&hvline 
+               [_Button("角度投影線", "PRTLINE.bmp", "bPRTLINE.bmp")]^C^C&tline 
+               [_Button("與線平行投影線", "PRLP.bmp", "bPRLP.bmp")]^C^C&ptline 
+               [_Button("與線垂直投影線", "PRLPRE.bmp", "bPRLPRE.bmp")]^C^C&vtline 
+               [_Button("任意角度投影線", "PRLANY.bmp", "bPRLANY.bmp")]^C^C&angline 
+               [_Button("偏移投影線", "PRLOFF.bmp", "bPRLOFF.bmp")]^C^C&ofpjline 
+
+**SETLINE
+**作圖線性設定
+               [_Toolbar("作圖線性設定", _Floating, _Hide, 430, 157, 1)]
+               [_Button("作圖線性設定", "SETLINE.bmp", "BSETLINE.bmp")]^C^C555 
+               [_Button("目前線型為粗實線", "CURSL.BMP", "bCURSL.bmp")]^C^C&SL& 
+               [_Button("目前線型設為虛線", "CURDL.BMP", "bCURDL.bmp")]^C^C&DL& 
+               [_Button("目前線型為標準中心線", "CURCL.BMP", "bCURCL.bmp")]^C^C&CL& 
+               [_Button("目前線型為短中心線", "CURSCL.BMP", "bCURSCL.bmp")]^C^C&sCL& 
+               [_Button("目前線型設細實線", "CURTL.BMP", "bCURTL.bmp")]^C^C&TL& 
+               [_Button("目前線型為剖面線", "CURHL.BMP", "bCURHL.bmp")]^C^C&HL& 
+               [_Button("目前線型為假想線", "CURPL.BMP", "bcURPL.bmp")]^C^C&PL& 
+
+**AUXDIM1
+**輔助標註一
+               [_Toolbar("輔助標註一", _Floating, _Hide, 118, 136, 1)]
+               [_Button("輔助標註一", "AUXDIM1.bmp", "BAUXDIM1.bmp")]^C^C777 
+               [_Button("加入方體標註符號", "dmrect1.bmp", "bdmrect1.bmp")]^C^C&rectdim 
+               [_Button("加入面標註符號", "DMSR.BMP", "bDMSR.bmp")]^C^C&facedim1 
+               [_Button("加入面標註符號", "DMSO.BMP", "bDMSO.bmp")]^C^C&facedim2 
+               [_Button("加入參考標註符號", "DMsREF.BMP", "bDMsREF.bmp")]^C^C&refdim 
+               [_Button("加入直徑標註符號", "DMDIA1.BMP", "bDMDIA1.bmp")]^C^C&diadim 
+               [_Button("自動直徑標註", "dmdia2.bmp", "bdmdia2.bmp")]^C^C&autodia 
+               [_Button("尺寸還原", "dmrtn.bmp", "bdmrtn.bmp")]^C^C&rtdim 
+               [_Button("小尺寸連續標註", "dmsdim.bmp", "bdmsdim.bmp")]^C^C&con_dim 
+               [_Button("箭頭邊熔接", "dmwed1.bmp", "bdmwed1.bmp")]^C^C&wedding1 
+               [_Button("箭頭對邊熔接", "dmwed2.bmp", "bdmwed2.bmp")]^C^C&wedding2 
+               [_Button("公差標註(整體性)", "dmtol1.bmp", "bdmtol1.bmp")]^C^C&chg_dim 
+               [_Button("公差標註(分離性)", "dmtol2.bmp", "bdmtol2.bmp")]^C^C&d-tol 
+               [_Button("取消公差標註", "dmtolc.bmp", "bdmtolc.bmp")]^C^C&no_tol 
+               [_Button("配合孔尺寸容許差", "dmhole.bmp", "bdmhole.bmp")]^C^C&toler_hole 
+               [_Button("配合軸尺寸容許差", "dmsha.bmp", "bdmsha.bmp")]^C^C&toler_sha 
+
+**AUXDIM2
+**輔助標註二
+               [_Toolbar("輔助標註二", _Floating, _Hide, 417, 291, 1)]
+               [_Button("輔助標註二", "AUXDIM3.bmp", "BAUXDIM1.bmp")]^C^C999 
+               [_Button("原點標註法", "dimori.bmp", "bdimori.bmp")]C^C&mdim 
+               [_Button("設定 x,y 新原點", "dimnori.bmp", "bdimnori.bmp")]^C^C&newmo 
+               [_Button("寫出座標(x,y)", "dimxy.bmp", "bdimxy.bmp")]^C^C&wcood1 
+               [_Button("尺寸爆炸回原層", "dimexpd.bmp", "bdimexpd.bmp")]^C^C&lexplode 
+               [_Button("引線帶辭庫", "autolead.bmp", "bautolea.bmp")]^C^C&autolead 
+               [_Button("45度倒角標註", "dimcham.bmp", "bdimcham.bmp")]^C^C&dimcham 
+               [_Button("45度倒角標註", "dimcham2.bmp", "bdmcham2.bmp")]^C^C&dimcham2 
+
+**AUXDIM3
+**幾合公差標註
+               [_Toolbar("幾合公差標註", _Floating, _Hide, 273, 291, 1)]
+               [_Button("幾合公差標註", "AUXDIM2.bmp", "BAUXDIM2.bmp")]^C^C888 
+               [_Button("幾何公差標註", "dmgeo1.bmp", "bdmgeo1.bmp")]^C^C&dimgeo 
+               [_Button("基準線", "dmgeo2.bmp", "bdmgeo2.bmp")]^C^C&bsline 
+               [_Button("指引線", "dmgeo3.bmp", "bdmgeo3.bmp")]^C^C&lealine 
+               [_Button("基準面", "dmgeo4.bmp", "bdmgeo4.bmp")]^C^C&dim-gbase 
+
+**BOM1
+**組合圖與材料清單
+               [_Toolbar("組合圖與材料清單", _Floating, _Hide, 100, 146, 1)]
+               [_Button("組合圖與材料清單", "BOM1.bmp", "BBOM1.bmp")]^C^C110 
+               [_Button("向上定距(連續號)", "BALLFU.BMP", "bBALLFU.bmp")]^C^C&AUTObom90_info 
+               [_Button("向下定距(連續號)", "BALLFD.BMP", "bBALLFD.bmp")]^C^C&AUTObom270_info 
+               [_Button("向右定距(連續號)", "BALLFL.BMP", "bBALLFL.bmp")]^C^C&AUTObom0_info 
+               [_Button("向左定距(連續號)", "BALLFR.BMP", "bBALLFR.bmp")]^C^C&AUTObom180_info 
+               [_Button("向上定距(不連續號)", "BALLNFU.BMP", "bBALLNFU.bmp")]^C^C&keyin_bom90_info 
+               [_Button("向下定距(不連續號)", "BALLNFD.BMP", "bBALLNFD.bmp")]^C^C&keyin_bom270_info 
+               [_Button("向右定距(不連續號)", "BALLNFL.BMP", "bBALLNFL.bmp")]^C^C&keyin_bom0_info 
+               [_Button("向左定距(不連續號)", "BALLNFR.BMP", "bBALLNFR.bmp")]^C^C&keyin_bom180_info 
+               [_Button("自由拉出(連續號)", "BALL12.BMP", "bBALL12.bmp")]^C^C&autobom1_info 
+               [_Button("自由拉出(不連續號)", "BALL24.BMP", "bBALL24.bmp")]^C^C&keyin_bom1_info 
+               [_Button("編輯指標球", "BALEDIT.BMP", "bBALEDIT.bmp")]^C^C&edit_bomp 
+               [_Button("產生材料單圖形", "BOMLIST.BMP", "BbOMLIST.bmp")]^C^C&bomlist 
+               [_Button("刪除材料單圖形", "DELLIST.BMP", "bDELLIST.bmp")]^C^C&delbom_list 
+               [_Button("產生材料單文字檔", "BOMTXT.BMP", "bBOMTXT.bmp")]^C^C&bomtree1 
+               [_Button("組合圖拆出零件圖", "PARTOUT.BMP", "bPARTOUT.bmp")]^C^C&out 
+               [_Button("零件圖組裝成組合圖", "PARTIN.BMP", "bPARTIN.bmp")]^C^C&in 
+
+**BOM2
+**指標球(不含資訊點)
+               [_Toolbar("指標球(不含資訊點)", _Floating, _Hide, 82, 295, 1)]
+               [_Button("向上定距(連續號)", "BALLFU.BMP", "bBALLFU.bmp")]^C^C&AUTObom90 
+               [_Button("向下定距(連續號)", "BALLFD.BMP", "bBALLFD.bmp")]^C^C&AUTObom270 
+               [_Button("向左定距(連續號)", "BALLFL.BMP", "bBALLFL.bmp")]^C^C&AUTObom0 
+               [_Button("向右定距(連續號)", "BALLFR.BMP", "bBALLFR.bmp")]^C^C&AUTObom180 
+               [_Button("向上定距(不連續號)", "BALLNFU.BMP", "bBALLNFU.bmp")]^C^C&keyin_bom90 
+               [_Button("向下定距(不連續號)", "BALLNFD.BMP", "bBALLNFD.bmp")]^C^C&keyin_bom270 
+               [_Button("向左定距(不連續號)", "BALLNFL.BMP", "bBALLNFL.bmp")]^C^C&keyin_bom0 
+               [_Button("向右定距(不連續號)", "BALLNFR.BMP", "bBALLNFR.bmp")]^C^C&keyin_bom180 
+               [_Button("自由拉出(連續號)", "BALL12.BMP", "bBALL12.bmp")]^C^C&autobom1 
+               [_Button("自由拉出(不連續號)", "BALL24.BMP", "bBALL24.bmp")]^C^C&keyin_bom1 
+               [_Button("編輯指標球", "BALEDIT.BMP", "bBALEDIT.bmp")]^C^C&addbomtxt_xdata 
+               [_Button("產生材料單圖形", "BOMLIST.BMP", "BbOMLIST.bmp")]^C^C&drawbom_list 
+               [_Button("刪除材料單圖形", "DELLIST.BMP", "bDELLIST.bmp")]^C^C&delbom_list 
+               [_Button("產生材料單文字檔", "BOMTXT.BMP", "bBOMTXT.bmp")]^C^C&bomlist_txt 
+
+**AUXDISP1
+**圖層控制
+               [_Toolbar("圖層控制", _Right, _Show, 0, 0, 1)]
+               [_Button("圖層控制", "AUXDISP1.bmp", "BUXDISP1.bmp")]^C^C112 
+               [_Button("顯示層", "PSHOW.bmp", "bPSHOW.bmp")]^C^C&pshow 
+               [_Button("隱藏層", "PHIDE.BMP", "bPHIDE.bmp")]^C^C&phide 
+               [_Button("顯示 BLOCK", "BSHOW.bmp", "bBSHOW.bmp")]^C^C&BSHOW 
+               [_Button("全部顯示", "ASHOW.bmp", "bASHOW.bmp")]^C^C&ASHOW 
+               [_Button("解凍層", "PTHRAW.bmp", "bPTHRAW.bmp")]^C^C&THRAW 
+               [_Button("冷凍層", "PFREE.bmp", "bPFREE.bmp")]^C^C&PFREE 
+               [_Button("線型顯示控制", "LTCONT.bmp", "bLTCONT.bmp")]^C^C&LTCONTROL 
+               [_Button("製作層", "MLAYER.Bmp", "bMLAYER.bmp")]^C^C&MLC 
+               [_Button("建立連續圖層", "AUTOMLC.Bmp", "bAUTOMLC.bmp")]^C^C&AUTOMLC 
+               [_Button("改變層", "CHLAY.bmp", "bCHLAY.bmp")]^C^C&CHLAY 
+               [_Button("變換圖元到目前層", "CHTOCLA.bmp", "bCHTOCLA.bmp")]^C^C&CHto_clayer 
+               [_Button("刪除層", "DELLAY.bmp", "bDELLAY.bmp")]^C^C&DLAY 
+               [_Button("指定目前層", "SETLA.bmp", "bSETLA.bmp")]^C^C&SLAY 
+               [_Button("輸入層名以控制圖層", "KEYLAY.bmp", "bKEYLAY.bmp")]^C^C&LCONTROL 
+               [_Button("線色顯示", "LTSHOW.bmp", "bLTSHOW.bmp")]^C^C&SLTYPE 
+               [_Button("層色顯示", "LASHOW.bmp", "bLASHOW.bmp")]^C^C&SPART 
+
+**AUXQURY1
+**資料查詢
+               [_Toolbar("資料查詢", _Floating, _Hide, 66, 131, 1)]
+               [_Button("資料查詢", "DESDATA1.bmp", "BESDATA1.bmp")]^C^C113 
+               [_Button("丸鐵規格", "qursha.bmp", "bqursha.bmp")]^C^C&ironsize1 
+               [_Button("平鐵規格", "qurplat.bmp", "bqurplat.bmp")]^C^C&ironsize2 
+               [_Button("方(扁)管", "plathot.bmp", "bplathot.bmp")]^C^C&carqury2 
+               [_Button("BSA-1黑白鋼管規格", "qurhol1.bmp", "bqurhol1.bmp")]^C^C&ironsize3 
+               [_Button("BS-B黑白鋼管規格", "qurhol2.bmp", "bqurhol2.bmp")]^C^C&ironsize4 
+               [_Button("鐵板重量計算法", "qurwei.bmp", "bqurwei.bmp")]^C^C&funcc 
+               [_Button("花紋鋼板", "qurflor.bmp", "bqurflor.bmp")]^C^C&ironsize5 
+               [_Button("等邊三角鐵", "qur3st1.bmp", "bqur3st1.bmp")]^C^C&ironsize6 
+               [_Button("不等邊三角鐵", "qur3st2.bmp", "bqur3st2.bmp")]^C^C&ironsize7 
+               [_Button("貨櫃尺寸表", "qurcar.bmp", "bqurcar.bmp")]^C^C&carqury1 
+               [_Button("線段公英制長度", "qurin1.bmp", "bqurin1.bmp")]^C^C&e-len 
+               [_Button("兩點公英制距離", "qurin2.bmp", "bqurin2.bmp")]^C^C&d-2p 
+               [_Button("弧長查詢", "qurarc.bmp", "bqurarc.bmp")]^C^C&arclen 
+
+**MECDRAW1
+**鍵槽與螺紋
+               [_Toolbar("鍵槽與螺紋", _Floating, _Hide, 14, 137, 1)]
+               [_Button("鍵槽與螺紋", "MECDRAW1.bmp", "BECDRAW1.bmp")]^C^C115 
+               [_Button("雙圓鍵", "key1.bmp", "bkey1.bmp")]^C^C&SLOT4 
+               [_Button("雙圓鍵", "key2.bmp", "bkey2.bmp")]^C^C&SLOT1 
+               [_Button("雙圓鍵", "key3.bmp", "bkey3.bmp")]^C^C&SLOT2 
+               [_Button("雙圓鍵", "key4.bmp", "bkey4.bmp")]^C^C&SLOT5 
+               [_Button("半圓鍵", "key5.bmp", "bkey5.bmp")]^C^C&SLOT3 
+               [_Button("軸銑雙邊", "shacut.bmp", "bshacut.bmp")]^C^C&lc 
+               [_Button("有圓,畫鍵槽與鍵座", "auxkey1.bmp", "bauxkey1.bmp")]^C^C&keyway_1 
+               [_Button("無圓,畫鍵槽與鍵座", "auxkey2.bmp", "bauxkey2.bmp")]^C^C&keyway_2 
+               [_Button("鑽孔", "drill1.bmp", "bdrill1.bmp")]^C^C&drill5 
+               [_Button("孔鑽通", "drill2.bmp", "bdrill2.bmp")]^C^C&drill4 
+               [_Button("攻牙", "tap1.bmp", "btap1.bmp")]^C^C&thrill 
+               [_Button("攻牙(通孔)", "tap2.bmp", "btap2.bmp")]^C^C&thRILl2 
+               [_Button("沉窩螺絲孔", "drill3.bmp", "bdrill3.bmp")]^C^C&thrill3 
+               [_Button("推拔螺絲孔", "drill4.bmp", "bdrill4.bmp")]^C^C&thrill4 
+               [_Button("管螺絲孔", "pipscrew.bmp", "bpipscre.bmp")]^C^C&pipscrew 
+
+**MECDRAW2
+**軸產生器
+               [_Toolbar("軸產生器", _Floating, _Hide, 220, 135, 3)]
+               [_Button("軸產生器", "MECDRAW2.bmp", "BECDRAW2.bmp")]^C^C116 
+               [_Button("軸剖面", "shahol1.bmp", "bshahol1.bmp")]^C^C&ho1 
+               [_Button("軸剖面", "shahol2.bmp", "bshahol2.bmp")]^C^C&ho2 
+               [_Button("軸外形", "shaft2.bmp", "bshaft2.bmp")]^C^C&ho 
+               [_Button("軸外形", "shaft1.bmp", "bshaft1.bmp")]^C^C&sha 
+
+**辭庫與計算機
+               [_Toolbar("辭庫與計算機", _Floating, _Hide, 657, 173, 1)]
+               [_Button("使用辭庫", "USELIB.bmp", "BUSELIB.bmp")]^C^C&useword 
+               [_Button("辭庫建立", "CREATLIB.bmp", "BREATLIB.bmp")]^C^C&creatword 
+               [_Button("計算機", "CALA.bmp", "BCALA.bmp")]^C^Ccallcalc 
+
+**開放圖庫
+               [_Toolbar("開放圖庫", _Floating, _Hide, 644, 241, 1)]
+               [_Button("管理自訂圖庫", "MANABLK.bmp", "BMANABLK.bmp")]^C^Cuserblk1 
+               [_Button("使用自訂圖庫", "USEBLK.bmp", "BUSEBLK.bmp")]^C^Cuserblk2 
+               [_Button("油氣壓符號庫", "MANAOIL.bmp", "BMANAOIL.bmp")]^C^Coilgas1 
+               [_Button("使用油氣壓符號", "USEOIL.bmp", "BUSEOIL.bmp")]^C^Coilgas2 
+
+**放圖框定比例
+               [_Toolbar("放圖框定比例", _Floating, _Hide, 696, 179, 1)]
+               [_Button("放圖框定比例", "SHET&SCA.bmp", "BHET&SCA.bmp")]^C^C&autoSHSCAL 
+               [_Button("重訂比例", "RESCALE.bmp", "BRESCALE.bmp")]^C^C&resetting 
+               [_Button("比例查詢", "QURSCALE.bmp", "BURSCALE.bmp")]^C^C&SCAL 
+
+**鎖點模式組
+               [_Toolbar("鎖點模式組", _Floating, _Hide, 213, 130, 4)]
+               [_Button("設定鎖點模式組", "manosnap.bmp", "Bmanosna.bmp")]^C^C&setosmode 
+               [_Button("第 1 組鎖點模式", "osnap1.bmp", "Bosnap1.bmp")]^C^CO1 
+               [_Button("第 2 組鎖點模式", "osnap2.bmp", "Bosnap2.bmp")]^C^CO2 
+               [_Button("第 3 組鎖點模式", "osnap3.bmp", "Bosnap3.bmp")]^C^CO3 
+               [_Button("第 4 組鎖點模式", "osnap4.bmp", "Bosnap4.bmp")]^C^CO4 
+               [_Button("第 5 組鎖點模式", "osnap5.bmp", "Bosnap5.bmp")]^C^CO5 
+               [_Button("第 6 組鎖點模式", "osnap6.bmp", "Bosnap6.bmp")]^C^CO6 
+               [_Button("設定常駐鎖點模式", "osnape.bmp", "Bosnape.bmp")]'osnap 
+
+**物料結構管理
+               [_Toolbar("物料結構管理", _Floating, _Hide, 278, 120, 1)]
+               [_Button("建立新零件圖層", "BOM21.bmp", "bBOM21.bmp")]^C^C^P&makepart 
+               [_Button("修改資訊點資料", "BOM2.bmp", "bBOM2.bmp")]^C^C^P&edit_bomp 
+               [_Button("建立資訊點(自己輸入資料)", "BOM3.bmp", "BBOM3.bmp")]^C^C^P&addbomp 
+               [_Button("建立資訊點(取出圖面上文字)", "BOM4.bmp", "BBOM4.bmp")]^C^C&addbom_olddwg 
+               [_Button("建立資訊點(由圖框屬性萃取)", "BOM5.bmp", "BBOM5.bmp")]^C^C&addbomp_sheet 
+               [_Button("移動資訊點(選擇圖元)", "BOM6.bmp", "BBOM6.BMP")]^C^C^P&move_bomp 
+               [_Button("打開資訊點", "BOM7.bmp", "BBOM7.BMP")]^C^C&on_bomlayer 
+               [_Button("關閉資訊點", "BOM8.bmp", "BBOM8.BMP")]^C^C^P&off_bomlayer 
+               [_Button("自動建立資訊點", "BOM9.bmp", "BBOM9.BMP")]^C^C^P&automakepart 
+               [_Button("計算零件", "BOM10.bmp", "BBOM10.BMP")]^C^C^P&layer_how 
+               [_Button("物料結構與圖檔管理顯示欄位順序", "BOM13.bmp", "BBOM13.BMP")]^C^C&sortcol 
+               [_Button("物料清單匯出到Excel", "BOM14.bmp", "BBOM14.BMP")]^C^C&bomtree1 
+               [_Button("物料結構樹", "BOM15.bmp", "BBOM15.BMP")]^C^C&bomtree0 
+               [_Button("瀏覽", "BOM16.BMP", "BBOM16.BMP")]^C^C&bomtree2 
+               [_Button("物料清單再更新", "BOM20.bmp", "BBOM20.BMP")]^C^C&bomtree3 
+               [_Button("選擇零件新顏色", "BOM18.bmp", "BBOM18.BMP")]^C^C&chlacol 
+               [_Button("全自動指標球", "AUTOB.bmp", "BAUTOB.bmp")]^C^C^P&AUTOB 
+               [_Button("建立公用 BLOCK", "PDMWBLK.bmp", "BPDMWBLK.bmp")]^C^C^P&pdmwblk 
+               [_Button("定義材料清單欄位", "DEFBOM.bmp", "BPDMWBLK.bmp")]^C^C^P&defbom 
+               [_Button("產生圖面材料清單", "BOMNLIS.bmp", "BPDMWBLK.bmp")]^C^C^P&bomlist 
+
+**貼心工具
+**貼心小幫手
+               [_Toolbar("貼心小幫手", _Floating, _Hide, 674, 180, 1)]
+               [_Flyout("設定目前線性", AUXDRAW1.bmp, BUXDRAW1.bmp, _OtherIcon, POWERSOFT.SET_CURLTYPE)]
+               [_Flyout("設定目前圖層", AUXDRAW2.bmp, BUXDRAW2.bmp, _OtherIcon, POWERSOFT.SET_CURLAYER)]
+               [_Flyout("畫線", AUXEDIT1.bmp, BUXEDIT1.bmp, _OtherIcon, POWERSOFT.POWERLINE)]
+               [_Flyout("改變線性", AUXEDIT2.bmp, BUXEDIT2.bmp, _OtherIcon, POWERSOFT.CHG_LTYPE)]
+               [_Flyout("Power Offset", auxdraw11.bmp, BUXDRAW1.bmp, _OtherIcon, POWERSOFT.POWER_OFFSET)]
+               [_Flyout("Power 改變 LAYER", chtodimm.bmp, Bchtodim.bmp, _OtherIcon, POWERSOFT.POWER_CHLAYER)]
+
+**SET_CURLTYPE
+**設定目前線性
+               [_Toolbar("設定目前線性", _Floating, _Hide, 297, 173, 1)]
+               [_Button("設定成粗連續線(SS)", "SETSS.bmp", "BSETSS.bmp")]^C^C&SL& 
+               [_Button("設定成細連續線(TT)", "SETTT.bmp", "BSETTT.bmp")]^C^C&TL& 
+               [--]
+               [_Button("設定成標準中心線(CC)", "SETCC.bmp", "BSETCC.bmp")]^C^C&CL& 
+               [_Button("設定成短中心線(SCC)", "SETSCC.bmp", "BSETSCC.bmp")]^C^C&SCL& 
+               [--]
+               [_Button("設定成標準虛線(DD)", "SETDD.bmp", "BSETDD.bmp")]^C^C&DL& 
+               [_Button("設定成短虛線(SDD)", "SETSDD.bmp", "BSETSDD.bmp")]^C^C&SDL& 
+               [--]
+               [_Button("設定成標準假想線(PP)", "SETPP.bmp", "BSETPP.bmp")]^C^C&PL& 
+               [_Button("設定成短假想線(SPP)", "SETSPP.bmp", "BSETSPP.bmp")]^C^C&SPL& 
+               [--]
+               [_Button("設定成剖面線(HH)", "SETHH.bmp", "BSETHH.bmp")]^C^C&HL& 
+
+**SET_CURLAYER
+**設定目前圖層
+               [_Toolbar("設定目前圖層", _Top, _Show, 2, 1, 1)]
+               [_Button("設定成 0 層(LL0)", "SETLL0.bmp", "BSETL0.bmp")]^C^C&0& 
+               [_Button("設定成文字層(LLT)", "SETLLT.bmp", "BSETLLT.bmp")]^C^C&T& 
+               [_Button("設定成尺寸線(LLD)", "SETLLD.bmp", "BSETLLD.bmp")]^C^C&D& 
+               [_Button("指定目前層", "SETLA.bmp", "bSETLA.bmp")]^C^C&SLAY 
+
+**POWERLINE
+**畫線
+               [_Toolbar("畫線", _Floating, _Hide, 192, 154, 1)]
+               [_Button("畫粗連續線(SLL)", "DRWSL.bmp", "BDRWSL.bmp")]^C^CSLL 
+               [_Button("畫細連續線(TLL)", "DRWTL.bmp", "BDRWTL.bmp")]^C^CTLL 
+               [--]
+               [_Button("畫標準中心線(CLL)", "DRWCL.bmp", "BDRWCL.bmp")]^C^CCLL 
+               [_Button("畫短中心線(SCLL)", "DRWSCL.bmp", "BDRWSCL.bmp")]^C^CSCLL 
+               [--]
+               [_Button("畫標準虛線(DLL)", "DRWDL.bmp", "BDRWDL.bmp")]^C^CDLL 
+               [_Button("畫短虛線(SDLL)", "DRWSDL.bmp", "BDRWSDL.bmp")]^C^CSDLL 
+               [--]
+               [_Button("畫標準假想線(PLL)", "DRWPL.bmp", "BDRWPL.bmp")]^C^CPLL 
+               [_Button("畫短假想線(SPLL)", "DRWSPL.bmp", "BDRWSPL.bmp")]^C^CSPLL 
+               [--]
+               [_Button("畫剖面線(HLL)", "DRWHL.bmp", "BDRWHL.bmp")]^C^CHLL 
+
+**CHG_LTYPE
+**改變線性
+               [_Toolbar("改變線性", _Floating, _Hide, 170, 187, 1)]
+               [_Button("改變成粗連續線", "AUXSL.bmp", "BAUXSL.bmp")]^C^C&chtosl 
+               [_Button("改變成細連續線", "AUXTL.bmp", "BAUXTL.bmp")]^C^C&chtotl 
+               [--]
+               [_Button("改變成標準中心線", "AUXCL.bmp", "BAUXCL.bmp")]^C^C&chtocl 
+               [_Button("改變成短中心線", "AUXSCL.bmp", "BAUXSCL.bmp")]^C^C&chtocl2 
+               [--]
+               [_Button("改變成標準虛線", "AUXDL.bmp", "BAUXDL.bmp")]^C^C&chtodl 
+               [_Button("改變成短虛線", "AUXSDL.bmp", "BAUXSDL.bmp")]^C^C&chtoSdl 
+               [--]
+               [_Button("改變成標準假想線", "AUXPL.bmp", "BAUXPL.bmp")]^C^C&chtopl 
+               [_Button("改變成短假想線", "AUXSPL.bmp", "BAUXSPL.bmp")]^C^C&chtoSpl 
+               [--]
+               [_Button("改變成剖面線", "AUXHL.bmp", "BAUXHL.bmp")]^C^C&chtohl 
+
+**POWER_OFFSET
+**OFFSET變換線型
+               [_Toolbar("OFFSET變換線型", _Floating, _Hide, 196, 143, 1)]
+               [_Button("OFFSET變換線型", "auxofltt.BMP", "bAUXOFLT.bmp")]^C^C&aoff 
+               [_Button("Offset to 粗連續線", "oftosll.bmp", "Boftosl.BMP")]^C^Cofftosl 
+               [_Button("Offset to 細連續線", "oftotl.bmp", "boftotl.bmp")]^C^Cofftotl 
+               [--]
+               [_Button("Offset to 標準中心線", "oftocl.bmp", "boftocl.bmp")]^C^Cofftocl 
+               [_Button("Offset to 短中心線", "oftoscl.bmp", "boftoscl.bmp")]^C^Cofftoscl 
+               [--]
+               [_Button("Offset to 標準虛線", "oftodl.bmp", "boftodl.bmp")]^C^Cofftodl 
+               [_Button("Offset to 短虛線", "oftoSdl.bmp", "boftoSdl.bmp")]^C^CofftoSdl 
+               [--]
+               [_Button("Offset to 標準假想線", "oftopl.bmp", "boftopl.bmp")]^C^Cofftopl 
+               [_Button("Offset to 短假想線", "oftoSpl.bmp", "boftoSpl.bmp")]^C^CofftoSpl 
+               [--]
+               [_Button("Offset to 剖面線", "oftohl.bmp", "boftohl.bmp")]^C^Cofftohl 
+               [--]
+
+**POWER_CHLAYER
+**OFFSET變換圖層
+               [_Toolbar("OFFSET變換圖層", _Top, _Show, 2, 0, 1)]
+               [_Button("變換到尺寸層", "chtodimm.BMP", "bchtodim.bmp")]^C^C&chtodim 
+               [_Button("變換到文字層", "chtotxtt.BMP", "bchtotxt.bmp")]^C^C&chtotxt 
+**組合圖整合功能
+               [_Toolbar("組合圖整合功能", _Floating, _Show, 0, 1, 1)]
+               [_Button("COPYPARTS", "cp.bmp", "cp.bmp")]^C^C&COPYPARTS 
+               [_Button("MOVEPARTS", "mp.bmp", "mp.bmp")]^C^C&MOVEPARTS 
+               [_Button("DELPARTS", "dp.bmp", "dp.bmp")]^C^C&DELPARTS 
+               [_Button("鏡設零件", "mirp.bmp", "mirp.bmp")]^C^C&mirparts
+               [_Button("旋轉零件", "rp.bmp", "rp.bmp")]^C^C&roteparts 
+
+
+**物料編碼系統
+               [_Toolbar("物料編碼系統", _Floating, _Hide, 631, 470, 1)]
+               [_Button("制定物料編碼", "ECS.BMP", "BECS.BMP.bmp")]^C^CECS 
+               [_Button("使用物料編碼", "USEECS.bmp", "BUSEECS.bmp")]^C^CSETECS 
+               [--]
+               [_Button("建立物料編號層名", "GETECS.bmp", "BGETECS.bmp")]^C^Cchbomlayer 
+
+**POWERISO 等角立體系統圖
+**TB_POWERISO_等角立體系統圖
+               [_Toolbar("POWERISO 等角立體系統圖", _Floating, _Hide, 77, 196, 1)]
+               [_Button("轉等角圖", "ISO1.bmp", "BISO1.bmp")]^C^C&isomenu1 
+               [_Button("等角參數零件", "ISO2.bmp", "BISO2.bmp")]^C^C&isomenu2 
+               [_Button("圖庫管理", "ISO3.bmp", "BISO3.bmp")]^C^C&isoblk1 
+               [_Button("使用圖庫", "ISO4.bmp", "BISO4.bmp")]^C^C&isoblk2 
+
+
+//
+//      AutoCAD LT 功能表檔結尾 - C:\Program Files\AutoCAD LT 2000i\support\POWSOFT.mnc
+//
+

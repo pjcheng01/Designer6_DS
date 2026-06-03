@@ -1,0 +1,7 @@
+0
+CPNAME п╠ир #7*45
+MATERIAL 
+DWGNO MP02-7X45
+DRAWED ыэвзнф
+EPNAME Taper pin
+MAPP pv500

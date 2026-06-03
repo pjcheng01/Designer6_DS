@@ -1,0 +1,698 @@
+
+戈  庫名嘿       癸酚  Table名嘿          弧  
+===============  ===================  =======================
+sysinfo          Table1               系參戈訊郎
+note1            Table2               勉庫  摸郎
+note2            Table3               勉庫  摸    容郎
+editprog         Table4               系參編胯程Α戈  設定
+viewprog         Table5               系參瀏凝程Α戈  設定
+gpower           Table6               群艙權  設定
+group            Table7               群艙設定
+tempgpower       Table8(*)            群艙權  設定(既存跋)
+gpowermodel      Table9               群艙權  家艙
+user             Table10              ㄏ    膀  戈  設定
+userpower        Table11              ㄏ    權  設定
+project          Table12              專  攫  戈  設定
+flow             Table13              專  流程設定
+flowmodel        Table14              專  流程家艙
+flowtemp         Table15(*)           專  流展設定(既存跋)
+copyflow         Table16(*)           專  流程狡製既存跋
+copypower        Table17(*)           ㄏ    權  狡製既存跋
+fielddatam       Table18              逆  戈  設定
+tempfielddatam   Table19(*)           既存逆  戈  設定
+catchno          Table20(*)           新瓜  燴腹
+usereditprog     Table21(*)             人編胯程Α戈  設定
+userviewprog     Table22(*)             人瀏凝程Α戈  設定
+tempprogram      Table23(*)           程Α戈  設定既存跋
+pceditprog       Table24(*)           虫訣pc編胯程Α戈  設定==>  戈  萊    虫訣上
+pcviewprog       Table25(*)           虫訣pc瀏凝程Α戈  設定==>  戈  萊    虫訣上
+loginuser        Table26                前登魁  記魁
+temploginuser    Table27(*)             前登魁  記魁既存郎
+appaper          Table28(*)           萊  程Α工作╔稿設定
+prepaper         Table29(*)           工作╔稿
+projectset       Table30              專    容設定
+codetree         Table31              剛作燴腹  攫  擋構
+dwgtree          Table32              瓜  戈    攫  擋構(    院)
+catchname        Table33              燴腹  郎名
+catchnametemp    Table34(*)           燴腹  郎名  既存跋
+userproject      Table35(*)           查高ㄏ      負責專  
+outcatchname.db  Table36              瓜  鑼出
+infiletitle.db   Table37(*)           瓜  鑼入  title既存跋
+infile.db        Table38(*)           瓜  鑼入戈  既存跋
+incatchname.db   Table39              瓜  鑼入
+sendname.db      Table40              瓜  送審
+delname.db       Table41                合  (退    編)
+checkok.db       Table42                  瓜  (  入庫跋)
+okin.db          Table43              合  入庫(已入庫跋)
+fileall.db       Table44(*)           TreeView6(既存跋)
+dcrecord.db      Table45              設跑記魁
+tempdcrecord.db  Table46(*)           設跑記魁(既存跋)
+catchdc.db       Table47              設跑燴腹
+dclist.db        Table48(*)           設跑記魁清虫
+applylist.db     Table49              登入  叫虫
+tempapplylist.db Table50(*)           登入  叫虫(既存跋)
+tempcodetree.db  Table51(*)           剛作燴腹  攫  擋構(既存跋)
+search.db        Table52(*)           搜尋  既存跋
+kindtree.db      Table53              專    摸攫
+
+
+岡燦弧  
+========
+
+(Table1)<<sysinfo.db>>系參戈訊郎
+
+Company         司  晃              C(60)
+Trnarea       郎    流跋            C(150)
+Prearea         入庫跋              C(150)
+Userwork      ㄏ    工作跋          C(150)
+Okarea          Α郎  跋            C(150)
+Copypath      戈  稱  隔徑          C(150)
+Tryarea       剛作瓜庫跋            C(150)
+Checkcd         審跋  魁            C(150)
+Noenter         合  隔徑            C(150)
+Appath        萊  軟砰╔稿隔徑      C(150)
+Catchpath     CAD笛  隔徑           C(150)
+Prepare       預設新瓜╔稿          C(150)
+Program       ACAD磅  程Α          C(150)
+Checkdwg      ACAD審瓜╔稿          C(150)
+Changeset     設跑燴腹    郎名規則  N(2)
+Change1       剛作郎鑼  Α郎  摸    N(2)
+Change2       斷腹處理              N(2)
+Code1         前置碼                C(10)
+Code2         跋  碼1               C(10)
+Code3         跋  碼2               C(10)
+Code4           置碼                C(10)
+Proj          專    頭              C(40)
+Treename3     是否與  摸碼一同陪    C(1)
+
+(Table2)<<note1.db>>勉庫  摸郎
+
+Field         勉庫摸別              C(20)
+
+(Table3)<<note2.db>>勉庫  摸    容郎
+
+Field         勉庫摸別              C(20)
+Sub           勉庫  摸    容        C(50)
+
+(Table4)<<editprog.db>>系參編胯程Α戈  設定
+
+No            程Α編腹              C(10)
+Note          程Α弧                C(40)
+Name          程Α  名              C(150) 
+Extend        捌郎名                C(25)
+Kind          郎  摸                C(10)
+
+(Table5)<<viewprog.db>>系參瀏凝程Α戈訊設定
+
+No            程Α編腹              C(10)
+Note          程Α弧                C(40)
+Name          程Α  名              C(150) 
+Extend        捌郎名                C(25)
+Kind          郎  摸                C(10)
+
+(Table6)<<gpower.db>>群艙權  設定
+
+No            群艙編腹              C(10)
+Wname         作業名嘿              C(30)
+Power         權                    C(1)
+Add           新增                  C(1)
+Edit                                C(1)
+Del           刪埃                  C(1)
+Viwe          查                    C(1)
+Print         列印                  C(1)
+Note            記                  C(1)
+
+(Table7)<<group.db>>群艙設定
+
+No            群艙編腹              C(7)
+Gname         群艙名嘿              C(16)
+
+(Table8)<<tempgpower.db>>群艙權  設定(既存跋)
+
+Wname         作業名嘿              C(30)
+Power         權                    C(1)
+Add           新增                  C(1)
+Edit                                C(1)
+Del           刪埃                  C(1)
+Viwe          查                    C(1)
+Print         列印                  C(1)
+Note            記                  C(1)
+
+(Table9)<<gpowermodel.db>>群艙權  家艙
+
+Wname         作業名嘿              C(30)
+Power         權                    C(1)
+Add           新增                  C(1)
+Edit                                C(1)
+Del           刪埃                  C(1)
+Viwe          查                    C(1)
+Print         列印                  C(1)
+Note            記                  C(1)
+
+(Table10)<<user.db>>ㄏ    膀  戈  設定
+
+Account       帳腹                  C(15)
+Name          名嘿                  C(15)
+Pidname       上一頂  名嘿          C(60)
+Password      密碼                  C(15)
+Grade         單                    C(5)
+Desktop         上                  C(150)
+Workpath      工作跋  魁            C(150)
+Group         群艙                  C(60)
+Level         攫    頂層            N(2)
+Id            斑一key               N(8)
+Pid           上一頂  Id            N(8)
+Mail          e-mail信箱            C(100)
+
+(Table11)<<userpower.db>>ㄏ    權  設定
+
+Group         場                    C(20)
+No            帳腹                  C(10) 
+Wname         作業名嘿              C(30)
+Power         權                    C(1)
+Add           新增                  C(1)
+Edit                                C(1)
+Del           刪埃                  C(1)
+Viwe          查                    C(1)
+Print         列印                  C(1)
+Note            記                  C(1)
+
+(Table12)<<project.db>>專  攫  戈  設定
+
+Account       Θ    帳腹            C(20)
+Name          名嘿                  C(40)
+Id            斑一key               N(8)
+Pid           上一頂  Id            N(8)
+Level         攫    頂層            N(2)
+Pidname       上一頂  名嘿          C(40)
+Tilte         頭晃                  C(20)
+Tname         頭晃和名嘿            C(40)
+
+(Table13)<<flow.db>>專  流程設定
+
+Proj          專  名嘿              C(40)
+Account       Θ    帳腹            C(12)
+Name          Θ    名嘿            C(12)
+Step1         剛作燴腹              C(1)
+Step2         編胯瓜                C(1)
+Step3         瓜  送審              C(1)
+Step4         審  與尿審            C(1)
+Step5         入庫                  C(1)
+Step6         瓜  入庫              C(1)
+
+(Table14)<<flowmodel.db>>專  流程家艙
+
+Step1         剛作燴腹              C(1)
+Step2         編胯瓜                C(1)
+Step3         瓜  送審              C(1)
+Step4         審  與尿審            C(1)
+Step5         入庫                  C(1)
+Step6         瓜  入庫              C(1)
+
+(Table15)<<flowtemp.db>>專  流展設定(既存跋)
+
+Account       Θ    帳腹            C(12)
+Name          Θ    名嘿            C(12)
+Step1         剛作燴腹              C(1)
+Step2         編胯瓜                C(1)
+Step3         瓜  送審              C(1)
+Step4         審  與尿審            C(1)
+Step5         入庫                  C(1)
+Step6         瓜  入庫              C(1)
+
+(Table16)<<copyflow.db>>專  流程狡製既存跋
+
+Account       Θ    帳腹            C(12)
+Name          Θ    名嘿            C(12)
+Step1         剛作燴腹              C(1)
+Step2         編胯瓜                C(1)
+Step3         瓜  送審              C(1)
+Step4         審  與尿審            C(1)
+Step5         入庫                  C(1)
+Step6         瓜  入庫              C(1)
+
+(Table17)<<copypower.db>>ㄏ    權  狡製既存跋
+
+No            帳腹                  C(10) 
+Wname         作業名嘿              C(30)
+Power         權                    C(1)
+Add           新增                  C(1)
+Edit                                C(1)
+Del           刪埃                  C(1)
+Viwe          查                    C(1)
+Print         列印                  C(1)
+Note            記                  C(1)
+
+(Table18)<<fielddata.db>>逆  戈  設定
+
+Name          逆  名嘿              C(6)
+Length                              N(3)
+Cname         逆  弧                C(20)
+Attname       瓜  妮                C(12)
+Func          右齡功                C(20)
+Fch           逆  可                C(1)
+Newdoc        新    燴腹            N(2)
+Newpic        新瓜燴腹              N(2)
+Att1          妮  1                 N(2)
+Att2          妮  2                 N(2)
+Att3          妮  3                 N(2)
+Att4          妮  4                 N(2)
+Att5          妮  5                 N(2)
+Change        設跑逆                N(2)
+
+
+(Table19)<<tempfielddata.db>>既存逆  戈  設定
+
+Name          逆  名嘿              C(6)
+Length                              N(3)
+Cname         逆  弧                C(20)
+Attname       瓜  妮                C(12)
+Func          右齡功                C(20)
+Fch           逆  可                C(1)
+Newdoc        新    燴腹            N(2)
+Newpic        新瓜燴腹              N(2)
+Att1          妮  1                 N(2)
+Att2          妮  2                 N(2)
+Att3          妮  3                 N(2)
+Att4          妮  4                 N(2)
+Att5          妮  5                 N(2)
+Change        設跑逆                N(2)
+
+(Table20)<<catchno.db>>新瓜  燴腹
+
+Name          逆  名嘿              C(6)
+Cname         逆  弧                C(14)
+Data          逆  戈                C(40)
+Func          右齡功                C(20)
+Fch           逆  可                C(1)
+
+(Table21)<<usereditprog.db>>  人編胯程Α戈  設定
+
+Account       帳腹                  C(15)
+No            程Α編腹              C(10)
+Note          程Α弧                C(40)
+Name          程Α  名              C(150)
+Extend        捌郎名                C(25)
+
+(Table22)<<userviewprog.db>>  人瀏凝程Α戈訊設定
+
+Account       帳腹                  C(15)
+No            程Α編腹              C(10)
+Note          程Α弧                C(40)
+Name          程Α  名              C(150)
+Extend        捌郎名                C(25)
+
+(Table23)<<tempprogram.db>>程Α戈  設定既存跋
+
+No            程Α編腹              C(10)
+Note          程Α弧                C(40)
+Name          程Α  名              C(150)
+Extend        捌郎名                C(25)
+Kind          程Α  借              C(10)
+
+(Table24)<<pceditprog.db>>虫訣pc編胯程Α戈  設定
+
+No            程Α編腹              C(10)
+Note          程Α弧                C(40)
+Name          程Α  名              C(150)
+Extend        捌郎名                C(25)
+Kind          程Α  借              C(10)
+
+(Table25)<<pcviewprog.db>>虫訣pc瀏凝程Α戈  設定
+
+No            程Α編腹              C(10)
+Note          程Α弧                C(40)
+Name          程Α  名              C(150)
+Extend        捌郎名                C(25)
+Kind          程Α  借              C(10)
+
+(Table26)<<loginuser.db>>  前登魁  記魁
+
+Account       ㄏ    帳腹            C(15)
+Name          ㄏ    名嘿            C(15)
+Date          登入  戳              C(10)
+Time          登入  丁              C(10)
+
+(Table27)<<temploginuser.db>>  前登魁  記魁既存郎
+
+Account       ㄏ    帳腹            C(15)
+Name          ㄏ    名嘿            C(15)
+Date          登入  戳              C(10)
+Time          登入  丁              C(10)
+
+(Table28)<<appaper.db>>萊  程Α工作╔稿設定
+
+Paper         工作╔稿名嘿          C(150)
+No            編胯程Α編腹          C(10)
+Note          編胯程Α弧            C(40)
+
+(Table29)<<perpaper.db>>工作╔稿
+
+Paper         工作╔稿名嘿          C(150)
+
+(Table30)<<projectset.db>>專    容設定
+
+Id            斑一key               N(8)
+Life            命週戳(起)          C(10)
+Picpath       瓜  入庫隔徑          C(150)
+Docpath           入庫隔徑          C(150)
+Lifeend         命週戳(訖)          C(10)
+Catch         是否剛作燴腹          C(1)
+Tpicpath      剛作瓜  存  隔徑      C(150)
+Tdocpath      剛作    存  隔徑      C(150)
+
+(Table31)<<codetree.db>>剛作燴腹  攫  擋構
+
+Id            斑一key               N(8)
+Pid           上一頂  Id            N(8)
+Level         攫    頂層            N(2) 
+Treepath      攫  Id隔徑            C(100)
+Name          名嘿                  C(50)
+Ccode           摸碼  跋隔碼        C(5)
+Tcode           摸碼                C(30)
+Check         是否要列印            C(1)
+Flow            前流  腹            C(5)
+Tree2         專    id              N(8)
+Code1         流  腹    摸碼        C(5)
+Code2           Ω    摸碼          C(5)
+Code3         瓜      摸碼          C(5)
+Len           流  腹                C(2)
+Ver             Ω                  C(1)
+First         判斷  Ω材一Ω是否陪  C(1)
+Paper         瓜                    C(10)
+Order         編逼抖                C(40)
+
+(Table32)<<dwgtree.db>>瓜  戈    攫  擋構
+
+Id            斑一key               N(8)
+Pid           上一頂  Id            N(8)
+Level         攫    頂層            N(2)
+Name          名嘿                  C(40)
+A_01~A_30     妮  1~妮  30          C(30)~C(30)
+
+(Table33)<<catchname.db>>燴腹  郎名
+
+Id            癸映攫    Id          N(8)
+Prono         專    Id              N(8)
+Treepath      攫  Id隔徑            C(100)
+Okdate          叭  Θ  丁          C(10)
+Try           是否  剛作燴腹        C(1)
+Name          郎名                  C(150)
+Catchpeo        始燴腹              C(30)
+Work          工作╔稿              C(150)
+Progame       編胯程Α              C(150)
+Txtname         字郎                C(150)
+FD_01~FD_50   燴腹  戈              C(40)~C(40)
+
+(Table34)<<catchtempname.db>>燴腹  郎名  既存跋
+
+Id            癸映攫    Id          N(8)
+Prono         專    Id              N(8)
+Treepath      攫  Id隔徑            C(100)
+Okdate          叭  Θ  丁          C(10)
+Try           是否  剛作燴腹        C(1)
+Name          郎名                  C(150)
+Catchpeo        始燴腹              C(30)
+Work          工作╔稿              C(150)
+Progame       編胯程Α              C(150)
+Txtname         字郎                C(150)
+FD_01~FD_50   燴腹  戈              C(40)~C(40)
+
+(Table35)<<userproject.db>>查高ㄏ      負責專  
+
+State         專      況            C(6)
+Name          專  名嘿              C(30)
+Kind          郎  摸                C(10)
+Life            命週戳(起)          C(10)
+Lifeend         命週戳(訖)          C(10)
+
+(Table36)<<outcatchname.db>>瓜  鑼出
+
+Id            癸映攫    Id          N(8)
+Prono         專    Id              N(8)
+Treepath      攫  Id隔徑            C(100)
+Okdate          叭  Θ  丁          C(10)
+Try           是否  剛作燴腹        C(1)
+Name          郎名                  C(150)
+Catchpeo        始燴腹              C(30)
+Work          工作╔稿              C(150)
+Progame       編胯程Α              C(150)
+Txtname         字郎                C(150)
+Frompeo       鑼出ㄓ方              C(30)
+Topeo         鑼出  癸象            C(30)
+Date          鑼出  戳              C(10)
+Time          鑼出  丁              C(16)
+Note          鑼出弧                C(100)
+FD_01~FD_50   燴腹  戈              C(40)~C(40)
+
+(Table37)<<infiletitle.db>>瓜  塊入  title既存跋
+
+Source        鑼出ㄓ方              C(30)
+
+(Table38)<<infile.db>>瓜  塊入戈  既存跋
+
+Name            俱郎名              C(150)
+Ename         郎名                  C(30)
+Date          鑼出  戳              C(10)
+Time          鑼出  丁              C(16)
+Note          鑼出弧                C(100)
+
+(Table39)<<incatchname.db>>瓜  鑼入
+
+Id            癸映攫    Id          N(8)
+Prono         專    Id              N(8)
+Treepath      攫  Id隔徑            C(100)
+Okdate          叭  Θ  丁          C(10)
+Try           是否  剛作燴腹        C(1)
+Name          郎名                  C(150)
+Catchpeo        始燴腹              C(30)
+Work          工作╔稿              C(150)
+Progame       編胯程Α              C(150)
+Txtname         字郎                C(150)
+Frompeo       鑼出ㄓ方              C(30)
+Topeo         鑼出  癸象            C(30)
+Date          鑼出  戳              C(10)
+Time          鑼出  丁              C(16)
+Note          鑼出弧                C(100)
+FD_01~FD_50   燴腹  戈              C(40)~C(40)
+
+(Table40)<<sendname.db>>瓜  送審
+
+Id            癸映攫    Id          N(8)
+Prono         專    Id              N(8)
+Treepath      攫  Id隔徑            C(100)
+Okdate          叭  Θ  丁          C(10)
+Try           是否  剛作燴腹        C(1)
+Name          郎名                  C(150)
+Catchpeo        始燴腹              C(30)
+Work          工作╔稿              C(150)
+Progame       編胯程Α              C(150)
+Txtname         字郎                C(150)
+Frompeo       鑼出ㄓ方              C(30)
+Topeo         鑼出  癸象            C(30)
+Date          鑼出  戳              C(10)
+Time          鑼出  丁              C(16)
+Note          鑼出弧                C(100)
+FD_01~FD_50   燴腹  戈              C(40)~C(40)
+
+(Table41)<<delname.db>>  合  (退    編)
+
+Id            癸映攫    Id          N(8)
+Prono         專    Id              N(8)
+Treepath      攫  Id隔徑            C(100)
+Okdate          叭  Θ  丁          C(10)
+Try           是否  剛作燴腹        C(1)
+Name          郎名                  C(150)
+Catchpeo        始燴腹              C(30)
+Work          工作╔稿              C(150)
+Progame       編胯程Α              C(150)
+Txtname         字郎                C(150)
+Frompeo       鑼出ㄓ方              C(30)
+Topeo         鑼出  癸象            C(30)
+Date          鑼出  戳              C(10)
+Time          鑼出  丁              C(16)
+Note          鑼出弧                C(100)
+FD_01~FD_50   燴腹  戈              C(40)~C(40)
+
+(Table42)<<checkok.db>>    瓜  (  入庫跋)
+
+Id            癸映攫    Id          N(8)
+Prono         專    Id              N(8)
+Treepath      攫  Id隔徑            C(100)
+Okdate          叭  Θ  丁          C(10)
+Try           是否  剛作燴腹        C(1)
+Name          郎名                  C(150)
+Catchpeo        始燴腹              C(30)
+Work          工作╔稿              C(150)
+Progame       編胯程Α              C(150)
+Txtname         字郎                C(150)
+Frompeo       鑼出ㄓ方              C(30)
+Topeo         鑼出  癸象            C(30)
+Date          鑼出  戳              C(10)
+Time          鑼出  丁              C(16)
+Note          鑼出弧                C(100)
+FD_01~FD_50   燴腹  戈              C(40)~C(40)
+
+(Table43)<<okin.db>>合  入庫(已入庫跋)
+
+Id            癸映攫    Id          N(8)
+Prono         專    Id              N(8)
+Treepath      攫  Id隔徑            C(100)
+Okdate          叭  Θ  丁          C(10)
+Try           是否  剛作燴腹        C(1)
+Name          郎名                  C(150)
+Catchpeo        始燴腹              C(30)
+Work          工作╔稿              C(150)
+Progame       編胯程Α              C(150)
+Txtname         字郎                C(150)
+Frompeo       鑼出ㄓ方              C(30)
+Topeo         鑼出  癸象            C(30)
+Date          鑼出  戳              C(10)
+Time          鑼出  丁              C(16)
+Note          鑼出弧                C(100)
+FD_01~FD_50   燴腹  戈              C(40)~C(40)
+
+(Table44)<<fileall.db>>TreeView6(既存跋)
+
+Id            癸映攫    Id          N(8)
+Prono         專    Id              N(8)
+Treepath      攫  Id隔徑            C(100)
+Okdate          叭  Θ  丁          C(10)
+Try           是否  剛作燴腹        C(1)
+Name          郎名                  C(150)
+Catchpeo        始燴腹              C(30)
+Work          工作╔稿              C(150)
+Progame       編胯程Α              C(150)
+Txtname         字郎                C(150)
+Frompeo       鑼出ㄓ方              C(30)
+Topeo         鑼出  癸象            C(30)
+Date          鑼出  戳              C(10)
+Time          鑼出  丁              C(16)
+Note          鑼出弧                C(100)
+FD_01~FD_50   燴腹  戈              C(40)~C(40)
+
+(Table45)<<dcrecord.db>>設跑記魁
+
+Frompeo       記魁登入人            C(30)
+Topeo         設跑  快人            C(30)
+Logindate     記魁登入  戳          C(10)
+Okdate        萊  Θ  戳            C(10)
+Startdate     郎        戳          C(10)
+Name1         設跑虫腹              C(30)
+Name2         設跑  腹              C(30)
+Dep           矗  虫                C(30)
+Supply        矗  人                C(50)
+Note          設跑  因              C(100)
+
+(Table46)<<tempdcrecord.db>>設跑記魁(既存跋)
+
+Frompeo       記魁登入人            C(30)
+Topeo         設跑  快人            C(30)
+Logindate     記魁登入  戳          C(10)
+Okdate        萊  Θ  戳            C(10)
+Startdate     郎        戳          C(10)
+Name1         設跑虫腹              C(30)
+Name2         設跑  腹              C(30)
+Dep           矗  虫                C(30)
+Supply        矗  人                C(50)
+Note          設跑  因              C(100)
+
+(Table47)<<catchdc.db>>設跑燴腹
+
+Id            癸映攫    Id          N(8)
+Prono         專    Id              N(8)
+Treepath      攫  Id隔徑            C(100)
+Okdate          叭  Θ  丁          C(10)
+Try           是否  剛作燴腹        C(1)
+Name          郎名                  C(150)
+Catchpeo        始燴腹              C(30)
+Work          工作╔稿              C(150)
+Progame       編胯程Α              C(150)
+Txtname         字郎                C(150)
+Frompeo       鑼出ㄓ方              C(30)
+Topeo         鑼出  癸象            C(30)
+Date          鑼出  戳              C(10)
+Time          鑼出  丁              C(16)
+Note          鑼出弧                C(100)
+FD_01~FD_50   燴腹  戈              C(40)~C(40)
+
+(Table48)<<dclist.db>>設跑記魁清虫
+
+Name          設跑  腹              C(30)
+Note          設跑  因              C(80)
+
+(Table49)<<applylist.db>>登入  叫虫
+
+No              叫虫腹              C(20)
+Today           叫  戳              C(10)
+Peo               人                C(50)
+Adep            叫場                C(20)
+Af              叫  途              C(20)
+Okdate              戳              C(10)
+Apeo            叫人                C(20)
+Out           塊出  Α              C(20)
+Filename      郎  名嘿              C(150)
+Backpeo       煤回人                C(30)
+Backdate      煤回  戳              C(10)
+Backtime      煤回  丁              C(14)
+
+(Table50)<<tempapplylist.db>>登入  叫虫(既存跋)
+
+No              叫虫腹              C(20)
+Today           叫  戳              C(10)
+Peo               人                C(50)
+Adep            叫場                C(20)
+Af              叫  途              C(20)
+Okdate              戳              C(10)
+Apeo            叫人                C(20)
+Out           塊出  Α              C(20)
+Filename      郎  名嘿              C(150)
+Backpeo       煤回人                C(30)
+Backdate      煤回  戳              C(10)
+Backtime      煤回  丁              C(14)
+
+(Table51)<<tempcodetree.db>>剛作燴腹  攫  擋構(既存跋)
+
+Id            斑一key               N(8)
+Pid           上一頂  Id            N(8)
+Level         攫    頂層            N(2) 
+Treepath      攫  Id隔徑            C(100)
+Name          名嘿                  C(50)
+Ccode           摸碼  跋隔碼        C(5)
+Tcode           摸碼                C(30)
+Check         是否要列印            C(1)
+Flow            前流  腹            C(5)
+Tree2         專    id              N(8)
+Code1         流  腹    摸碼        C(5)
+Code2           Ω    摸碼          C(5)
+Code3         瓜      摸碼          C(5)
+Len           流  腹                C(2)
+Ver             Ω                  C(1)
+First         判斷  Ω材一Ω是否陪  C(1)
+Paper         瓜                    C(10)
+Order         編逼抖                C(40)
+
+(Table52)<<search.db>>搜尋  既存跋
+
+Id            癸映攫    Id          N(8)
+Prono         專    Id              N(8)
+Treepath      攫  Id隔徑            C(100)
+Okdate          叭  Θ  丁          C(10)
+Try           是否  剛作燴腹        C(1)
+Name          郎名                  C(150)
+Catchpeo        始燴腹              C(30)
+Work          工作╔稿              C(150)
+Progame       編胯程Α              C(150)
+Txtname         字郎                C(150)
+FD_01~FD_50   燴腹  戈              C(40)~C(40)
+
+
+(Table53)<<kindtree.db>>專    摸攫
+
+Id            斑一key               N(8)
+Pid           上一頂  Id            N(8)
+Level         攫    頂層            N(2)
+Name          名嘿                  C(50)
+State           態(  摸  專  )      C(10)
+Other1        預設1                 C(50)
+Other2        預設2                 C(50)

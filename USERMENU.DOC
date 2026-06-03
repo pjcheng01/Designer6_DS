@@ -1,0 +1,35 @@
+
+1. POWER TOOLS 客戶化功能表軟體包含以下四個檔案:
+
+   USERMENU.DCL   ---->  對話框檔
+   USERMENU.DOC   ---->  POWER TOOLS 說明檔
+   USERMENU.LSP   ---->  主程式檔
+   USERMENU.MNU   ---->  功能定義檔
+
+2. 在 ACAD.LSP 內加入以下三列
+
+   (setq USERMENU_PATH "c:\\powsoft\\design50\\")
+   (defun c:manauser_menu() (cond ((null c:manamenu)(load "userMENU"))(t (princ))) (c:manamenu "usermenu.mnu" "usermenu" "manamenu"))
+   (setq func_col 5)
+
+   其中  "c:\\powsoft\\design50\\"  為 POWER TOOLS 程式放置的目錄, 使用者需自行設定
+         (setq func_col 5)          為 POWER TOOLS 對話框圖相之底色內定值為 5 號顏色
+
+3. 在 POWER TOOLS 目錄下建立子目錄 FUNCSLD
+
+4. 在功能表內加入
+      [客戶化功能]
+      [管理自建功能]^C^Cmanauser_menu
+      [製作功能幻燈片]^C^C^P(cond ((null c:usermake_part_sld)(load "userMENU"))(t (princ))) usermake_part_sld
+      [輔助繪圖 DRAW(1)]^C^C^P(cond ((null usermenu)(load "userMENU"))(t (princ))) (usermenu "usermenu.mnu" "usermenu" "partmenu" 76 "0")
+
+
+   其中  [輔助繪圖 DRAW(1)]  為客戶自行設計之功能, 其後之 (usermenu "usermenu.mnu" "usermenu" "partmenu" 76 "0")
+                             格式說明如下:
+                             (1) "usermenu.mnu"  代表客戶化功能表檔名
+                             (2) "usermenu"      代表 DCL 檔名
+                             (3) "partmenu"      代表 DCL 內之對話框名稱
+                             (4) 76              代表 DCL 底色
+                             (5) "0"             代表 POWER TOOLS 啟動後內定啟動第 0 項
+
+   (4) (5) 兩項使用者可自行設定

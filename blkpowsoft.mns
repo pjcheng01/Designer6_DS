@@ -1,0 +1,22 @@
+//
+//      AutoCAD LT 功能表檔 - C:\Designer6\BLKPowsoft.mns
+//
+
+***MENUGROUP=BLKPOWERSOFT
+
+***POP11
+               [零件(BLOCK)管理]
+               [建立零件 (BLOCK)]^C^C^P&creatblk 
+               [全部顯示零件 (BLOCK)]^C^C^P&s_allblk
+               [顯示零件 (BLOCK)]^C^C^P&showblk
+               [隱藏零件 (BLOCK)]^C^C^P&hideblk
+               [拆零件圖 (BLOCK)]^C^C^P&outblk
+               [次組合建立(BLOCK)]^C^C^P&blksubcr
+
+
+
+
+//
+//      AutoCAD LT 功能表檔結尾 - C:\Designer6\BLKPowsoft.mns
+//
+

@@ -1,0 +1,20 @@
+-->BLOCKPATH
+POWERCAD 路徑
+C:/DCLMENU/POWERISO/
+
+-->ITEM_SHOWDATA
+("3" "1.品名" "2.廠牌" "3.規格" "4.料號" "5.材質")
+
+-->SETITEM
+格式:("主群組名稱" "目錄路徑" "檔名碼" "功能表位置" 使用狀態 "註解")
+("BOM2" "ITEM2" "I02" "" 0 "圖形管理系統")
+("GASE&OIL" "ITEM10" "I10" "***POP8" 0 "本模組儲存油氣壓元件符號")
+("ISODWG" "ITEM14" "I14" "" 0 "立體系統圖圖塊")
+("OILTANK" "ITEM20" "I20" "" 0 "油壓缸")
+("GASTANK" "ITEM21" "I21" "" 0 "氣壓缸")
+("LINEBUSH" "ITEM22" "I22" "" 0 "直線滾珠襯套")
+("LINESWITCH" "ITEM23" "I23" "" 0 "微動開關")
+("LINERULE" "ITEM24" "I24" "" 0 "線性滑軌")
+("QUICKTAH" "ITEM25" "I25" "" 0 "快速夾具")
+("HRINGS" "ITEM26" "I26" "" 0 "環首桿")
+

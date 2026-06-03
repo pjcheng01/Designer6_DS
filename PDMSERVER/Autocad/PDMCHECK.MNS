@@ -1,0 +1,103 @@
+//
+//      AutoCAD LT 功能表檔 - D:\PowerPDM\Autocad\Pdmcheck.mns
+//
+
+***MENUGROUP=PDMCHECK
+
+***POP14
+               [審圖功能]
+               [使用辭庫]^C^C&check& &useword 
+               [辭庫建立]^C^C&creatword 
+               [引線帶辭庫]^C^C&check& &checktxt 
+               [--]
+               [叫出批注檔]^C^C&redline_in
+               [刪除批注檔]^C^C(c:autoload) del_redline_drawer  
+               [--]
+               [->畫面縮放]
+                 [即時平移]'_pan 
+                 [即時縮放]'_zoom ;
+                 [縮放回前次]'_zoom _p 
+                 [縮放窗選]'_zoom _w 
+                 [動態縮放]'_zoom _d 
+                 [拉近]'_zoom 2x 
+                 [拉遠]'_zoom .5x 
+                 [<-縮放實際范圍]'_zoom _e 
+               [--]
+               [->修改]
+                 [刪除]^C^C_erase 
+                 [復制物件]^C^C_copy 
+                 [移動]^C^C_move 
+                 [<-比例]^C^C_scale 
+               [--]
+               [->繪圖]
+                 [線]^C^C_line 
+                 [矩形]^C^C_rectang 
+                 [弧]^C^C_arc 
+                 [圓]^C^C_circle 
+                 [<-云狀回轉]^C^C_revcloud 
+               [--]
+               [->查詢與工具]
+                 [距離]'_dist 
+                 [面積]^C^C_area 
+                 [--]
+                 [回復上一動作]^C^C_u 
+                 [取消指令]^C^C
+                 [--]
+                 [<-計算機]^C^C&callcalc 
+               [--]
+               [->審圖工具列]
+                 [圖面審核]^C^C-toolbar 圖面審核 s 
+                 [畫面縮放]^C^C-toolbar 審圖畫面縮放 s 
+                 [修改]^C^C-toolbar 審圖修改 s 
+                 [繪圖]^C^C-toolbar 審圖繪圖 s 
+                 [查詢]^C^C-toolbar 審圖查詢 s 
+                 [顯示全部審圖工具列]]^C^C-toolbar 圖面審核 s -toolbar 審圖畫面縮放 s -toolbar 審圖修改 s -toolbar 審圖繪圖 s -toolbar 審圖查詢 s
+                 [<-關閉全部審圖工具列]]^C^C-toolbar 圖面審核 h -toolbar 審圖畫面縮放 h -toolbar 審圖修改 h -toolbar 審圖繪圖 h -toolbar 審圖查詢 h
+
+***TOOLBARS
+**圖面審核
+               [_Toolbar("圖面審核", _Floating, _Show, 454, 260, 1)]
+               [_Button("使用辭庫", "USELIB.bmp", "BUSELIB.bmp")]^C^C&check& &useword 
+               [_Button("辭庫建立", "CREATLIB.bmp", "BREATLIB.bmp")]^C^C&creatword 
+               [_Button("引線帶辭庫", "autolead.bmp", "bautolea.bmp")]^C^C&check& &checktxt 
+               [_Button("儲存", "ICON_16_SAVE", "")]^C^C&pdmsave 
+               [_Button("叫出批注檔", "redline.bmp", "")]^C^C&redline_in 
+
+**審圖畫面縮放
+               [_Toolbar("審圖畫面縮放", _Floating, _Show, 72, 250, 2)]
+               [_Button("即時縮放", "RTZOOM.bmp", "")]'_zoom ;
+               [_Button("縮放回前次", "ZOOPRE.bmp", "")]'_zoom _p 
+               [_Button("縮放窗選", "ZOOMW.bmp", "")]'_zoom _w 
+               [_Button("動態縮放", "ZOODYN.bmp", "")]'_zoom _d 
+               [_Button("拉近", "ZOOIN.bmp", "")]'_zoom 2x 
+               [_Button("拉遠", "ZOOOUT.bmp", "")]'_zoom .5x 
+               [_Button("縮放實際范圍", "ZOOEXT.bmp", "")]'_zoom _e 
+
+**審圖修改
+               [_Toolbar("審圖修改", _Floating, _Show, 73, 337, 1)]
+               [_Button("刪除", "ERASE.bmp", "")]^C^C_erase 
+               [_Button("復制物件", "COPYOB.bmp", "")]^C^C_copy 
+               [_Button("移動", "MOVE.bmp", "")]^C^C_move 
+               [_Button("比例", "SCALE.bmp", "")]^C^C_scale 
+
+**審圖繪圖
+               [_Toolbar("審圖繪圖", _Floating, _Show, 72, 392, 2)]
+ID__u_0        [_Button("線", "LINE.bmp", "")]^C^C_line 
+               [_Button("矩形", "RECTAN.bmp", "")]^C^C_rectang 
+               [_Button("弧", "ARC3PT.bmp", "")]^C^C_arc 
+               [_Button("圓", "CIRRAD.bmp", "")]^C^C_circle 
+               [_Button("云狀回轉", "REVCLOUD.bmp", "")]^C^C_revcloud 
+
+**審圖查詢
+               [_Toolbar("審圖查詢", _Floating, _Show, 71, 192, 1)]
+               [_Button("距離", "DIST.bmp", "")]'_dist 
+               [_Button("面積", "AREA.bmp", "")]^C^C_area 
+               [_Button("回復上一動作", "undo.bmp", "")]^C^C_u 
+               [_Button("取消指令", "cancel.bmp", "")]^C^C
+               [_Button("計算機", "calc.bmp", "")]^C^C&callcalc 
+
+
+//
+//      AutoCAD LT 功能表檔結尾 - D:\PowerPDM\Autocad\Pdmcheck.mns
+//
+

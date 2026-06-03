@@ -1,0 +1,7 @@
+0
+CPNAME ¹öÖéÂÝ  Öá³Ð
+MATERIAL 
+DWGNO MB16-30TAC62B
+DRAWED ÙÜ×ÚÎÆ
+EPNAME Ballscrew Bearing
+MAPP pv500

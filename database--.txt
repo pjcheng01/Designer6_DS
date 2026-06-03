@@ -1,0 +1,293 @@
+料號;TAG3;TAG9;TAG10
+MSA-M6X25;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*25mm*P1.0
+ML05-A7;A型配油器;Distibutor;A7
+ML010001;套管帽PA4;Thimble nut;
+MJ07A-M8;六角接速螺帽;Hex. nut;M8
+ML06-MSA03;潤滑接頭;Adaptor;MSA03
+MJ14-8X02;內外牙直接頭(PD401);;內M8*外1/8"PT
+MJ19-8X02;平面直接頭(90°);Adapter;內M8*外1/8"PT
+ML04-4X6000;外鋼絲軟管\U+222E4*600;;\U+222E4*6000mm
+MJ07A-M8;六角接速螺帽;Hex. nut;M8
+ML06-MSA0;潤滑接頭;Adaptor;MSA0
+MJ19-8X02;平面直接頭(90°);Adapter;內M8*外1/8"PT
+MJ07A-M8;六角接速螺帽;Hex. nut;M8
+ML06-MSA0;潤滑接頭;Adaptor;MSA0
+MJ19-8X02;平面直接頭(90°);Adapter;內M8*外1/8"PT
+MJ14-8X02;內外牙直接頭(PD401);;內M8*外1/8"PT
+MJ19-8X02;平面直接頭(90°);Adapter;內M8*外1/8"PT
+ML06-MSA03;潤滑接頭;Adaptor;MSA03
+MJ07A-M8;六角接速螺帽;Hex. nut;M8
+ML04-4X1800;外鋼絲軟管;Flexible tube;\U+222E4*1800mm
+ML010001;套管帽PA4;Thimble nut;
+MSA-M6X25;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*25mm*P1.0
+ML05-A6;A型配油器;Distibutor;A6
+MJ19-8X02;平面直接頭(90°);Adapter;內M8*外1/8"PT
+MJ08-20X16;插心接頭1+1/4"PT*1PH;Adapter;1+1/4"PT*1"PH
+ME23-16X1.0;耐油管1"*100cm;Oil tube;1"*100cm
+MJ02-20X16;L型插管接頭(PT*L;Adapter;1+1/4"PT*1"L
+ML20-24;管束 1+1/2";Tube clamp;1+1/2"
+MJ05A-16X16;直型接頭(PT*PT);Adapter;1"PT*1"PT
+MJ23A-16X16;內牙彎頭(鑄);Adapter;內1"PT*內1"PT
+MH010001;油壓方向止迴閥(銅);Check valve;1"PT*1"PT
+MJ08-16X12;直插心接頭(PT*PH);Adapter;1"PT*3/4"PH
+ML20-20;管束 1+1/4";Hose clip;1+1/4"
+MJ07A-M8;六角接速螺帽;Hex. nut;M8
+ML06-MSA0;潤滑接頭;Adaptor;MSA0
+MJ19-8X02;平面直接頭(90°);Adapter;內M8*外1/8"PT
+MSA-M5X20;內六角承窩螺絲;Screw.SKT.HD CAP;5mm*20mm*P0.8
+ML05-A3;A型配油器;Distibutor;A3
+ML010001;套管帽PA4;Thimble nut;
+MJ07A-M8;六角接速螺帽;Hex. nut;M8
+ML06-MSA02;潤滑接頭;Adaptor;MSA02
+ML09-4X1000;膠管;Plstic tube;\U+222E4*1M
+ML08-4X10000;鋁管;Aluminum tube;\U+222E4*10M  1捲100M
+ML010001;套管帽PA4;Thimble nut;
+MSA-M6X25;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*25mm*P1.0
+ML05-A7;A型配油器;Distibutor;A7
+MJ07A-M8;六角接速螺帽;Hex. nut;M8
+ML06-MSA3;潤滑接頭;Adaptor;MSA3
+MJ19-8X02;平面直接頭(90°);Adapter;內M8*外1/8"PT
+MJ14-8X02;內外牙直接頭(PD401);;內M8*外1/8"PT
+MJ07A-M8;六角接速螺帽;Hex. nut;M8
+ML06-MSA02;潤滑接頭;Adaptor;MSA02
+MJ19-8X02;平面直接頭(90°);Adapter;內M8*外1/8"PT
+ML010001;套管帽PA4;Thimble nut;
+MSA-M6X25;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*25mm*P1.0
+ML05-A5;A型配油器;Distibutor;A5
+ML06-MSA1;潤滑接頭;Adaptor;
+MSN-M5X12;半圓頭內六角螺絲;Hexagon Socket Button Head Cap;5mm*12mm
+084013;刮刷器;;
+MSA-M6X16;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*16mm*P1.0
+081084;斜楔端板;Block;
+081077B;托板;;
+MSA-M12X40;內六角承窩螺絲;Screw.SKT.HD CAP;12mm*40mm*P1.75
+MSB-M5X8;內六角平頭螺絲;Hexagon Socket set screw;M5*8mm
+61061A;崁條擋片;Blate;染黑
+081079B;托板;Pallet;
+MSA-M12X40;內六角承窩螺絲;Screw.SKT.HD CAP;12mm*40mm*P1.75
+MSA-M6X16;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*16mm*P1.0
+081083;斜楔端板;Block;
+084014;刮刷器;;
+MSN-M5X12;半圓頭內六角螺絲;Hexagon Socket Button Head Cap;5mm*12mm
+081082;斜楔;Taper pin;
+54064A;斜契端板;Block;
+MSA-M6X16;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*16mm*P1.0
+081081;斜楔;Taper pin;
+081080B;托板;Pallet;
+MSA-M12X40;內六角承窩螺絲;Screw.SKT.HD CAP;12mm*40mm*P1.75
+081078B;托板;Pallet;
+MSA-M12X40;內六角承窩螺絲;Screw.SKT.HD CAP;12mm*40mm*P1.75
+MSA-M6X16;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*16mm*P1.0
+54065A;斜契端板;Block;
+ML09-4X1000;膠管;Plstic tube;\U+222E4*1M
+ML010001;套管帽PA4;Thimble nut;
+ML08-4X10000;鋁管;Aluminum tube;\U+222E4*10M  1捲100M
+ML05-A3;A型配油器;Distibutor;A3
+MSA-M5X20;內六角承窩螺絲;Screw.SKT.HD CAP;5mm*20mm*P0.8
+ML06-CPV5;潤滑接頭;Straight joint;CPV5
+MSA-M8X20;內六角承窩螺絲;Screw.SKT.HD CAP;8mm*20mm*P1.25
+040862A;潤滑建議銘牌;LUBRICANT PLATE;
+030118A;潤滑使用銘板;Lubrication plate;
+037030A;警告銘牌;Warn plate;
+040871B;定期保養檢查表;Regular maintenance list;
+FB-P-27;電器警告牌;Electrical warn plate;
+40075A;進氣銘牌;Air input plate;
+40076A;冷卻液銘牌;Coolamt plate;
+037033B;銘牌;Marking plate;
+037032B;銘牌;Marking plate;
+40086A;電氣元件名牌(2);Electrical plats plate;
+037094A;偵測開關配置圖;Switch drawing;
+244011;墊 片;Space;
+MSA-M5X25;內六角承窩螺絲;Screw.SKT.HD CAP;M5*25*P0.8
+334002;軸承座襯套;Sleeve;
+MB16-30TAC62B;滾珠螺桿軸承;Ballscrew Bearing;30TAC62BDBC10PNTA
+44006;襯套;SLEEVE;
+MSA-M12X45;內六角承窩螺絲;Screw.SKT.HD CAP;12mm*45mm*P1.75
+MS15-YSF30;鎖緊螺帽;Fix nut;YSFM30
+MP02-7X45;斜梢 #7*45;Taper pin;#7*45L
+244029A;緩衝墊;Pad;
+334051;滾珠螺桿(Z)8001000;Ballx screw;1010mm(334017A)
+MSA-M6X50;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*50mm*P1.0
+MB16-30TAC62B;滾珠螺桿軸承;Ballscrew Bearing;30TAC62BDBC10PNTA
+244008C;間隔環;SPACER;
+MD01-TC40;油 封 40*55*08;Oil seal;TC40*55*08
+MSA-M12X30;內六角承窩螺絲;Screw.SKT.HD CAP;M12*30L*P1.75
+244007;軸承蓋;Bearing Cap;
+334004;軸承座;Bearing housing;
+344005-1;預拉片 4.521;PRETENSION PLATE;
+344009;軸承蓋;Bearing cover;
+334004;軸承座;Bearing housing;
+MSA-M6X30;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*30mm*P1.0
+334002;軸承座襯套;Sleeve;
+MB16-30TAC62B;滾珠螺桿軸承;Ballscrew Bearing;30TAC62BDBC10PNTA
+MSA-M12X45;內六角承窩螺絲;Screw.SKT.HD CAP;12mm*45mm*P1.75
+MS15-YSF30;鎖緊螺帽;Fix nut;YSFM30
+MP02-7X45;斜梢 #7*45;Taper pin;#7*45L
+244029A;緩衝墊;Pad;
+334051;滾珠螺桿(Z)8001000;Ballx screw;1010mm(334017A)
+MSA-M8X16;內六角承窩螺絲;Screw.SKT.HD CAP;8mm*16mm*P1.25
+MB16-30TAC62B;滾珠螺桿軸承;Ballscrew Bearing;30TAC62BDBC10PNTA
+MSA-M12X40;內六角承窩螺絲;Screw.SKT.HD CAP;12mm*40mm*P1.75
+MW03-M12;彈簧墊圈;Spring washer;12mm
+244008C;間隔環;SPACER;
+44005A;螺桿軸承壓蓋;Cover;
+MD01-TC40;油 封 40*55*08;Oil seal;TC40*55*08
+44006;襯套;SLEEVE;
+244011;墊 片;Space;
+344009;軸承蓋;Bearing cover;
+344005-1;預拉片 4.521;PRETENSION PLATE;
+MSA-M5X25;內六角承窩螺絲;Screw.SKT.HD CAP;M5*25*P0.8
+MSA-M10X50;內六角承窩螺絲;Screw.SKT.HD CAP;M10*50*P1.5
+MSA-M6X16;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*16mm*P1.0
+MSA-M12X35;內六角承窩螺絲;Screw.SKT.HD CAP;12mm*35mm*P1.75
+MSA-M12X35;內六角承窩螺絲;Screw.SKT.HD CAP;12mm*35mm*P1.75
+MW03-M12;彈簧墊圈;Spring washer;12mm
+081072A;主軸頭護罩;Spindle guard;噴漆
+MSA-M6X16;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*16mm*P1.0
+41206;調整固定座;Adjust fixed seat;
+MS11-M10;六角螺帽 10mm;Hexagon nut;
+MSH-M10X40;外六角螺絲;Hexagon head bolt;M10*40
+MSA-M5X16;內六角承窩螺絲;Screw.SKT.HD CAP;5mm*16mm*P0.8
+081087;蓋板;Cover;噴漆
+MSA-M5X12;內六角承窩螺絲;Screw.SKT.HD CAP;5mm*12mm*P0.8
+MSA-M5X12;內六角承窩螺絲;Screw.SKT.HD CAP;5mm*12mm*P0.8
+41032A;主軸頭下蓋板;Lower cover;
+AB080024;刀庫BT40-22T(FV-1000;;馬特BT40-22T(FV1000)
+AB080030;刀庫BT40-24T (德大);;德大BT40-24T(FV1000)
+AB080027;刀臂驅動機構;Arm move system;BT40 德大刀庫用
+086034;配重固定桿(出貨用);;
+43010B;X.軸出貨固定塊;X AXIS LOCK BLOCK;染黑
+46010;墊 片;Washer;出貨用
+030140;出貨固定板;LOCK PLATE FOR SHIPMENT;
+032047;X軸出貨固定塊;X axis parking block;
+244011;墊 片;Space;
+MSA-M5X25;內六角承窩螺絲;Screw.SKT.HD CAP;M5*25*P0.8
+334002;軸承座襯套;Sleeve;
+MB16-30TAC62B;滾珠螺桿軸承;Ballscrew Bearing;30TAC62BDBC10PNTA
+44006;襯套;SLEEVE;
+MSA-M12X45;內六角承窩螺絲;Screw.SKT.HD CAP;12mm*45mm*P1.75
+MS15-YSF30;鎖緊螺帽;Fix nut;YSFM30
+MP02-7X45;斜梢 #7*45;Taper pin;#7*45L
+MSA-M8X16;內六角承窩螺絲;Screw.SKT.HD CAP;8mm*16mm*P1.25
+MB16-30TAC62B;滾珠螺桿軸承;Ballscrew Bearing;30TAC62BDBC10PNTA
+MSA-M12X40;內六角承窩螺絲;Screw.SKT.HD CAP;12mm*40mm*P1.75
+MW03-M12;彈簧墊圈;Spring washer;12mm
+244008C;間隔環;SPACER;
+44005A;螺桿軸承壓蓋;Cover;
+MD01-TC40;油 封 40*55*08;Oil seal;TC40*55*08
+334004;軸承座;Bearing housing;
+344009;軸承蓋;Bearing cover;
+344005-1;預拉片 4.521;PRETENSION PLATE;
+40604;軌道支架;Guideway supporter;染黑
+MM110033;把手;Handla;GC3602-198-60-\U+222E19
+40603;側門壓克力;Sode door (Acry);
+40604;軌道支架;Guideway supporter;染黑
+080042;前門滑桿;Slide bar;
+40025A;前門壓克力;Front door (Acry);
+MM110032;把手;Handle bar;GC3602-375-80-\U+222E25.4
+030192;軸承座支架(右);Bearing seat bracket;染黑
+40029A;線性軸承座;Liner bearing seat;染黑
+MB14-SM20;線性軸承;Linear bearing;SM20
+MP21-S32;C型扣環(外扣);Snap Ring;S32
+030186;軸承座支架;Bearing seat bracket;染黑
+080162;右防屑板;;噴漆
+080152;右後蓋板;;噴漆
+080048;護罩左前門;Left front door guard;噴漆
+080049;護罩右前門;Right front door;噴漆
+080077B;左防屑板;Left chip guard;噴漆
+080151;左後蓋板;;噴漆
+080043;前門下防屑板;Chip guard;染黑
+40026;滑輪座;Pulley seat;染黑
+40027;滑 輪;Pulley;染黑
+080068;軌道滑桿;Track slide bar;
+030341;操作箱;;噴漆
+080158;操作箱轉軸座;;染黑
+030347;操作箱下座;;
+030348;操作箱固定板;;
+080141;線槽蓋板(B);;噴漆
+080143;線槽蓋板(D);;噴漆
+MSA-M6X30;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*30mm*P1.0
+082044A;碰塊座支架;Support;
+MSA-M8X20;內六角承窩螺絲;Screw.SKT.HD CAP;8mm*20mm*P1.25
+032038A;碰塊座;Dog seat;
+MS04-M5X8;固定螺絲;Screw;M5*8
+61053A;三軸檔塊;Block (For 3 axis);
+MSA-M6X20;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*20mm*P1.0
+082046A;微動開關座;Limite switch seat;染黑
+MSA-M6X25;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*25mm*P1.0
+MSA-M6X20;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*20mm*P1.0
+083017A;壓塊(THK);Clampong block;
+MSA-M12X30;內六角承窩螺絲;Screw.SKT.HD CAP;M12*30L*P1.75
+MT060080;線性滑軌;Linear guide;NR45R2SSCO+2130LH\U+2161
+MSA-M10X50;內六角承窩螺絲;Screw.SKT.HD CAP;M10*50*P1.5
+MSA-M6X15;內六角承窩螺絲;Screw.SKT.HD CAP;M6*15L*P1.0
+082042A;X軸左右托架;Bracket;
+MSA-M8X35;內六角承窩螺絲;Screw.SKT.HD CAP;8mm*35mm*P1.25
+082032;工作台後排屑板;Chip elimination;染黑
+MSA-M6X20;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*20mm*P1.0
+MSA-M6X20;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*20mm*P1.0
+080111B;防屑罩組;Guard;
+082045;螺桿螺帽座;Screw seat;配合工作台082041
+MSA-M12X45;內六角承窩螺絲;Screw.SKT.HD CAP;12mm*45mm*P1.75
+082041A;工作台;Work table;
+MSA-M6X15;內六角承窩螺絲;Screw.SKT.HD CAP;M6*15L*P1.0
+080112B;工作台前護板;Front cover;噴漆
+047047;開關護蓋;Cover;
+087065;電氣箱門;;噴漆
+087062C;電氣箱;;噴漆
+40064C;箱門過濾網板;Net plate;
+047064;配線板(D);Plate;五彩電鍍
+047039D;線管夾板A;Clamp;2個為1PC五彩電鍍
+087063;蓋板;;噴漆
+087066;電氣箱支架;;噴漆
+080157;接屑箱;CHIP TANK;噴漆
+080073;過濾網;Filter;
+080045A;冷卻油箱;Coolant tank;噴漆
+AJ01002;六角板手組;WRENCH SET;
+AJ01001;工具箱組;TOOL BOX;
+M1V006;切削液泵浦手冊;Pump manual;CH系列手冊
+MH050007;60HZ切削液泵浦CH4-20;Coolant pump;CH4-20-3x220V60HZ
+103015;地基墊塊;LEVELLING BLOCK;
+MX610008;油漆罐(含蓋);PAINTION CAN;3g裝
+080036;Y軸後排屑板;Chip cover;
+MSA-M8X30;內六角承窩螺絲;Screw.SKT.HD CAP;8mm*30mm*P1.25
+MSA-M5X20;內六角承窩螺絲;Screw.SKT.HD CAP;5mm*20mm*P0.8
+46013;Z 軸拉片擋塊;Stopping block;染黑
+086050C;立柱;;
+MSA-M6X30;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*30mm*P1.0
+086021A;Z軸護罩導軌;Guard liner;
+MSA-M6X16;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*16mm*P1.0
+086022;Z軸拉片;Holddown plate;染黑
+086023;Z軸防屑板;Guard plate;染黑
+MS11-M16XP2.0;六角螺帽 16mm;Hex nut;M16*P2.0
+086012;配重固定螺栓;Bolt;
+MSA-M8X20;內六角承窩螺絲;Screw.SKT.HD CAP;8mm*20mm*P1.25
+MSC-M6X10A;大扁頭內十字螺絲;;M6*10
+MM080054;方型護管;Square;R68.2-150-34-682F
+MT080025;配重鏈條 PITCH 19.05;;BL646*85*1619L
+MT080007;鏈條接頭;Chain connector;BL646-P19.05
+346023B;滑輪軸;Wheel spindle;
+086032A;配重擔架;Balance holder;染黑
+MSA-M12X45;內六角承窩螺絲;Screw.SKT.HD CAP;12mm*45mm*P1.75
+MSA-M8X20;內六角承窩螺絲;Screw.SKT.HD CAP;8mm*20mm*P1.25
+086024;配重;Balance;
+MSH-M20X90;外六角螺絲;Hexagon head bolt;M20*90
+MW03-M20;彈簧墊圈;Spring washer;20mm
+61051;Z軸下碰塊座;Block Seat (Zaxis);
+MSA-M8X20;內六角承窩螺絲;Screw.SKT.HD CAP;8mm*20mm*P1.25
+61053A;三軸檔塊;Block (For 3 axis);
+MS04-M5X8;固定螺絲;Screw;M5*8
+MSA-M6X16;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*16mm*P1.0
+MSA-M6X16;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*16mm*P1.0
+42005A;X軸微動開關固定板;;染黑
+086051A;微動開關固定座;;染黑
+MSA-M8X20;內六角承窩螺絲;Screw.SKT.HD CAP;8mm*20mm*P1.25
+346020;配重輪;Wheel;
+MB08-2525;乾式軸承;Self lubricating bearing;MB2525DU(OILS)
+40652;Z 軸下碰塊座;Dog seat;染黑
+080132;方型護管活動架;;噴漆
+080133;方型護管固定架;;噴漆
+080134;蓋板;Cover;噴漆
+MM080017;保護管面形接頭;;682F
+346016;孔 蓋;Cover;
+MSA-M6X10;內六角承窩螺絲;Screw.SKT.HD CAP;6mm*10mm*P1.0

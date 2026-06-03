@@ -1,0 +1,45 @@
+;;設定 機械設計家5.0
+機械設計家5.0系統路徑=C:\DESIGNER6\
+KEYPRO執行檔路徑=C:\DESIGNER6\
+機械設計家5.0系統幻燈片路徑=C:\DESIGNER6\SLD\
+機械設計家5.0系統對話框路徑=C:\DESIGNER6\DCL\
+機械設計家5.0系統BLOCK路徑=C:\DESIGNER6\DWG\
+機械設計家5.0系統資料庫路徑=C:\DESIGNER6\DATABASE\
+
+;;客戶化功能表設定
+機械設計家5.0客戶化功能表主程式路徑=C:\DESIGNER6\
+機械設計家5.0客戶化功能表底色=5
+
+;;辭庫庫定=
+辭庫路徑= C:\DESIGNER6\DATABASE\
+
+;;系統圖庫
+POWERBLOCK系統主程式路徑=C:\DESIGNER6\
+POWERBLOCK系統圖庫路徑=C:\DESIGNER6\
+
+;連續出圖
+機械設計家連續出圖內定圖檔路徑=C:\DESIGNER6\
+連續出圖主程式與相關檔案路徑=C:\DESIGNER6\
+
+;;設定與 PowerPDM 系統聯結
+POWERPDM圖文管理SERVER端路徑=
+POWERPDM圖文管理系統CLIENT端路徑= 
+POWERPDM屬性萃取檔路徑=
+CAD拆零件時機種命名方式=自定
+存圖時自動PURGE不存在的BLOCK=YES
+
+;;設定 POWER MANAGER
+;;POWERMANAGER系統路徑=
+;;POWERMANAGER中文版=1
+
+;;設定 POWERISO
+;;POWERISO系統路徑=
+
+;;設定 POWERPARTS
+POWERPARTS系統路徑=C:\POWPARTS\
+POWERPARTS系統幻燈片路徑=C:\POWPARTS\sld\
+POWERPARTS系統對話框路徑=C:\POWPARTS\dcl\
+POWERPARTS系統BLOCK路徑=C:\POWPARTS\dwg\
+POWERPARTS系統資料庫路徑=C:\POWPARTS\database\
+機械零件以BLOCK型態建立=0
+機械零件名稱建立方式=0

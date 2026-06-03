@@ -1,0 +1,31 @@
+[Main]
+DumpEntries=1
+[AcadCrashDump1]
+ExeTimeDateStamp=0x353D4B18
+CrashTimeDateStamp=0x3A15F92F
+acadVer=14.01h (Hardware Lock)
+WinVer=0x5650004
+DumpType=InternalError
+ErrorText=安全系統 (硬體鎖或網路授權) 沒有作用或是安裝不正確
+ContextFlags=0x10007
+SegGs=0x0
+SegFs=0x3B
+SegEs=0x23
+SegDs=0x23
+Edi=0x12F5D1
+Esi=0x77EEA23B
+Ebx=0x24
+Edx=0x0
+Ecx=0x1304D0
+Eax=0x12E264
+Ebp=0x12F5AC
+Eip=0x8AF360
+SegCs=0x1B
+EFlags=0x246
+Esp=0x12E8C0
+SegSs=0x23
+ReferenceAddr=0x9B74FE
+ReferenceName=_WinMain@16
+Stack0=0x8AF360
+Stack1=0x89A190
+Stack2=0x540FA5

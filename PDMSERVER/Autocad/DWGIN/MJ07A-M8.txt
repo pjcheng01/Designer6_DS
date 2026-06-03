@@ -1,0 +1,7 @@
+0
+CPNAME аЫ╫г╫скыбщц╠
+MATERIAL 
+DWGNO MJ07A-M8
+DRAWED ыэвзнф
+EPNAME Hex. nut
+MAPP pv500

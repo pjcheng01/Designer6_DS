@@ -1,0 +1,50 @@
+
+
+
+機械設計家安裝於 acadlt2000 注意事項
+0. 與 design50 不同之檔案:
+   powsoft.mns
+   command.lsp : 將 quickey.lsp 併入 ,快速指令 "0" 改成 "DD"
+   designer.lsp : ssx.lsp ssw.lsp 不載入
+   projline.lsp : 修改 c:delproj
+   usermenu.lsp
+   usermenu.mnu : 加入第 5 項
+
+   pub-dcl.dcl  : width 修改 edit_width
+   userblkm.dcl   bom.dcl
+   userblku.dcl   system.dcl
+   usermenu.dcl
+   wordlib1.dcl
+   \dcl\auxdim.dcl
+   \dcl\auxdisp.dcl
+   \dcl\auxdraw.dcl
+   \dcl\auxedit.dcl
+
+   SL,CL,DL,D,T,0,PL,SCL 更改成 &SL&,&CL&,&DL&,&D&,&T&,&0&,&PL&,&SCL& 影響到的程式
+   auxdim.lsp,    auxdraw.lsp   auxdraw1.lsp   pub-lisp.lsp
+   auxedit.lsp    drawmech.lsp  layer.lsp
+
+   鎖點模式常駐之測試修改
+   auxedit.lsp(c:c-slot)
+   auxdim.lsp(c:jis_finish)
+
+1. LT2000 之 ACLT.PGP 需加入以下 三列
+
+   DEL,       DEL,            0,File to delete: ,
+   SH,        ,               1,*OS Command: ,
+   SHELL,     ,               1,*OS Command: ,
+
+   CL  簡易指令 改成 CPL  *COPYLINK
+   DL                DLI  *DLINE
+   PL                PLI  *PLINE
+
+2. TooLkit 軟體 內之  TOOLKITDOC.LSP 相當於 ACADDOC.LSP, 需加入以下 三列
+
+   (load "designer")
+   (loaddesigner)
+
+3. 功能表內不可有 LISP 語法
+4. (load"abc")  ==> 錯誤
+   (load "abc") ==> 正確
+
+5. 功能表內指令不可有 "$" 開頭

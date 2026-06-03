@@ -1,0 +1,134 @@
+//
+//      AutoCAD 功能表檔 - C:\DESIGNER\Designer.mnc
+//
+
+***MENUGROUP=DESIGNER
+
+***POP11
+               [機械設計家]
+               [自定圖庫管理]^C^C^P(loaddesigner) userblk1 
+               [使用自定圖庫]^C^C^P(loaddesigner) userblk2 
+               [->符號庫]
+                 [管理油氣壓符號]^C^C^P(loaddesigner) oilgas1 
+                 [<-使用油氣壓符號]^C^C^P(loaddesigner) oilgas2 
+               [--]
+               [CNS 加工符號]^C^C^P(loaddesigner) (cond ((null c:cns_finish)(load "auxdim"))(t (princ))) cns_finish 
+               [JIS 加工符號]^C^C^P(loaddesigner) (cond ((null c:jis_finish)(load "auxdim"))(t (princ))) jis_finish 
+               [--]
+               [放圖框定比例]^C^C^P(loaddesigner) (cond ((null c:SHSCAL)(load "SHSCAL"))(t (princ))) (if (= shscal-type t) (c:autoSHSCAL) (c:shscal))
+               [重設比例]^C^C^P(loaddesigner) (cond ((null c:resetting)(load "SHSCAL"))(t (princ)))^P resetting
+               [比例查詢]^C^C^P(loaddesigner) (cond ((null c:scal)(load "aux-qury"))(t (princ)))^P SCAL 
+               [修改圖框屬性]^C^C^P(loaddesigner) (cond ((null c:chsheet_att)(load "SHSCAL"))(t (princ)))^P chsheet_att
+               [--]
+               [使用辭庫]^C^C^P(loaddesigner) (cond ((null c:useword)(load "wordlib1"))(t (princ))) useword 
+               [建立辭庫]^C^C^P(loaddesigner) (cond ((null c:creatword)(load "wordlib1"))(t (princ))) creatword 
+               [載入文字檔]^C^C^P(loaddesigner) (cond ((null c:asctext)(load "asctext"))(t (princ))) asctext 
+               [--]
+               [計算機]callcalc 
+               [--]
+               [->設定目前線性]
+                 [粗連續線(SL)]^C^C^P(loaddesigner) SL 
+                 [細連續線(TL)]^C^C^P(loaddesigner) TL 
+                 [長中心線(CL)]^C^C^P(loaddesigner) CL 
+                 [短中心線(SCL)]^C^C^P(loaddesigner) SCL 
+                 [虛線(DL)]^C^C^P(loaddesigner) DL 
+                 [假想線(PL)]^C^C^P(loaddesigner) PL 
+                 [剖面線(HL)]^C^C^P(loaddesigner) HL 
+                 [<-尺寸線(D)]^C^C^P(loaddesigner) D 
+               [->改變線性]
+                 [粗連續線]^C^C^P(loaddesigner) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) chtosl 
+                 [細連續線]^C^C^P(loaddesigner) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) chtotl 
+                 [長中心線]^C^C^P(loaddesigner) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) chtocl 
+                 [短中心線]^C^C^P(loaddesigner) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) chtocl2 
+                 [虛線]^C^C^P(loaddesigner) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) chtodl 
+                 [假想線]]^C^C^P(loaddesigner) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) chtopl 
+                 [剖面線]^C^C^P(loaddesigner) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) chtohl 
+                 [<-尺寸線]^C^C^P(loaddesigner) (chltype "continuous" "3") 
+               [--]
+               [->系統設定]
+                 [材料清單欄寬定義]^C^C^P(loaddesigner) (cond ((null c:defbomlist)(load "dfsystem"))(t (princ)))^p defbomlist
+                 [設定線型系統變數]^C^C^P(loaddesigner) (cond ((null c:defltype)(load "dfsystem"))(t (princ)))^p defltype
+                 [<-設定圖層系統變數]^C^C^P(loaddesigner) (cond ((null c:deflayer)(load "dfsystem"))(t (princ)))^p deflayer
+
+***POP12
+               [客戶化功能]
+               [管理自建功能]^C^C^P(loaddesigner) manauser_menu 
+               [製作功能幻燈片]^C^C^P(loaddesigner) (cond ((null c:usermake_part_sld)(load "userMENU"))(t (princ))) usermake_part_sld 
+               [--]
+               [輔助繪圖 DRAW(1)]^C^C^P(loaddesigner) 00 
+               [輔助繪圖 DRAW(2)]^C^C^P(loaddesigner) 11 
+               [輔助編輯 EDIT(1)]^C^C^P(loaddesigner) 22 
+               [輔助編輯 EDIT(2)]^C^C^P(loaddesigner) 33 
+               [投影線]^C^C^P(loaddesigner) 44 
+               [作圖線性設定]^C^C^P(loaddesigner) 55 
+               [--]
+               [輔助標註]^C^C^P(loaddesigner) 77 
+               [幾何公差標註]^C^C^P(loaddesigner) 88 
+               [--]
+               [組合圖與材料清單]^C^C^P(loaddesigner) 110 
+               [圖層控制]^C^C^P(loaddesigner) 111 
+               [--]
+               [資料查詢]^C^C^P(loaddesigner) 113 
+               [--]
+               [機械圖(鍵槽與螺紋孔)]^C^C^P(loaddesigner) 115 
+               [機械圖(軸)]^C^C^P(loaddesigner) 116 
+
+
+***TOOLBARS
+**藝祥資訊機械設計家族(二)
+ID________p_a_0 [_Toolbar("藝祥資訊機械設計家族(二)", _Left, _Show, 1, 0, 1)]
+ID__0          [_Button("輔助繪圖(一)", "AUXDRAW1.bmp", "BUXDRAW1.bmp")]^C^C^P(loaddesigner) 00 
+ID__1          [_Button("輔助繪圖(二)", "AUXDRAW2.bmp", "BUXDRAW2.bmp")]^C^C^P(loaddesigner) 11 
+ID__2          [_Button("輔助編輯(一)", "AUXEDIT1.bmp", "BUXEDIT1.bmp")]^C^C^P(loaddesigner) 22 
+ID__3          [_Button("輔助編輯(二)", "AUXEDIT2.bmp", "BUXEDIT2.bmp")]^C^C^P(loaddesigner) 33 
+ID__4          [_Button("投影線", "PROJLINE.bmp", "BROJLINE.bmp")]^C^C^P(loaddesigner) 44 
+ID__8          [_Button("作圖線性設定", "SETLINE.bmp", "BSETLINE.bmp")]^C^C^P(loaddesigner) 55 
+ID__5          [_Button("輔助標註", "AUXDIM1.bmp", "BAUXDIM1.bmp")]^C^C^P(loaddesigner) 77 
+ID__6          [_Button("幾合公差標註", "AUXDIM2.bmp", "BAUXDIM2.bmp")]^C^C^P(loaddesigner) 88 
+ID__7          [_Button("組合圖與材料清單", "BOM1.bmp", "BBOM1.bmp")]^C^C^P(loaddesigner) 110 
+ID__9          [_Button("圖層控制", "AUXDISP1.bmp", "BUXDISP1.bmp")]^C^C^P(loaddesigner) 111 
+ID__10         [_Button("資料查詢", "DESDATA1.bmp", "BESDATA1.bmp")]^C^C^P(loaddesigner) 113
+ID__11         [_Button("鍵槽與螺紋", "MECDRAW1.bmp", "BECDRAW1.bmp")]^C^C^P(loaddesigner) 115 
+ID__12         [_Button("軸產生器", "MECDRAW2.bmp", "BECDRAW2.bmp")]^C^C^P(loaddesigner) 116 
+
+**辭庫與計算機
+ID____w_P_p_____0 [_Toolbar("辭庫與計算機", _Left, _Show, 0, 2, 1)]
+ID__37         [_Button("使用辭庫", "USELIB.bmp", "BUSELIB.bmp")]^C^C^P(loaddesigner) (cond ((null c:useword)(load "wordlib1"))(t (princ))) useword
+ID__38         [_Button("辭庫建立", "CREATLIB.bmp", "BREATLIB.bmp")]^C^C^P(loaddesigner) (cond ((null c:creatword)(load "wordlib1"))(t (princ))) creatword
+ID__39         [_Button("計算機", "CALA.bmp", "BCALA.bmp")]^C^Ccallcalc
+
+**開放圖庫
+ID________w_0  [_Toolbar("開放圖庫", _Left, _Show, 0, 0, 1)]
+ID__34         [_Button("管理自訂圖庫", "MANABLK.bmp", "BMANABLK.bmp")]^C^C(loaddesigner) userblk1
+ID__35         [_Button("使用自訂圖庫", "USEBLK.bmp", "BUSEBLK.bmp")]^C^C(loaddesigner) userblk2
+ID__36         [_Button("油氣壓符號庫", "MANAOIL.bmp", "BMANAOIL.bmp")]^C^C(loaddesigner) oilgas1
+ID__40         [_Button("使用油氣壓符號", "USEOIL.bmp", "BUSEOIL.bmp")]^C(loaddesigner) ^Coilgas2
+
+**工具列1
+**放圖框定比例
+ID__u___C1_1   [_Toolbar("放圖框定比例", _Left, _Show, 0, 1, 1)]
+ID__41         [_Button("放圖框定比例", "SHET&SCA.bmp", "BHET&SCA.bmp")]^C^C^P(loaddesigner) (cond ((null c:SHSCAL)(load "SHSCAL"))(t (princ))) (if (= shscal-type t) (c:autoSHSCAL) (c:shscal))
+ID__15         [_Button("重訂比例", "RESCALE.bmp", "BRESCALE.bmp")]^C^C^P(loaddesigner) (if (null c:resetting)(load"shscal")) resetting
+ID__43         [_Button("比例查詢", "QURSCALE.bmp", "BURSCALE.bmp")]^C^C^P(loaddesigner) (cond ((null c:scal)(load "aux-qury"))(t (princ)))^P SCAL
+
+**標
+**放
+ID__u___C1_1   [_Toolbar("定比例", _Left, _Show, 0, 1, 1)]
+ID_TbViewpoi   [_Flyout("檢視點", ICON_16_DDVIEW, ICON_24_DDVIEW, _OtherIcon, DESIGNER.VIEWPOINT)]
+
+**VIEWPOINT
+**AA
+ID_TbZoom      [_Toolbar("縮放", _Floating, _Hide, 100, 350, 1)]
+ID_VpointTop   [_Button("比例查詢", "QURSCALE.bmp", "BURSCALE.bmp")]^C^C_vpoint _non *0,0,1
+ID_VpointBot   [_Button("比例查詢", "QURSCALE.bmp", "BURSCALE.bmp")]^C^C_vpoint _non *0,0,-1
+ID_VpointLef   [_Button("比例查詢", "QURSCALE.bmp", "BURSCALE.bmp")]^C^C_vpoint _non *-1,0,0
+ID_VpointRig   [_Button("比例查詢", "QURSCALE.bmp", "BURSCALE.bmp")]^C^C_vpoint _non *1,0,0
+ID_VpointFro   [_Button("比例查詢", "QURSCALE.bmp", "BURSCALE.bmp")]^C^C_vpoint _non *0,-1,0
+ID_VpointBac   [_Button("比例查詢", "QURSCALE.bmp", "BURSCALE.bmp")]^C^C_vpoint _non *0,1,0
+
+
+
+//
+//      AutoCAD 功能表檔結尾 - C:\DESIGNER\Designer.mnc
+//
+

@@ -1,0 +1,7 @@
+0
+CPNAME AпмеДсмфВ
+MATERIAL 
+DWGNO ML05-A5
+DRAWED ыэвзнф
+EPNAME Distibutor
+MAPP pv500
