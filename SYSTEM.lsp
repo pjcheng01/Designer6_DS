@@ -48,9 +48,11 @@
 
 ;
 ;;=============================================================================================
-(defun getval(initxt)
+(defun getval (initxt / ff data txtid objdata needdata dd)
+  (if (null powdesign_path) (progn (princ "\n[getval] powdesign_path is nil!") (exit)))
    ;; 已移除：加密狗判斷 (if (or (null POWDESIGN_path)(/= jin "#$%")(/= #### 85))(c:autoload))
    (setq ff (open (strcat powdesign_path "system.ini") "r"))
+  (if (null ff) (progn (princ (strcat "\n[getval] 無法開啟：" (strcat powdesign_path "system.ini"))) (exit)))
   ;(setq ff (open (strcat "p:\\designer6\\" "system.ini") "r"))
   (setq data (read-line ff))
   (while data
@@ -274,60 +276,4 @@
 ;���] �p ��: ���a�F                                                                          ��
 ;���\�໡��: ���o�t�ιw�]��                                                                  ��
 ;��                                                                                          ��
-;������覡:                                                                                 ��
-;�������ɮ�: system.ini, pub-lisp.lsp (get_word)                                             ��
-;����������������������������������������������������������������������������������������������
-(defun right()
-      (prompt "\n              ���t�Υ�������T�u�{�������q   ���a�F �o�i����.")
-      (prompt "\n                   TEL:(04)230-7650   FAX:(04)231-4708")
-)
-
-(if *designer6_ready*
-(apply '(lambda()
-;(defun c:aaaa()
-   (setvar "cmdecho" 0)
-;  (vmon)
-;  (getsys_date 0)
-;  (if (and (or (= cyear "1998") (= cyear "1999")) (or (<= (atoi cmonth) 2)(= (atoi cmonth) 12)))
-;    (progn
-
-   (setq autocad_ver (substr (getvar "acadver") 1 2))
-   (get_layerdef)             ;�ϼh�w�q
-   (get_ltypedef)             ;�u���w�q
-   (get_bomdef)               ;���ж�y�P���ƲM��w�q
-   (get_bomlistdef)           ;���ƲM�����w�q
-;; (get_sheetatt)             ;�Ϯج����w�q
-
-  (princ "\n������T POWER�t�C����]�p�t�θ��J ! �еy��...")
-  (princ "\n�t�εo�i: ������T�u�{�������q    TEL:04-2307650   FAX:04-2314708")
-
-;;�U�_�ܰ��F�ѥ��������q
-;;(princ "\n���t�ΦX�k�ϥΩ� �U�_�ܰ��F�ѥ��������q")
-;;(setq piec_ff1 (findfile "L:\\design50\\system.lsp"))
-;;(setq piec_ff2 (findfile "L:\\design50\\USERMENU.lsp"))
-;;(setq piec_ff3 (findfile "L:\\Powparts\\function.lsp"))
-;;(setq piec_ff4 (findfile "L:\\poweriso\\isochg.lsp"))
-
- ; (command "shell" (strcat "dir/w > " POWDESIGN_path "hd.txt"))
- ; (setq load_check (open (strcat POWDESIGN_path "hd.txt") "r")
- ;       &&&&&&% (read-line load_check)
- ;       &&&&&&% (read-line load_check)
-;;       &&&&&&  (substr &&&&&&% 13 9))        ;WINDOWS NT CHINESE,DOS
- ;       &&&&&&  (substr &&&&&&% 13 9)         ;WINDOWS NT CHINESE,DOS
- ;       &&&&&&% (read-line load_check)
- ;       &&&&&&% (substr &&&&&&% 26 9))        ;WINDOWS 98 CHINESE,DOS
- ;
-
-  (C:#SETTING)
-
-;    );progn
-;    (princ "\n�ܩ�p! POWER DESIGN ����]�p�a�եδ��w�L, �йq�� 04-2307650 ������T")
-;  );IF
-
-
-   (setvar "cmdecho" 1)
-   (princ)
-   )'()
-)
-) ;; 結束 if *designer6_ready*
-
+;������覡:                           
