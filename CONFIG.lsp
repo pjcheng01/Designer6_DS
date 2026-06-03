@@ -79,13 +79,11 @@
 )
 
 ;;----------------------------------------------------------------
-;; 讀取 config.doc，設定所有路徑變數
+;; 讀取 config.doc（英文 key）
 ;;----------------------------------------------------------------
 (defun config_des50_system (/ OUT_LSPPATH)
-  ;; 先嘗試從 SRCHPATH 找 config.doc，找到就用，找不到才提示 setup
   (setq OUT_LSPPATH (get_support_path))
   (setq config_des50_systemdoc (strcat OUT_LSPPATH "config.doc"))
-  ;; 若 SRCHPATH 找不到，嘗試直接用 findfile
   (if (null (findfile config_des50_systemdoc))
     (setq config_des50_systemdoc (findfile "config.doc"))
   )
@@ -95,36 +93,36 @@
       (setq *designer6_ready* nil)
     )
     (progn
-      (setq POWDESIGN_path (getfile_val config_des50_systemdoc "機械設計家5.0系統路徑"))
-      (if (/= nil POWDESIGN_path)
+      (setq POWDESIGN_path (getfile_val config_des50_systemdoc "DESIGN_PATH"))
+      (if POWDESIGN_path
         (progn
-          (setq POWDESIGN_sld_path  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "機械設計家5.0系統投影片路徑"))))
-          (setq POWDESIGN_dcl_path  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "機械設計家5.0系統對話框路徑"))))
-          (setq POWDESIGN_dwg_path  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "機械設計家5.0系統BLOCK路徑"))))
-          (setq POWDESIGN_DATA_path (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "機械設計家5.0系統資料庫路徑"))))
-          (setq USERMENU_PATH (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "機械設計家5.0預設功能主程式路徑"))))
-          (setq func_col      (atoi (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "機械設計家5.0預設功能層數")))))
-          (setq word1_data_path (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "標準路徑"))))
-          (setq BMANAGER_PATH      (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERBLOCK系統主程式路徑"))))
-          (setq BMANAGER_ITEM_PATH (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERBLOCK系統圖庫路徑"))))
-          (setq autoplot_dwgpath  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "機械設計家新零件出圖中文設定路徑"))))
-          (setq autoplot_filepath (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "新零件出圖主程式及設定檔路徑"))))
-          (setq powdesign_ini_path (strcat powdesign_path "ini\\"))
+          (setq POWDESIGN_sld_path  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "DESIGN_SLD_PATH"))))
+          (setq POWDESIGN_dcl_path  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "DESIGN_DCL_PATH"))))
+          (setq POWDESIGN_dwg_path  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "DESIGN_DWG_PATH"))))
+          (setq POWDESIGN_DATA_path (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "DESIGN_DATA_PATH"))))
+          (setq USERMENU_PATH       (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "USERMENU_PATH"))))
+          (setq func_col            (atoi (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "FUNC_COL")))))
+          (setq word1_data_path     (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "WORD_DATA_PATH"))))
+          (setq BMANAGER_PATH       (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "BMANAGER_PATH"))))
+          (setq BMANAGER_ITEM_PATH  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "BMANAGER_ITEM_PATH"))))
+          (setq autoplot_dwgpath    (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "AUTOPLOT_DWGPATH"))))
+          (setq autoplot_filepath   (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "AUTOPLOT_FILEPATH"))))
+          (setq powdesign_ini_path  (strcat POWDESIGN_path "ini\\"))
           (setq base_dimscale 1)
         )
       )
       ;; POWER MANAGER
-      (setq fmpath (getfile_val config_des50_systemdoc "POWERMANAGER系統路徑"))
+      (setq fmpath (getfile_val config_des50_systemdoc "POWERMANAGER_PATH"))
       (if (and fmpath (/= "" fmpath))
         (progn
           (setq fmpath (getrealstr2 (sys_getstring fmpath)))
           (load "fm")
-          (setq VER_LSP (atoi (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERMANAGER語言版")))))
+          (setq VER_LSP (atoi (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERMANAGER_VER")))))
           (if (= 1 ver_lsp) (setq ver_lsp T))
         )
       )
       ;; POWERISO
-      (setq poweriso_path (getfile_val config_des50_systemdoc "POWERISO系統路徑"))
+      (setq poweriso_path (getfile_val config_des50_systemdoc "POWERISO_PATH"))
       (if (and poweriso_path (/= "" poweriso_path))
         (progn
           (setq poweriso_path (getrealstr2 (sys_getstring poweriso_path)))
@@ -135,17 +133,17 @@
         )
       )
       ;; POWERPARTS
-      (setq POWPARTS_path (getfile_val config_des50_systemdoc "POWERPARTS系統路徑"))
+      (setq POWPARTS_path (getfile_val config_des50_systemdoc "POWERPARTS_PATH"))
       (if (and POWPARTS_path (/= "" POWPARTS_path))
         (progn
           (setq POWPARTS_path      (getrealstr2 (sys_getstring POWPARTS_path)))
-          (setq POWPARTS_sld_path  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS系統投影片路徑"))))
-          (setq POWPARTS_dcl_path  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS系統對話框路徑"))))
-          (setq POWPARTS_dwg_path  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS系統BLOCK路徑"))))
-          (setq POWPARTS_DATA_path (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS系統資料庫路徑"))))
+          (setq POWPARTS_sld_path  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_SLD_PATH"))))
+          (setq POWPARTS_dcl_path  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_DCL_PATH"))))
+          (setq POWPARTS_dwg_path  (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_DWG_PATH"))))
+          (setq POWPARTS_DATA_path (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWERPARTS_DATA_PATH"))))
           (load "FUNCTION")
-          (setq powparts_block   (atoi (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "插入新零件HBLOCK後狀態建立")))))
-          (setq powparts_BLKNAME (atoi (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "插入新零件名稱建立方式")))))
+          (setq powparts_block   (atoi (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWPARTS_BLOCK")))))
+          (setq powparts_BLKNAME (atoi (getrealstr2 (sys_getstring (getfile_val config_des50_systemdoc "POWPARTS_BLKNAME")))))
         )
       )
       (setq *designer6_ready* t)
@@ -154,5 +152,4 @@
 )
 
 (config_des50_system)
-;; 注意：(load "loadsys") 與 (check_which_app) 已移除（加密狗取消）
-;; 注意：(load "powerpdm") 已移除（PDM 模組不移植）
+;; 注意：加密狗、PDM 已移除
