@@ -18,7 +18,7 @@
 
   (setq s_dat (get_section_circle_cirenlg))
   (setq c_cor (nth 0 s_dat) c_rad (nth 1 s_dat))
-  (princ "\n¸Ô¹Ï¦ì¸m:")
+  (princ "\nè©³åœ–ä½ç½®:")
   (command  "move" @c_circle1 "" c_cor pause)
   (command "erase" @c_circle1 "")
   (setq #moveent (entlast))
@@ -33,7 +33,7 @@
   (generate_section_cirenlg boundary ss_list)
   (command "cmdecho" cecmd)
   (get_all_element_cirenlg #moveent)
-  (setq s_sca (getreal "\n¤ñ¨Ò<1>:"))
+  (setq s_sca (getreal "\næ¯”ä¾‹<1>:"))
   (if (= s_sca nil)
       (setq s_sca 1)
   )
@@ -88,7 +88,7 @@
   (setq ent_num (rtos (length ss_ent) 2 0))
   ;(prompt (strcat "\nProcesing " ent_num " entities,waiting"))
   ;(prompt "\nStart")
-  (prompt (strcat "\n³B²z " ent_num " ¹Ï¤¸, ½Ğµ¥«İ"))
+  (prompt (strcat "\nè™•ç† " ent_num " åœ–å…ƒ, è«‹ç­‰å¾…"))
   (foreach ent ss_ent
     (setq data (entget ent))
     (cond
@@ -368,7 +368,7 @@
 (defun get_section_circle_cirenlg(/ flag track track_chk track_pt cen_cor c_rad c_last
                              count)
   (setq flag "t")
-  (setq cen_cor (getpoint "\nºI¨ú®É, ¸Ô¹Ï¤§¤¤¤ß¦ì¸m:"))
+  (setq cen_cor (getpoint "\næˆªå–æ™‚, è©³åœ–ä¹‹ä¸­å¿ƒä½ç½®:"))
   ;
   (prompt "\n")
   (setq cel (getvar "celtype"))
@@ -432,7 +432,7 @@
                (<= yfa #explode_limit)
                (not (var_eqp_cirenlg xfa yfa)))
          ;(prompt "\n Pass not uniformly and positively scaled insert !")
-         (prompt "\n ¤£§¡¤Ã©ú½T¤ñ¨Ò´¡¤J!")
+         (prompt "\n ä¸å‡å‹»æ˜ç¢ºæ¯”ä¾‹æ’å…¥!")
          (command "explode" ent)
        )
       )

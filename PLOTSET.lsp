@@ -1,4 +1,4 @@
-;;;³sÄò¥X¹Ï
+;;;é€£çºŒå‡ºåœ–
 
 (defun c:draw_autoplot()
 
@@ -53,18 +53,18 @@
 ;         ((or (/= a0 nil) (/= a0t nil))(setq plot_flag 1 plotname "\\\\SAKURA\\PA0" shsize "ISO A0 - 841 x 1189 mm." paperst "L"))
 ;         ((or (/= a1 nil) (/= a1t nil))(setq plot_flag 1 plotname "\\\\SAKURA\\PA0" shsize "ISO A1 - 594 x 841 mm. (portrait)" paperst "L"))
 ;         ((or (/= a2 nil) (/= a2t nil))(setq plot_flag 1 plotname "\\\\SAKURA\\PA0" shsize "ISO A2 - 420 x 594 mm. (portrait)" paperst "L"))
-         ((or (/= a3 nil) (/= a3t nil))(setq plot_flag 1 plotname "HP DeskJet 1120C Printer" shsize "A3 (297 x 420 ¤½Âç)" paperst "L"))
-         ((or (/= a4 nil) (/= a4t nil))(setq plot_flag 1 plotname "HP DeskJet 1120C Printer" shsize "A4 (210 x 297 ¤½Âç)" paperst "L"))
+         ((or (/= a3 nil) (/= a3t nil))(setq plot_flag 1 plotname "HP DeskJet 1120C Printer" shsize "A3 (297 x 420 å…¬é‡)" paperst "L"))
+         ((or (/= a4 nil) (/= a4t nil))(setq plot_flag 1 plotname "HP DeskJet 1120C Printer" shsize "A4 (210 x 297 å…¬é‡)" paperst "L"))
 ;         ((or(/= a4h nil) (/= a4ht nil))(setq plot_flag 1 plotname "\\\\SAKURA\\A4" shsize "A4" paperst "L"))
-         (t (setq plot_flag 0)(alert "µL¹Ï®Ø¥i¨Ñ¿ëÃÑ ! ¥»¹ÏÀÉ¨ú®ø¥X¹Ï"))
+         (t (setq plot_flag 0)(alert "ç„¡åœ–æ¡†å¯ä¾›è¾¨è­˜ ! æœ¬åœ–æª”å–æ¶ˆå‡ºåœ–"))
       );cond
 
 
 
-      (if (= plot_flag  1)                                ;;P => ª½¦¡
+      (if (= plot_flag  1)                                ;;P => ç›´å¼
           (progn   
-              (setq pt "a4.ctb")                        ;;L => ¾î¦¡
-              (command "plot" "y" "" plotname shsize "m" paperst "n" "E" scl "¤¤¤ßÂI" "y" pt "y" "n" "n" "n" "y")
+              (setq pt "a4.ctb")                        ;;L => æ©«å¼
+              (command "plot" "y" "" plotname shsize "m" paperst "n" "E" scl "ä¸­å¿ƒé»" "y" pt "y" "n" "n" "n" "y")
           )
       );if 
 
