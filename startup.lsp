@@ -4,11 +4,4 @@
 (load "command")
 (load "quickey")
 (c:autoload)
-(load "C:\DESIGNER6_DS\\command")
-(load "C:\DESIGNER6_DS\\quickey")
-(c:autoload)
-;已寫入系統設定
-(load "command")
-(load "quickey")
-(c:autoload)
-;DS_CONFIG_WRITTEN
+(princ)
