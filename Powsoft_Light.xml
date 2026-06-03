@@ -13,44 +13,44 @@
                 <menu UID="{6aa2c3e2-0dd9-4b38-89c2-7baf51d716e7}" name="自定圖庫管理" definition_ref="{1aeb42e6-9a24-4afd-bdae-80805c280c9f}"/>
                 <menu UID="{512e9aa9-60d1-44ec-9fb2-d5e5b44a06ae}" name="使用自定圖庫" definition_ref="{bfa463f2-01cd-439d-97f6-7e87c327f0c0}"/>
                 <menu UID="{504ab802-411d-4970-9798-9d67c66e8b23}" name="符號庫管理" definition_ref="">
-                    <menu name="管理油壓缸圖塊" definition_ref="{1038aa53-2624-4880-837e-d17b822dafcf}"/>
+                    <menu UID="{9a9c4b17-5044-4c70-81f3-241dfbd9cd74}" name="管理油壓缸圖塊" definition_ref="{1038aa53-2624-4880-837e-d17b822dafcf}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="管理氣壓缸圖塊" definition_ref="{cfcfcc88-4696-442b-a933-f6378ce25bd4}"/>
+                    <menu UID="{75352138-abc4-40f9-8af5-80ca3cce1ee2}" name="管理氣壓缸圖塊" definition_ref="{cfcfcc88-4696-442b-a933-f6378ce25bd4}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="管理直線滾珠襯套圖塊" definition_ref="{fec1687b-7e2b-4f75-9661-f42a0c379dcf}"/>
+                    <menu UID="{03573d3f-b130-46ae-8003-ec9921093a01}" name="管理直線滾珠襯套圖塊" definition_ref="{fec1687b-7e2b-4f75-9661-f42a0c379dcf}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="管理微動開關圖塊" definition_ref="{79fdbde4-1dad-488d-a238-a7fc63ec8c66}"/>
+                    <menu UID="{3b714308-36e4-4c8e-9c10-f7aa48a49137}" name="管理微動開關圖塊" definition_ref="{79fdbde4-1dad-488d-a238-a7fc63ec8c66}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="管理線性滑軌圖塊" definition_ref="{ced61f50-33ff-45a7-b37c-ada192a23ad7}"/>
+                    <menu UID="{8570ed6a-4661-43f6-aa0c-cccfa448fa6e}" name="管理線性滑軌圖塊" definition_ref="{ced61f50-33ff-45a7-b37c-ada192a23ad7}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="管理快速夾具圖塊" definition_ref="{4396bfd2-5623-4a64-91b9-c151b6be52dd}"/>
+                    <menu UID="{35c529cd-0a55-48bf-8ca6-fbd610118a96}" name="管理快速夾具圖塊" definition_ref="{4396bfd2-5623-4a64-91b9-c151b6be52dd}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="管理環首桿圖塊" definition_ref="{b5d28a2f-3875-4e16-94bf-2888e546f3d3}"/>
+                    <menu UID="{445be030-3115-4f30-a989-3e28e5448386}" name="管理環首桿圖塊" definition_ref="{b5d28a2f-3875-4e16-94bf-2888e546f3d3}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="管理油氣壓符號" definition_ref="{0907f7f0-c3c8-4d2e-801b-2b447eed78c9}"/>
+                    <menu UID="{9c896129-ec22-4328-8eea-6e95027537d3}" name="管理油氣壓符號" definition_ref="{0907f7f0-c3c8-4d2e-801b-2b447eed78c9}"/>
                 </menu>
                 <menu UID="{1eb34b16-25e7-48b7-96cd-cbc4969af545}" name="使用符號庫" definition_ref="">
-                    <menu name="使用油壓缸圖塊" definition_ref="{adf7ebff-eaab-4661-9fa4-21ba1683a7a5}"/>
+                    <menu UID="{ce338a6f-0e90-4157-ae35-fbb40936369e}" name="使用油壓缸圖塊" definition_ref="{adf7ebff-eaab-4661-9fa4-21ba1683a7a5}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="使用氣壓缸圖塊" definition_ref="{0895be11-2c6a-44d7-9bd7-0f96d93651ce}"/>
+                    <menu UID="{e480fbe6-518c-48ba-8c56-94e7d799d191}" name="使用氣壓缸圖塊" definition_ref="{0895be11-2c6a-44d7-9bd7-0f96d93651ce}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="使用直線滾珠襯套圖塊" definition_ref="{a6eb9a01-9384-49bb-b464-c008b25d442a}"/>
+                    <menu UID="{35eddafd-4b4f-45a7-96f9-e4d34dee450f}" name="使用直線滾珠襯套圖塊" definition_ref="{a6eb9a01-9384-49bb-b464-c008b25d442a}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="使用微動開關圖塊" definition_ref="{1c9ef16b-87ca-4c5a-9f5a-24bb8ae6ae28}"/>
+                    <menu UID="{10845589-fdd5-4695-8591-8a4ab17e08e7}" name="使用微動開關圖塊" definition_ref="{1c9ef16b-87ca-4c5a-9f5a-24bb8ae6ae28}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="使用線性滑軌圖塊" definition_ref="{057573d5-f368-478f-b0a9-392a957d7e9f}"/>
+                    <menu UID="{99b7cc44-f8bc-450e-a70f-65dfbc27e2c4}" name="使用線性滑軌圖塊" definition_ref="{057573d5-f368-478f-b0a9-392a957d7e9f}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="使用快速夾具圖塊" definition_ref="{5bbca052-bbff-4f54-951b-625a4c66919f}"/>
+                    <menu UID="{506c270c-26cb-4514-b323-aed36f9aeb9b}" name="使用快速夾具圖塊" definition_ref="{5bbca052-bbff-4f54-951b-625a4c66919f}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="使用環首桿圖塊" definition_ref="{17792a1c-1046-47dd-bbba-6924903e3d97}"/>
+                    <menu UID="{376e75d1-ce49-41e9-a236-d0bb6618bdde}" name="使用環首桿圖塊" definition_ref="{17792a1c-1046-47dd-bbba-6924903e3d97}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="使用油氣壓符號" definition_ref="{6c38f5fa-c47e-4f2c-957c-ccfeb8973cb9}"/>
+                    <menu UID="{0cad816b-83c1-4b2e-a58c-7bc08530257a}" name="使用油氣壓符號" definition_ref="{6c38f5fa-c47e-4f2c-957c-ccfeb8973cb9}"/>
                 </menu>
                 <menu name="" definition_ref=""/>
                 <menu UID="{4e3f80ed-71cb-4910-8fbf-678b88ba52b3}" name="CNS 加工符號" definition_ref="">
-                    <menu name="CNS 加工符號" definition_ref="{dac93a67-7fa7-4dd9-9f4f-8702795ba243}"/>
-                    <menu name="左右括號" definition_ref="{420b267d-e785-4cdc-8da4-0aa06d4f7098}"/>
-                    <menu name="整體性加工符號" definition_ref="{25397848-0cdd-4f74-8bd2-e635ee23bf64}"/>
+                    <menu UID="{370f2404-b9ba-47ff-91c6-4ea3fbef2f52}" name="CNS 加工符號" definition_ref="{dac93a67-7fa7-4dd9-9f4f-8702795ba243}"/>
+                    <menu UID="{335f6748-f457-40c5-8d43-e93ad5f3b7c1}" name="左右括號" definition_ref="{420b267d-e785-4cdc-8da4-0aa06d4f7098}"/>
+                    <menu UID="{87e6e857-8e92-4058-8e12-34bb674ebfd9}" name="整體性加工符號" definition_ref="{25397848-0cdd-4f74-8bd2-e635ee23bf64}"/>
                 </menu>
                 <menu UID="{f219f9c6-f5b5-4b28-806c-8633939c5b5b}" name="JIS 加工符號" definition_ref="{234f20d6-dfde-41a5-8884-3f42c16fcad0}"/>
                 <menu name="" definition_ref=""/>
@@ -71,88 +71,88 @@
                 <menu UID="{88a06cc5-3a90-471b-abb4-ba5e1e1f6e20}" name="計算機" definition_ref="{6fbff77b-a2fb-48ec-ae8b-edd3555b4b5a}"/>
                 <menu name="" definition_ref=""/>
                 <menu UID="{df96b36e-ad65-4a35-af12-b3864dda21b5}" name="設定目前線性" definition_ref="">
-                    <menu name="粗連續線(SS)" definition_ref="{ddc17060-e33b-4ba8-96a9-6cc066c43e8c}"/>
-                    <menu name="細連續線(TT)" definition_ref="{d5c8a52c-6270-472b-bae6-56dfcbe63c6b}"/>
+                    <menu UID="{80741361-7216-4a8f-80a2-87dd1fe4764c}" name="粗連續線(SS)" definition_ref="{ddc17060-e33b-4ba8-96a9-6cc066c43e8c}"/>
+                    <menu UID="{321105e6-5c50-4eb1-a9cd-203046379679}" name="細連續線(TT)" definition_ref="{d5c8a52c-6270-472b-bae6-56dfcbe63c6b}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="標準中心線(CC)" definition_ref="{7a60b00b-069d-43c0-8d6f-c2443a5ea1db}"/>
-                    <menu name="短中心線(SCC)" definition_ref="{0d6e8f03-f408-44ba-acea-3eb9008db6fb}"/>
+                    <menu UID="{0bb61350-3d05-4e15-a21d-b9a6ba260847}" name="標準中心線(CC)" definition_ref="{7a60b00b-069d-43c0-8d6f-c2443a5ea1db}"/>
+                    <menu UID="{8fa872fd-b531-4ff3-932c-b37add3a6820}" name="短中心線(SCC)" definition_ref="{0d6e8f03-f408-44ba-acea-3eb9008db6fb}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="標準虛線(DD)" definition_ref="{41d6e805-f394-4770-8254-c3071ce736f0}"/>
-                    <menu name="短虛線(SDD)" definition_ref="{728ab4fc-aaf5-43d2-9384-20c0fb472e6c}"/>
+                    <menu UID="{019d9d28-4b98-4638-a92e-44db667e0932}" name="標準虛線(DD)" definition_ref="{41d6e805-f394-4770-8254-c3071ce736f0}"/>
+                    <menu UID="{c42e1e61-bd0d-4b1d-80a6-e65e3a759156}" name="短虛線(SDD)" definition_ref="{728ab4fc-aaf5-43d2-9384-20c0fb472e6c}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="標準假想線(PP)" definition_ref="{610b6772-63c8-4677-9f62-77dfb631ee21}"/>
-                    <menu name="短假想線(SPP)" definition_ref="{6496d426-56b5-40a6-8121-2f2691400c71}"/>
+                    <menu UID="{f30c072f-49a9-413b-9b4a-3370483651d2}" name="標準假想線(PP)" definition_ref="{610b6772-63c8-4677-9f62-77dfb631ee21}"/>
+                    <menu UID="{4e49aefe-6bc8-43ef-b61a-50d8e77edf81}" name="短假想線(SPP)" definition_ref="{6496d426-56b5-40a6-8121-2f2691400c71}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="剖面線(HH)" definition_ref="{45888e7d-7023-40e7-b32f-d9ae9287fcc3}"/>
+                    <menu UID="{53b28eae-9c2c-4d9d-be74-104b31e70402}" name="剖面線(HH)" definition_ref="{45888e7d-7023-40e7-b32f-d9ae9287fcc3}"/>
                 </menu>
                 <menu UID="{1ab7236c-64a7-4dd0-82b3-ba983c09f386}" name="設定目前圖層" definition_ref="">
-                    <menu name="0 層(LL0)" definition_ref="{4f31b045-ea19-42f2-8ac7-edbaf670f0a3}"/>
-                    <menu name="文字層(LLT)" definition_ref="{cc8c946a-b2de-4843-819f-b949bf536160}"/>
-                    <menu name="尺寸線(LLD)" definition_ref="{5fe82e23-df26-47b9-ac13-d78012a7897a}"/>
+                    <menu UID="{6001bd6a-b819-4404-b357-04a4c488e7ab}" name="0 層(LL0)" definition_ref="{4f31b045-ea19-42f2-8ac7-edbaf670f0a3}"/>
+                    <menu UID="{67a09788-6ff0-4ab1-839e-9d73007d34b7}" name="文字層(LLT)" definition_ref="{cc8c946a-b2de-4843-819f-b949bf536160}"/>
+                    <menu UID="{e97276a0-1d1d-439c-95b4-727f9fb4a816}" name="尺寸線(LLD)" definition_ref="{5fe82e23-df26-47b9-ac13-d78012a7897a}"/>
                 </menu>
                 <menu UID="{4a5b7cf0-f304-4797-a219-929dc5dbca2f}" name="畫線" definition_ref="">
-                    <menu name="粗連續線(SLL)" definition_ref="{855fd91b-8e20-41c5-a636-0914b26a92a2}"/>
-                    <menu name="細連續線(TLL)" definition_ref="{3ba5595c-2045-4418-8d2d-24a0ad7ef31a}"/>
+                    <menu UID="{da6c0ee4-ee49-456f-8dc9-c5d08bc0856c}" name="粗連續線(SLL)" definition_ref="{855fd91b-8e20-41c5-a636-0914b26a92a2}"/>
+                    <menu UID="{be985c1a-6792-41f3-ab26-282fd1bcd5ca}" name="細連續線(TLL)" definition_ref="{3ba5595c-2045-4418-8d2d-24a0ad7ef31a}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="標準中心線(CLL)" definition_ref="{17caae83-d386-479a-a079-eccbf50abe02}"/>
-                    <menu name="短中心線(SCLL)" definition_ref="{ed6b164f-b42d-44cf-b603-14b42fa1b4bc}"/>
+                    <menu UID="{bdd94747-ea48-4c09-95f6-67291491ce1d}" name="標準中心線(CLL)" definition_ref="{17caae83-d386-479a-a079-eccbf50abe02}"/>
+                    <menu UID="{20738b94-d52b-4bd8-84d8-0c1d1fbfa447}" name="短中心線(SCLL)" definition_ref="{ed6b164f-b42d-44cf-b603-14b42fa1b4bc}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="標準虛線(DLL)" definition_ref="{e384a9ee-4803-4c31-aaec-216467a515e1}"/>
-                    <menu name="短虛線(SDLL)" definition_ref="{d648c69c-5d5e-4167-9f10-8cb7704d232c}"/>
+                    <menu UID="{1386336d-8072-47da-88dc-c92bde2fb9bb}" name="標準虛線(DLL)" definition_ref="{e384a9ee-4803-4c31-aaec-216467a515e1}"/>
+                    <menu UID="{fd23c198-0b9b-4cfb-8c16-f4567dd44ef9}" name="短虛線(SDLL)" definition_ref="{d648c69c-5d5e-4167-9f10-8cb7704d232c}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="標準假想線(PLL)" definition_ref="{9de9e214-ef26-4b80-b424-36114f8a3157}"/>
-                    <menu name="短假想線(SPLL)" definition_ref="{cc57fb2a-5da9-425b-ba5d-64b15fb69ba3}"/>
+                    <menu UID="{2aa5edd5-f73c-4cce-9501-5de98be235db}" name="標準假想線(PLL)" definition_ref="{9de9e214-ef26-4b80-b424-36114f8a3157}"/>
+                    <menu UID="{8f5ac28f-153a-4936-95cb-8298741ff232}" name="短假想線(SPLL)" definition_ref="{cc57fb2a-5da9-425b-ba5d-64b15fb69ba3}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="剖面線(HLL)" definition_ref="{ffc54533-3324-4dfb-872c-51219ea84ef3}"/>
+                    <menu UID="{69dbaa74-cdce-43bf-8e3b-5f0313267754}" name="剖面線(HLL)" definition_ref="{ffc54533-3324-4dfb-872c-51219ea84ef3}"/>
                 </menu>
                 <menu UID="{b50db329-49be-4a26-80ac-f724527535f0}" name="改變線性" definition_ref="">
-                    <menu name="粗連續線" definition_ref="{2c3035e8-13aa-430a-a7a1-f33ea2db6110}"/>
-                    <menu name="細連續線" definition_ref="{d4781e3c-3cb9-434e-b7ae-47251ca2dc89}"/>
+                    <menu UID="{a4a12713-6ee8-4795-b44b-07b06f908503}" name="粗連續線" definition_ref="{2c3035e8-13aa-430a-a7a1-f33ea2db6110}"/>
+                    <menu UID="{e4f14613-afab-4f57-99c4-356620a0e9cb}" name="細連續線" definition_ref="{d4781e3c-3cb9-434e-b7ae-47251ca2dc89}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="標準中心線" definition_ref="{d811fec9-0e62-4026-a43d-df562ce0bc2e}"/>
-                    <menu name="短中心線" definition_ref="{a13efa3f-498b-4eb9-b10f-56999eb66c3d}"/>
+                    <menu UID="{411499e2-033f-4e82-bb48-dec0116c2ae3}" name="標準中心線" definition_ref="{d811fec9-0e62-4026-a43d-df562ce0bc2e}"/>
+                    <menu UID="{81356977-0710-4402-ab0a-61646f92359e}" name="短中心線" definition_ref="{a13efa3f-498b-4eb9-b10f-56999eb66c3d}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="標準虛線" definition_ref="{52851748-ddcd-4da0-b14b-17b35587f1af}"/>
-                    <menu name="短虛線" definition_ref="{b14d2a6c-b624-4439-93c4-135b120921a4}"/>
+                    <menu UID="{8e4313f0-e7cc-4a1e-a863-4a0685ad0d8e}" name="標準虛線" definition_ref="{52851748-ddcd-4da0-b14b-17b35587f1af}"/>
+                    <menu UID="{249686ed-7d10-41c1-95de-2fdc15396ffe}" name="短虛線" definition_ref="{b14d2a6c-b624-4439-93c4-135b120921a4}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="標準假想線" definition_ref="{339eabf7-2de2-426b-91cf-755c9f808aa7}"/>
-                    <menu name="短假想線" definition_ref="{27afd4e0-af25-4284-94a7-84b3d55f1752}"/>
+                    <menu UID="{63966313-94ff-4db3-87a6-0bfbaaf535dd}" name="標準假想線" definition_ref="{339eabf7-2de2-426b-91cf-755c9f808aa7}"/>
+                    <menu UID="{07f125fa-2e56-4db3-8333-0db45ad80168}" name="短假想線" definition_ref="{27afd4e0-af25-4284-94a7-84b3d55f1752}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="剖面線" definition_ref="{c79b542a-fc74-4014-9cef-0c52c238df3b}"/>
+                    <menu UID="{caad4bf6-a15b-4096-8ba2-6eedb744ab2e}" name="剖面線" definition_ref="{c79b542a-fc74-4014-9cef-0c52c238df3b}"/>
                 </menu>
                 <menu name="" definition_ref=""/>
                 <menu UID="{30ebec9e-c849-45fc-942a-2939c5f39001}" name="系統設定" definition_ref="">
-                    <menu name="舊圖轉新圖" definition_ref="{58e20820-2312-445c-a683-76012e9e5bdc}"/>
+                    <menu UID="{5d39dcdb-20f3-4b75-ab2c-256341dfb49f}" name="舊圖轉新圖" definition_ref="{58e20820-2312-445c-a683-76012e9e5bdc}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="鎖點模式組別定義" definition_ref="{a4fee9e8-ca1f-4f8f-af64-b5ec6e6aa704}"/>
+                    <menu UID="{aee3b285-1622-4e9e-b541-ed0b11727aa5}" name="鎖點模式組別定義" definition_ref="{a4fee9e8-ca1f-4f8f-af64-b5ec6e6aa704}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="指標球定義" definition_ref="{9dcf4374-25d9-48e7-99a3-0f8d027010e3}"/>
+                    <menu UID="{5cc5b4dc-dced-4cd5-8b24-2a1d7e314394}" name="指標球定義" definition_ref="{9dcf4374-25d9-48e7-99a3-0f8d027010e3}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="推拔系統管理" definition_ref="{0f02b418-f1bf-4714-9c6a-d9f6134c6112}"/>
+                    <menu UID="{e8fcc9d7-86a1-4654-a9ff-5581b1c53eca}" name="推拔系統管理" definition_ref="{0f02b418-f1bf-4714-9c6a-d9f6134c6112}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="圖框設定" definition_ref="{f954c64b-97f8-417c-b239-adc690a793c3}"/>
-                    <menu name="圖框設定修改" definition_ref="{757d8e16-f368-4ab8-9586-dedf750dba9b}"/>
-                    <menu name="圖框日期型式" definition_ref="{43a428e1-ca0f-4dbb-ad83-64c8fbee4803}"/>
-                    <menu name="比例變動時會連動的BLOCK" definition_ref="{bac7a6c9-3a5e-4237-8267-730d922e8ac5}"/>
-                    <menu name="設定線型系統變數" definition_ref="{cc9d9425-cbda-4286-91e6-80f40effc626}"/>
-                    <menu name="設定圖層系統變數" definition_ref="{70ca118e-54ac-478d-8a86-ca071104836c}"/>
+                    <menu UID="{626dbfa9-081e-4281-ab86-038d8ebc0b66}" name="圖框設定" definition_ref="{f954c64b-97f8-417c-b239-adc690a793c3}"/>
+                    <menu UID="{44e19777-f518-44c4-9c4e-990318bc9d94}" name="圖框設定修改" definition_ref="{757d8e16-f368-4ab8-9586-dedf750dba9b}"/>
+                    <menu UID="{260c182f-49dc-4c34-a213-13b1928f4a77}" name="圖框日期型式" definition_ref="{43a428e1-ca0f-4dbb-ad83-64c8fbee4803}"/>
+                    <menu UID="{b2e3dbdb-d826-4c40-9d3b-4e6be778810a}" name="比例變動時會連動的BLOCK" definition_ref="{bac7a6c9-3a5e-4237-8267-730d922e8ac5}"/>
+                    <menu UID="{25e28750-f426-4fb9-8cad-996c46034715}" name="設定線型系統變數" definition_ref="{cc9d9425-cbda-4286-91e6-80f40effc626}"/>
+                    <menu UID="{2e42752e-31e6-49a9-821c-a6f83c5b8051}" name="設定圖層系統變數" definition_ref="{70ca118e-54ac-478d-8a86-ca071104836c}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="零件組合時預設之顏色" definition_ref="{38d6d5bd-a18a-4eef-932e-479482c2b465}"/>
-                    <menu name="零件組合時刪除之圖層" definition_ref="{a768b346-8cfc-4de5-86ad-0468735faa8b}"/>
-                    <menu name="零件組合時刪除之圖塊" definition_ref="{f68b8f9c-72a3-4f29-aaa4-3b8bf426877f}"/>
+                    <menu UID="{23575230-3a16-4143-a2a8-6c77d6bd7c52}" name="零件組合時預設之顏色" definition_ref="{38d6d5bd-a18a-4eef-932e-479482c2b465}"/>
+                    <menu UID="{e1b6f7c2-82a2-462b-bf2a-f8352707e8f6}" name="零件組合時刪除之圖層" definition_ref="{a768b346-8cfc-4de5-86ad-0468735faa8b}"/>
+                    <menu UID="{435f2e1b-251d-4c8a-bc94-1f85c2cd7d7e}" name="零件組合時刪除之圖塊" definition_ref="{f68b8f9c-72a3-4f29-aaa4-3b8bf426877f}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="自動拆圖時不拆之圖層" definition_ref="{53d82ff8-c3a4-468b-9f83-39a23c95dc78}"/>
-                    <menu name="自動拆圖時不拆之圖塊" definition_ref="{8cd50863-bc3a-4d7f-8cf3-d140879dd39c}"/>
+                    <menu UID="{31b5a3dc-6ed0-445d-97d5-3454475d8862}" name="自動拆圖時不拆之圖層" definition_ref="{53d82ff8-c3a4-468b-9f83-39a23c95dc78}"/>
+                    <menu UID="{88544cdf-1542-42d4-948c-4840b962e402}" name="自動拆圖時不拆之圖塊" definition_ref="{8cd50863-bc3a-4d7f-8cf3-d140879dd39c}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="不建立資訊點的圖層" definition_ref="{d1f3c7f5-c1a8-4699-b6e0-b9528a4e1e42}"/>
+                    <menu UID="{8e658388-9663-4757-aeb0-ba96b5e182f9}" name="不建立資訊點的圖層" definition_ref="{d1f3c7f5-c1a8-4699-b6e0-b9528a4e1e42}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="零件定義資料" definition_ref="{f14efcaf-4ee7-4e18-8f0d-a883cdbdd3f6}"/>
-                    <menu name="舊圖框屬性BLOCK名稱" definition_ref="{a157e6ed-2e5e-476c-a4f2-6b64901bb1c6}"/>
-                    <menu name="舊圖框屬性對應資訊點標籤" definition_ref="{ae66f22b-28ba-4801-b96a-58a3aade03ab}"/>
+                    <menu UID="{cdaa944f-5d10-4bdc-b6fa-0a451950e940}" name="零件定義資料" definition_ref="{f14efcaf-4ee7-4e18-8f0d-a883cdbdd3f6}"/>
+                    <menu UID="{22e4574a-b02e-4301-9055-e82cf83fac93}" name="舊圖框屬性BLOCK名稱" definition_ref="{a157e6ed-2e5e-476c-a4f2-6b64901bb1c6}"/>
+                    <menu UID="{0c1830f3-28a7-4ea6-89d5-f595b20615c0}" name="舊圖框屬性對應資訊點標籤" definition_ref="{ae66f22b-28ba-4801-b96a-58a3aade03ab}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="定義物料資料庫欄位" definition_ref="{fd6b21c4-5185-4a36-b863-e5e76769e444}"/>
-                    <menu name="管理物料資料庫" definition_ref="{40074e25-d317-4f20-99f5-f632b0dda5d9}"/>
-                    <menu name="圖檔管理資料庫欄位設定" definition_ref="{4cbc85e3-0c98-4eff-9378-0880bb3d20d7}"/>
+                    <menu UID="{b38b3a64-00ab-4759-bbf6-93b399cd2e67}" name="定義物料資料庫欄位" definition_ref="{fd6b21c4-5185-4a36-b863-e5e76769e444}"/>
+                    <menu UID="{241bb6a1-c5a7-4729-98a5-0442d65d21a8}" name="管理物料資料庫" definition_ref="{40074e25-d317-4f20-99f5-f632b0dda5d9}"/>
+                    <menu UID="{d77edb4c-5bdf-4fad-a6cd-a078f9942de4}" name="圖檔管理資料庫欄位設定" definition_ref="{4cbc85e3-0c98-4eff-9378-0880bb3d20d7}"/>
                 </menu>
                 <menu name="" definition_ref=""/>
                 <menu UID="{d41a5cfe-c945-42ff-b9a8-7bc927ce9731}" name="舊圖轉新圖" definition_ref="{9cd11c03-3ab4-49c7-a051-e5313747ddbb}"/>
@@ -184,39 +184,39 @@
                 <menu UID="{95a9a39b-73bf-40e3-b246-fbde684db0c8}" name="機械圖(軸)" definition_ref="{5530dddc-bb17-406e-a613-8bf25090ba63}"/>
                 <menu name="" definition_ref=""/>
                 <menu UID="{91ae9506-2f67-4938-9ae7-0ad1416802ba}" name="組合圖整合功能" definition_ref="">
-                    <menu name="移動零件" definition_ref="{f511d403-09c4-4bb7-a77d-e8a1e78466ef}"/>
-                    <menu name="複製零件" definition_ref="{8b332c8e-b7c2-4587-9d7a-2a6f1f845671}"/>
-                    <menu name="刪除零件" definition_ref="{32d0be69-aa96-42c4-9f5d-d5613053887f}"/>
-                    <menu name="鏡設零件" definition_ref="{81a87057-5e5f-4f90-b617-2bf91b1be8fd}"/>
-                    <menu name="旋轉零件" definition_ref="{63f6a5b0-d34e-40d4-b816-e6397194960e}"/>
+                    <menu UID="{5a6150c3-a1c9-45ac-9c79-1d243579a5a1}" name="移動零件" definition_ref="{f511d403-09c4-4bb7-a77d-e8a1e78466ef}"/>
+                    <menu UID="{6537984f-7831-4f8d-a80f-cdcf364347d5}" name="複製零件" definition_ref="{8b332c8e-b7c2-4587-9d7a-2a6f1f845671}"/>
+                    <menu UID="{92209c4c-005e-4dc5-8cd8-274701793e93}" name="刪除零件" definition_ref="{32d0be69-aa96-42c4-9f5d-d5613053887f}"/>
+                    <menu UID="{1291c77f-a473-4ff9-8c3d-0f41d71c6ffd}" name="鏡設零件" definition_ref="{81a87057-5e5f-4f90-b617-2bf91b1be8fd}"/>
+                    <menu UID="{3bb8c3b7-4a58-4d7d-8944-0c93443245f8}" name="旋轉零件" definition_ref="{63f6a5b0-d34e-40d4-b816-e6397194960e}"/>
                 </menu>
                 <menu name="" definition_ref=""/>
                 <menu UID="{695e6510-27cd-4d5e-86a8-f41337751a7f}" name="機械設計家工具列" definition_ref="">
-                    <menu name="輔助繪圖(一)" definition_ref="{3385bac4-49b9-4998-873b-34af9e543e07}"/>
-                    <menu name="輔助繪圖(二)" definition_ref="{f8309229-7880-435c-9eed-fb6f4abd4c63}"/>
-                    <menu name="輔助編輯(一)" definition_ref="{0f516cf3-934a-4b6d-bab5-ebc402d966ec}"/>
-                    <menu name="輔助編輯(二)" definition_ref="{ed3bf09c-6fdb-41d6-9914-f90d238f86ec}"/>
+                    <menu UID="{afb68c14-a7b7-4aac-8d46-c4dcde6b7d11}" name="輔助繪圖(一)" definition_ref="{3385bac4-49b9-4998-873b-34af9e543e07}"/>
+                    <menu UID="{c0edd662-3733-408f-a7d6-92be7b350268}" name="輔助繪圖(二)" definition_ref="{f8309229-7880-435c-9eed-fb6f4abd4c63}"/>
+                    <menu UID="{8f7326ce-7862-4f5e-a665-483de674dd94}" name="輔助編輯(一)" definition_ref="{0f516cf3-934a-4b6d-bab5-ebc402d966ec}"/>
+                    <menu UID="{2b179659-9dee-4e57-9a91-6e01d59b43af}" name="輔助編輯(二)" definition_ref="{ed3bf09c-6fdb-41d6-9914-f90d238f86ec}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="投影線" definition_ref="{f6333600-168d-47a0-958f-d2f059a5b1b9}"/>
-                    <menu name="作圖線性設定" definition_ref="{b06c12f8-287b-409d-9670-f670579e440f}"/>
+                    <menu UID="{f214cc61-7a87-43ba-92da-0e22530971e6}" name="投影線" definition_ref="{f6333600-168d-47a0-958f-d2f059a5b1b9}"/>
+                    <menu UID="{ec164eab-a29f-4b69-abc6-205d9b68bc77}" name="作圖線性設定" definition_ref="{b06c12f8-287b-409d-9670-f670579e440f}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="輔助標註一" definition_ref="{176639e1-bba4-4d65-bbd4-4e2e1d6d490f}"/>
-                    <menu name="輔助標註二" definition_ref="{b78fb3cd-2b57-453a-87fc-09f7adc857d9}"/>
-                    <menu name="幾合公差標註" definition_ref="{454b9382-8a4c-4fb1-8147-e182b5298135}"/>
+                    <menu UID="{882569a0-40f5-4fc4-a38a-bc523b7421ef}" name="輔助標註一" definition_ref="{176639e1-bba4-4d65-bbd4-4e2e1d6d490f}"/>
+                    <menu UID="{119f4616-35c3-4905-8744-21c815cfc40e}" name="輔助標註二" definition_ref="{b78fb3cd-2b57-453a-87fc-09f7adc857d9}"/>
+                    <menu UID="{553d5572-e18e-41c3-ab73-1eed0e26b985}" name="幾合公差標註" definition_ref="{454b9382-8a4c-4fb1-8147-e182b5298135}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="組合圖與材料清單" definition_ref="{46afcf2a-1d21-4128-9768-f1ce2d3ebb9d}"/>
-                    <menu name="圖層控制" definition_ref="{3036f7aa-898d-4930-9dc5-720dbb3da7b0}"/>
+                    <menu UID="{5d4bc5b7-e50a-49b0-aa87-c3a24591c63f}" name="組合圖與材料清單" definition_ref="{46afcf2a-1d21-4128-9768-f1ce2d3ebb9d}"/>
+                    <menu UID="{e627f24d-9948-48ba-b1bf-adc7bee120d9}" name="圖層控制" definition_ref="{3036f7aa-898d-4930-9dc5-720dbb3da7b0}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="資料查詢" definition_ref="{d2fe6250-7064-47df-a5b7-b22cb70ed2af}"/>
-                    <menu name="鍵槽與螺紋" definition_ref="{0815e102-268b-491e-bf01-d0d42b1c8d86}"/>
-                    <menu name="軸產生器" definition_ref="{d9d946e1-3d65-4c5c-97c1-cc1b16aa9a47}"/>
+                    <menu UID="{3091a5cc-f75e-4688-9625-68dd6556a78f}" name="資料查詢" definition_ref="{d2fe6250-7064-47df-a5b7-b22cb70ed2af}"/>
+                    <menu UID="{3f500cee-73bb-4fec-81ee-5f0502b596b3}" name="鍵槽與螺紋" definition_ref="{0815e102-268b-491e-bf01-d0d42b1c8d86}"/>
+                    <menu UID="{1b7ee1b8-42fc-4494-8a29-1b0fa8748a53}" name="軸產生器" definition_ref="{d9d946e1-3d65-4c5c-97c1-cc1b16aa9a47}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="鎖點模式組" definition_ref="{1b631562-f300-4bf7-85ec-2ea5ff0989b9}"/>
-                    <menu name="放圖框定比例" definition_ref="{36e078a2-b696-4cc0-a3d2-1ca553e8735a}"/>
-                    <menu name="開放圖庫" definition_ref="{4a904419-eabd-41a8-a0b7-bd1d0eb80114}"/>
-                    <menu name="辭庫與計算機" definition_ref="{814534a9-6358-49a1-bfcc-13dd773cceeb}"/>
+                    <menu UID="{849871da-6088-4764-bdd3-1c7b39df2b22}" name="鎖點模式組" definition_ref="{1b631562-f300-4bf7-85ec-2ea5ff0989b9}"/>
+                    <menu UID="{ad401942-bdf0-47dd-b5c1-cce713098c63}" name="放圖框定比例" definition_ref="{36e078a2-b696-4cc0-a3d2-1ca553e8735a}"/>
+                    <menu UID="{a5baf2f4-0b23-45e7-b915-a57f6580e16a}" name="開放圖庫" definition_ref="{4a904419-eabd-41a8-a0b7-bd1d0eb80114}"/>
+                    <menu UID="{58c6f4ab-d6e9-4c01-814c-f28a11cde476}" name="辭庫與計算機" definition_ref="{814534a9-6358-49a1-bfcc-13dd773cceeb}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="物料結構管理" definition_ref="{ed263567-90be-48de-bde9-a7dc0544db28}"/>
+                    <menu UID="{a2cb3aec-bc66-42df-980c-4c51982b77cc}" name="物料結構管理" definition_ref="{ed263567-90be-48de-bde9-a7dc0544db28}"/>
                 </menu>
             </menu>
             <menu UID="{f5aef90b-d7cb-49a2-83e1-de2dde61c495}" name="圖管與物料" definition_ref="">
@@ -226,9 +226,9 @@
                 <menu UID="{cbd116cc-af66-4486-89a1-91b31067b1ce}" name="建立新零件圖層" definition_ref="{70a758e4-aef3-41cf-b327-f2cb20fc351c}"/>
                 <menu UID="{58c93d2b-abed-47b2-9310-abde09e4c4e1}" name="修改資訊點資料" definition_ref="{a5ad0cb1-b85a-48b6-937d-f34acd0c0fda}"/>
                 <menu UID="{4a0a41e8-f4ed-49da-86ea-8d327f961ea6}" name="建立資訊點" definition_ref="">
-                    <menu name="自己輸入資料" definition_ref="{2b2facac-5d3d-4d73-a78f-7b0734e9f150}"/>
-                    <menu name="取出圖面上文字" definition_ref="{ae38ad15-5466-4ba7-8799-33bc45b1955e}"/>
-                    <menu name="由圖框屬性萃取" definition_ref="{e2daddd6-3bc0-49d2-9a3a-98f22a587ec6}"/>
+                    <menu UID="{3a95454d-f452-4ab5-a1c2-f7b9d72cd712}" name="自己輸入資料" definition_ref="{2b2facac-5d3d-4d73-a78f-7b0734e9f150}"/>
+                    <menu UID="{b94ac13a-f972-439d-85f9-a5c033edbf23}" name="取出圖面上文字" definition_ref="{ae38ad15-5466-4ba7-8799-33bc45b1955e}"/>
+                    <menu UID="{e19a9d3b-a4c4-481b-964d-488957dc0ade}" name="由圖框屬性萃取" definition_ref="{e2daddd6-3bc0-49d2-9a3a-98f22a587ec6}"/>
                 </menu>
                 <menu UID="{1a5cd412-9bac-41df-99a9-6f7b79c40edc}" name="移動資訊點(選擇圖元)" definition_ref="{be78681f-5fcb-4072-8820-8b7ad5d28e0e}"/>
                 <menu UID="{3d398e4d-db71-4cff-ad9b-8b9111c32d77}" name="打開資訊點" definition_ref="{f64346c0-06a7-4134-b473-9eba6e87be0e}"/>
@@ -237,11 +237,11 @@
                 <menu UID="{ebfbdd9f-95d5-4aa4-8822-eb823e9160de}" name="建立公用 BLOCK" definition_ref="{f3d1406f-af7c-46a0-92fd-5085c619d291}"/>
                 <menu name="" definition_ref=""/>
                 <menu UID="{fc906560-00a6-4c88-8927-dcd50903675e}" name="次組合管理" definition_ref="">
-                    <menu name="次組合建立" definition_ref="{dee98eb7-c174-4743-b0c4-c6cff0c65889}"/>
-                    <menu name="次組合開關" definition_ref="{2aef1860-2ffa-4b95-8a18-b7368a9de334}"/>
-                    <menu name="次組合解除" definition_ref="{a4aed198-94df-403e-b9e4-7771697d77a9}"/>
-                    <menu name="次組合部份增加" definition_ref="{239906df-f6f2-4af2-b0af-115b99f46167}"/>
-                    <menu name="次組合部份解除" definition_ref="{38d32e5e-744b-4a5b-8c1e-34afc72193df}"/>
+                    <menu UID="{d98640ff-46d3-4969-8534-6ca41b912152}" name="次組合建立" definition_ref="{dee98eb7-c174-4743-b0c4-c6cff0c65889}"/>
+                    <menu UID="{73c15cf5-569a-4243-8f78-efa2a68b8102}" name="次組合開關" definition_ref="{2aef1860-2ffa-4b95-8a18-b7368a9de334}"/>
+                    <menu UID="{1d1ae19e-39f1-4da9-b283-0cea87f9b7ff}" name="次組合解除" definition_ref="{a4aed198-94df-403e-b9e4-7771697d77a9}"/>
+                    <menu UID="{bc9eda58-4ca2-46ee-9cfc-9c0fdf590bcb}" name="次組合部份增加" definition_ref="{239906df-f6f2-4af2-b0af-115b99f46167}"/>
+                    <menu UID="{027b8e9c-9479-4a20-b54e-857e4027bc1d}" name="次組合部份解除" definition_ref="{38d32e5e-744b-4a5b-8c1e-34afc72193df}"/>
                 </menu>
                 <menu name="" definition_ref=""/>
                 <menu UID="{68a7d13d-2d40-43e5-ad44-8122adf7f0d7}" name="計算零件" definition_ref="{b5a9517b-1d16-4c3b-a057-aed758fc9766}"/>
@@ -268,557 +268,557 @@
                     <alias Alias="POP15"/>
                 </aliases>
                 <menu UID="{f1113d66-c28e-4de8-aebf-130847f50431}" name="銷" definition_ref="">
-                    <menu name="開口銷" definition_ref="{590e704a-d97b-4b2c-bdf5-c9070cac2af9}"/>
-                    <menu name="彈簧銷" definition_ref="{1f0cc152-45d6-4457-9f64-40655e7145b0}"/>
-                    <menu name="A 型平行銷" definition_ref="{d4ad8597-7fed-4055-9e27-fa832aa5c266}"/>
-                    <menu name="B 型平行銷" definition_ref="{a0e661a8-300c-4d36-9899-165a9b720b26}"/>
-                    <menu name="推拔銷" definition_ref="{fe5c3748-7cbe-4133-a508-645897b1da0d}"/>
+                    <menu UID="{f1401e51-ea2a-4061-be7f-54a25d23c0b3}" name="開口銷" definition_ref="{590e704a-d97b-4b2c-bdf5-c9070cac2af9}"/>
+                    <menu UID="{2f3ecc02-daec-4c76-9614-b3bc07c4d46f}" name="彈簧銷" definition_ref="{1f0cc152-45d6-4457-9f64-40655e7145b0}"/>
+                    <menu UID="{a1af2ae7-1e9b-412a-b5f2-f8461d1febaa}" name="A 型平行銷" definition_ref="{d4ad8597-7fed-4055-9e27-fa832aa5c266}"/>
+                    <menu UID="{74ff276c-052b-4673-9da9-472a101be7ad}" name="B 型平行銷" definition_ref="{a0e661a8-300c-4d36-9899-165a9b720b26}"/>
+                    <menu UID="{c0113e82-a92d-417a-b043-042bd0788b54}" name="推拔銷" definition_ref="{fe5c3748-7cbe-4133-a508-645897b1da0d}"/>
                 </menu>
                 <menu UID="{c56e0524-4037-45e7-8bc6-1562fc701e27}" name="鍵" definition_ref="">
-                    <menu name="半圓鍵" definition_ref="">
-                        <menu name="A 種" definition_ref="{b5bba586-b252-47e3-b76b-ece7f44aba8e}"/>
-                        <menu name="B 種" definition_ref="{9025a37c-e737-4eb8-bfc5-2d0c609b7e59}"/>
+                    <menu UID="{6e3c3b35-218d-4b54-9963-01a4166f8d59}" name="半圓鍵" definition_ref="">
+                        <menu UID="{1c008e20-c252-44e5-9997-00bd7d73be83}" name="A 種" definition_ref="{b5bba586-b252-47e3-b76b-ece7f44aba8e}"/>
+                        <menu UID="{d674d2e3-09ee-447c-aeab-8505cbeadf35}" name="B 種" definition_ref="{9025a37c-e737-4eb8-bfc5-2d0c609b7e59}"/>
                     </menu>
-                    <menu name="帶頭斜鍵" definition_ref="{d06b35f5-cbf1-42bd-89fc-fcb443152d2f}"/>
-                    <menu name="推拔鍵(斜鍵)" definition_ref="{6a0c8505-2994-492b-9c32-1a7149ee9722}"/>
-                    <menu name="平行鍵" definition_ref="">
-                        <menu name="單頭圓形" definition_ref="{aaebade5-5d13-42ed-b824-943cf319aa94}"/>
-                        <menu name="雙頭圓形" definition_ref="{45ec0dc5-d79d-49a5-a51b-081e9a019c22}"/>
-                        <menu name="單頭尖形" definition_ref="{9e12646f-7f92-40a1-bd59-87bb11a06cc6}"/>
-                        <menu name="雙頭尖形" definition_ref="{f31312d7-cbde-41db-9913-1ec567d4cdba}"/>
+                    <menu UID="{99789ca4-dc6f-4756-87f2-f64bb46fed8a}" name="帶頭斜鍵" definition_ref="{d06b35f5-cbf1-42bd-89fc-fcb443152d2f}"/>
+                    <menu UID="{199eab19-6eb7-48a1-9ad4-1f2bd54f4479}" name="推拔鍵(斜鍵)" definition_ref="{6a0c8505-2994-492b-9c32-1a7149ee9722}"/>
+                    <menu UID="{73f68893-380c-4565-8674-582cbbabe967}" name="平行鍵" definition_ref="">
+                        <menu UID="{607a1068-63f5-4444-b1f5-5d35974f4018}" name="單頭圓形" definition_ref="{aaebade5-5d13-42ed-b824-943cf319aa94}"/>
+                        <menu UID="{fc9dde23-4353-42bf-b84a-4117e059dbde}" name="雙頭圓形" definition_ref="{45ec0dc5-d79d-49a5-a51b-081e9a019c22}"/>
+                        <menu UID="{7edb9f40-ad60-4c81-bdf0-735ccf86bc4f}" name="單頭尖形" definition_ref="{9e12646f-7f92-40a1-bd59-87bb11a06cc6}"/>
+                        <menu UID="{3528218c-b872-44bb-ad0d-8dc5cee14e5a}" name="雙頭尖形" definition_ref="{f31312d7-cbde-41db-9913-1ec567d4cdba}"/>
                     </menu>
                 </menu>
                 <menu UID="{5f057805-ca4b-4070-a195-9c3dae2715b7}" name="油 封" definition_ref="">
-                    <menu name="S 型 帶彈簧橡膠外周" definition_ref="{0ccd9627-6d67-48ca-9f44-d7aa15e5af34}"/>
-                    <menu name="SM型 帶彈簧金屬外周" definition_ref="{48f445e0-3a59-4fd2-9fc7-9bce058346fe}"/>
-                    <menu name="SA型 帶彈簧之組成" definition_ref="{fb57c355-3152-429a-81be-89f47223b258}"/>
-                    <menu name="D 型 帶彈簧橡膠外周附防塵" definition_ref="{79de05c2-e67b-4fea-904d-8a4bb8c5791f}"/>
-                    <menu name="DM型 帶彈簧金屬外周附防塵" definition_ref="{3c68774b-77e3-4741-a30b-bb6f8bce116c}"/>
-                    <menu name="DA型 帶彈簧之組成附防塵" definition_ref="{7d265be8-7954-484e-942d-d78785b72e6a}"/>
-                    <menu name="G 型 未帶彈簧橡膠外周" definition_ref="{38789e6c-7a65-4468-8be7-4fdc8fd39d4b}"/>
-                    <menu name="GM型 未帶彈簧金屬外周" definition_ref="{8622744b-1559-468c-b81c-b0c5486dabb8}"/>
-                    <menu name="GA型 未帶彈簧之組成" definition_ref="{3184940e-610d-4f08-bdc4-cd05118120ab}"/>
+                    <menu UID="{5150b591-658c-446a-8667-374d0607d40e}" name="S 型 帶彈簧橡膠外周" definition_ref="{0ccd9627-6d67-48ca-9f44-d7aa15e5af34}"/>
+                    <menu UID="{11d31f02-f8a4-4b58-9a20-17a4c372a665}" name="SM型 帶彈簧金屬外周" definition_ref="{48f445e0-3a59-4fd2-9fc7-9bce058346fe}"/>
+                    <menu UID="{ded0d4f3-357b-4eac-88e7-5608156c1093}" name="SA型 帶彈簧之組成" definition_ref="{fb57c355-3152-429a-81be-89f47223b258}"/>
+                    <menu UID="{40396d39-a7d6-4d8c-b1ec-f370b8284f92}" name="D 型 帶彈簧橡膠外周附防塵" definition_ref="{79de05c2-e67b-4fea-904d-8a4bb8c5791f}"/>
+                    <menu UID="{b56b527b-4090-4afb-83ea-cec6590256ae}" name="DM型 帶彈簧金屬外周附防塵" definition_ref="{3c68774b-77e3-4741-a30b-bb6f8bce116c}"/>
+                    <menu UID="{377aa115-b38b-4edb-ba98-ac4da7fe21d0}" name="DA型 帶彈簧之組成附防塵" definition_ref="{7d265be8-7954-484e-942d-d78785b72e6a}"/>
+                    <menu UID="{9558ccb7-ca8e-41c5-a2a0-07f36c85c1b1}" name="G 型 未帶彈簧橡膠外周" definition_ref="{38789e6c-7a65-4468-8be7-4fdc8fd39d4b}"/>
+                    <menu UID="{f1449ebe-0ab0-4576-b091-ca533a1c0d72}" name="GM型 未帶彈簧金屬外周" definition_ref="{8622744b-1559-468c-b81c-b0c5486dabb8}"/>
+                    <menu UID="{87f6c9ec-aa8f-46dd-94d3-612894da4a32}" name="GA型 未帶彈簧之組成" definition_ref="{3184940e-610d-4f08-bdc4-cd05118120ab}"/>
                 </menu>
                 <menu UID="{6efdb738-8f6e-41f4-9a47-933fae6eb52d}" name="連座軸承組" definition_ref="">
-                    <menu name="UCF圓柱孔形角凸緣型" definition_ref="{8d7ef473-5c05-46ef-aef4-f6ed256776a7}"/>
-                    <menu name="UCP圓柱孔形連座型" definition_ref="{d5f4d3f7-b5ef-4e64-b165-3b3aa06308ff}"/>
-                    <menu name="UCT圓筒孔形收縮形" definition_ref="{b472a0f9-06d0-4b2c-8977-1fde6035441e}"/>
-                    <menu name="UKF斜度孔形角凸緣型" definition_ref="{def5efb8-791a-4a16-86ee-e843b85413ff}"/>
-                    <menu name="UKP斜度孔形連座型" definition_ref="{aeb4f129-c07c-4bcf-a66f-06bcb845226d}"/>
-                    <menu name="UKT斜度孔形收緊型" definition_ref="{c6052be8-9f69-4780-9c43-895593d033da}"/>
+                    <menu UID="{5bf28741-2903-45cf-bf5f-949ae83308f8}" name="UCF圓柱孔形角凸緣型" definition_ref="{8d7ef473-5c05-46ef-aef4-f6ed256776a7}"/>
+                    <menu UID="{a59d5a95-31ec-4f81-9c84-547577532e5d}" name="UCP圓柱孔形連座型" definition_ref="{d5f4d3f7-b5ef-4e64-b165-3b3aa06308ff}"/>
+                    <menu UID="{0d77833b-a984-4f2d-be72-02e1920ceee2}" name="UCT圓筒孔形收縮形" definition_ref="{b472a0f9-06d0-4b2c-8977-1fde6035441e}"/>
+                    <menu UID="{7f34e690-0a60-4f3d-aaa0-e897cd96d488}" name="UKF斜度孔形角凸緣型" definition_ref="{def5efb8-791a-4a16-86ee-e843b85413ff}"/>
+                    <menu UID="{c6a790e0-8a08-4cbb-876c-ba3b7e830f2f}" name="UKP斜度孔形連座型" definition_ref="{aeb4f129-c07c-4bcf-a66f-06bcb845226d}"/>
+                    <menu UID="{1cff3b0e-a4af-4e13-83c8-ad604d8ffe55}" name="UKT斜度孔形收緊型" definition_ref="{c6052be8-9f69-4780-9c43-895593d033da}"/>
                     <menu name="" definition_ref=""/>
-                    <menu name="UCFL圓柱孔形菱形凸緣型" definition_ref="{eb90b646-9c17-40fb-803d-e4afce3c03c5}"/>
-                    <menu name="UKFL斜度孔形菱形凸緣型" definition_ref="{ed0f9c20-42dc-44ba-b44b-bf67c1ab51c5}"/>
-                    <menu name="UCFC圓柱孔形套管圓凸緣型" definition_ref="{fe24d4dc-3f7a-4556-88cf-ed48b2e35a2a}"/>
-                    <menu name="UKFC 推拔形附插承接合圓凸緣型" definition_ref="{ea4c2660-487b-47ea-8887-3026bff7525b}"/>
+                    <menu UID="{2ed6e854-e6ac-4ffa-aff4-38fef9f9ee9b}" name="UCFL圓柱孔形菱形凸緣型" definition_ref="{eb90b646-9c17-40fb-803d-e4afce3c03c5}"/>
+                    <menu UID="{8dda9f68-4b30-4c89-9e88-e68ab42e4528}" name="UKFL斜度孔形菱形凸緣型" definition_ref="{ed0f9c20-42dc-44ba-b44b-bf67c1ab51c5}"/>
+                    <menu UID="{108a5920-2e17-4eaf-88b0-518741196f39}" name="UCFC圓柱孔形套管圓凸緣型" definition_ref="{fe24d4dc-3f7a-4556-88cf-ed48b2e35a2a}"/>
+                    <menu UID="{fe7ffcfd-54af-4809-a35b-d34c9e28f79f}" name="UKFC 推拔形附插承接合圓凸緣型" definition_ref="{ea4c2660-487b-47ea-8887-3026bff7525b}"/>
                 </menu>
                 <menu UID="{373db0a9-595d-49d1-8775-7d00b447459d}" name="華司(墊圈)" definition_ref="">
-                    <menu name="圓形平墊圈(小形)" definition_ref="{8cf94086-66a5-49dd-b7dc-a1f11228f2ef}"/>
-                    <menu name="方形平墊圈(小形)" definition_ref="{36487e8a-c5b7-4fc2-a01c-14eb1dcda93f}"/>
-                    <menu name="方形平墊圈(大形)" definition_ref="{580886da-2683-4e08-bb0c-661aa63743cd}"/>
-                    <menu name="彈簧墊圈" definition_ref="{f7ff340f-c25e-4cae-b3bb-b4f74ae50e68}"/>
-                    <menu name="滾動軸承螺帽用墊圈" definition_ref="">
-                        <menu name="直舌型式" definition_ref="{809fb125-cb96-45da-988e-45d0153355c6}"/>
-                        <menu name="彎舌型式" definition_ref="{5487f831-5a0e-4a55-b096-4ad7236fb9e3}"/>
+                    <menu UID="{163246c2-6d35-4f6c-88f6-2e1e4c8536bd}" name="圓形平墊圈(小形)" definition_ref="{8cf94086-66a5-49dd-b7dc-a1f11228f2ef}"/>
+                    <menu UID="{0564c112-dca5-4404-81bf-f70975afac7f}" name="方形平墊圈(小形)" definition_ref="{36487e8a-c5b7-4fc2-a01c-14eb1dcda93f}"/>
+                    <menu UID="{9e792209-b14a-4529-bc03-20c3092bb439}" name="方形平墊圈(大形)" definition_ref="{580886da-2683-4e08-bb0c-661aa63743cd}"/>
+                    <menu UID="{125fb84f-4f50-4e30-aa55-faedce99afe5}" name="彈簧墊圈" definition_ref="{f7ff340f-c25e-4cae-b3bb-b4f74ae50e68}"/>
+                    <menu UID="{ddb59b75-16df-4b8a-bd8f-03842ea6b929}" name="滾動軸承螺帽用墊圈" definition_ref="">
+                        <menu UID="{fcd32f06-dd93-4abc-b6e4-f8e3dc2658fc}" name="直舌型式" definition_ref="{809fb125-cb96-45da-988e-45d0153355c6}"/>
+                        <menu UID="{0472b1d2-dfb2-439d-bd11-ae0fe2394460}" name="彎舌型式" definition_ref="{5487f831-5a0e-4a55-b096-4ad7236fb9e3}"/>
                     </menu>
                 </menu>
                 <menu UID="{e35f0e2b-102f-4f21-a8bf-01dc622ac227}" name="型鋼系列" definition_ref="">
-                    <menu name="L 形等邊角鋼" definition_ref="{cfcd4e76-a7af-47d0-9af4-aa775a33cf5e}"/>
-                    <menu name="槽(C)型鋼" definition_ref="{1736ebf9-0e7a-4d85-a67e-f3ac1a7ba17a}"/>
-                    <menu name="I 形鋼" definition_ref="{89099826-040a-4064-b9fa-183edd8b3157}"/>
-                    <menu name="H 形鋼" definition_ref="{fda7df3d-e7ac-4dfc-85b5-d1712818550e}"/>
-                    <menu name="熱軋不銹鋼等邊角鋼" definition_ref="{4ae6c072-2710-4c14-9e15-d50c8348bd3a}"/>
-                    <menu name="不等邊角鋼" definition_ref="{921455ca-21dc-4778-b4d3-6669bd286a84}"/>
-                    <menu name="不等邊不等厚" definition_ref="{8bee603d-f390-4543-b6f6-eb781d6aedcc}"/>
-                    <menu name="T 形鋼" definition_ref="{2beb7657-c67c-49ff-8b16-989fbea0eda1}"/>
+                    <menu UID="{0ff39800-4f42-4a8d-b357-7c7997f68b2c}" name="L 形等邊角鋼" definition_ref="{cfcd4e76-a7af-47d0-9af4-aa775a33cf5e}"/>
+                    <menu UID="{ced46a85-3a95-4da3-9d75-8f7945632b8c}" name="槽(C)型鋼" definition_ref="{1736ebf9-0e7a-4d85-a67e-f3ac1a7ba17a}"/>
+                    <menu UID="{42635ef5-d51e-4586-93a0-47e66f5859f8}" name="I 形鋼" definition_ref="{89099826-040a-4064-b9fa-183edd8b3157}"/>
+                    <menu UID="{cfba5419-4ca3-4838-b3f8-054459c6c501}" name="H 形鋼" definition_ref="{fda7df3d-e7ac-4dfc-85b5-d1712818550e}"/>
+                    <menu UID="{97de0f85-3a6d-400d-8056-df3c1f131417}" name="熱軋不銹鋼等邊角鋼" definition_ref="{4ae6c072-2710-4c14-9e15-d50c8348bd3a}"/>
+                    <menu UID="{2f7433e3-dad0-4699-a6c2-b64f82f193b4}" name="不等邊角鋼" definition_ref="{921455ca-21dc-4778-b4d3-6669bd286a84}"/>
+                    <menu UID="{3025e185-c7d6-4246-88ec-c82b42fc419f}" name="不等邊不等厚" definition_ref="{8bee603d-f390-4543-b6f6-eb781d6aedcc}"/>
+                    <menu UID="{5cabbdd3-5749-454f-a780-72e6df21980f}" name="T 形鋼" definition_ref="{2beb7657-c67c-49ff-8b16-989fbea0eda1}"/>
                 </menu>
                 <menu UID="{e708b64c-aaa6-413b-a4e1-70a933f8158e}" name="輕量型鋼" definition_ref="">
-                    <menu name="輕槽形鋼" definition_ref="{9d193feb-b251-43e4-9697-f1a4a3a6a060}"/>
-                    <menu name="帽形鋼" definition_ref="{1c0ed457-f8b0-45d8-95d8-2728e17442c0}"/>
-                    <menu name="唇槽形鋼" definition_ref="{71a030d5-1901-42bb-94d7-9d6e8de6ca4c}"/>
-                    <menu name="輕角鋼" definition_ref="{ea7b66de-0f22-481b-815e-d4fe73aa7a86}"/>
-                    <menu name="輕 Z 形鋼" definition_ref="{02f9126f-beac-401f-97bb-98806fcd19ca}"/>
-                    <menu name="唇 Z 形鋼" definition_ref="{4275e678-da05-4b3a-928b-42cce834988e}"/>
+                    <menu UID="{7867d8f1-9514-4881-91b2-87d0ab8faa4f}" name="輕槽形鋼" definition_ref="{9d193feb-b251-43e4-9697-f1a4a3a6a060}"/>
+                    <menu UID="{04a8e244-ad84-41af-b134-c26136b6c447}" name="帽形鋼" definition_ref="{1c0ed457-f8b0-45d8-95d8-2728e17442c0}"/>
+                    <menu UID="{239a9e85-3b68-4765-9d69-63cbf1e14c04}" name="唇槽形鋼" definition_ref="{71a030d5-1901-42bb-94d7-9d6e8de6ca4c}"/>
+                    <menu UID="{c0831640-3999-44b9-be15-a018be71e0da}" name="輕角鋼" definition_ref="{ea7b66de-0f22-481b-815e-d4fe73aa7a86}"/>
+                    <menu UID="{5185ff6c-dd45-47f2-a076-a166b58f7dff}" name="輕 Z 形鋼" definition_ref="{02f9126f-beac-401f-97bb-98806fcd19ca}"/>
+                    <menu UID="{7ade89a6-2bd0-4bc0-91da-28398a50786b}" name="唇 Z 形鋼" definition_ref="{4275e678-da05-4b3a-928b-42cce834988e}"/>
                 </menu>
                 <menu name="" definition_ref=""/>
                 <menu UID="{df0d80db-37c2-49dd-a539-74a01b9ab82e}" name="螺栓與螺帽" definition_ref="">
-                    <menu name="基礎螺栓" definition_ref="">
-                        <menu name="J型" definition_ref="{7fd8e695-bf92-4233-ad43-38fdec2f846c}"/>
-                        <menu name="L型" definition_ref="{37348626-26aa-41e0-9c21-15635d90fffd}"/>
-                        <menu name="LA型" definition_ref="{1a3750c1-3bdc-4d48-a24e-fc6d75bc5565}"/>
-                        <menu name="JA型" definition_ref="{df00cb6e-1682-4066-90d0-56df84840c99}"/>
+                    <menu UID="{52b7650a-84fe-43e8-8380-f75a705464a0}" name="基礎螺栓" definition_ref="">
+                        <menu UID="{3f4ab973-515a-46b6-ac13-1b936950b26e}" name="J型" definition_ref="{7fd8e695-bf92-4233-ad43-38fdec2f846c}"/>
+                        <menu UID="{8d4a62b0-7bd1-4109-8c2b-c6b3afd8a915}" name="L型" definition_ref="{37348626-26aa-41e0-9c21-15635d90fffd}"/>
+                        <menu UID="{dde30bfc-c8b5-49b0-b61d-91a714427e51}" name="LA型" definition_ref="{1a3750c1-3bdc-4d48-a24e-fc6d75bc5565}"/>
+                        <menu UID="{ad53424c-d5fa-4b2b-98d8-79087ced0f4c}" name="JA型" definition_ref="{df00cb6e-1682-4066-90d0-56df84840c99}"/>
                     </menu>
-                    <menu name="內六角螺栓" definition_ref="{f3bee4ee-a020-4511-8a0b-9e72c367db2d}"/>
-                    <menu name="六角頭螺栓" definition_ref="">
-                        <menu name="平形端" definition_ref="{dcb18f56-e080-4956-9689-6215ad381a0a}"/>
-                        <menu name="圓形端" definition_ref="{c43e113e-bea9-4c06-8970-275feaf34778}"/>
+                    <menu UID="{a0d98a6c-26d7-4e87-995f-abfde848d38e}" name="內六角螺栓" definition_ref="{f3bee4ee-a020-4511-8a0b-9e72c367db2d}"/>
+                    <menu UID="{56692ca5-9f77-488e-8099-e9e32cab9d6f}" name="六角頭螺栓" definition_ref="">
+                        <menu UID="{8291769a-1984-4d29-a10d-2fc389357586}" name="平形端" definition_ref="{dcb18f56-e080-4956-9689-6215ad381a0a}"/>
+                        <menu UID="{2645f7d0-3a19-49a0-bd25-21e51e636849}" name="圓形端" definition_ref="{c43e113e-bea9-4c06-8970-275feaf34778}"/>
                     </menu>
-                    <menu name="六角頭螺栓 . 含墊圈" definition_ref="">
-                        <menu name="平形端" definition_ref="{6b8b94d3-1d53-41d6-8043-ccbc4c0d2b6d}"/>
-                        <menu name="圓形端" definition_ref="{3a88b6f4-7960-4411-aec5-0ec5158bc7e5}"/>
+                    <menu UID="{be272b42-217a-4440-a76d-d62f7f81d166}" name="六角頭螺栓 . 含墊圈" definition_ref="">
+                        <menu UID="{960837da-b2a8-424e-ab6b-e325661fad84}" name="平形端" definition_ref="{6b8b94d3-1d53-41d6-8043-ccbc4c0d2b6d}"/>
+                        <menu UID="{f20ba4d6-3370-4c49-929c-3802d5f37a8a}" name="圓形端" definition_ref="{3a88b6f4-7960-4411-aec5-0ec5158bc7e5}"/>
                     </menu>
-                    <menu name="方頭螺栓" definition_ref="">
-                        <menu name="平形端" definition_ref="{6e75d891-0ab6-4a88-8bb1-f7974e49dd46}"/>
-                        <menu name="圓形端" definition_ref="{87f7038d-d068-43a7-8c13-6632f00de69f}"/>
+                    <menu UID="{55c1ef07-31f3-4bd4-b4af-e162024a9243}" name="方頭螺栓" definition_ref="">
+                        <menu UID="{61df3a3a-6e53-4a06-a502-260fbe339323}" name="平形端" definition_ref="{6e75d891-0ab6-4a88-8bb1-f7974e49dd46}"/>
+                        <menu UID="{7a940230-eac6-4218-a164-f9b6996c55ed}" name="圓形端" definition_ref="{87f7038d-d068-43a7-8c13-6632f00de69f}"/>
                     </menu>
-                    <menu name="一字槽埋頭螺栓" definition_ref="">
-                        <menu name="平形端" definition_ref="{914bc483-9402-4651-9963-b32f8d6a5454}"/>
-                        <menu name="圓形端" definition_ref="{13fefab8-c0a1-4585-9151-673a2600c6e2}"/>
-                        <menu name="有鍵 . 平形端" definition_ref="{5ca047de-80ff-409b-b760-985fe068a1b3}"/>
-                        <menu name="有鍵 . 圓形端" definition_ref="{9622a2d2-0fdf-46ee-b6c3-16991cabf436}"/>
+                    <menu UID="{c101385d-02c1-49a7-a5c6-e19e53085506}" name="一字槽埋頭螺栓" definition_ref="">
+                        <menu UID="{d4dc6a82-34f8-4dd3-a1e6-faa481c889a6}" name="平形端" definition_ref="{914bc483-9402-4651-9963-b32f8d6a5454}"/>
+                        <menu UID="{d4d4d047-ee27-4846-ab0f-e323177378a2}" name="圓形端" definition_ref="{13fefab8-c0a1-4585-9151-673a2600c6e2}"/>
+                        <menu UID="{a0820ac7-d481-4749-9954-b85ea2cc4f12}" name="有鍵 . 平形端" definition_ref="{5ca047de-80ff-409b-b760-985fe068a1b3}"/>
+                        <menu UID="{7c7d7584-7776-42a2-82e8-bdb0f2f19144}" name="有鍵 . 圓形端" definition_ref="{9622a2d2-0fdf-46ee-b6c3-16991cabf436}"/>
                     </menu>
-                    <menu name="六角承窩固定螺栓" definition_ref="">
-                        <menu name="圓形底承窩 . 全柱頭端" definition_ref="{1b4fb92d-5ee6-415f-be5b-fa9c325b82c3}"/>
-                        <menu name="圓形底承窩 . 錐形端" definition_ref="{ff6c42c6-b61d-439c-938f-e1f8800c9107}"/>
-                        <menu name="圓形底承窩 . 杯形端" definition_ref="{547ea7bc-f7de-41ea-b985-746f8098152b}"/>
+                    <menu UID="{e776e83e-c990-447d-9898-3afe1cdbe9cc}" name="六角承窩固定螺栓" definition_ref="">
+                        <menu UID="{e4a911b6-dfbf-4bd2-a837-9a61fe531e87}" name="圓形底承窩 . 全柱頭端" definition_ref="{1b4fb92d-5ee6-415f-be5b-fa9c325b82c3}"/>
+                        <menu UID="{e72b1055-05ab-40e7-986f-2fff71fa608e}" name="圓形底承窩 . 錐形端" definition_ref="{ff6c42c6-b61d-439c-938f-e1f8800c9107}"/>
+                        <menu UID="{8a750e3d-c620-4be5-bcc9-bd7ba878e272}" name="圓形底承窩 . 杯形端" definition_ref="{547ea7bc-f7de-41ea-b985-746f8098152b}"/>
                         <menu name="" definition_ref=""/>
-                        <menu name="圓錐底承窩 . 平形端" definition_ref="{cc92dce5-0db7-4b71-9d18-43071ec64c92}"/>
-                        <menu name="圓錐底承窩 . 全柱頭端" definition_ref="{188b7eff-b247-4f26-9301-0627a4f30f14}"/>
-                        <menu name="圓錐底承窩 . 錐形端" definition_ref="{f5701db6-dc0a-4c95-bf2c-4f20563a1cc9}"/>
-                        <menu name="圓錐底承窩 . 杯形端" definition_ref="{e62863f5-fe22-4008-b478-0f5a9f0a13a8}"/>
+                        <menu UID="{b5cbc58d-acae-49d3-9452-4355fd349b16}" name="圓錐底承窩 . 平形端" definition_ref="{cc92dce5-0db7-4b71-9d18-43071ec64c92}"/>
+                        <menu UID="{b20f7f80-5e58-4db4-96aa-da61328ea814}" name="圓錐底承窩 . 全柱頭端" definition_ref="{188b7eff-b247-4f26-9301-0627a4f30f14}"/>
+                        <menu UID="{53c027de-7e7a-4bf8-b277-a4217b3ff31a}" name="圓錐底承窩 . 錐形端" definition_ref="{f5701db6-dc0a-4c95-bf2c-4f20563a1cc9}"/>
+                        <menu UID="{6e864e61-2a55-4fa2-a860-1cb426068fec}" name="圓錐底承窩 . 杯形端" definition_ref="{e62863f5-fe22-4008-b478-0f5a9f0a13a8}"/>
                         <menu name="" definition_ref=""/>
-                        <menu name="圓鑽底承窩 . 全柱頭端" definition_ref="{8a6103bf-e734-43a4-9d22-427dccb1a8b0}"/>
-                        <menu name="圓鑽底承窩 . 錐形端" definition_ref="{7b0afbb9-5ecd-4bdb-9f1a-1e806053331b}"/>
-                        <menu name="圓鑽底承窩 . 杯形端" definition_ref="{6d9b3df5-24c7-40cf-ae23-85252b117f08}"/>
+                        <menu UID="{47bc3ea7-9fb5-4dc4-bc4e-6db218982f0e}" name="圓鑽底承窩 . 全柱頭端" definition_ref="{8a6103bf-e734-43a4-9d22-427dccb1a8b0}"/>
+                        <menu UID="{efa0447d-7d94-4911-85c4-8b8969d63bb9}" name="圓鑽底承窩 . 錐形端" definition_ref="{7b0afbb9-5ecd-4bdb-9f1a-1e806053331b}"/>
+                        <menu UID="{6f7a4034-5301-46ab-8ec3-71b2d332b82d}" name="圓鑽底承窩 . 杯形端" definition_ref="{6d9b3df5-24c7-40cf-ae23-85252b117f08}"/>
                     </menu>
-                    <menu name="翼形螺栓" definition_ref="">
-                        <menu name="1 種 . 粗糙端" definition_ref="{f1a0ad65-d25b-4f16-a846-11d94d7079bd}"/>
-                        <menu name="1 種 . 平形端" definition_ref="{231f4b35-c6f3-4299-bb65-4e2960e1d7b5}"/>
-                        <menu name="1 種 . 圓形端" definition_ref="{1af57771-d9cf-47c7-99dc-14ae0b4e104a}"/>
+                    <menu UID="{d71b9978-6a12-43f9-af41-fe3da60ccb75}" name="翼形螺栓" definition_ref="">
+                        <menu UID="{c9ab1c58-08b5-464d-9827-dc85e88c03bb}" name="1 種 . 粗糙端" definition_ref="{f1a0ad65-d25b-4f16-a846-11d94d7079bd}"/>
+                        <menu UID="{74fb6110-f2c3-4afb-8758-f59030fbc716}" name="1 種 . 平形端" definition_ref="{231f4b35-c6f3-4299-bb65-4e2960e1d7b5}"/>
+                        <menu UID="{20370485-113c-4f37-8879-caa080d5eda7}" name="1 種 . 圓形端" definition_ref="{1af57771-d9cf-47c7-99dc-14ae0b4e104a}"/>
                         <menu name="" definition_ref=""/>
-                        <menu name="2 種 . 粗糙端" definition_ref="{b7bf5442-8575-46d1-a388-fc6479549cfb}"/>
-                        <menu name="2 種 . 平形端" definition_ref="{8a584180-8656-40ae-9390-6de03594696e}"/>
-                        <menu name="2 種 . 圓形端" definition_ref="{99f3d4f2-4829-4451-a6a0-0f280575ea20}"/>
+                        <menu UID="{153874d5-a00b-493a-98be-c48d426ef5ec}" name="2 種 . 粗糙端" definition_ref="{b7bf5442-8575-46d1-a388-fc6479549cfb}"/>
+                        <menu UID="{4c0483a0-2615-46a2-814f-d23feb6a7dcc}" name="2 種 . 平形端" definition_ref="{8a584180-8656-40ae-9390-6de03594696e}"/>
+                        <menu UID="{25246f65-99ba-4132-9153-0ff5bfcf9774}" name="2 種 . 圓形端" definition_ref="{99f3d4f2-4829-4451-a6a0-0f280575ea20}"/>
                         <menu name="" definition_ref=""/>
-                        <menu name="3 種 . 粗糙端" definition_ref="{5560f5ac-368b-4e61-b2c9-9ab58335098d}"/>
-                        <menu name="3 種 . 平形端" definition_ref="{89a33094-bf1d-4bab-b45e-124a66b01cc4}"/>
-                        <menu name="3 種 . 圓形端" definition_ref="{01244f4c-b1c3-42dc-92e6-d2eee2ec9bdf}"/>
+                        <menu UID="{2e4b1b86-6aba-41ad-af10-265cb1a17125}" name="3 種 . 粗糙端" definition_ref="{5560f5ac-368b-4e61-b2c9-9ab58335098d}"/>
+                        <menu UID="{03d371e4-5057-4da2-954a-c09636ff8c44}" name="3 種 . 平形端" definition_ref="{89a33094-bf1d-4bab-b45e-124a66b01cc4}"/>
+                        <menu UID="{860cb6af-c224-44bb-aec6-2b7a439fd3cb}" name="3 種 . 圓形端" definition_ref="{01244f4c-b1c3-42dc-92e6-d2eee2ec9bdf}"/>
                     </menu>
-                    <menu name="鉸接螺栓" definition_ref="{36fb5fb5-1119-4d9f-8128-491d5151fee9}"/>
-                    <menu name="敲擊螺栓" definition_ref="{1c0a83fc-6ab4-4a41-b2a1-e1e999bee761}"/>
-                    <menu name="環首螺栓" definition_ref="{1984074d-14a8-4bdb-8347-034d81c4fa21}"/>
-                    <menu name="無頭固定螺栓" definition_ref="{b34ed031-4713-49d3-97e6-cdcdf1b7c56d}"/>
-                    <menu name="有槽固定螺栓" definition_ref="{20c387e9-cf7c-4cd7-8b3b-0ae6cdad9365}"/>
-                    <menu name="Ｔ形螺栓" definition_ref="">
-                        <menu name="平形端" definition_ref="{f2c58b39-c491-48cf-9509-71d9e6dd7598}"/>
-                        <menu name="圓形端" definition_ref="{d5281f3d-9f65-4d60-80cc-306be82514e6}"/>
+                    <menu UID="{21d1adeb-4596-4094-85eb-046b4ca44b07}" name="鉸接螺栓" definition_ref="{36fb5fb5-1119-4d9f-8128-491d5151fee9}"/>
+                    <menu UID="{f1e32bf1-37af-4bdd-920e-3efe1e5413da}" name="敲擊螺栓" definition_ref="{1c0a83fc-6ab4-4a41-b2a1-e1e999bee761}"/>
+                    <menu UID="{78df6d2c-ad4c-4da7-abdc-99907e6883f9}" name="環首螺栓" definition_ref="{1984074d-14a8-4bdb-8347-034d81c4fa21}"/>
+                    <menu UID="{8f055276-8ba6-44ee-bd25-4d1e99539ddf}" name="無頭固定螺栓" definition_ref="{b34ed031-4713-49d3-97e6-cdcdf1b7c56d}"/>
+                    <menu UID="{f64054e6-0173-475e-83b1-337d3c05356b}" name="有槽固定螺栓" definition_ref="{20c387e9-cf7c-4cd7-8b3b-0ae6cdad9365}"/>
+                    <menu UID="{82bd3100-a501-4186-b1d1-809341394f9c}" name="Ｔ形螺栓" definition_ref="">
+                        <menu UID="{93ed16bf-6bbb-4cea-b15b-f7ecb1bca738}" name="平形端" definition_ref="{f2c58b39-c491-48cf-9509-71d9e6dd7598}"/>
+                        <menu UID="{1e0077cf-c768-43fc-966a-533620000c51}" name="圓形端" definition_ref="{d5281f3d-9f65-4d60-80cc-306be82514e6}"/>
                     </menu>
-                    <menu name="六角螺帽(小)" definition_ref="{f8715829-30ff-4db8-bd0b-d28113c20e66}"/>
-                    <menu name="六角螺帽(大)" definition_ref="{6ecc0531-e811-4d76-87ec-d55d67c12261}"/>
+                    <menu UID="{43097fee-5738-48d5-b8a3-c0aa85599c86}" name="六角螺帽(小)" definition_ref="{f8715829-30ff-4db8-bd0b-d28113c20e66}"/>
+                    <menu UID="{01ab129b-a28b-4d3a-956c-337324144f7e}" name="六角螺帽(大)" definition_ref="{6ecc0531-e811-4d76-87ec-d55d67c12261}"/>
                 </menu>
                 <menu name="" definition_ref=""/>
                 <menu UID="{48df9276-f7ab-4ea6-be96-ff1670c4cdb3}" name="滾動軸承用螺帽" definition_ref="{f49e5b3b-bf6a-4a15-bc21-0a95dfed10b7}"/>
                 <menu UID="{1660dc94-9fc6-4d0b-943d-f9bc30d6e46f}" name="軸承類" definition_ref="">
-                    <menu name="圓錐滾子軸承" definition_ref="{3b490708-3adf-48c2-a0b4-ecd076f91f14}"/>
-                    <menu name="深槽滾珠軸承" definition_ref="{82f7b428-fe83-414b-a684-47f32b075fc9}"/>
-                    <menu name="自動調心滾珠軸承" definition_ref="{453cb06e-1d95-44b2-9991-4648be403ce9}"/>
-                    <menu name="自動調心滾子軸承" definition_ref="{cae7ac4a-8b3f-4dec-a9c0-d840448013ab}"/>
-                    <menu name="單向止推滾珠軸承" definition_ref="{669bb20d-9029-4677-b12f-16ec6249b0f8}"/>
-                    <menu name="雙向止推滾珠軸承" definition_ref="{6732e834-7982-49bd-b48c-0b942cc1164a}"/>
-                    <menu name="自動調心止推滾子軸承" definition_ref="{b078a676-d130-494c-8363-cd3fb1bbbeb8}"/>
-                    <menu name="接觸角滾珠軸承" definition_ref="{5be0b5b3-ca6e-4e77-b6fd-805028287daa}"/>
-                    <menu name="雙列滾珠軸承" definition_ref="{b1570ed1-8b09-460e-a234-1fa35a9b1b34}"/>
-                    <menu name="雙列圓筒滾子軸承" definition_ref="{0c02a676-df23-43c5-9b3c-e4c4147a445c}"/>
-                    <menu name="圓筒滾子軸承" definition_ref="{9322b861-6df6-48a0-b5de-07978c0f30e9}"/>
+                    <menu UID="{ad19fa76-728b-4036-8a15-e3afc19c751b}" name="圓錐滾子軸承" definition_ref="{3b490708-3adf-48c2-a0b4-ecd076f91f14}"/>
+                    <menu UID="{19855556-92d0-4486-948b-cd570c45d9b8}" name="深槽滾珠軸承" definition_ref="{82f7b428-fe83-414b-a684-47f32b075fc9}"/>
+                    <menu UID="{ad34cbce-45a1-4956-936d-5dfb6df3e101}" name="自動調心滾珠軸承" definition_ref="{453cb06e-1d95-44b2-9991-4648be403ce9}"/>
+                    <menu UID="{ca0e2005-c0db-4d29-aec6-8a19cb94e2bb}" name="自動調心滾子軸承" definition_ref="{cae7ac4a-8b3f-4dec-a9c0-d840448013ab}"/>
+                    <menu UID="{82952153-457e-463b-82cb-f4fb9f0bf292}" name="單向止推滾珠軸承" definition_ref="{669bb20d-9029-4677-b12f-16ec6249b0f8}"/>
+                    <menu UID="{1d857be0-5ee8-4c87-9249-7fc992cd37aa}" name="雙向止推滾珠軸承" definition_ref="{6732e834-7982-49bd-b48c-0b942cc1164a}"/>
+                    <menu UID="{ff9c2069-a616-48b4-b271-787381db305e}" name="自動調心止推滾子軸承" definition_ref="{b078a676-d130-494c-8363-cd3fb1bbbeb8}"/>
+                    <menu UID="{0a28e3a9-97be-45af-9661-ad4f6eefffb9}" name="接觸角滾珠軸承" definition_ref="{5be0b5b3-ca6e-4e77-b6fd-805028287daa}"/>
+                    <menu UID="{4907a73c-574b-4de7-89d2-76c96b6296c3}" name="雙列滾珠軸承" definition_ref="{b1570ed1-8b09-460e-a234-1fa35a9b1b34}"/>
+                    <menu UID="{2942df87-84e4-430e-81ef-b3a46c449933}" name="雙列圓筒滾子軸承" definition_ref="{0c02a676-df23-43c5-9b3c-e4c4147a445c}"/>
+                    <menu UID="{e3854ea8-b978-4242-a9f6-77986393d130}" name="圓筒滾子軸承" definition_ref="{9322b861-6df6-48a0-b5de-07978c0f30e9}"/>
                 </menu>
                 <menu UID="{b8a969b8-f5b7-42c7-ab36-151538e4a24b}" name="扣環" definition_ref="">
-                    <menu name="軸用 C 型扣環" definition_ref="{5164c590-7dfd-4478-b1f8-2a59fd8f20e7}"/>
-                    <menu name="孔用 C 型扣環" definition_ref="{0f75762f-caac-41b6-9fba-05cfd9fd4fc5}"/>
-                    <menu name="E 型扣環" definition_ref="{b229d451-8c06-4ed5-9869-f11b141f89b4}"/>
+                    <menu UID="{70c60597-b9d0-4672-b5a3-b1ffc8e01696}" name="軸用 C 型扣環" definition_ref="{5164c590-7dfd-4478-b1f8-2a59fd8f20e7}"/>
+                    <menu UID="{add10d61-54b3-44d1-99f9-f14488a9c516}" name="孔用 C 型扣環" definition_ref="{0f75762f-caac-41b6-9fba-05cfd9fd4fc5}"/>
+                    <menu UID="{978557c0-8013-4df6-8ead-b2b7e3dacdc7}" name="E 型扣環" definition_ref="{b229d451-8c06-4ed5-9869-f11b141f89b4}"/>
                 </menu>
                 <menu UID="{13c06a4d-439b-47ac-96a6-932e394b4865}" name="齒輪" definition_ref="">
-                    <menu name="正齒輪" definition_ref="{f5102a09-8f0e-4604-bd0e-038eca2b104b}"/>
-                    <menu name="螺旋齒輪" definition_ref="{e5272c90-7313-4b00-aed0-abf8496d9bdb}"/>
-                    <menu name="齒條" definition_ref="{c841960a-b058-48c4-b934-61d298b766b8}"/>
-                    <menu name="傘齒輪" definition_ref="{bb763527-375f-4a9f-a2fa-d1ec6851ddb6}"/>
-                    <menu name="蝸桿" definition_ref="{e8abf8c3-b1b0-4dbd-abcf-80e8559a4157}"/>
-                    <menu name="蝸輪" definition_ref="{cdc7568c-c0d6-4283-ba0f-0beb617a627d}"/>
-                    <menu name="三角皮帶輪" definition_ref="{7eadd2be-1376-4b96-ab40-8fa3a1a38d70}"/>
-                    <menu name="B 型鏈齒輪" definition_ref="{e643aaac-3810-4356-8f38-ccc81bfa04ce}"/>
+                    <menu UID="{bd65728e-3e8d-4925-95ea-7ab1510f7d7c}" name="正齒輪" definition_ref="{f5102a09-8f0e-4604-bd0e-038eca2b104b}"/>
+                    <menu UID="{d84656f6-33cf-4077-890d-c2c5c3562701}" name="螺旋齒輪" definition_ref="{e5272c90-7313-4b00-aed0-abf8496d9bdb}"/>
+                    <menu UID="{740b66f6-7e46-42fa-8625-eb1b60413d38}" name="齒條" definition_ref="{c841960a-b058-48c4-b934-61d298b766b8}"/>
+                    <menu UID="{343733c8-9967-4fec-889f-3dc1c27c26f0}" name="傘齒輪" definition_ref="{bb763527-375f-4a9f-a2fa-d1ec6851ddb6}"/>
+                    <menu UID="{be65ee80-6b10-4bf3-9ca2-66b0c5f02a51}" name="蝸桿" definition_ref="{e8abf8c3-b1b0-4dbd-abcf-80e8559a4157}"/>
+                    <menu UID="{95f7cfbf-2e1c-45ff-86f7-8bf6d4899abd}" name="蝸輪" definition_ref="{cdc7568c-c0d6-4283-ba0f-0beb617a627d}"/>
+                    <menu UID="{1eb67469-c217-4386-a388-96141304aba2}" name="三角皮帶輪" definition_ref="{7eadd2be-1376-4b96-ab40-8fa3a1a38d70}"/>
+                    <menu UID="{6d287fe3-2f91-4706-8761-7a29d6a915ad}" name="B 型鏈齒輪" definition_ref="{e643aaac-3810-4356-8f38-ccc81bfa04ce}"/>
                 </menu>
             </menu>
         </menus>
         <toolbars>
             <toolbar UID="{86711597-6438-4104-b2b2-ac99944abea1}" movable="true" def_x_location="200" def_y_location="200" name="藝祥資訊機械設計" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar type="2" name="輔助繪圖(一)" definition_ref="POWSOFT.AUXDRAW1"/>
-                <toolbar type="2" name="輔助繪圖(二)" definition_ref="POWSOFT.AUXDRAW2"/>
-                <toolbar type="2" name="輔助編輯(一)" definition_ref="POWSOFT.AUXEDIT1"/>
-                <toolbar type="2" name="輔助編輯(二)" definition_ref="POWSOFT.AUXEDIT2"/>
+                <toolbar type="2" UID="{d8750ded-6f2a-429a-89d5-7a8e5e983f5d}" name="輔助繪圖(一)" definition_ref="POWSOFT.AUXDRAW1"/>
+                <toolbar type="2" UID="{9e8f5360-a63a-455c-972b-09d0bb1d6892}" name="輔助繪圖(二)" definition_ref="POWSOFT.AUXDRAW2"/>
+                <toolbar type="2" UID="{5d5c9b88-7d83-4748-8b32-443756e05609}" name="輔助編輯(一)" definition_ref="POWSOFT.AUXEDIT1"/>
+                <toolbar type="2" UID="{67090458-378c-4b1b-b425-78e6157aa9d5}" name="輔助編輯(二)" definition_ref="POWSOFT.AUXEDIT2"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar type="2" name="投影線" definition_ref="POWSOFT.PROJLINE"/>
-                <toolbar type="2" name="作圖線性設定" definition_ref="POWSOFT.SETLINE"/>
+                <toolbar type="2" UID="{9acd8ed8-21b1-4590-a46a-c2f93c8002d2}" name="投影線" definition_ref="POWSOFT.PROJLINE"/>
+                <toolbar type="2" UID="{95929705-9227-4a03-ad71-534f40d4038c}" name="作圖線性設定" definition_ref="POWSOFT.SETLINE"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar type="2" name="輔助標註一" definition_ref="POWSOFT.AUXDIM1"/>
-                <toolbar type="2" name="輔助標註二" definition_ref="POWSOFT.AUXDIM3"/>
-                <toolbar type="2" name="幾合公差標註" definition_ref="POWSOFT.AUXDIM2"/>
+                <toolbar type="2" UID="{026c5aa8-2307-4ac6-83b0-46a28c502a9c}" name="輔助標註一" definition_ref="POWSOFT.AUXDIM1"/>
+                <toolbar type="2" UID="{b0be3e32-0498-4f9e-a32f-17ca6c72038c}" name="輔助標註二" definition_ref="POWSOFT.AUXDIM3"/>
+                <toolbar type="2" UID="{94041600-6786-4f6b-88f3-11bc1ed55197}" name="幾合公差標註" definition_ref="POWSOFT.AUXDIM2"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar type="2" name="組合圖與材料清單" definition_ref="POWSOFT.BOM1"/>
-                <toolbar type="2" name="圖層控制" definition_ref="POWSOFT.AUXDISP1"/>
+                <toolbar type="2" UID="{ce229efb-b499-4a18-8a71-5e517eed4b0b}" name="組合圖與材料清單" definition_ref="POWSOFT.BOM1"/>
+                <toolbar type="2" UID="{62ebf823-f43c-4593-b0b0-64817fb5283c}" name="圖層控制" definition_ref="POWSOFT.AUXDISP1"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar type="2" name="資料查詢" definition_ref="POWSOFT.AUXQURY1"/>
-                <toolbar type="2" name="鍵槽與螺紋" definition_ref="POWSOFT.MECDRAW1"/>
-                <toolbar type="2" name="軸產生器" definition_ref="POWSOFT.MECDRAW2"/>
+                <toolbar type="2" UID="{81b6d512-2c8c-430b-80f6-c634c9f821d5}" name="資料查詢" definition_ref="POWSOFT.AUXQURY1"/>
+                <toolbar type="2" UID="{6d7e7ce6-a1ca-4460-bb74-dfe832437906}" name="鍵槽與螺紋" definition_ref="POWSOFT.MECDRAW1"/>
+                <toolbar type="2" UID="{f0a4a2a5-b7a3-4972-908a-626fc10ac186}" name="軸產生器" definition_ref="POWSOFT.MECDRAW2"/>
             </toolbar>
             <toolbar UID="{e7d3a85a-f9ac-4b82-9bb9-11b07b10e038}" movable="true" def_x_location="200" def_y_location="200" name="輔助繪圖(一)" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="輔助繪圖(一)" definition_ref="{3590b1f7-43ec-4c1c-88dd-eed18970a5f1}"/>
-                <toolbar name="畫環形圓" definition_ref="{fba1af5c-0079-489d-9636-66c312e651ce}"/>
-                <toolbar name="距離-角度 圓" definition_ref="{c724cc7d-3f7c-4ae4-9f9d-1f99a5730e1c}"/>
-                <toolbar name="X-Y 圓" definition_ref="{689fbd7f-d36d-4af0-862f-f69ac72b2da1}"/>
-                <toolbar name="等角度畫圓" definition_ref="{a6dbcfe7-c085-4830-acf9-29c4a2db7cd7}"/>
-                <toolbar name="矩形" definition_ref="{551cc2ec-4f4d-47b9-8843-b6eff00a3194}"/>
-                <toolbar name="矩形" definition_ref="{b05f7e43-1356-4426-84f6-79faa46b2d74}"/>
-                <toolbar name="矩形" definition_ref="{f09b1553-940c-41b0-821e-213599daa6a5}"/>
-                <toolbar name="矩形" definition_ref="{c3b751a1-0002-43e6-9d31-3550cb0fc156}"/>
-                <toolbar name="矩形" definition_ref="{37b19e64-a260-4c56-b679-6622eba245bf}"/>
-                <toolbar name="圓角輔助標註圖形" definition_ref="{6e263383-0e15-4011-bb7b-5a30e5be1cff}"/>
-                <toolbar name="鈑金件彎形孔" definition_ref="{e6a70ae7-684b-4754-bf8c-dd6d9409bf8e}"/>
+                <toolbar UID="{b69efaaa-1b62-4ddf-b4c8-fcb95f5d8c8f}" name="輔助繪圖(一)" definition_ref="{3590b1f7-43ec-4c1c-88dd-eed18970a5f1}"/>
+                <toolbar UID="{a42ccb5a-80b9-47e7-9071-848511034a1c}" name="畫環形圓" definition_ref="{fba1af5c-0079-489d-9636-66c312e651ce}"/>
+                <toolbar UID="{c93c00d7-7f1b-40f8-b0ed-158a4ff307f8}" name="距離-角度 圓" definition_ref="{c724cc7d-3f7c-4ae4-9f9d-1f99a5730e1c}"/>
+                <toolbar UID="{336c1452-64e4-43f1-8f5d-8a0513f14f6b}" name="X-Y 圓" definition_ref="{689fbd7f-d36d-4af0-862f-f69ac72b2da1}"/>
+                <toolbar UID="{8a264758-b33c-4159-9095-047ecef54c89}" name="等角度畫圓" definition_ref="{a6dbcfe7-c085-4830-acf9-29c4a2db7cd7}"/>
+                <toolbar UID="{eef1fcf7-801a-451e-a311-703dfbdce5b7}" name="矩形" definition_ref="{551cc2ec-4f4d-47b9-8843-b6eff00a3194}"/>
+                <toolbar UID="{f50af398-9609-4d1f-b486-4de7b527295c}" name="矩形" definition_ref="{b05f7e43-1356-4426-84f6-79faa46b2d74}"/>
+                <toolbar UID="{625cc75c-f77d-44af-b0de-ea2ec5de5783}" name="矩形" definition_ref="{f09b1553-940c-41b0-821e-213599daa6a5}"/>
+                <toolbar UID="{d48358a2-13c5-4740-930b-0ce936e36584}" name="矩形" definition_ref="{c3b751a1-0002-43e6-9d31-3550cb0fc156}"/>
+                <toolbar UID="{427dc167-93c7-4b88-99db-aed59bceb6b2}" name="矩形" definition_ref="{37b19e64-a260-4c56-b679-6622eba245bf}"/>
+                <toolbar UID="{cd890276-6150-4ec6-bec7-28ddcda3dbe3}" name="圓角輔助標註圖形" definition_ref="{6e263383-0e15-4011-bb7b-5a30e5be1cff}"/>
+                <toolbar UID="{e7b8c20f-5e7f-4c63-8fff-5a49ef55360c}" name="鈑金件彎形孔" definition_ref="{e6a70ae7-684b-4754-bf8c-dd6d9409bf8e}"/>
             </toolbar>
             <toolbar UID="{95eb995e-ef51-4428-b317-61ca92038ce5}" movable="true" def_x_location="200" def_y_location="200" name="輔助繪圖(二)" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="輔助繪圖(二)" definition_ref="{c2f7b971-fb40-4f56-9291-31a1a5f4acb1}"/>
-                <toolbar name="連續剖面" definition_ref="{3c039ec0-7a3b-4fbb-9ebd-657379b21320}"/>
-                <toolbar name="剖面" definition_ref="{e0e42374-95e2-4c71-ba40-9edb8a0ab73f}"/>
-                <toolbar name="剖面文字" definition_ref="{8422e7e1-8d6b-4ccb-bf37-5f0dcd0ea441}"/>
-                <toolbar name="詳圖文字" definition_ref="{509a299f-f43f-4839-82e4-8887dd49f22e}"/>
-                <toolbar name="詳圖指標" definition_ref="{96658f58-b48e-4253-af71-e2ac5502f053}"/>
-                <toolbar name="軸中心線" definition_ref="{e94b8933-415e-4b24-beff-61bc1027225f}"/>
-                <toolbar name="圓中心線" definition_ref="{b5cc5aae-8a8d-49a4-9b82-6fb446470326}"/>
-                <toolbar name="輔助畫三視圖" definition_ref="{e7ad23d9-46a1-473a-9566-6defaf5ed346}"/>
-                <toolbar name="同心圓" definition_ref="{42d9f91f-2709-41be-b218-18580981682c}"/>
-                <toolbar name="熔接點" definition_ref="{7edfad5d-ccb3-433d-a0e1-293e487ad63e}"/>
-                <toolbar name="精準孔符號" definition_ref="{eca2806f-2950-4c7c-9cab-904eff7f1f09}"/>
+                <toolbar UID="{89b53d0e-1360-4d5a-b5a2-f751079c0c72}" name="輔助繪圖(二)" definition_ref="{c2f7b971-fb40-4f56-9291-31a1a5f4acb1}"/>
+                <toolbar UID="{53a754df-3a84-4bf1-99f0-94d1074e6fa2}" name="連續剖面" definition_ref="{3c039ec0-7a3b-4fbb-9ebd-657379b21320}"/>
+                <toolbar UID="{03a93f79-e73a-4e85-b73e-b8db02fd7e5d}" name="剖面" definition_ref="{e0e42374-95e2-4c71-ba40-9edb8a0ab73f}"/>
+                <toolbar UID="{e1cce8cd-064c-49ae-acef-bc0997c7c216}" name="剖面文字" definition_ref="{8422e7e1-8d6b-4ccb-bf37-5f0dcd0ea441}"/>
+                <toolbar UID="{2bfc06e5-3052-4479-a66f-caad063eacf3}" name="詳圖文字" definition_ref="{509a299f-f43f-4839-82e4-8887dd49f22e}"/>
+                <toolbar UID="{614aa890-b34f-441c-89b9-c850e6538b7e}" name="詳圖指標" definition_ref="{96658f58-b48e-4253-af71-e2ac5502f053}"/>
+                <toolbar UID="{f99e53c7-4ed8-47a3-a050-21ab89ffa472}" name="軸中心線" definition_ref="{e94b8933-415e-4b24-beff-61bc1027225f}"/>
+                <toolbar UID="{54fce75f-456d-47df-8c6b-2ceb8ef73d36}" name="圓中心線" definition_ref="{b5cc5aae-8a8d-49a4-9b82-6fb446470326}"/>
+                <toolbar UID="{82041741-693c-41de-866d-31a8132ace9e}" name="輔助畫三視圖" definition_ref="{e7ad23d9-46a1-473a-9566-6defaf5ed346}"/>
+                <toolbar UID="{86e28a52-7da8-4da9-be45-0ce99f4301d6}" name="同心圓" definition_ref="{42d9f91f-2709-41be-b218-18580981682c}"/>
+                <toolbar UID="{6441ed14-0587-4c62-b97b-b841a50f7c0e}" name="熔接點" definition_ref="{7edfad5d-ccb3-433d-a0e1-293e487ad63e}"/>
+                <toolbar UID="{324dc002-40f2-40d8-b3ea-bf5320eb2e9d}" name="精準孔符號" definition_ref="{eca2806f-2950-4c7c-9cab-904eff7f1f09}"/>
             </toolbar>
             <toolbar UID="{12163110-333b-46a6-93d9-91d808cf57d4}" movable="true" def_x_location="200" def_y_location="200" name="輔助編輯(一)" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="輔助編輯(一)" definition_ref="{ce8f5b6e-f9dd-46ef-9f05-2a82ecbbd941}"/>
-                <toolbar name="變換成BYLAYER線性" definition_ref="{848b4bc8-0a7b-4e21-bf89-9fdb08c41407}"/>
-                <toolbar name="變換成BYBLOCK線性" definition_ref="{02e2cb51-8f3f-47a6-86ac-ed58d975ff3e}"/>
-                <toolbar name="變換粗連續線性" definition_ref="{7afb523a-c01b-4028-9da7-b8a248e6a22c}"/>
-                <toolbar name="變換標準中心線性" definition_ref="{e1b12b25-4061-4206-b9ca-cb87c0c8eff2}"/>
-                <toolbar name="變換短中心線性" definition_ref="{217a3057-c5ed-46f8-a9f7-54a09cc8375c}"/>
-                <toolbar name="變換細連續線性" definition_ref="{aa1db96b-d9c0-452e-aed9-7a1173dd74c0}"/>
-                <toolbar name="變換虛線性" definition_ref="{a7ca3f12-4d36-4e26-a5ff-4bb11bd50913}"/>
-                <toolbar name="變換假想線性" definition_ref="{f23a3399-5f59-4b85-b20d-39fefbd275b5}"/>
-                <toolbar name="變換剖面線性" definition_ref="{d249d969-0c8f-4f22-bbb3-8605de71adb5}"/>
-                <toolbar name="保留一邊導角" definition_ref="{1ab3fedb-5c07-4524-809d-be2dd2cad5e0}"/>
-                <toolbar name="保留一邊圓角" definition_ref="{5c66a98d-379d-4a70-9184-517bfa1606f7}"/>
-                <toolbar name="拷貝,旋轉換線性" definition_ref="{0b367bea-1d0d-4dec-af64-f6dc6495814a}"/>
-                <toolbar name="拷貝,旋轉換圖層" definition_ref="{10d0541d-d499-4acc-a22e-a9ea3c0add9b}"/>
-                <toolbar name="拷貝並縮放比例" definition_ref="{ff7af245-0104-4d93-82b3-421358a5a55a}"/>
+                <toolbar UID="{de46f6ab-14bd-4a80-82ca-1575fee4eab8}" name="輔助編輯(一)" definition_ref="{ce8f5b6e-f9dd-46ef-9f05-2a82ecbbd941}"/>
+                <toolbar UID="{1d0fe072-de98-48e5-8b7b-132d042ee402}" name="變換成BYLAYER線性" definition_ref="{848b4bc8-0a7b-4e21-bf89-9fdb08c41407}"/>
+                <toolbar UID="{615d9384-3198-4874-9444-26645810842e}" name="變換成BYBLOCK線性" definition_ref="{02e2cb51-8f3f-47a6-86ac-ed58d975ff3e}"/>
+                <toolbar UID="{8e622b67-e734-4922-bf04-e3f4560f6e6b}" name="變換粗連續線性" definition_ref="{7afb523a-c01b-4028-9da7-b8a248e6a22c}"/>
+                <toolbar UID="{cab04f79-e72c-4e86-97a8-6e1ca40e2811}" name="變換標準中心線性" definition_ref="{e1b12b25-4061-4206-b9ca-cb87c0c8eff2}"/>
+                <toolbar UID="{79782fd0-8b39-4fbd-9f9f-282fc3adcbdb}" name="變換短中心線性" definition_ref="{217a3057-c5ed-46f8-a9f7-54a09cc8375c}"/>
+                <toolbar UID="{785fb9d4-d8da-4589-a5b2-db02385209fb}" name="變換細連續線性" definition_ref="{aa1db96b-d9c0-452e-aed9-7a1173dd74c0}"/>
+                <toolbar UID="{4792353f-7fb0-4567-81a3-b5411826d14b}" name="變換虛線性" definition_ref="{a7ca3f12-4d36-4e26-a5ff-4bb11bd50913}"/>
+                <toolbar UID="{ead8d019-4dc1-40c7-85d7-13f1e130596d}" name="變換假想線性" definition_ref="{f23a3399-5f59-4b85-b20d-39fefbd275b5}"/>
+                <toolbar UID="{f8e2e0cb-6119-446b-b404-b72d4bdc1395}" name="變換剖面線性" definition_ref="{d249d969-0c8f-4f22-bbb3-8605de71adb5}"/>
+                <toolbar UID="{4bbb770a-6d7a-4b29-b5c2-15fefcd4e279}" name="保留一邊導角" definition_ref="{1ab3fedb-5c07-4524-809d-be2dd2cad5e0}"/>
+                <toolbar UID="{5a6bf001-1a6f-4c8e-b272-b0d51c39941f}" name="保留一邊圓角" definition_ref="{5c66a98d-379d-4a70-9184-517bfa1606f7}"/>
+                <toolbar UID="{8615f10b-0703-4776-98d7-a45cadc78108}" name="拷貝,旋轉換線性" definition_ref="{0b367bea-1d0d-4dec-af64-f6dc6495814a}"/>
+                <toolbar UID="{a8965357-1502-4374-8f70-a9b40f9c2d85}" name="拷貝,旋轉換圖層" definition_ref="{10d0541d-d499-4acc-a22e-a9ea3c0add9b}"/>
+                <toolbar UID="{b9cff0b4-3fce-487b-b3f5-7cdbf707b577}" name="拷貝並縮放比例" definition_ref="{ff7af245-0104-4d93-82b3-421358a5a55a}"/>
             </toolbar>
             <toolbar UID="{aaa582bb-f1b0-4cc0-b7a9-205761e7354b}" movable="true" def_x_location="200" def_y_location="200" name="輔助編輯(二)" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="輔助編輯(二)" definition_ref="{4e036cc5-301d-499f-93f0-aeca2b828542}"/>
-                <toolbar name="截斷軸" definition_ref="{90deca4b-139b-424a-ae7b-2edc86f01c68}"/>
-                <toolbar name="鈑金截斷線" definition_ref="{ef916ae2-0757-4579-aee1-3466ffe27ee1}"/>
-                <toolbar name="連續原點截斷" definition_ref="{3f88b6df-886d-4d58-848a-55722978e866}"/>
-                <toolbar name="連續截斷交叉點" definition_ref="{8ee521dc-acd3-40bd-8f87-e4a19847bad3}"/>
-                <toolbar name="圓形被前景遮住" definition_ref="{247562e5-b906-49e6-bd5c-3feeda73ce58}"/>
-                <toolbar name="線段被前景遮住" definition_ref="{2cc7e0f2-7fa7-4754-8fcc-acf62a8164c6}"/>
-                <toolbar name="延伸線段" definition_ref="{4ef69359-70c2-4e9b-a56d-12b923a42e40}"/>
-                <toolbar name="OFFSET變換線型" definition_ref="{fda8de03-f67a-42f7-adc0-9b288e9f006f}"/>
-                <toolbar name="OFFSET變換圖層" definition_ref="{29128ffd-948c-4185-9cbc-2b768393f752}"/>
+                <toolbar UID="{c33ee2e8-31fe-45c0-ac65-7d2c2dcc84eb}" name="輔助編輯(二)" definition_ref="{4e036cc5-301d-499f-93f0-aeca2b828542}"/>
+                <toolbar UID="{320d43a4-1c06-4fae-a365-f32cc0cbee5c}" name="截斷軸" definition_ref="{90deca4b-139b-424a-ae7b-2edc86f01c68}"/>
+                <toolbar UID="{a0755877-1366-4d95-9e31-af0b622744fc}" name="鈑金截斷線" definition_ref="{ef916ae2-0757-4579-aee1-3466ffe27ee1}"/>
+                <toolbar UID="{04e8603c-2a13-4e4d-9637-a0b4da7ff03b}" name="連續原點截斷" definition_ref="{3f88b6df-886d-4d58-848a-55722978e866}"/>
+                <toolbar UID="{e83e3cd4-99c1-4cb9-badc-f7cfcd1b7afc}" name="連續截斷交叉點" definition_ref="{8ee521dc-acd3-40bd-8f87-e4a19847bad3}"/>
+                <toolbar UID="{b525823d-716e-49a5-9c0c-0661900688e8}" name="圓形被前景遮住" definition_ref="{247562e5-b906-49e6-bd5c-3feeda73ce58}"/>
+                <toolbar UID="{7040321a-4634-40d8-b871-dc5bf96267f7}" name="線段被前景遮住" definition_ref="{2cc7e0f2-7fa7-4754-8fcc-acf62a8164c6}"/>
+                <toolbar UID="{d3550db4-b845-4b48-9dc8-9424f0d480bd}" name="延伸線段" definition_ref="{4ef69359-70c2-4e9b-a56d-12b923a42e40}"/>
+                <toolbar UID="{b88e4886-17ae-4f29-9c26-c4140e93f846}" name="OFFSET變換線型" definition_ref="{fda8de03-f67a-42f7-adc0-9b288e9f006f}"/>
+                <toolbar UID="{270dc56d-ee06-4476-b3cb-6bb2518a5dc8}" name="OFFSET變換圖層" definition_ref="{29128ffd-948c-4185-9cbc-2b768393f752}"/>
             </toolbar>
             <toolbar UID="{c73d4832-5d23-4035-853b-8e059d11b19f}" movable="true" def_x_location="200" def_y_location="200" name="投影線" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="投影線" definition_ref="{516f18c8-434e-4861-914e-d7ed0124a002}"/>
-                <toolbar name="旋轉投影線" definition_ref="{caa820ca-10e4-4047-bf84-0a51d25d1757}"/>
-                <toolbar name="旋轉投影線" definition_ref="{ba9e3612-746f-4ea6-83d0-c1f64f5b5295}"/>
-                <toolbar name="旋轉投影線" definition_ref="{cf2a3a9c-4729-439d-9994-19c1bdcd89a6}"/>
-                <toolbar name="旋轉投影線" definition_ref="{8b65246c-5788-4f6f-8c44-b1fccd1d832c}"/>
+                <toolbar UID="{cb23c36e-8895-4f2c-b284-9c75044e6852}" name="投影線" definition_ref="{516f18c8-434e-4861-914e-d7ed0124a002}"/>
+                <toolbar UID="{16041209-e146-4664-b8cc-0f473d412953}" name="旋轉投影線" definition_ref="{caa820ca-10e4-4047-bf84-0a51d25d1757}"/>
+                <toolbar UID="{a31d95c4-a8ea-4bbe-9aea-cdf99c92dd9a}" name="旋轉投影線" definition_ref="{ba9e3612-746f-4ea6-83d0-c1f64f5b5295}"/>
+                <toolbar UID="{05e9c907-1636-41a1-99c6-1f6daa760e1f}" name="旋轉投影線" definition_ref="{cf2a3a9c-4729-439d-9994-19c1bdcd89a6}"/>
+                <toolbar UID="{d1090187-ad55-4009-98af-48975283abfd}" name="旋轉投影線" definition_ref="{8b65246c-5788-4f6f-8c44-b1fccd1d832c}"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar name="消除投影線" definition_ref="{4b00e941-d2d4-45a7-b757-c620b1cc3542}"/>
-                <toolbar name="水平投影線" definition_ref="{9e323896-19d6-444a-840f-510bf25be05b}"/>
-                <toolbar name="垂直投影線" definition_ref="{03b921ae-2dfa-47d5-afb2-993187e74805}"/>
-                <toolbar name="十字投影線" definition_ref="{68a3cfa7-bad3-449c-a4c1-931d7838c531}"/>
-                <toolbar name="角度投影線" definition_ref="{53fccfcb-e835-45c6-b74c-2b172c5317af}"/>
-                <toolbar name="與線平行投影線" definition_ref="{957932bc-b09c-43b4-8c59-5f912201c425}"/>
-                <toolbar name="與線垂直投影線" definition_ref="{810020e9-92d1-43b6-bde9-9a33fa9ac33d}"/>
-                <toolbar name="任意角度投影線" definition_ref="{f7db9eda-4a12-4ed2-962b-faeaae1b4d31}"/>
-                <toolbar name="偏移投影線" definition_ref="{509a0621-6fda-4db4-bf73-07219d1e7f4a}"/>
+                <toolbar UID="{2668ce2c-25bd-4e55-ba56-abde1494b75c}" name="消除投影線" definition_ref="{4b00e941-d2d4-45a7-b757-c620b1cc3542}"/>
+                <toolbar UID="{01d51b99-3771-44e1-822d-6d5cf072b05b}" name="水平投影線" definition_ref="{9e323896-19d6-444a-840f-510bf25be05b}"/>
+                <toolbar UID="{dafdc87e-2498-41f5-b714-0caba51f314c}" name="垂直投影線" definition_ref="{03b921ae-2dfa-47d5-afb2-993187e74805}"/>
+                <toolbar UID="{85021138-3b3e-4dc1-979d-d27fc967e431}" name="十字投影線" definition_ref="{68a3cfa7-bad3-449c-a4c1-931d7838c531}"/>
+                <toolbar UID="{2678830c-c86d-41a6-b691-19b362ef1631}" name="角度投影線" definition_ref="{53fccfcb-e835-45c6-b74c-2b172c5317af}"/>
+                <toolbar UID="{a70c7953-3e43-45cc-b465-cc83a8864708}" name="與線平行投影線" definition_ref="{957932bc-b09c-43b4-8c59-5f912201c425}"/>
+                <toolbar UID="{f47e937c-ec0d-4918-97f4-92e3c6982af5}" name="與線垂直投影線" definition_ref="{810020e9-92d1-43b6-bde9-9a33fa9ac33d}"/>
+                <toolbar UID="{84d8284b-aca8-4e6e-939f-94e87d20551a}" name="任意角度投影線" definition_ref="{f7db9eda-4a12-4ed2-962b-faeaae1b4d31}"/>
+                <toolbar UID="{aa5390dc-b587-47da-9540-54d0c0442e6c}" name="偏移投影線" definition_ref="{509a0621-6fda-4db4-bf73-07219d1e7f4a}"/>
             </toolbar>
             <toolbar UID="{b4631049-0116-4204-bbda-01a01998197e}" movable="true" def_x_location="200" def_y_location="200" name="作圖線性設定" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="作圖線性設定" definition_ref="{bc2b8c72-aa8a-40e4-ad08-58c67858331d}"/>
-                <toolbar name="目前線型為粗實線" definition_ref="{34acbdfd-856c-4cac-b85c-d15d39c4ec99}"/>
-                <toolbar name="目前線型設為虛線" definition_ref="{c585d851-5173-4a42-a900-e831ca163f06}"/>
-                <toolbar name="目前線型為標準中心線" definition_ref="{66421f0f-5429-45e5-93a6-cd6436ec56cc}"/>
-                <toolbar name="目前線型為短中心線" definition_ref="{f25aef7f-14ba-4638-b620-af1cb4838e3a}"/>
-                <toolbar name="目前線型設細實線" definition_ref="{2dab5f8e-d797-4f99-99c7-c42d807c8889}"/>
-                <toolbar name="目前線型為剖面線" definition_ref="{250d5f51-8ebb-4504-90d0-0659ce6ca2bc}"/>
-                <toolbar name="目前線型為假想線" definition_ref="{18ed209e-064f-42a7-9d25-975c5252676b}"/>
+                <toolbar UID="{e25e7005-26f7-4454-9268-8fa8ab133d8a}" name="作圖線性設定" definition_ref="{bc2b8c72-aa8a-40e4-ad08-58c67858331d}"/>
+                <toolbar UID="{1fdcedb5-bb88-4287-ac36-9fef675c61a0}" name="目前線型為粗實線" definition_ref="{34acbdfd-856c-4cac-b85c-d15d39c4ec99}"/>
+                <toolbar UID="{202f8f95-4c61-41be-9c97-73b522928256}" name="目前線型設為虛線" definition_ref="{c585d851-5173-4a42-a900-e831ca163f06}"/>
+                <toolbar UID="{bf4a895e-780b-4a51-8392-7360468966d4}" name="目前線型為標準中心線" definition_ref="{66421f0f-5429-45e5-93a6-cd6436ec56cc}"/>
+                <toolbar UID="{1c7e7ea4-2874-4e89-ad17-13ab5505dd44}" name="目前線型為短中心線" definition_ref="{f25aef7f-14ba-4638-b620-af1cb4838e3a}"/>
+                <toolbar UID="{f1ea2139-164a-4872-aca4-baccfa87accf}" name="目前線型設細實線" definition_ref="{2dab5f8e-d797-4f99-99c7-c42d807c8889}"/>
+                <toolbar UID="{e643b865-5ab6-4a72-83e7-fe8fa3d4a827}" name="目前線型為剖面線" definition_ref="{250d5f51-8ebb-4504-90d0-0659ce6ca2bc}"/>
+                <toolbar UID="{605fab17-c5e4-4dac-8ebd-39dcba9ce754}" name="目前線型為假想線" definition_ref="{18ed209e-064f-42a7-9d25-975c5252676b}"/>
             </toolbar>
             <toolbar UID="{ce7231aa-4b87-4536-a7e8-294f75318e6a}" movable="true" def_x_location="200" def_y_location="200" name="輔助標註一" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="輔助標註一" definition_ref="{857eea21-0491-4a75-b751-91cfbed5ab7d}"/>
-                <toolbar name="加入方體標註符號" definition_ref="{bda24660-7f51-464d-8b80-04533a8311b3}"/>
-                <toolbar name="加入面標註符號" definition_ref="{e3aa0762-233a-40f8-8cb8-e4062791e099}"/>
-                <toolbar name="加入面標註符號" definition_ref="{8101dc2e-f211-4bdb-afab-5e3edf764c90}"/>
-                <toolbar name="加入參考標註符號" definition_ref="{620ddab5-b230-46d9-9fbc-b5f4f7b2578a}"/>
-                <toolbar name="加入直徑標註符號" definition_ref="{5f25ec5e-d466-435c-8077-b47f5a2c3bd3}"/>
-                <toolbar name="自動直徑標註" definition_ref="{16799281-34de-4169-aa86-8d6aca70e888}"/>
-                <toolbar name="尺寸還原" definition_ref="{284fbdf3-a377-4e8d-a191-97c2d91cdcc1}"/>
-                <toolbar name="小尺寸連續標註" definition_ref="{2cdea24d-d953-4427-951b-996661a97767}"/>
-                <toolbar name="箭頭邊熔接" definition_ref="{77f8b757-53ba-4352-9f5a-7ef1dce3739b}"/>
-                <toolbar name="箭頭對邊熔接" definition_ref="{cd55a42b-6a48-49d8-93c7-199287d1fcd5}"/>
-                <toolbar name="公差標註(整體性)" definition_ref="{94889b61-92d0-49c6-aac3-b2ff32ca6de3}"/>
-                <toolbar name="公差標註(分離性)" definition_ref="{f78b7891-7484-44c7-9810-debc964363e4}"/>
-                <toolbar name="取消公差標註" definition_ref="{b9a2b075-4214-4f20-9812-6a759b49dd07}"/>
-                <toolbar name="配合孔尺寸容許差" definition_ref="{e41b795c-7b11-4cbd-831e-f12ed65d6fed}"/>
-                <toolbar name="配合軸尺寸容許差" definition_ref="{84c7452e-e1e9-4038-9420-d9cd8aa55dbe}"/>
+                <toolbar UID="{bd93cea2-4037-433d-856c-cd65c94a9d75}" name="輔助標註一" definition_ref="{857eea21-0491-4a75-b751-91cfbed5ab7d}"/>
+                <toolbar UID="{cdf49aae-ee61-4876-8198-f3e03823e586}" name="加入方體標註符號" definition_ref="{bda24660-7f51-464d-8b80-04533a8311b3}"/>
+                <toolbar UID="{7eeabbd4-f442-435c-a68d-a91ee0a17281}" name="加入面標註符號" definition_ref="{e3aa0762-233a-40f8-8cb8-e4062791e099}"/>
+                <toolbar UID="{85bb4442-050c-4f10-8425-9a426337805b}" name="加入面標註符號" definition_ref="{8101dc2e-f211-4bdb-afab-5e3edf764c90}"/>
+                <toolbar UID="{8b1beaa8-4497-4616-8df6-7273eced20ab}" name="加入參考標註符號" definition_ref="{620ddab5-b230-46d9-9fbc-b5f4f7b2578a}"/>
+                <toolbar UID="{ed4b86f0-a0b1-4ca3-938c-b5317027d3a7}" name="加入直徑標註符號" definition_ref="{5f25ec5e-d466-435c-8077-b47f5a2c3bd3}"/>
+                <toolbar UID="{e158fe14-e864-45bb-a9a1-cf7c8f0468b4}" name="自動直徑標註" definition_ref="{16799281-34de-4169-aa86-8d6aca70e888}"/>
+                <toolbar UID="{80f3fa27-370c-4037-945e-0b166da50bc2}" name="尺寸還原" definition_ref="{284fbdf3-a377-4e8d-a191-97c2d91cdcc1}"/>
+                <toolbar UID="{1f8eed8e-7a8d-4e0e-8c0f-3885823f2ecf}" name="小尺寸連續標註" definition_ref="{2cdea24d-d953-4427-951b-996661a97767}"/>
+                <toolbar UID="{112214f4-abe5-45ea-b40e-6c45e1392805}" name="箭頭邊熔接" definition_ref="{77f8b757-53ba-4352-9f5a-7ef1dce3739b}"/>
+                <toolbar UID="{ab0c0bf6-e3e8-4aa4-b5fe-e88ade3bbbc7}" name="箭頭對邊熔接" definition_ref="{cd55a42b-6a48-49d8-93c7-199287d1fcd5}"/>
+                <toolbar UID="{75e5709d-3b31-4d2e-ac3c-bd0d58d96106}" name="公差標註(整體性)" definition_ref="{94889b61-92d0-49c6-aac3-b2ff32ca6de3}"/>
+                <toolbar UID="{3917fa03-2867-41b8-adf1-e19cf0424056}" name="公差標註(分離性)" definition_ref="{f78b7891-7484-44c7-9810-debc964363e4}"/>
+                <toolbar UID="{7ed1b26f-2c09-4274-85fd-4a5e4bcbfa4e}" name="取消公差標註" definition_ref="{b9a2b075-4214-4f20-9812-6a759b49dd07}"/>
+                <toolbar UID="{410917cb-0044-42f9-9685-c61794364779}" name="配合孔尺寸容許差" definition_ref="{e41b795c-7b11-4cbd-831e-f12ed65d6fed}"/>
+                <toolbar UID="{aae1ae5e-cc20-4540-99e3-6b0918f9300b}" name="配合軸尺寸容許差" definition_ref="{84c7452e-e1e9-4038-9420-d9cd8aa55dbe}"/>
             </toolbar>
             <toolbar UID="{0151a0d3-cdff-4ad1-b916-86c430953da2}" movable="true" def_x_location="200" def_y_location="200" name="輔助標註二" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="輔助標註二" definition_ref="{ec66941b-78f8-4258-b9ca-89150dfc39ff}"/>
-                <toolbar name="原點標註法" definition_ref="{a07f2379-5a42-4f41-a09a-2f008531e3f6}"/>
-                <toolbar name="設定 x,y 新原點" definition_ref="{ddbf8b20-bd1e-4e82-a728-6f3c2a875fc1}"/>
-                <toolbar name="寫出座標(x,y)" definition_ref="{9ab913a2-9e66-4560-b13c-18b388df371b}"/>
-                <toolbar name="尺寸爆炸回原層" definition_ref="{24676e20-e6e3-415e-8099-cfc768b89bdc}"/>
-                <toolbar name="引線帶辭庫" definition_ref="{8fee2150-64ef-45bc-83d1-bcb13e1f7ed3}"/>
-                <toolbar name="45度倒角標註" definition_ref="{0711f293-e452-4ba2-a847-09e3595a9ad2}"/>
-                <toolbar name="45度倒角標註" definition_ref="{2a591a6c-13b2-4903-8833-e2faf7f661ba}"/>
+                <toolbar UID="{f8309e3b-aa03-4040-a002-5ff5f44706e3}" name="輔助標註二" definition_ref="{ec66941b-78f8-4258-b9ca-89150dfc39ff}"/>
+                <toolbar UID="{9682555b-04b3-4aec-babe-64a89bca0fa4}" name="原點標註法" definition_ref="{a07f2379-5a42-4f41-a09a-2f008531e3f6}"/>
+                <toolbar UID="{063d65d7-c80a-4cac-8a07-dc45ea72ee8b}" name="設定 x,y 新原點" definition_ref="{ddbf8b20-bd1e-4e82-a728-6f3c2a875fc1}"/>
+                <toolbar UID="{dcac862c-bf90-45dc-b748-41679b8821f5}" name="寫出座標(x,y)" definition_ref="{9ab913a2-9e66-4560-b13c-18b388df371b}"/>
+                <toolbar UID="{21c14b61-3b1d-4128-bfb2-e54a2e98b343}" name="尺寸爆炸回原層" definition_ref="{24676e20-e6e3-415e-8099-cfc768b89bdc}"/>
+                <toolbar UID="{a04cd590-8291-4f36-b927-0d5d27665107}" name="引線帶辭庫" definition_ref="{8fee2150-64ef-45bc-83d1-bcb13e1f7ed3}"/>
+                <toolbar UID="{055a5f46-8500-40f6-ba22-70a16ddc0479}" name="45度倒角標註" definition_ref="{0711f293-e452-4ba2-a847-09e3595a9ad2}"/>
+                <toolbar UID="{6c34aaaf-5137-490e-b417-62bb185bbb79}" name="45度倒角標註" definition_ref="{2a591a6c-13b2-4903-8833-e2faf7f661ba}"/>
             </toolbar>
             <toolbar UID="{4b0fbe1a-9442-4b88-9d49-bed0110c02ae}" movable="true" def_x_location="200" def_y_location="200" name="幾合公差標註" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="幾合公差標註" definition_ref="{5c99c191-d804-4792-bcb6-5dac7e8ed662}"/>
-                <toolbar name="幾何公差標註" definition_ref="{7e35e6e7-8aeb-4d9c-bb21-09d95dcd3d5a}"/>
-                <toolbar name="基準線" definition_ref="{274418c1-ffe2-40b1-b179-9acbd933b7d0}"/>
-                <toolbar name="指引線" definition_ref="{bba9fecf-5e6d-4db4-a2f7-c2ffbbdf3739}"/>
-                <toolbar name="基準面" definition_ref="{94b46e09-399c-4b32-a2fc-72779f5c3d2f}"/>
+                <toolbar UID="{c776665e-8d22-4f5e-9c1e-afa6dbc911bf}" name="幾合公差標註" definition_ref="{5c99c191-d804-4792-bcb6-5dac7e8ed662}"/>
+                <toolbar UID="{0a06a469-fe8a-441e-9cde-60d1e4c87ec7}" name="幾何公差標註" definition_ref="{7e35e6e7-8aeb-4d9c-bb21-09d95dcd3d5a}"/>
+                <toolbar UID="{b66393d4-4c43-465c-99ab-b8a91b307f1b}" name="基準線" definition_ref="{274418c1-ffe2-40b1-b179-9acbd933b7d0}"/>
+                <toolbar UID="{f065cc96-48d6-45c1-a389-b2c93a00c974}" name="指引線" definition_ref="{bba9fecf-5e6d-4db4-a2f7-c2ffbbdf3739}"/>
+                <toolbar UID="{c7a6efe7-212e-478a-9f83-1d20e7deb8a1}" name="基準面" definition_ref="{94b46e09-399c-4b32-a2fc-72779f5c3d2f}"/>
             </toolbar>
             <toolbar UID="{697bf9de-55ab-4385-b3d3-fbfd37efa474}" movable="true" def_x_location="200" def_y_location="200" name="組合圖與材料清單" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="組合圖與材料清單" definition_ref="{b3954590-d00a-43d2-983a-db7f75eee72e}"/>
-                <toolbar name="向上定距(連續號)" definition_ref="{84ff88e6-f4ae-4af8-8472-9ecf4212cbd3}"/>
-                <toolbar name="向下定距(連續號)" definition_ref="{a9324861-a670-42a2-882b-76cd80fcba95}"/>
-                <toolbar name="向右定距(連續號)" definition_ref="{b582baf4-6b8f-4b1c-aaa1-b2a58b175e4f}"/>
-                <toolbar name="向左定距(連續號)" definition_ref="{b80fc8a0-5f3c-4b28-b527-f5dab6630dc8}"/>
-                <toolbar name="向上定距(不連續號)" definition_ref="{3c1df8d3-b56b-4691-9e32-32e1dee3d62d}"/>
-                <toolbar name="向下定距(不連續號)" definition_ref="{a90f74c1-ad1b-4c70-ae04-21d7e86ffcf5}"/>
-                <toolbar name="向右定距(不連續號)" definition_ref="{cd784847-5170-42b1-90b8-96306d193d1d}"/>
-                <toolbar name="向左定距(不連續號)" definition_ref="{374fc0e6-367c-4ad7-a481-87ec951d1016}"/>
-                <toolbar name="自由拉出(連續號)" definition_ref="{25eb9c9d-a308-4c3e-8e49-bcbdfd0d8859}"/>
-                <toolbar name="自由拉出(不連續號)" definition_ref="{944a463c-975d-4a1d-93b1-3bb36b1882ae}"/>
-                <toolbar name="編輯指標球" definition_ref="{eb82d4d8-e704-4f7b-9242-c5b63d059209}"/>
-                <toolbar name="產生材料單圖形" definition_ref="{644263b6-c437-465f-8bd7-7f218042b7ec}"/>
-                <toolbar name="刪除材料單圖形" definition_ref="{d88aff1e-faa7-4dc3-8ac5-a1346cddda97}"/>
-                <toolbar name="產生材料單文字檔" definition_ref="{76ab759a-d756-4b89-ab18-d3490d8ca9c6}"/>
-                <toolbar name="組合圖拆出零件圖" definition_ref="{8688f455-0e6f-4219-af0a-68d45a65de7b}"/>
-                <toolbar name="零件圖組裝成組合圖" definition_ref="{45757511-a3ac-4473-a6b9-d1a769d7bff2}"/>
+                <toolbar UID="{954caee5-9c2e-45dc-92bd-a82a0b553b9a}" name="組合圖與材料清單" definition_ref="{b3954590-d00a-43d2-983a-db7f75eee72e}"/>
+                <toolbar UID="{ef507eb5-200e-4e59-9a89-c3e16cca263f}" name="向上定距(連續號)" definition_ref="{84ff88e6-f4ae-4af8-8472-9ecf4212cbd3}"/>
+                <toolbar UID="{affb9c28-6b3b-44ee-87e6-4553662239a0}" name="向下定距(連續號)" definition_ref="{a9324861-a670-42a2-882b-76cd80fcba95}"/>
+                <toolbar UID="{8356ba29-07bd-4b30-b854-a22e4bba03de}" name="向右定距(連續號)" definition_ref="{b582baf4-6b8f-4b1c-aaa1-b2a58b175e4f}"/>
+                <toolbar UID="{a203a9f9-3600-4408-8cbf-36dc09c8507e}" name="向左定距(連續號)" definition_ref="{b80fc8a0-5f3c-4b28-b527-f5dab6630dc8}"/>
+                <toolbar UID="{9e5da799-abcc-45cd-8415-3ae12bd36e30}" name="向上定距(不連續號)" definition_ref="{3c1df8d3-b56b-4691-9e32-32e1dee3d62d}"/>
+                <toolbar UID="{78d4ae98-dde3-4bb9-9306-45028f54ebc9}" name="向下定距(不連續號)" definition_ref="{a90f74c1-ad1b-4c70-ae04-21d7e86ffcf5}"/>
+                <toolbar UID="{f1ebf47e-df16-4a0f-b3aa-b032942eabe3}" name="向右定距(不連續號)" definition_ref="{cd784847-5170-42b1-90b8-96306d193d1d}"/>
+                <toolbar UID="{259d5d80-5f2d-4c02-ba47-1ad393794bdd}" name="向左定距(不連續號)" definition_ref="{374fc0e6-367c-4ad7-a481-87ec951d1016}"/>
+                <toolbar UID="{dc41b912-b453-4dab-a673-5fc8e4d87947}" name="自由拉出(連續號)" definition_ref="{25eb9c9d-a308-4c3e-8e49-bcbdfd0d8859}"/>
+                <toolbar UID="{d9840a18-6380-475d-8f4a-c9eb5b9349d7}" name="自由拉出(不連續號)" definition_ref="{944a463c-975d-4a1d-93b1-3bb36b1882ae}"/>
+                <toolbar UID="{889148d5-462c-4931-880e-629101138273}" name="編輯指標球" definition_ref="{eb82d4d8-e704-4f7b-9242-c5b63d059209}"/>
+                <toolbar UID="{cc5b0554-3e5c-4f8d-b75f-a7c562e16ef8}" name="產生材料單圖形" definition_ref="{644263b6-c437-465f-8bd7-7f218042b7ec}"/>
+                <toolbar UID="{791b53f4-3629-4e55-a8bb-b1159b4048d7}" name="刪除材料單圖形" definition_ref="{d88aff1e-faa7-4dc3-8ac5-a1346cddda97}"/>
+                <toolbar UID="{e12ad68c-3342-4c64-8324-a0da995cb3c5}" name="產生材料單文字檔" definition_ref="{76ab759a-d756-4b89-ab18-d3490d8ca9c6}"/>
+                <toolbar UID="{7c1dff9e-a328-40dd-9ef8-8ccb391ffba2}" name="組合圖拆出零件圖" definition_ref="{8688f455-0e6f-4219-af0a-68d45a65de7b}"/>
+                <toolbar UID="{82cf619a-d27f-45a3-92e4-e96b4f6090b3}" name="零件圖組裝成組合圖" definition_ref="{45757511-a3ac-4473-a6b9-d1a769d7bff2}"/>
             </toolbar>
             <toolbar UID="{1429b24d-ea99-451d-95bd-8a78305bc339}" movable="true" def_x_location="200" def_y_location="200" name="指標球(不含資訊點)" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="向上定距(連續號)" definition_ref="{9903eea9-542f-404b-9602-99b91a06f2c9}"/>
-                <toolbar name="向下定距(連續號)" definition_ref="{b02a095d-3df0-4b6d-9d31-b343912ed5f0}"/>
-                <toolbar name="向左定距(連續號)" definition_ref="{6907bed5-04e1-47b1-ae44-694e1dc3e1f4}"/>
-                <toolbar name="向右定距(連續號)" definition_ref="{6deb5abc-58d8-47e3-a09e-28a8cd70c21d}"/>
-                <toolbar name="向上定距(不連續號)" definition_ref="{56b8f2de-5e08-43df-87fa-94bb8b352a03}"/>
-                <toolbar name="向下定距(不連續號)" definition_ref="{2eb41309-9a36-435d-9615-318301bc3306}"/>
-                <toolbar name="向左定距(不連續號)" definition_ref="{84d56d74-7e7a-4eba-81fe-9f6dc7b2912f}"/>
-                <toolbar name="向右定距(不連續號)" definition_ref="{dd2d5144-d1e8-4779-9b24-f9a3df8ca76d}"/>
-                <toolbar name="自由拉出(連續號)" definition_ref="{2727a3f7-cbf0-4ae8-882c-c32a29d70c07}"/>
-                <toolbar name="自由拉出(不連續號)" definition_ref="{a9069ff9-35dc-4662-80d6-8242f65fa0b1}"/>
-                <toolbar name="編輯指標球" definition_ref="{14d4d4c7-84d8-4a4c-bc08-9ddbc203a40a}"/>
-                <toolbar name="產生材料單圖形" definition_ref="{e4517ff9-5589-4336-a22f-a9c5daf1f502}"/>
-                <toolbar name="刪除材料單圖形" definition_ref="{c879d739-23b7-4c70-9cea-e7233ed799ba}"/>
-                <toolbar name="產生材料單文字檔" definition_ref="{e722177d-063c-43d1-8c15-213fc0cc71fe}"/>
+                <toolbar UID="{80958add-e97d-4bc6-b03b-00a12c4bd0a4}" name="向上定距(連續號)" definition_ref="{9903eea9-542f-404b-9602-99b91a06f2c9}"/>
+                <toolbar UID="{7ebfd81e-8ecd-4b41-a7e7-e09df703fcef}" name="向下定距(連續號)" definition_ref="{b02a095d-3df0-4b6d-9d31-b343912ed5f0}"/>
+                <toolbar UID="{650f3bf6-718c-4637-b3ce-c326d326e514}" name="向左定距(連續號)" definition_ref="{6907bed5-04e1-47b1-ae44-694e1dc3e1f4}"/>
+                <toolbar UID="{60c71f66-10fa-4765-b8b1-655fe783c065}" name="向右定距(連續號)" definition_ref="{6deb5abc-58d8-47e3-a09e-28a8cd70c21d}"/>
+                <toolbar UID="{02a5cc39-22ff-4b8b-ac4c-14129efe0d75}" name="向上定距(不連續號)" definition_ref="{56b8f2de-5e08-43df-87fa-94bb8b352a03}"/>
+                <toolbar UID="{46bcf322-bd83-4993-9a1c-2792382002a5}" name="向下定距(不連續號)" definition_ref="{2eb41309-9a36-435d-9615-318301bc3306}"/>
+                <toolbar UID="{fad31058-79ff-4be3-a366-813622692475}" name="向左定距(不連續號)" definition_ref="{84d56d74-7e7a-4eba-81fe-9f6dc7b2912f}"/>
+                <toolbar UID="{6314133a-c63b-47de-b746-9d405d8b8776}" name="向右定距(不連續號)" definition_ref="{dd2d5144-d1e8-4779-9b24-f9a3df8ca76d}"/>
+                <toolbar UID="{2e9d3731-ca1e-451b-9360-a142d3bd90f0}" name="自由拉出(連續號)" definition_ref="{2727a3f7-cbf0-4ae8-882c-c32a29d70c07}"/>
+                <toolbar UID="{ce8022c4-7b26-4b5e-a29e-2c2e317bc13f}" name="自由拉出(不連續號)" definition_ref="{a9069ff9-35dc-4662-80d6-8242f65fa0b1}"/>
+                <toolbar UID="{35620f8d-1dd4-48a6-8608-8e7f77764434}" name="編輯指標球" definition_ref="{14d4d4c7-84d8-4a4c-bc08-9ddbc203a40a}"/>
+                <toolbar UID="{cf99e0db-ec7c-4c71-9be7-83ad94b9f81b}" name="產生材料單圖形" definition_ref="{e4517ff9-5589-4336-a22f-a9c5daf1f502}"/>
+                <toolbar UID="{4673f322-6c70-4a28-bee7-bf60b87a17ff}" name="刪除材料單圖形" definition_ref="{c879d739-23b7-4c70-9cea-e7233ed799ba}"/>
+                <toolbar UID="{7f662705-7cdf-45e6-89e2-937829e2c11a}" name="產生材料單文字檔" definition_ref="{e722177d-063c-43d1-8c15-213fc0cc71fe}"/>
             </toolbar>
             <toolbar UID="{84d3ea20-23eb-413b-aa63-920fac645f98}" movable="true" def_x_location="200" def_y_location="200" name="圖層控制" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="true">
-                <toolbar name="圖層控制" definition_ref="{55f41be5-7e1b-4881-a597-cbceacb42f13}"/>
-                <toolbar name="顯示層" definition_ref="{63d6e4a2-3346-4f49-9cf9-de95e347bcfa}"/>
-                <toolbar name="隱藏層" definition_ref="{a3ecc21b-1625-4a46-9e63-a5a8ab1c82a9}"/>
-                <toolbar name="顯示 BLOCK" definition_ref="{1ecf1a0e-9d42-4d8a-b206-61d2a74e6998}"/>
-                <toolbar name="全部顯示" definition_ref="{6bb50ecc-0d40-425f-ba20-91c0bbe58202}"/>
-                <toolbar name="解凍層" definition_ref="{03cc0f92-e888-4aa1-a57b-924b891de622}"/>
-                <toolbar name="冷凍層" definition_ref="{fbe47319-3e28-4e6e-b559-1f412120fa42}"/>
-                <toolbar name="線型顯示控制" definition_ref="{22062202-0b1c-44d9-aed8-ca12c526c726}"/>
-                <toolbar name="製作層" definition_ref="{4ac5513e-b72d-40bc-b744-2e1a16b7a62b}"/>
-                <toolbar name="建立連續圖層" definition_ref="{6967c650-982d-413a-b150-a1f84dbc50ec}"/>
-                <toolbar name="改變層" definition_ref="{885bdc2e-60ca-45bc-95e2-d43c380c2660}"/>
-                <toolbar name="變換圖元到目前層" definition_ref="{2aa48e49-d5ba-4eef-8803-2c50a03a7fb0}"/>
-                <toolbar name="刪除層" definition_ref="{4660e120-485d-4f80-91a0-201bee98693c}"/>
-                <toolbar name="指定目前層" definition_ref="{67855ca2-8673-453b-99ee-376912019e8a}"/>
-                <toolbar name="輸入層名以控制圖層" definition_ref="{c4b1839d-0da8-49e9-9694-45d904542d64}"/>
-                <toolbar name="線色顯示" definition_ref="{faf2458e-7d3a-470d-ac5e-7bb4654e3441}"/>
-                <toolbar name="層色顯示" definition_ref="{33939894-3fb4-4582-ba2f-245e35e229fb}"/>
+                <toolbar UID="{1478fe03-abf3-498d-8f01-985c8598ccf5}" name="圖層控制" definition_ref="{55f41be5-7e1b-4881-a597-cbceacb42f13}"/>
+                <toolbar UID="{6e38d5df-490e-4efc-b38e-79b55c6b47f8}" name="顯示層" definition_ref="{63d6e4a2-3346-4f49-9cf9-de95e347bcfa}"/>
+                <toolbar UID="{731caa93-0805-424c-9afc-c808f24b8fba}" name="隱藏層" definition_ref="{a3ecc21b-1625-4a46-9e63-a5a8ab1c82a9}"/>
+                <toolbar UID="{7cf2a33d-8e80-42cd-b9f1-5d4472d3c676}" name="顯示 BLOCK" definition_ref="{1ecf1a0e-9d42-4d8a-b206-61d2a74e6998}"/>
+                <toolbar UID="{6b1cf522-d212-481b-b95e-91cbdca80b42}" name="全部顯示" definition_ref="{6bb50ecc-0d40-425f-ba20-91c0bbe58202}"/>
+                <toolbar UID="{2a1e8a4b-be00-424d-b5be-78d62f7599c6}" name="解凍層" definition_ref="{03cc0f92-e888-4aa1-a57b-924b891de622}"/>
+                <toolbar UID="{285075a1-1167-43fd-88f3-d0528f721204}" name="冷凍層" definition_ref="{fbe47319-3e28-4e6e-b559-1f412120fa42}"/>
+                <toolbar UID="{aecb1472-4128-4cbb-9f9d-0b5b6911e9a3}" name="線型顯示控制" definition_ref="{22062202-0b1c-44d9-aed8-ca12c526c726}"/>
+                <toolbar UID="{31df0fa7-e1ff-4cdb-855b-53f1d62f6c6c}" name="製作層" definition_ref="{4ac5513e-b72d-40bc-b744-2e1a16b7a62b}"/>
+                <toolbar UID="{cd1551e6-8afc-4f95-a0e3-3b1551b80a87}" name="建立連續圖層" definition_ref="{6967c650-982d-413a-b150-a1f84dbc50ec}"/>
+                <toolbar UID="{33fc2759-27e7-4000-8e09-aca634e9a11f}" name="改變層" definition_ref="{885bdc2e-60ca-45bc-95e2-d43c380c2660}"/>
+                <toolbar UID="{4eb39ba5-506d-4f89-bde8-128349478554}" name="變換圖元到目前層" definition_ref="{2aa48e49-d5ba-4eef-8803-2c50a03a7fb0}"/>
+                <toolbar UID="{3cf2c092-7500-4d6e-9b50-bcf5b673abf3}" name="刪除層" definition_ref="{4660e120-485d-4f80-91a0-201bee98693c}"/>
+                <toolbar UID="{cbb0bfee-d437-4ddb-9c6e-fc28d6888636}" name="指定目前層" definition_ref="{67855ca2-8673-453b-99ee-376912019e8a}"/>
+                <toolbar UID="{736b7cee-2855-441e-a15c-b19e95e590d6}" name="輸入層名以控制圖層" definition_ref="{c4b1839d-0da8-49e9-9694-45d904542d64}"/>
+                <toolbar UID="{8396df8e-b956-4a49-98c9-02f66ce9297a}" name="線色顯示" definition_ref="{faf2458e-7d3a-470d-ac5e-7bb4654e3441}"/>
+                <toolbar UID="{aa3356c5-8ac0-4424-ac94-23f7f7c0b917}" name="層色顯示" definition_ref="{33939894-3fb4-4582-ba2f-245e35e229fb}"/>
             </toolbar>
             <toolbar UID="{c50d13a3-f6c3-466e-a42e-69f768f4d0fd}" movable="true" def_x_location="200" def_y_location="200" name="資料查詢" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="資料查詢" definition_ref="{49b3e068-7d72-411e-81a4-9883f331a51d}"/>
-                <toolbar name="丸鐵規格" definition_ref="{06bea408-6ae6-4611-b586-ca7703701035}"/>
-                <toolbar name="平鐵規格" definition_ref="{b9220881-129a-48ac-824a-fb8eee010c2a}"/>
-                <toolbar name="方(扁)管" definition_ref="{37018e9d-acf8-4a0c-9ca0-04cb43ee8ebb}"/>
-                <toolbar name="BSA-1黑白鋼管規格" definition_ref="{17476ef3-75de-4b9c-9347-db45a8ed52ac}"/>
-                <toolbar name="BS-B黑白鋼管規格" definition_ref="{a17ae891-ce0c-468a-bbc7-a615eb6e4bfa}"/>
-                <toolbar name="鐵板重量計算法" definition_ref="{18abcd57-b34a-4930-a0bc-73d70c8a8f14}"/>
-                <toolbar name="花紋鋼板" definition_ref="{6244c6d6-5c84-44fa-b95d-457bc05e0493}"/>
-                <toolbar name="等邊三角鐵" definition_ref="{dffd550b-5848-43d5-971f-0021aa21510a}"/>
-                <toolbar name="不等邊三角鐵" definition_ref="{14098425-b4c5-492c-b9c1-55d71e56f8c6}"/>
-                <toolbar name="貨櫃尺寸表" definition_ref="{26f6912b-a32a-4ad2-a247-2339cc47ab98}"/>
-                <toolbar name="線段公英制長度" definition_ref="{52f7224e-1d70-4d62-9f57-ea1793d7ab4f}"/>
-                <toolbar name="兩點公英制距離" definition_ref="{f089596d-ae91-48ad-8230-ac9a33ab1b10}"/>
-                <toolbar name="弧長查詢" definition_ref="{d28676e7-884c-41ea-a42d-4a773630753a}"/>
+                <toolbar UID="{b94b3c09-9453-4034-b840-587bddf64459}" name="資料查詢" definition_ref="{49b3e068-7d72-411e-81a4-9883f331a51d}"/>
+                <toolbar UID="{236f5907-da9a-44c1-93f0-3cbf42673b3a}" name="丸鐵規格" definition_ref="{06bea408-6ae6-4611-b586-ca7703701035}"/>
+                <toolbar UID="{e49e7733-998d-46a2-9704-fa5511a16911}" name="平鐵規格" definition_ref="{b9220881-129a-48ac-824a-fb8eee010c2a}"/>
+                <toolbar UID="{c2795ac4-2f19-40e0-a1a6-f99ac5a16b14}" name="方(扁)管" definition_ref="{37018e9d-acf8-4a0c-9ca0-04cb43ee8ebb}"/>
+                <toolbar UID="{36c10304-4ef3-4180-a7d2-47fb07d6c432}" name="BSA-1黑白鋼管規格" definition_ref="{17476ef3-75de-4b9c-9347-db45a8ed52ac}"/>
+                <toolbar UID="{ec552a4c-1378-4575-b4a0-0b5d55a86aa8}" name="BS-B黑白鋼管規格" definition_ref="{a17ae891-ce0c-468a-bbc7-a615eb6e4bfa}"/>
+                <toolbar UID="{aa8a2f68-4890-4137-b415-3737b8c481e4}" name="鐵板重量計算法" definition_ref="{18abcd57-b34a-4930-a0bc-73d70c8a8f14}"/>
+                <toolbar UID="{d51ffe5a-cc27-4094-869a-df44c3f064ad}" name="花紋鋼板" definition_ref="{6244c6d6-5c84-44fa-b95d-457bc05e0493}"/>
+                <toolbar UID="{9494a723-7b97-4904-b90b-64ea187061c4}" name="等邊三角鐵" definition_ref="{dffd550b-5848-43d5-971f-0021aa21510a}"/>
+                <toolbar UID="{8b8fb7d6-72cb-415e-9ebc-6de80f4d9b33}" name="不等邊三角鐵" definition_ref="{14098425-b4c5-492c-b9c1-55d71e56f8c6}"/>
+                <toolbar UID="{9afad260-89fc-43f3-ad6c-014f3a141b84}" name="貨櫃尺寸表" definition_ref="{26f6912b-a32a-4ad2-a247-2339cc47ab98}"/>
+                <toolbar UID="{d29aaf05-be0a-45ee-8156-8fea22227f47}" name="線段公英制長度" definition_ref="{52f7224e-1d70-4d62-9f57-ea1793d7ab4f}"/>
+                <toolbar UID="{b8d686e8-e027-40aa-af29-7c9e76c2209b}" name="兩點公英制距離" definition_ref="{f089596d-ae91-48ad-8230-ac9a33ab1b10}"/>
+                <toolbar UID="{8fd49e7a-7fcc-4bd0-a7ae-f0a1a5bc8f83}" name="弧長查詢" definition_ref="{d28676e7-884c-41ea-a42d-4a773630753a}"/>
             </toolbar>
             <toolbar UID="{294e0c0c-8898-4998-8bff-00ba3fafcc6a}" movable="true" def_x_location="200" def_y_location="200" name="鍵槽與螺紋" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="鍵槽與螺紋" definition_ref="{87f24969-c707-4799-812f-4289c4e6eb9c}"/>
-                <toolbar name="雙圓鍵" definition_ref="{01a78030-9268-47ea-a961-bd010239cf35}"/>
-                <toolbar name="雙圓鍵" definition_ref="{50e29ce1-510f-438b-95ed-c280f23c9e8b}"/>
-                <toolbar name="雙圓鍵" definition_ref="{09a33d8d-9620-4e8b-92c2-c3e90b41e1c6}"/>
-                <toolbar name="雙圓鍵" definition_ref="{2a75be2c-d3f2-4527-ab5a-a89bd9d990ab}"/>
-                <toolbar name="半圓鍵" definition_ref="{2c6aeff1-f88c-4f9a-b362-ce1ca3bb0e0d}"/>
-                <toolbar name="軸銑雙邊" definition_ref="{c9106e3d-9b8a-4281-969b-2fee18ec65bd}"/>
-                <toolbar name="有圓,畫鍵槽與鍵座" definition_ref="{f35c4e2e-7992-4bba-8f17-f88805f35604}"/>
-                <toolbar name="無圓,畫鍵槽與鍵座" definition_ref="{8c3ca0c6-543a-4122-b27e-9fc0becec265}"/>
-                <toolbar name="鑽孔" definition_ref="{5156f6ae-1e32-4083-b5a6-b4b5f92a317d}"/>
-                <toolbar name="孔鑽通" definition_ref="{e7cbc979-80cc-4076-87e0-9da1cbb33c33}"/>
-                <toolbar name="攻牙" definition_ref="{07d627e7-8c0b-4e22-8f53-f3c8c5781ab2}"/>
-                <toolbar name="攻牙(通孔)" definition_ref="{458bed16-e67a-45c3-bbc2-43f330bc7635}"/>
-                <toolbar name="沉窩螺絲孔" definition_ref="{0e23a670-26cd-42fd-8f98-3d567125f351}"/>
-                <toolbar name="推拔螺絲孔" definition_ref="{6d1074e4-7239-4da1-982a-650af0c4d7e1}"/>
-                <toolbar name="管螺絲孔" definition_ref="{b21cb903-6722-4b42-b393-a9d823ca4e40}"/>
+                <toolbar UID="{e6ca552e-c4a6-4953-bd50-051e901d14a8}" name="鍵槽與螺紋" definition_ref="{87f24969-c707-4799-812f-4289c4e6eb9c}"/>
+                <toolbar UID="{d9d1349b-89bd-47b8-97db-9c4dd05cc3f6}" name="雙圓鍵" definition_ref="{01a78030-9268-47ea-a961-bd010239cf35}"/>
+                <toolbar UID="{bdf09f38-b3ba-46b5-bd6d-834919091472}" name="雙圓鍵" definition_ref="{50e29ce1-510f-438b-95ed-c280f23c9e8b}"/>
+                <toolbar UID="{89c22173-c804-4003-82d1-2f4ad13a4d7c}" name="雙圓鍵" definition_ref="{09a33d8d-9620-4e8b-92c2-c3e90b41e1c6}"/>
+                <toolbar UID="{8ec654bb-a318-4a85-8e8a-0cc60a13bda3}" name="雙圓鍵" definition_ref="{2a75be2c-d3f2-4527-ab5a-a89bd9d990ab}"/>
+                <toolbar UID="{5c28585d-5955-400d-bc3c-b5b53f4bab9c}" name="半圓鍵" definition_ref="{2c6aeff1-f88c-4f9a-b362-ce1ca3bb0e0d}"/>
+                <toolbar UID="{c8fab7df-dd57-41f6-95a7-7b258a3eeb0f}" name="軸銑雙邊" definition_ref="{c9106e3d-9b8a-4281-969b-2fee18ec65bd}"/>
+                <toolbar UID="{ac019ac8-9759-490a-88a2-7117d611e297}" name="有圓,畫鍵槽與鍵座" definition_ref="{f35c4e2e-7992-4bba-8f17-f88805f35604}"/>
+                <toolbar UID="{5d582029-38e1-4483-a213-778df2e22ad1}" name="無圓,畫鍵槽與鍵座" definition_ref="{8c3ca0c6-543a-4122-b27e-9fc0becec265}"/>
+                <toolbar UID="{4d3c411c-2ef7-4929-9cec-2e9f5f794ac3}" name="鑽孔" definition_ref="{5156f6ae-1e32-4083-b5a6-b4b5f92a317d}"/>
+                <toolbar UID="{120a84a4-aeb2-469d-93ae-72f8f1526548}" name="孔鑽通" definition_ref="{e7cbc979-80cc-4076-87e0-9da1cbb33c33}"/>
+                <toolbar UID="{ee043f6b-bc87-4c61-b02d-65ceee088911}" name="攻牙" definition_ref="{07d627e7-8c0b-4e22-8f53-f3c8c5781ab2}"/>
+                <toolbar UID="{6d5fecf8-849e-45d3-aedd-2e8cfe365db3}" name="攻牙(通孔)" definition_ref="{458bed16-e67a-45c3-bbc2-43f330bc7635}"/>
+                <toolbar UID="{bc094721-8075-4e51-890d-f84c109c63fd}" name="沉窩螺絲孔" definition_ref="{0e23a670-26cd-42fd-8f98-3d567125f351}"/>
+                <toolbar UID="{ebf015dd-370b-4af9-9e9c-a25451e42751}" name="推拔螺絲孔" definition_ref="{6d1074e4-7239-4da1-982a-650af0c4d7e1}"/>
+                <toolbar UID="{f32525cc-824e-4e78-bc4f-01bf7ef83d60}" name="管螺絲孔" definition_ref="{b21cb903-6722-4b42-b393-a9d823ca4e40}"/>
             </toolbar>
             <toolbar UID="{7c4c9039-961e-4b57-976f-87a203e99409}" movable="true" def_x_location="200" def_y_location="200" name="軸產生器" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="軸產生器" definition_ref="{60996836-bb61-4ad0-a7b4-4545c3132249}"/>
-                <toolbar name="軸剖面" definition_ref="{705984fd-a084-41dd-b510-a0aa7cfd8bfc}"/>
-                <toolbar name="軸剖面" definition_ref="{c96a28a0-028e-4b95-8fa7-712ac3a52c88}"/>
-                <toolbar name="軸外形" definition_ref="{b52706d4-bc91-4063-a7b8-85a77885e526}"/>
-                <toolbar name="軸外形" definition_ref="{dd908bcc-7135-4771-bab9-ff5cc88fb2f4}"/>
+                <toolbar UID="{da90fe31-d554-400a-a586-3063c755cef7}" name="軸產生器" definition_ref="{60996836-bb61-4ad0-a7b4-4545c3132249}"/>
+                <toolbar UID="{1148a3fb-7fa1-4fd3-862e-717012008393}" name="軸剖面" definition_ref="{705984fd-a084-41dd-b510-a0aa7cfd8bfc}"/>
+                <toolbar UID="{267bcde9-0c30-4181-b268-c8fc3c3ce01e}" name="軸剖面" definition_ref="{c96a28a0-028e-4b95-8fa7-712ac3a52c88}"/>
+                <toolbar UID="{8746cab9-c850-42bf-baaf-59ca7922360f}" name="軸外形" definition_ref="{b52706d4-bc91-4063-a7b8-85a77885e526}"/>
+                <toolbar UID="{e2288753-df0e-46ad-a534-8145051160c4}" name="軸外形" definition_ref="{dd908bcc-7135-4771-bab9-ff5cc88fb2f4}"/>
             </toolbar>
             <toolbar UID="{e6a3c8ac-f7a8-4346-8926-73d6253382e8}" movable="true" def_x_location="200" def_y_location="200" name="辭庫與計算機" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="使用辭庫" definition_ref="{b8debfcf-41a3-40db-a6a5-2f6d7e7818bf}"/>
-                <toolbar name="辭庫建立" definition_ref="{41467b62-31fd-4a00-ada4-096190dd707e}"/>
-                <toolbar name="計算機" definition_ref="{2d494bbf-73d7-46c7-b279-c95ff2fa9caa}"/>
+                <toolbar UID="{db3563e6-42e3-459f-b79a-1b065ff1ae6f}" name="使用辭庫" definition_ref="{b8debfcf-41a3-40db-a6a5-2f6d7e7818bf}"/>
+                <toolbar UID="{ced85d5c-b167-4c1c-b8ab-c2d8030b1c4d}" name="辭庫建立" definition_ref="{41467b62-31fd-4a00-ada4-096190dd707e}"/>
+                <toolbar UID="{7246879e-2787-405b-81a1-8eff3a5adf00}" name="計算機" definition_ref="{2d494bbf-73d7-46c7-b279-c95ff2fa9caa}"/>
             </toolbar>
             <toolbar UID="{7f2d58f3-c14c-48b8-8299-11ccede9130a}" movable="true" def_x_location="200" def_y_location="200" name="開放圖庫" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="管理自訂圖庫" definition_ref="{c5de6441-1bad-46f3-8df3-fa1b9c27f816}"/>
-                <toolbar name="使用自訂圖庫" definition_ref="{8beba712-e99c-48b5-8f24-5aa50119a724}"/>
-                <toolbar name="油氣壓符號庫" definition_ref="{0bd9c0f0-c693-4467-abca-642551ca220a}"/>
-                <toolbar name="使用油氣壓符號" definition_ref="{6b5f465f-1454-48c9-a9e6-ecc3803b5b6b}"/>
+                <toolbar UID="{c1d195ee-2a90-4c70-b104-7b7dba212658}" name="管理自訂圖庫" definition_ref="{c5de6441-1bad-46f3-8df3-fa1b9c27f816}"/>
+                <toolbar UID="{ea39effc-a500-413b-854a-0f0301c73292}" name="使用自訂圖庫" definition_ref="{8beba712-e99c-48b5-8f24-5aa50119a724}"/>
+                <toolbar UID="{2f6c3fcf-2cdd-445b-89c6-c185d6289b18}" name="油氣壓符號庫" definition_ref="{0bd9c0f0-c693-4467-abca-642551ca220a}"/>
+                <toolbar UID="{c8a78752-3697-415c-b2af-7242c3e96d0b}" name="使用油氣壓符號" definition_ref="{6b5f465f-1454-48c9-a9e6-ecc3803b5b6b}"/>
             </toolbar>
             <toolbar UID="{5101a254-b82b-4bc9-9e0b-cd37c00ed53e}" movable="true" def_x_location="200" def_y_location="200" name="放圖框定比例" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="放圖框定比例" definition_ref="{6976f9c2-7e64-415d-a3bd-6bcf7175a1cd}"/>
-                <toolbar name="重訂比例" definition_ref="{b16915ab-032b-4999-a40e-aa477026880e}"/>
-                <toolbar name="比例查詢" definition_ref="{c64ef812-5e45-453a-a940-cfb88ee6dff8}"/>
+                <toolbar UID="{4a5c608b-2789-445f-b65e-955ece2143e1}" name="放圖框定比例" definition_ref="{6976f9c2-7e64-415d-a3bd-6bcf7175a1cd}"/>
+                <toolbar UID="{6f733bea-afb9-438f-bb3b-311a427cf114}" name="重訂比例" definition_ref="{b16915ab-032b-4999-a40e-aa477026880e}"/>
+                <toolbar UID="{dbf3572b-4065-43cb-b8c4-60d0c519bcf5}" name="比例查詢" definition_ref="{c64ef812-5e45-453a-a940-cfb88ee6dff8}"/>
             </toolbar>
             <toolbar UID="{e8b5dc10-0625-4f47-965e-4cd71ac140e9}" movable="true" def_x_location="200" def_y_location="200" name="鎖點模式組" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="設定鎖點模式組" definition_ref="{f5531473-be40-4abe-ac23-56e422e8e761}"/>
-                <toolbar name="第 1 組鎖點模式" definition_ref="{ff9fa32a-c3e2-442b-8435-28290e4c7642}"/>
-                <toolbar name="第 2 組鎖點模式" definition_ref="{0b3db1d0-0f74-4a70-923f-76da8fb9b5c4}"/>
-                <toolbar name="第 3 組鎖點模式" definition_ref="{505052d6-3af8-48b1-909c-cdd4092bdeb0}"/>
-                <toolbar name="第 4 組鎖點模式" definition_ref="{a51879e7-ae59-4e1d-ba2a-dd815bc278f4}"/>
-                <toolbar name="第 5 組鎖點模式" definition_ref="{33a433d7-0b51-4583-a3dc-46f16132c87e}"/>
-                <toolbar name="第 6 組鎖點模式" definition_ref="{6fe5b76d-0e94-4af2-949e-95acf049772c}"/>
-                <toolbar name="設定常駐鎖點模式" definition_ref="{e0af4328-078e-43fd-8ced-79777346d102}"/>
+                <toolbar UID="{6506ba80-f2ca-45be-9e55-1d3403d52a75}" name="設定鎖點模式組" definition_ref="{f5531473-be40-4abe-ac23-56e422e8e761}"/>
+                <toolbar UID="{22e139d2-3c3c-49b1-959b-0f17f5a00ce0}" name="第 1 組鎖點模式" definition_ref="{ff9fa32a-c3e2-442b-8435-28290e4c7642}"/>
+                <toolbar UID="{8013407a-92e5-4ddc-9ae5-b86b872b21f3}" name="第 2 組鎖點模式" definition_ref="{0b3db1d0-0f74-4a70-923f-76da8fb9b5c4}"/>
+                <toolbar UID="{9f5efda0-f77c-45e4-89c2-c3175927170d}" name="第 3 組鎖點模式" definition_ref="{505052d6-3af8-48b1-909c-cdd4092bdeb0}"/>
+                <toolbar UID="{e58a5d2a-8056-42a6-bc5f-32bdc886e361}" name="第 4 組鎖點模式" definition_ref="{a51879e7-ae59-4e1d-ba2a-dd815bc278f4}"/>
+                <toolbar UID="{2c04abeb-66f6-42b3-9c81-b14027a2c667}" name="第 5 組鎖點模式" definition_ref="{33a433d7-0b51-4583-a3dc-46f16132c87e}"/>
+                <toolbar UID="{c362e397-0729-4f56-ac54-061b8260a73c}" name="第 6 組鎖點模式" definition_ref="{6fe5b76d-0e94-4af2-949e-95acf049772c}"/>
+                <toolbar UID="{1000c28d-890e-41c9-8184-4fed505ed4d8}" name="設定常駐鎖點模式" definition_ref="{e0af4328-078e-43fd-8ced-79777346d102}"/>
             </toolbar>
             <toolbar UID="{6a2b6e66-5091-4135-a5b6-b8332165a402}" movable="true" def_x_location="200" def_y_location="200" name="物料結構管理" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="建立新零件圖層" definition_ref="{47f32a22-eb9d-4862-95b9-fd7d303ee17c}"/>
-                <toolbar name="修改資訊點資料" definition_ref="{5e96c821-b4df-4dfc-a74c-b29b206825ba}"/>
-                <toolbar name="建立資訊點(自己輸入資料)" definition_ref="{76d95188-3c6f-488f-95fc-5b9e86ab1162}"/>
-                <toolbar name="建立資訊點(取出圖面上文字)" definition_ref="{c0fb15d9-89e5-403f-a17d-4afccc2658fd}"/>
-                <toolbar name="建立資訊點(由圖框屬性萃取)" definition_ref="{b2f21e03-f360-4769-a784-b01ac3cec684}"/>
-                <toolbar name="移動資訊點(選擇圖元)" definition_ref="{94b9238f-a058-43db-8a67-a5996d0d2309}"/>
-                <toolbar name="打開資訊點" definition_ref="{67f3bcfb-443b-4986-9015-74aa6e43663a}"/>
-                <toolbar name="關閉資訊點" definition_ref="{78ca4d4c-7c88-4c46-9665-2085beaf5689}"/>
-                <toolbar name="自動建立資訊點" definition_ref="{73c3d516-76c6-4636-a3c5-e49b7e60291c}"/>
-                <toolbar name="計算零件" definition_ref="{086a3453-db95-422d-b822-b3704c082f46}"/>
-                <toolbar name="物料結構與圖檔管理顯示欄位順序" definition_ref="{d940af8b-951a-4ceb-b55a-8c8c6f459e8c}"/>
-                <toolbar name="物料清單匯出到Excel" definition_ref="{fbe6c7ab-7924-4ce1-928e-85f9deb430a6}"/>
-                <toolbar name="物料結構樹" definition_ref="{94791838-f524-48c5-868e-c200596a6f96}"/>
-                <toolbar name="瀏覽" definition_ref="{d5f58926-6a3f-414a-b419-1f425c6c1633}"/>
-                <toolbar name="物料清單再更新" definition_ref="{c3ed9a74-b2a5-41bb-9095-a94e340354cd}"/>
-                <toolbar name="選擇零件新顏色" definition_ref="{fdca90d9-31bf-4cde-ad89-adabfc55a883}"/>
-                <toolbar name="全自動指標球" definition_ref="{bf1e6eab-db5e-4434-9b72-7c75edf1729d}"/>
-                <toolbar name="建立公用 BLOCK" definition_ref="{dc9f7505-619f-46c9-b229-4d8d2ce3618f}"/>
-                <toolbar name="定義材料清單欄位" definition_ref="{a4b13b42-4c24-409f-8926-9245131a25fd}"/>
-                <toolbar name="產生圖面材料清單" definition_ref="{3fc35541-aebe-4725-a690-fcfaa90f7c86}"/>
+                <toolbar UID="{a56c3e9f-0b1e-4163-8b52-fc2544ee7164}" name="建立新零件圖層" definition_ref="{47f32a22-eb9d-4862-95b9-fd7d303ee17c}"/>
+                <toolbar UID="{aaf7304d-8fd7-4e38-960f-50adefe31c73}" name="修改資訊點資料" definition_ref="{5e96c821-b4df-4dfc-a74c-b29b206825ba}"/>
+                <toolbar UID="{db961780-86ec-4edd-8ed2-102461a835e4}" name="建立資訊點(自己輸入資料)" definition_ref="{76d95188-3c6f-488f-95fc-5b9e86ab1162}"/>
+                <toolbar UID="{ed4d9ad2-8cc3-491b-b0d8-bbf113677e6a}" name="建立資訊點(取出圖面上文字)" definition_ref="{c0fb15d9-89e5-403f-a17d-4afccc2658fd}"/>
+                <toolbar UID="{c369e112-3cc5-4b54-9044-08e3c200facb}" name="建立資訊點(由圖框屬性萃取)" definition_ref="{b2f21e03-f360-4769-a784-b01ac3cec684}"/>
+                <toolbar UID="{9dd1aaf8-3b8e-430a-acf8-71a7d70b1763}" name="移動資訊點(選擇圖元)" definition_ref="{94b9238f-a058-43db-8a67-a5996d0d2309}"/>
+                <toolbar UID="{2e093076-fea0-45c1-8f37-8ce6992c01c0}" name="打開資訊點" definition_ref="{67f3bcfb-443b-4986-9015-74aa6e43663a}"/>
+                <toolbar UID="{04cda788-43dd-4408-b888-f8f96527fda2}" name="關閉資訊點" definition_ref="{78ca4d4c-7c88-4c46-9665-2085beaf5689}"/>
+                <toolbar UID="{d0f6d038-fadf-44ea-8a41-aa22f63cc159}" name="自動建立資訊點" definition_ref="{73c3d516-76c6-4636-a3c5-e49b7e60291c}"/>
+                <toolbar UID="{b7d18864-eb85-4b24-b1c1-94966e355e3c}" name="計算零件" definition_ref="{086a3453-db95-422d-b822-b3704c082f46}"/>
+                <toolbar UID="{f07f0e28-3e2e-4c52-9824-10feb9d3b51b}" name="物料結構與圖檔管理顯示欄位順序" definition_ref="{d940af8b-951a-4ceb-b55a-8c8c6f459e8c}"/>
+                <toolbar UID="{cbbec71a-d9ee-4538-855a-0da334fd2fe3}" name="物料清單匯出到Excel" definition_ref="{fbe6c7ab-7924-4ce1-928e-85f9deb430a6}"/>
+                <toolbar UID="{ea5a121e-5db6-433b-9ac3-23dd9f6348e5}" name="物料結構樹" definition_ref="{94791838-f524-48c5-868e-c200596a6f96}"/>
+                <toolbar UID="{47605fe9-b2d7-4216-8d77-e8460ca3522a}" name="瀏覽" definition_ref="{d5f58926-6a3f-414a-b419-1f425c6c1633}"/>
+                <toolbar UID="{8d7a2aef-e15e-42e2-bd74-02f79e7598e1}" name="物料清單再更新" definition_ref="{c3ed9a74-b2a5-41bb-9095-a94e340354cd}"/>
+                <toolbar UID="{adf31473-9afc-4cfc-b896-001afabb734e}" name="選擇零件新顏色" definition_ref="{fdca90d9-31bf-4cde-ad89-adabfc55a883}"/>
+                <toolbar UID="{c597b3e4-a391-4724-b266-100a25fb8754}" name="全自動指標球" definition_ref="{bf1e6eab-db5e-4434-9b72-7c75edf1729d}"/>
+                <toolbar UID="{24fef05a-25a5-4ec1-acb6-ebece85f82dc}" name="建立公用 BLOCK" definition_ref="{dc9f7505-619f-46c9-b229-4d8d2ce3618f}"/>
+                <toolbar UID="{22df9252-a69f-4c72-8766-bf47f2a40c12}" name="定義材料清單欄位" definition_ref="{a4b13b42-4c24-409f-8926-9245131a25fd}"/>
+                <toolbar UID="{dbf35669-ee9d-402b-a276-c2d6f3fffa5c}" name="產生圖面材料清單" definition_ref="{3fc35541-aebe-4725-a690-fcfaa90f7c86}"/>
             </toolbar>
             <toolbar UID="{9fbea57c-d6fe-4575-93b2-fbf1b2f1a985}" movable="true" def_x_location="200" def_y_location="200" name="貼心小幫手" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar type="2" name="設定目前線性" definition_ref="POWERSOFT.SET_CURLTYPE"/>
-                <toolbar type="2" name="設定目前圖層" definition_ref="POWERSOFT.SET_CURLAYER"/>
-                <toolbar type="2" name="畫線" definition_ref="POWERSOFT.POWERLINE"/>
-                <toolbar type="2" name="改變線性" definition_ref="POWERSOFT.CHG_LTYPE"/>
-                <toolbar type="2" name="Power Offset" definition_ref="POWERSOFT.POWER_OFFSET"/>
-                <toolbar type="2" name="Power 改變 LAYER" definition_ref="POWERSOFT.POWER_CHLAYER"/>
+                <toolbar type="2" UID="{4e028ed1-9543-4067-9231-e08bb147d0f1}" name="設定目前線性" definition_ref="POWERSOFT.SET_CURLTYPE"/>
+                <toolbar type="2" UID="{3aa24ae9-9cb1-44b8-adfb-c890d1d8e731}" name="設定目前圖層" definition_ref="POWERSOFT.SET_CURLAYER"/>
+                <toolbar type="2" UID="{bb4781db-29b4-4ba0-92d8-a2cf8e389c0e}" name="畫線" definition_ref="POWERSOFT.POWERLINE"/>
+                <toolbar type="2" UID="{c23dbf38-a04a-464a-bcaa-d451e80a0c37}" name="改變線性" definition_ref="POWERSOFT.CHG_LTYPE"/>
+                <toolbar type="2" UID="{22a763b1-d45f-476c-8b5f-1b93de90b8ea}" name="Power Offset" definition_ref="POWERSOFT.POWER_OFFSET"/>
+                <toolbar type="2" UID="{ffebf94a-2d9d-4fb2-8b8c-98d0f0142a39}" name="Power 改變 LAYER" definition_ref="POWERSOFT.POWER_CHLAYER"/>
             </toolbar>
             <toolbar UID="{8862aa73-af27-4209-b94c-cd1bb2120f6c}" movable="true" def_x_location="200" def_y_location="200" name="設定目前線性" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="設定成粗連續線(SS)" definition_ref="{fefe0649-a08a-445c-b808-930dd6f9e42e}"/>
-                <toolbar name="設定成細連續線(TT)" definition_ref="{c11382b7-763e-416c-9298-86c111b4c6f8}"/>
+                <toolbar UID="{3e7deaa6-8968-41c8-a7e4-f5bb982f9e10}" name="設定成粗連續線(SS)" definition_ref="{fefe0649-a08a-445c-b808-930dd6f9e42e}"/>
+                <toolbar UID="{379f82ae-c7c3-4544-bec2-0c8c0139ffc2}" name="設定成細連續線(TT)" definition_ref="{c11382b7-763e-416c-9298-86c111b4c6f8}"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar name="設定成標準中心線(CC)" definition_ref="{67c96e4c-f907-4233-98eb-01ab1b33c556}"/>
-                <toolbar name="設定成短中心線(SCC)" definition_ref="{56a1cd3a-bd53-4057-8eb5-44ed3a001a7e}"/>
+                <toolbar UID="{ddfd8ca4-c3f8-423e-b1e1-f5c1c94dd0dd}" name="設定成標準中心線(CC)" definition_ref="{67c96e4c-f907-4233-98eb-01ab1b33c556}"/>
+                <toolbar UID="{8c098987-93e2-4901-becb-6bb73c1fe7c9}" name="設定成短中心線(SCC)" definition_ref="{56a1cd3a-bd53-4057-8eb5-44ed3a001a7e}"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar name="設定成標準虛線(DD)" definition_ref="{1b90d2d6-c5f6-4e89-81bb-643de5fe84a0}"/>
-                <toolbar name="設定成短虛線(SDD)" definition_ref="{14635a32-bbc3-4b2f-989a-4eaf35143f4e}"/>
+                <toolbar UID="{e4a20ae9-bd27-412e-9562-f7e3584d4810}" name="設定成標準虛線(DD)" definition_ref="{1b90d2d6-c5f6-4e89-81bb-643de5fe84a0}"/>
+                <toolbar UID="{2b55cb9d-2571-4b63-a420-cba78b88803b}" name="設定成短虛線(SDD)" definition_ref="{14635a32-bbc3-4b2f-989a-4eaf35143f4e}"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar name="設定成標準假想線(PP)" definition_ref="{bf49c208-8172-4fb4-8f17-707cd4d9eec1}"/>
-                <toolbar name="設定成短假想線(SPP)" definition_ref="{0a680304-268c-4fcc-a44c-dc9042070314}"/>
+                <toolbar UID="{cadf83b4-c047-4eb2-8e82-074840fd98ae}" name="設定成標準假想線(PP)" definition_ref="{bf49c208-8172-4fb4-8f17-707cd4d9eec1}"/>
+                <toolbar UID="{13f6530f-0ce6-4ecf-93be-28d4e9028a84}" name="設定成短假想線(SPP)" definition_ref="{0a680304-268c-4fcc-a44c-dc9042070314}"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar name="設定成剖面線(HH)" definition_ref="{56ab6564-05d4-49b4-9a5b-2127adfb9f93}"/>
+                <toolbar UID="{45e18eb7-332e-4c4d-9f22-0798e26c80b4}" name="設定成剖面線(HH)" definition_ref="{56ab6564-05d4-49b4-9a5b-2127adfb9f93}"/>
             </toolbar>
             <toolbar UID="{969a3275-5c55-40f4-9686-8f5162f64079}" movable="true" def_x_location="200" def_y_location="200" name="設定目前圖層" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="true">
-                <toolbar name="設定成 0 層(LL0)" definition_ref="{f577c5df-b120-4280-a763-56b05e108b7c}"/>
-                <toolbar name="設定成文字層(LLT)" definition_ref="{6c7c3316-9812-4301-b65e-c7e8556f0b82}"/>
-                <toolbar name="設定成尺寸線(LLD)" definition_ref="{689024a0-0991-4ee3-b7c7-15a0b95fa4c2}"/>
-                <toolbar name="指定目前層" definition_ref="{7350529c-4550-4bfc-a97b-98ac7de9dee7}"/>
+                <toolbar UID="{c012b4aa-7d8a-4653-8177-697ecc15a352}" name="設定成 0 層(LL0)" definition_ref="{f577c5df-b120-4280-a763-56b05e108b7c}"/>
+                <toolbar UID="{1797f798-4e62-4973-88f4-2c934aa18601}" name="設定成文字層(LLT)" definition_ref="{6c7c3316-9812-4301-b65e-c7e8556f0b82}"/>
+                <toolbar UID="{e1b6a16d-9996-4faa-a0cf-2b54bf742182}" name="設定成尺寸線(LLD)" definition_ref="{689024a0-0991-4ee3-b7c7-15a0b95fa4c2}"/>
+                <toolbar UID="{84fb7119-44ab-4bde-934d-48e1e7ef486c}" name="指定目前層" definition_ref="{7350529c-4550-4bfc-a97b-98ac7de9dee7}"/>
             </toolbar>
             <toolbar UID="{f38e6dd5-b9d5-4481-b5aa-c113b7413252}" movable="true" def_x_location="200" def_y_location="200" name="畫線" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="畫粗連續線(SLL)" definition_ref="{c3bf1961-ac20-43ef-8ecc-937b8b98910e}"/>
-                <toolbar name="畫細連續線(TLL)" definition_ref="{897386bd-5819-46d8-86ca-6537660cb887}"/>
+                <toolbar UID="{a318bd9d-d09a-43e3-8dc6-ff03949d6c1a}" name="畫粗連續線(SLL)" definition_ref="{c3bf1961-ac20-43ef-8ecc-937b8b98910e}"/>
+                <toolbar UID="{be0c4942-5e60-4910-b328-36f882889ee4}" name="畫細連續線(TLL)" definition_ref="{897386bd-5819-46d8-86ca-6537660cb887}"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar name="畫標準中心線(CLL)" definition_ref="{b7e12bde-3236-4c12-94c4-1687eee31aee}"/>
-                <toolbar name="畫短中心線(SCLL)" definition_ref="{f3e44653-3ccb-4cca-8510-3ead5bb237f7}"/>
+                <toolbar UID="{6829da77-ad33-4132-874e-89ad624d4d82}" name="畫標準中心線(CLL)" definition_ref="{b7e12bde-3236-4c12-94c4-1687eee31aee}"/>
+                <toolbar UID="{e7d186ed-5281-4440-81aa-610d6e275f0a}" name="畫短中心線(SCLL)" definition_ref="{f3e44653-3ccb-4cca-8510-3ead5bb237f7}"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar name="畫標準虛線(DLL)" definition_ref="{131d9eba-c923-402b-88ce-d55cb266c226}"/>
-                <toolbar name="畫短虛線(SDLL)" definition_ref="{dd0abc03-9a1f-423a-8261-dd48d2fc6df3}"/>
+                <toolbar UID="{6503d4a5-dc5d-46be-8a21-9d1cd01ea215}" name="畫標準虛線(DLL)" definition_ref="{131d9eba-c923-402b-88ce-d55cb266c226}"/>
+                <toolbar UID="{5f31d870-3ff6-46b0-943d-6612496e85f3}" name="畫短虛線(SDLL)" definition_ref="{dd0abc03-9a1f-423a-8261-dd48d2fc6df3}"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar name="畫標準假想線(PLL)" definition_ref="{2c351dbc-c40c-499b-8d84-541834ca4a31}"/>
-                <toolbar name="畫短假想線(SPLL)" definition_ref="{f2087b88-2d53-4e1b-9e17-4c13b5573aca}"/>
+                <toolbar UID="{e8f3b1ec-648f-428f-b40e-a32efe41b708}" name="畫標準假想線(PLL)" definition_ref="{2c351dbc-c40c-499b-8d84-541834ca4a31}"/>
+                <toolbar UID="{79d9b1b7-8835-426b-854a-e693f483d1ff}" name="畫短假想線(SPLL)" definition_ref="{f2087b88-2d53-4e1b-9e17-4c13b5573aca}"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar name="畫剖面線(HLL)" definition_ref="{34fd9951-8394-4aea-b962-d902ec4aca77}"/>
+                <toolbar UID="{b9783529-bc9b-4d1b-b149-3c1ead75d954}" name="畫剖面線(HLL)" definition_ref="{34fd9951-8394-4aea-b962-d902ec4aca77}"/>
             </toolbar>
             <toolbar UID="{7f2714ea-dcc8-4db5-89a5-f0e3f794ea49}" movable="true" def_x_location="200" def_y_location="200" name="改變線性" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="改變成粗連續線" definition_ref="{cc9c736c-4ce6-406d-a95b-baf4d8de1651}"/>
-                <toolbar name="改變成細連續線" definition_ref="{f6c1efb0-df75-4424-8e26-3c7ad0b89196}"/>
+                <toolbar UID="{bcb1cb20-9966-41f4-b056-2b93326c1fea}" name="改變成粗連續線" definition_ref="{cc9c736c-4ce6-406d-a95b-baf4d8de1651}"/>
+                <toolbar UID="{5259d78f-4ca1-480d-b186-6b42f029589a}" name="改變成細連續線" definition_ref="{f6c1efb0-df75-4424-8e26-3c7ad0b89196}"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar name="改變成標準中心線" definition_ref="{aba5e193-61cc-43ab-a6af-7deb352746e7}"/>
-                <toolbar name="改變成短中心線" definition_ref="{c3a01383-d4e9-4b32-b7ca-cac4151bc76f}"/>
+                <toolbar UID="{447606bd-0236-4638-81e1-6d998f9de729}" name="改變成標準中心線" definition_ref="{aba5e193-61cc-43ab-a6af-7deb352746e7}"/>
+                <toolbar UID="{e36473d4-b227-4570-9e1a-08014a3b7ec6}" name="改變成短中心線" definition_ref="{c3a01383-d4e9-4b32-b7ca-cac4151bc76f}"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar name="改變成標準虛線" definition_ref="{406d2898-1d84-474b-a8ad-1bd818db1c14}"/>
-                <toolbar name="改變成短虛線" definition_ref="{e2930202-10f9-4bca-b473-3e74c014b626}"/>
+                <toolbar UID="{6ae55470-eb35-4ad5-a078-62e8cad8b707}" name="改變成標準虛線" definition_ref="{406d2898-1d84-474b-a8ad-1bd818db1c14}"/>
+                <toolbar UID="{0ad4bd93-55ee-45e2-b14c-abbf2fea62d4}" name="改變成短虛線" definition_ref="{e2930202-10f9-4bca-b473-3e74c014b626}"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar name="改變成標準假想線" definition_ref="{1b23d168-19b6-46dc-8443-a5b31a178d2e}"/>
-                <toolbar name="改變成短假想線" definition_ref="{03731756-902b-4f61-b4ed-2568746e5898}"/>
+                <toolbar UID="{31e210e9-b2ad-475f-9c7c-a47b40d718b5}" name="改變成標準假想線" definition_ref="{1b23d168-19b6-46dc-8443-a5b31a178d2e}"/>
+                <toolbar UID="{a31e34c4-44eb-4987-87bc-770b57244de4}" name="改變成短假想線" definition_ref="{03731756-902b-4f61-b4ed-2568746e5898}"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar name="改變成剖面線" definition_ref="{374d4764-2856-4c5a-bc75-fc70c4f37a25}"/>
+                <toolbar UID="{f738765c-2c9f-4cba-8cc1-eba6567c1de3}" name="改變成剖面線" definition_ref="{374d4764-2856-4c5a-bc75-fc70c4f37a25}"/>
             </toolbar>
             <toolbar UID="{47688270-bf94-4fed-970e-597c43df0853}" movable="true" def_x_location="200" def_y_location="200" name="OFFSET變換線型" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="OFFSET變換線型" definition_ref="{4a0f8b81-149c-441d-9c86-30fda57576b3}"/>
-                <toolbar name="Offset to 粗連續線" definition_ref="{76b09242-7b69-4e76-ac3c-df911bfef330}"/>
-                <toolbar name="Offset to 細連續線" definition_ref="{9307a696-8690-4f28-a47c-91e33f66111a}"/>
+                <toolbar UID="{6adda47c-0615-4ca0-a231-2c33f593b117}" name="OFFSET變換線型" definition_ref="{4a0f8b81-149c-441d-9c86-30fda57576b3}"/>
+                <toolbar UID="{bca59d0a-ef18-4589-819a-6e4f9a69211b}" name="Offset to 粗連續線" definition_ref="{76b09242-7b69-4e76-ac3c-df911bfef330}"/>
+                <toolbar UID="{682dff04-21f7-488e-a5e7-6f182fcd4459}" name="Offset to 細連續線" definition_ref="{9307a696-8690-4f28-a47c-91e33f66111a}"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar name="Offset to 標準中心線" definition_ref="{9137492f-3440-4317-8958-1da26604d58a}"/>
-                <toolbar name="Offset to 短中心線" definition_ref="{57cc03e4-9472-4bb8-9d70-9735cd1c8450}"/>
+                <toolbar UID="{3f14988c-2a42-42cc-b4ed-76d6bdad746f}" name="Offset to 標準中心線" definition_ref="{9137492f-3440-4317-8958-1da26604d58a}"/>
+                <toolbar UID="{59ac1482-91c6-4e72-bc72-7aadaa99d1c3}" name="Offset to 短中心線" definition_ref="{57cc03e4-9472-4bb8-9d70-9735cd1c8450}"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar name="Offset to 標準虛線" definition_ref="{e6658881-054b-463a-820d-c2b7b801f3a9}"/>
-                <toolbar name="Offset to 短虛線" definition_ref="{53d51c80-1612-422d-8bcd-4f5607dff9a3}"/>
+                <toolbar UID="{123f1868-5617-4130-b486-a99130b17041}" name="Offset to 標準虛線" definition_ref="{e6658881-054b-463a-820d-c2b7b801f3a9}"/>
+                <toolbar UID="{7dbd3a89-0184-4567-9056-3c4812f6875c}" name="Offset to 短虛線" definition_ref="{53d51c80-1612-422d-8bcd-4f5607dff9a3}"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar name="Offset to 標準假想線" definition_ref="{12bef026-52c8-4505-abf2-b2732dced879}"/>
-                <toolbar name="Offset to 短假想線" definition_ref="{3464ed31-1567-4894-bb49-55347ab99358}"/>
+                <toolbar UID="{a1a4a9e8-e5be-4918-bf20-a010b3d3c710}" name="Offset to 標準假想線" definition_ref="{12bef026-52c8-4505-abf2-b2732dced879}"/>
+                <toolbar UID="{c4aa6c7d-8070-4243-8a6a-bf3a1c6c1899}" name="Offset to 短假想線" definition_ref="{3464ed31-1567-4894-bb49-55347ab99358}"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar name="Offset to 剖面線" definition_ref="{99977913-1d0d-41f9-8489-aa2753e25c20}"/>
+                <toolbar UID="{20f75838-4150-4405-b5f8-5b0b95d2ed06}" name="Offset to 剖面線" definition_ref="{99977913-1d0d-41f9-8489-aa2753e25c20}"/>
                 <toolbar name="" definition_ref=""/>
             </toolbar>
             <toolbar UID="{0a1c4d5c-a613-48c0-b823-259df5790a26}" movable="true" def_x_location="200" def_y_location="200" name="OFFSET變換圖層" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="true">
-                <toolbar name="變換到尺寸層" definition_ref="{33fd83f0-0955-4402-b517-7f7a4d5e39c4}"/>
-                <toolbar name="變換到文字層" definition_ref="{0c2b699f-8b1b-46ee-844f-c6f58cb84a52}"/>
+                <toolbar UID="{412e7846-ad4b-46a2-8948-6e66a98707fc}" name="變換到尺寸層" definition_ref="{33fd83f0-0955-4402-b517-7f7a4d5e39c4}"/>
+                <toolbar UID="{b0b4e1bd-6f5d-423f-947c-db139a955be9}" name="變換到文字層" definition_ref="{0c2b699f-8b1b-46ee-844f-c6f58cb84a52}"/>
             </toolbar>
             <toolbar UID="{77b59a1f-d019-49f9-9cf9-522ce647681a}" movable="true" def_x_location="200" def_y_location="200" name="組合圖整合功能" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="true">
-                <toolbar name="COPYPARTS" definition_ref="{b0142848-954a-4d94-9ec9-88968a631f58}"/>
-                <toolbar name="MOVEPARTS" definition_ref="{22c5583c-33f0-409b-9f35-7519a7157a1b}"/>
-                <toolbar name="DELPARTS" definition_ref="{4258af5e-d923-4623-9153-afd3c8a93d74}"/>
-                <toolbar name="鏡設零件" definition_ref="{b02070fc-13ad-4a2e-ab63-f17841410174}"/>
-                <toolbar name="旋轉零件" definition_ref="{f5e99095-e47c-44c7-895a-fb1b4d945a25}"/>
+                <toolbar UID="{d1770604-bec7-41d4-b9fa-199927822a24}" name="COPYPARTS" definition_ref="{b0142848-954a-4d94-9ec9-88968a631f58}"/>
+                <toolbar UID="{003bba6a-8c34-42d9-b7ae-d96f3d5c4508}" name="MOVEPARTS" definition_ref="{22c5583c-33f0-409b-9f35-7519a7157a1b}"/>
+                <toolbar UID="{a89c18f0-8db2-4340-a0a1-95b68a0cdbc9}" name="DELPARTS" definition_ref="{4258af5e-d923-4623-9153-afd3c8a93d74}"/>
+                <toolbar UID="{70eb07d2-2be5-4bab-b772-2edd045bcd91}" name="鏡設零件" definition_ref="{b02070fc-13ad-4a2e-ab63-f17841410174}"/>
+                <toolbar UID="{3f2680e9-9865-4c8f-8cfb-9013acbb4f8a}" name="旋轉零件" definition_ref="{f5e99095-e47c-44c7-895a-fb1b4d945a25}"/>
             </toolbar>
             <toolbar UID="{6e58163a-bec0-444d-950a-5e1b85f599c2}" movable="true" def_x_location="200" def_y_location="200" name="物料編碼系統" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="制定物料編碼" definition_ref="{051d5703-f8d5-4a67-9a06-ef76bbc692cd}"/>
-                <toolbar name="使用物料編碼" definition_ref="{22ffa503-d620-4d0a-a647-34f595697685}"/>
+                <toolbar UID="{4449824a-1ed0-4294-a685-2516524fcad4}" name="制定物料編碼" definition_ref="{051d5703-f8d5-4a67-9a06-ef76bbc692cd}"/>
+                <toolbar UID="{bbb33a82-89e9-45e6-9300-38a9fd395d44}" name="使用物料編碼" definition_ref="{22ffa503-d620-4d0a-a647-34f595697685}"/>
                 <toolbar name="" definition_ref=""/>
-                <toolbar name="建立物料編號層名" definition_ref="{720717be-0fd8-499c-801a-5607cc69d4c9}"/>
+                <toolbar UID="{b47b1b00-236f-4622-97b0-ab53cd52efc7}" name="建立物料編號層名" definition_ref="{720717be-0fd8-499c-801a-5607cc69d4c9}"/>
             </toolbar>
             <toolbar UID="{d87127a3-0922-43ba-8d3a-35c0df81e2d7}" movable="true" def_x_location="200" def_y_location="200" name="POWERISO 等角立體系統圖" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
-                <toolbar name="轉等角圖" definition_ref="{dafdb3e1-ed77-4e37-a133-3b17be659f27}"/>
-                <toolbar name="等角參數零件" definition_ref="{5e62ed1b-5ab8-4ca1-9ba9-54d427a8c719}"/>
-                <toolbar name="圖庫管理" definition_ref="{dd0be20c-5905-4699-84d6-b0288cf582bc}"/>
-                <toolbar name="使用圖庫" definition_ref="{2a1f34e4-bd41-4987-bb81-3eee74700e7a}"/>
+                <toolbar UID="{4ba685fa-1760-4044-9c84-dafb953eee0a}" name="轉等角圖" definition_ref="{dafdb3e1-ed77-4e37-a133-3b17be659f27}"/>
+                <toolbar UID="{2f6a623e-761d-4b6d-869d-50d002e8157e}" name="等角參數零件" definition_ref="{5e62ed1b-5ab8-4ca1-9ba9-54d427a8c719}"/>
+                <toolbar UID="{cd16e0ee-a3b0-456f-ade7-a50a2fe976ab}" name="圖庫管理" definition_ref="{dd0be20c-5905-4699-84d6-b0288cf582bc}"/>
+                <toolbar UID="{f4b0d145-450d-4349-9e09-df86e673e124}" name="使用圖庫" definition_ref="{2a1f34e4-bd41-4987-bb81-3eee74700e7a}"/>
             </toolbar>
         </toolbars>
         <ribbon_tab_selectors/>
