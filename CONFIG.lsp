@@ -80,13 +80,16 @@
 
 ;;----------------------------------------------------------------
 ;; 讀取 config.doc，設定所有路徑變數
-;; 移除：KEYPRO_PATH（加密狗）、PDM 相關變數
 ;;----------------------------------------------------------------
 (defun config_des50_system (/ OUT_LSPPATH)
-  ;; 防護：disk_path 未設定，或 config.doc 不存在時，提示並回傳
-  (setq OUT_LSPPATH (if disk_path (get_support_path) "C:\\DESIGNER6_DS\\"))
+  ;; 先嘗試從 SRCHPATH 找 config.doc，找到就用，找不到才提示 setup
+  (setq OUT_LSPPATH (get_support_path))
   (setq config_des50_systemdoc (strcat OUT_LSPPATH "config.doc"))
-  (if (or (null disk_path) (null (findfile config_des50_systemdoc)))
+  ;; 若 SRCHPATH 找不到，嘗試直接用 findfile
+  (if (null (findfile config_des50_systemdoc))
+    (setq config_des50_systemdoc (findfile "config.doc"))
+  )
+  (if (null config_des50_systemdoc)
     (progn
       (princ "\n[機械設計家] 尚未設定系統路徑，請執行 SETUP 指令進行初始設定。")
       (setq *designer6_ready* nil)
