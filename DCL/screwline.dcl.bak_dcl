@@ -1,0 +1,38 @@
+screwline:dialog{
+                    :boxed_row{
+                                :image_button{
+                                         key="endcir";
+                                         color=-2;
+                                         width=25;
+                                         height=12;
+                                      }
+
+                                 :image_button{
+                                         key="endflat";
+                                         color=-2;
+                                         width=25;
+                                         height=12;
+                                       }
+                                 :image_button{
+                                         key="endnone";
+                                         color=-2;
+                                         width=25;
+                                         height=12;
+                                       }
+                               }//row
+                  :boxed_column{          
+                                 :edit_box{
+                                            label="外螺紋長度(空白時預設為全牙):";                    
+                                            key="outscrewleng";
+                                            //value=7;
+                                            edit_width=10;
+                                          }
+                                 :edit_box{
+                                            label="牙距 ( Pitch ):";
+                                            key="pitch";
+                                            //value=7;
+                                            edit_width=10;
+                                          }
+                              }//col      
+                                        ok_cancel;
+                   }                     

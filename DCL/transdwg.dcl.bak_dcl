@@ -1,0 +1,278 @@
+transheet:dialog{
+        label="舊圖轉新圖設定";
+        :row{
+            :popup_list{label="對應型式";
+                        key="pop_style";}
+            :button{label="編輯";
+                    key="ed_style";}
+            }//row
+        :boxed_row{
+            label="線型對應";
+            :list_box{key="line_list";
+                      width=30;
+		      height=5;
+                      fixed_width_font=true;}
+            :column{
+                   spacer;
+                   :button{label="新增";
+                           key="add_line";}
+                   :button{label="修改";
+                           key="mod_line";}
+                   :button{label="刪除";
+                           key="del_line";}
+                   spacer;
+                   spacer;
+                   spacer;
+                   }//column
+            }//boxed_row
+        :boxed_row{
+            label="字型對應";
+            :list_box{key="font_list";
+                      width=30;
+		      height=5;
+                      fixed_width_font=true;}
+            :column{
+                   spacer;
+                   :button{label="新增";
+                           key="add_font";}
+                   :button{label="修改";
+                           key="mod_font";}
+                   :button{label="刪除";
+                           key="del_font";}
+                   spacer;
+                   spacer;
+                   spacer;
+                   }//column
+            }//boxed_row
+        :boxed_row{
+            label="圖層對應";
+            :list_box{key="layer_list";
+                      width=30;
+		      height=5;
+                      fixed_width_font=true;}
+            :column{
+                   spacer;
+                   :button{label="新增";
+                           key="add_layer";}
+                   :button{label="修改";
+                           key="mod_layer";}
+                   :button{label="刪除";
+                           key="del_layer";}
+                   spacer;
+                   spacer;
+                   spacer;
+                   }//column
+            }//boxed_row
+            :text{label="注意:設定規則只能多對一";}
+            spacer;
+            ok_only;
+}//dialog
+//------------------------------------------------
+ed_style:dialog{
+        label="編輯型式";
+        :row{
+        :list_box{label="型式";
+                  key="style_list";
+                  width=30;
+                  fixed_width_font=true;}
+        :column{
+               spacer;
+               :button{label="新增";
+                       key="add_style";}
+               :button{label="修改";
+                       key="mod_style";}
+               :button{label="刪除";
+                       key="del_style";}
+               spacer;
+               spacer;
+               spacer;
+               spacer;
+               }//column
+            }//row
+       ok_only;
+}//dialog
+//------------------------------------------------
+add_line:dialog{
+         label="新增線型對應";
+         :boxed_row{
+         height=3;
+     :column{
+            :text{label="舊線型                         新線型";}
+     :row{
+         :edit_box{key="old_dat";
+                   fixed_width_font=true;
+                   width=10;
+                   alignment=top;}
+         :text{label="→";
+                   fixed_width_font=true;
+                   alignment=top;}
+         :popup_list{key="new_dat";
+                   width=15;
+                   alignment=top;}
+         ok_only;
+         }//row
+             }//column
+                  }//boxed_row
+}
+//------------------------------------------------
+mod_line:dialog{
+         label="修改線型對應";
+         :boxed_row{
+         height=3;
+     :column{
+            :text{label="舊線型                         新線型";}
+     :row{
+         :edit_box{key="old_dat";
+                   fixed_width_font=true;
+                   width=10;
+                   alignment=top;}
+         :text{label="→";
+                   fixed_width_font=true;
+                   alignment=top;}
+         :popup_list{key="new_dat";
+                   width=15;
+                   alignment=top;}
+         ok_only;
+         }//row
+             }//column
+                  }//boxed_row
+}//dialog
+//-----------------------------------------------
+add_font:dialog{
+         label="新增字型對應";
+         :boxed_row{
+         height=3;
+     :column{
+            :text{label="舊字型                         新字型";}
+     :row{
+         :edit_box{key="old_dat";
+                   fixed_width_font=true;
+                   width=10;
+                   alignment=top;}
+         :text{label="→";
+                   fixed_width_font=true;
+                   alignment=top;}
+         :edit_box{key="new_dat";
+                   width=10;
+                   fixed_width_font=true;
+                   alignment=top;}
+         ok_only;
+         }//row
+             }//column
+                  }//boxed_row
+}//dialog
+//---------------------------------------------
+mod_font:dialog{
+         label="修改字型對應";
+         :boxed_row{
+         height=3;
+     :column{
+            :text{label="舊字型                         新字型";}
+     :row{
+         :edit_box{key="old_dat";
+                   fixed_width_font=true;
+                   width=10;
+                   alignment=top;}
+         :text{label="→";
+                   fixed_width_font=true;
+                   alignment=top;}
+         :edit_box{key="new_dat";
+                   width=10;
+                   fixed_width_font=true;
+                   alignment=top;}
+         ok_only;
+         }//row
+             }//column
+                  }//boxed_row
+}//dialog
+//---------------------------------------------
+add_layer:dialog{
+         label="新增圖層對應";
+         :boxed_row{
+         height=3;
+     :column{
+            :text{label="舊圖層                         新圖層";}
+     :row{
+         :edit_box{key="old_dat";
+                   fixed_width_font=true;
+                   width=10;
+                   alignment=top;}
+         :text{label="→";
+                   fixed_width_font=true;
+                   alignment=top;}
+         :edit_box{key="new_dat";
+                   width=10;
+                   fixed_width_font=true;
+                   alignment=top;}
+         ok_only;
+         }//row
+             }//column
+                  }//boxed_row
+}//dialog
+//---------------------------------------------
+mod_layer:dialog{
+         label="修改圖層對應";
+         :boxed_row{
+         height=3;
+     :column{
+            :text{label="舊圖層                         新圖層";}
+     :row{
+         :edit_box{key="old_dat";
+                   fixed_width_font=true;
+                   width=10;
+                   alignment=top;}
+         :text{label="→";
+                   fixed_width_font=true;
+                   alignment=top;}
+         :edit_box{key="new_dat";
+                   width=10;
+                   fixed_width_font=true;
+                   alignment=top;}
+         ok_only;
+         }//row
+             }//column
+                  }//boxed_row
+}//dialog
+//---------------------------------------------
+add_style:dialog{
+         label="新增型式";
+         :boxed_row{
+         height=3;
+         :edit_box{key="xxx_st";
+                   width=15;
+                   alignment=top;}
+         ok_only;
+                   }//box_row
+}//dialog
+//---------------------------------------------
+mod_style:dialog{
+         label="修改型式";
+         :boxed_row{
+         height=3;
+         :edit_box{key="xxx_st";
+                   width=15;
+                   alignment=top;}
+         ok_only;
+                   }//box_row
+}//dialog
+//---------------------------------------------
+del_style:dialog{
+         label="刪除型式";
+         :boxed_row{
+         height=3;
+         :edit_box{key="xxx_st";
+                   width=15;
+                   alignment=top;}
+         ok_only;
+                   }//box_row
+}//dialog
+//---------------------------------------------
+trs:dialog{
+    label="舊圖轉新圖";
+    :list_box{label="轉換型式";
+              key="ts_list";
+              width=20;}
+    :text{label="轉換圖檔,請先開啟新檔";}
+    spacer_1;
+    ok_cancel;
+}//dialog
