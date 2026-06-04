@@ -43,6 +43,7 @@
 
  (action_tile "accept" "(done_dialog)")
  (start_dialog)
+ (unload_dialog dcl_id)
   ;; removed FFF
  (setvar "cmdecho" 1)
 
@@ -66,6 +67,7 @@
    (action_tile "accept" "(select_asciilist_ok)")
    (action_tile "cancel" "(setq flag nil)(done_dialog)")
    (start_dialog)
+   (unload_dialog dcl_id)
    (if flag (set_tile returnkey rtdata))
    (princ)
 )
@@ -459,6 +461,7 @@
  (action_tile "accept" "(useword_ok)")
  (action_tile "cancel" "(done_dialog)")
  (start_dialog)
+ (unload_dialog dcl_id)
  (if (and (= nil get_wordlibdata) action_flag)
    (progn
      (setq text_style (getvar "textstyle")
@@ -561,6 +564,7 @@
 
  (action_tile "accept" "(done_dialog)")
  (start_dialog)
+ (unload_dialog dcl_id)
  (prin1)
 )
 
@@ -699,6 +703,7 @@
       (action_tile "accept" "(return_word)")
       (action_tile "cancel" "(setq no_done t)(done_dialog)")
       (start_dialog)
+      (unload_dialog dcl_id)
       (if (/= no_done t)
         (progn
           (mode_tile useword_keyname 2)

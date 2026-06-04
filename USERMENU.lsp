@@ -40,6 +40,7 @@
 
    (action_tile "accept" "(setq funcflag nil)(done_dialog)")
    (start_dialog)
+   (unload_dialog dcl_id)
    (if funcflag (usermenu_exefunc funcflag))
    (princ)
 );defun
@@ -225,7 +226,9 @@
    (action_tile "accept" "(done_dialog)")
    (action_tile "cancel" "(done_dialog)")
    (start_dialog)
+   (unload_dialog dcl_id)
 
+   (unload_dialog dcl_id)
    (setq usermenu_function_list nil detail_funclist nil anyone_list nil)
      ;; removed FFF
    (princ)
