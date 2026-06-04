@@ -578,7 +578,7 @@
                 <toolbar UID="{f065cc96-48d6-45c1-a389-b2c93a00c974}" name="指引線" definition_ref="{bba9fecf-5e6d-4db4-a2f7-c2ffbbdf3739}"/>
                 <toolbar UID="{c7a6efe7-212e-478a-9f83-1d20e7deb8a1}" name="基準面" definition_ref="{94b46e09-399c-4b32-a2fc-72779f5c3d2f}"/>
             </toolbar>
-            <toolbar UID="{697bf9de-55ab-4385-b3d3-fbfd37efa474}" movable="true" def_x_location="200" def_y_location="200" name="組合圖與材料清單" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
+            <toolbar UID="{697bf9de-55ab-4385-b3d3-fbfd37efa474}" movable="true" def_x_location="200" def_y_location="200" name="組合圖與材料清單" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="true">
                 <toolbar UID="{954caee5-9c2e-45dc-92bd-a82a0b553b9a}" name="組合圖與材料清單" definition_ref="{b3954590-d00a-43d2-983a-db7f75eee72e}"/>
                 <toolbar UID="{ef507eb5-200e-4e59-9a89-c3e16cca263f}" name="向上定距(連續號)" definition_ref="{84ff88e6-f4ae-4af8-8472-9ecf4212cbd3}"/>
                 <toolbar UID="{affb9c28-6b3b-44ee-87e6-4553662239a0}" name="向下定距(連續號)" definition_ref="{a9324861-a670-42a2-882b-76cd80fcba95}"/>
@@ -699,7 +699,7 @@
                 <toolbar UID="{c362e397-0729-4f56-ac54-061b8260a73c}" name="第 6 組鎖點模式" definition_ref="{6fe5b76d-0e94-4af2-949e-95acf049772c}"/>
                 <toolbar UID="{1000c28d-890e-41c9-8184-4fed505ed4d8}" name="設定常駐鎖點模式" definition_ref="{e0af4328-078e-43fd-8ced-79777346d102}"/>
             </toolbar>
-            <toolbar UID="{6a2b6e66-5091-4135-a5b6-b8332165a402}" movable="true" def_x_location="200" def_y_location="200" name="物料結構管理" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
+            <toolbar UID="{6a2b6e66-5091-4135-a5b6-b8332165a402}" movable="true" def_x_location="200" def_y_location="200" name="物料結構管理" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="true">
                 <toolbar UID="{a56c3e9f-0b1e-4163-8b52-fc2544ee7164}" name="建立新零件圖層" definition_ref="{47f32a22-eb9d-4862-95b9-fd7d303ee17c}"/>
                 <toolbar UID="{aaf7304d-8fd7-4e38-960f-50adefe31c73}" name="修改資訊點資料" definition_ref="{5e96c821-b4df-4dfc-a74c-b29b206825ba}"/>
                 <toolbar UID="{db961780-86ec-4edd-8ed2-102461a835e4}" name="建立資訊點(自己輸入資料)" definition_ref="{76d95188-3c6f-488f-95fc-5b9e86ab1162}"/>
