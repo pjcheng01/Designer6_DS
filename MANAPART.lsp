@@ -47,6 +47,7 @@
       (action_tile "accept" "(mana_database_ok)")
       (action_tile "cancel" "(done_dialog)")
       (start_dialog)
+      (unload_dialog dcl_id)
 )
 ;;--------------------2003.09.02 SAM 搜尋&篩選-------------------------
 ;; 篩選後資料 gbol_flag = 0 串列變數 database_sift
@@ -361,6 +362,7 @@
       (action_tile "accept" "(append_to_dwg_db_ok)(done_dialog)")
       (action_tile "cancel" "(done_dialog)")
       (start_dialog)
+      (unload_dialog dcl_id)
 );defun
 (defun append_to_dwg_db_show(l_id)
   (setq lab_list '())
@@ -678,7 +680,9 @@
       (action_tile "accept" "(autob_ok)")
       (action_tile "cancel" "(done_dialog)")
       (start_dialog)
+   (unload_dialog dcl_id)
 
+      (unload_dialog dcl_id)
       (if autob_fg
         (progn
           (setvar "osmode" 0)
@@ -1336,7 +1340,7 @@
         );progn
       );foreach
       (setq bomball_grp (ssget "x" (list (cons 0 "INSERT") (cons 2 "PARTREF"))))  ;;取所有資訊點
-      (setq partdata (read (getfile_val (strcat POWdesign_path "SYSTEM.ini") "零件定義資料")))
+      (setq partdata (read (getfile_val (strcat POWdesign_path "SYSTEM.ini") "PART_DEF")))
       (setq count 0 balllist '() num 1)
       (cond
        ((or (= typ 2)(= typ 0)(= typ 3))(setq ff (open (strcat  POWDESIGN_path "bom.out") "w")))
@@ -1586,7 +1590,7 @@
   (setq titlefile (findfile (strcat POWDESIGN_path "title.txt")))
   (if (null titlefile)
      (progn
-       (setq partdata (read (getfile_val (strcat POWdesign_path "SYSTEM.ini") "零件定義資料")))
+       (setq partdata (read (getfile_val (strcat POWdesign_path "SYSTEM.ini") "PART_DEF")))
        (setq titletxt_list (cddr partdata) needlist (list "層名"))
        (foreach nn titletxt_list
          (progn
@@ -1630,10 +1634,11 @@
   (action_tile "accept" "(sortcol_ok)")
   (action_tile "cancel" "(done_dialog)")
   (start_dialog)
+  (unload_dialog dcl_id)
 )
 
 (defun sortcol_ok(/ ff txt txt1 dbcol qf partdata)
-   (setq partdata (read (getfile_val (strcat POWDESIGN_path "SYSTEM.ini") "零件定義資料")))
+   (setq partdata (read (getfile_val (strcat POWDESIGN_path "SYSTEM.ini") "PART_DEF")))
    (setq ff (open (strcat POWDESIGN_path "title.txt") "w"))
    (setq qf (open (strcat POWDESIGN_path "dwgdata.txt") "w"))
    (write-line "A_01;料號" qf)
@@ -1948,7 +1953,7 @@
 ;;*  );if
 
   (actdcl (strcat POWDESIGN_dcl_path "manapart") "automakepart")
-  (setq partdata (read (getfile_val (strcat POWDESIGN_path "SYSTEM.ini") "零件定義資料")))
+  (setq partdata (read (getfile_val (strcat POWDESIGN_path "SYSTEM.ini") "PART_DEF")))
 
   (setq datal '(""))
   (setq partdata (cddr partdata) count 3)
@@ -2022,12 +2027,9 @@
   (act_pop_list datal "col")
   (if (null ntlayer)
    (progn
-     (done_dialog)
-     (actdcl (strcat POWDESIGN_path "pub-dcl") "allert")
-     (set_tile "ms_allert" "所有零件資訊點已建立完成!")
-     (action_tile "accept" "(done_dialog)")
-     (start_dialog)
-
+     ;; DraftSight: 不在 start_dialog 前呼叫 done_dialog
+     ;; 改為顯示訊息，讓使用者用 Cancel 關閉
+     (set_tile "error" "所有零件資訊點已建立完成! 請按 Cancel 關閉。")
    );progn
   )
 
@@ -2050,6 +2052,7 @@
   (action_tile "accept" "(automakepart_ok)")
   (action_tile "cancel" "(done_dialog)(setq automakepart_fg nil)")
   (start_dialog)
+  (unload_dialog dcl_id)
   (if automakepart_fg (autocreat_bomp));if
   (princ)
 );defun
@@ -2097,6 +2100,7 @@
 ;       (action_tile "accept" "(done_dialog)(setq noautono t)")
 ;       (action_tile "cancel" " (done_dialog)")
 ;       (start_dialog)
+(unload_dialog dcl_id)
 ;       (if noautono
 ;        (progn
 ;          (setq automakepart_fg t)
@@ -2394,7 +2398,9 @@
   (action_tile "accept" "(makepart_ok)")
   (action_tile "cancel" "(done_dialog)(setq makepart_fg nil)")
   (start_dialog)
+   (unload_dialog dcl_id)
 
+  (unload_dialog dcl_id)
  (if makepart_fg
    (progn
      (setq curlayer (getvar "clayer"))
@@ -2494,6 +2500,7 @@
   (action_tile "accept" "(setq flag_btn 1)(done_dialog)")
   (action_tile "cancel" "(setq flag_btn 0)(done_dialog)")
   (start_dialog)
+  (unload_dialog dcl_id)
   flag_btn
 )
 
@@ -2528,7 +2535,7 @@
 );defun
 
 (defun show_userdef()
-  (setq part_defdatalist (read (getfile_val (strcat POWDESIGN_path "SYSTEM.ini") "零件定義資料")))
+  (setq part_defdatalist (read (getfile_val (strcat POWDESIGN_path "SYSTEM.ini") "PART_DEF")))
   (setq nlist '())
   (foreach mm part_defdatalist
     (progn
@@ -2744,6 +2751,7 @@
       (action_tile "accept" "(edit_bomp_ok)(done_dialog)")
       (action_tile "cancel" "(done_dialog)")
       (start_dialog)
+      (unload_dialog dcl_id)
       (if edit_bompflg
 ;;ent: 資訊點圖元名稱   dlist: 15筆屬性串列 (("TAG1" "aaa") ("TAG2" "bbb") ("TAG3" "ccc")..)
        (progn
@@ -2773,6 +2781,7 @@
         (set_tile "ms_allert" "本圖元並未建立零件資訊點!")
         (action_tile "accept" "(done_dialog)")
         (start_dialog)
+        (unload_dialog dcl_id)
       );progn
       )
     );progn
@@ -2897,13 +2906,13 @@
                      (setvar "blipmode" 0)
                      (setq oerr *error* *error* te_err_bomlist)
 ;;;===================取出 SYSTEM.INI 零件定義各欄位名稱==================
-                     (setq partdata (read (getfile_val (strcat POWDESIGN_path "SYSTEM.ini") "零件定義資料")))
+                     (setq partdata (read (getfile_val (strcat POWDESIGN_path "SYSTEM.ini") "PART_DEF")))
                      (foreach YY partdata
                          (setq needlist (cons (list (nth 0 YY) (nth 2 YY)) needlist))
                      );foreach
                      (setq needlist (reverse needlist))
 ;;;===================取出 SYSTEM.INI 材料清單各欄位名稱==================
-                     (setq fielddata (read (getfile_val (strcat POWDESIGN_path "system.ini") "材料清單欄位定義")))
+                     (setq fielddata (read (getfile_val (strcat POWDESIGN_path "system.ini") "BOM_FIELD_DEF")))
                      (foreach XX fielddata
                          (setq bom (nth 0 XX))
                          (setq pdm (nth 2 XX))
@@ -3433,13 +3442,13 @@
 ; (setq grp (ssget))
   (setq count 0 dlist '())
 
-  (setq attblklist (read (getfile_val (strcat POWDESIGN_path "SYSTEM.ini") "舊圖框屬性BLOCK名稱")))
+  (setq attblklist (read (getfile_val (strcat POWDESIGN_path "SYSTEM.ini") "OLD_FRAME_BLOCK")))
 ;; attblklist ("a1tzt" "a2tzt" "a3tzt" "a4tzt")
 
-  (setq partdata (read (getfile_val (strcat POWDESIGN_path "SYSTEM.ini") "零件定義資料")))
+  (setq partdata (read (getfile_val (strcat POWDESIGN_path "SYSTEM.ini") "PART_DEF")))
 ;;partdata (("組合件號" "" "TAG1")("次組合名稱" "" "TAG2")("品名" "PARTNAME" "TAG3")("材質" "MATERIAL" "TAG4")("#圖號" "DWGNO" "TAG5")("製圖" "DRAWER" "TAG6")("數量" "QTY" "TAG7")("表面處理" "SURFACE" "TAG8")("英文品名" "" "TAG9")("規格" "" "TAG10")("機種" "ITEM" "TAG11")("說明" "" "TAG12"))
 
-  (setq oldattta (read (getfile_val (strcat POWDESIGN_path "SYSTEM.ini") "舊圖框屬性對應資訊點標籤")))
+  (setq oldattta (read (getfile_val (strcat POWDESIGN_path "SYSTEM.ini") "OLD_FRAME_TAG")))
 ;;oldattta (("PARTNAME" "TAG3")("MATERIAL" "TAG4")("DWGNO" "TAG5")("DRAWER" "TAG6")("QTY" "TAG7")("SURFACE" "TAG8")("ITEM" "TAG11"))
 
   (foreach nn attblklist (setq dlist (cons (strcase nn) dlist)) )
@@ -3589,7 +3598,7 @@
   
 );defun
 (defun nobomp_listp();;定義不建立資訊點的圖層
-     (setq nobomp_list (vgetfile_val&manapart (strcat powdesign_PATH "system.ini") "不建立資訊點的圖層"))
+     (setq nobomp_list (vgetfile_val&manapart (strcat powdesign_PATH "system.ini") "NO_INFO_LAYER"))
      (setq nobomp_list (read nobomp_list))
 );defun  
 

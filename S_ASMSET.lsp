@@ -110,7 +110,9 @@
      (action_tile "accept" "(setq oker 1)(done_dialog)")
      (action_tile "cancel" "(done_dialog)(unload_dialog dcL_id)(setq oker 0)")
      (start_dialog)
+   (unload_dialog dcl_id)
     
+     (unload_dialog dcl_id)
      (if (= oker 1)
          (progn
               (subsys_ok&fun1)
@@ -744,7 +746,9 @@
      (action_tile "accept" "(setq oker 1)(done_dialog)")
      (action_tile "cancel" "(done_dialog)(unload_dialog dcL_id)(setq oker 0)")
      (start_dialog)
+   (unload_dialog dcl_id)
     
+     (unload_dialog dcl_id)
      (if (= oker 1)
          (progn
               (subsys_ok&part_cr)
@@ -1383,7 +1387,9 @@
      (action_tile "accept" "(setq oker 1)(done_dialog)")
      (action_tile "cancel" "(done_dialog)(unload_dialog dcL_id)(setq oker 0)")
      (start_dialog)
+   (unload_dialog dcl_id)
     
+     (unload_dialog dcl_id)
      (if (= oker 1)
          (progn
               (subsys_ok&part_DEL)
@@ -2037,7 +2043,9 @@
      (action_tile "accept" "(setq oker 1)(done_dialog)")
      (action_tile "cancel" "(done_dialog)(unload_dialog dcL_id)(setq oker 0)")
      (start_dialog)
+   (unload_dialog dcl_id)
     
+     (unload_dialog dcl_id)
      (if (= oker 1)
          (progn
               (subsys_ok&Sub_REmove)
@@ -2673,7 +2681,9 @@
      (action_tile "cancel"   "(done_dialog)(unload_dialog dcL_id)(setq oker 0)")
       
      (start_dialog)
+   (unload_dialog dcl_id)
     
+     (unload_dialog dcl_id)
      (if (= oker 1)
          (progn
               (subsys_ok&Sub_On_Off)

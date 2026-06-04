@@ -123,7 +123,9 @@
 
               (action_tile "cancel" "(setq func nil flag nil)(done_dialog)")
               (start_dialog)
+   (unload_dialog dcl_id)
 
+              (unload_dialog dcl_id)
               (cond
                     ((and func (= flag "sel_wid"))
                                (while (null p1)
@@ -321,7 +323,9 @@
               (action_tile "cancel" "(setq funct nil)(done_dialog)")
 
               (start_dialog)
+   (unload_dialog dcl_id)
 
+              (unload_dialog dcl_id)
               (if (null funct)
                   (setq flag "sel_wid")
               );if
@@ -339,7 +343,9 @@
               (action_tile "cancel" "(setq funct nil)(done_dialog)")
 
               (start_dialog)
+   (unload_dialog dcl_id)
 
+              (unload_dialog dcl_id)
               (if funct
                   (set_tile "shty" selsh)
               );if
@@ -672,7 +678,9 @@
 
               (action_tile "cancel" "(setq func nil flag nil)(done_dialog)")
               (start_dialog)
+   (unload_dialog dcl_id)
 
+              (unload_dialog dcl_id)
               (cond
                     ((and func (= flag "sel_wid"))
                                (setq p1 nil p2 nil)

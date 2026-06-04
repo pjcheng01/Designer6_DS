@@ -117,7 +117,7 @@
      (setq pview nil)
      (setq aview nil)
      (setq partname (getstring "\n輸入零件名稱: "))
-     (setq sepcode (vgetfile_val&crblock (strcat powdesign_PATH "system.ini") "分隔碼 (零件名稱與視圖代號間)"))
+     (setq sepcode (vgetfile_val&crblock (strcat powdesign_PATH "system.ini") "PART_SEP_CODE"))
      (setq sepcode (car (read sepcode)))
      ;(setq sepcode (getstring "\n輸入分隔碼 (零件名稱與視圖代號間): "))
      (setq partname_i 1)

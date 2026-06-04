@@ -32,9 +32,9 @@
         );progn
      );if	             
      (setvar "cmdecho" 0)
-     (setq sepcode   (vgetfile_val&s_allblk (strcat powdesign_PATH "system.ini") "分隔碼 (零件名稱與視圖代號間)"))
-     (setq #nonpart  (vgetfile_val&s_allblk (strcat powdesign_PATH "system.ini") "不建立資訊點的圖層"))
-     (setq #on_layer (vgetfile_val&s_allblk (strcat powdesign_PATH "system.ini") "零件 (BLOCK) 繪圖層"))
+     (setq sepcode   (vgetfile_val&s_allblk (strcat powdesign_PATH "system.ini") "PART_SEP_CODE"))
+     (setq #nonpart  (vgetfile_val&s_allblk (strcat powdesign_PATH "system.ini") "NO_INFO_LAYER"))
+     (setq #on_layer (vgetfile_val&s_allblk (strcat powdesign_PATH "system.ini") "PART_DRAW_LAYER"))
   
      (if (and  (/= sepcode nil)
 	       (/= (read sepcode) nil)

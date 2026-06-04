@@ -47,6 +47,7 @@
        (action_tile "accept" "(setq exe_st 1)(done_dialog)(write_systemini&fieldset)")
        (action_tile "cancel" "(setq exe_st 0)(done_dialog)(unload_dialog dcL_id)")
        (start_dialog)
+       (unload_dialog dcl_id)
        ;(if (= exe_st 1)
        ;     (c:fieldset)
        ;);if      

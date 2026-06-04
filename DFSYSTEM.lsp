@@ -25,11 +25,11 @@
    (cond
      ((null (findfile osnapfile))
         (setq ff (open osnapfile "w"))
-        (write-line "第一組鎖點模式=(\"1\" \"1\" \"1\" \"0\" \"1\" \"0\" \"0\" \"0\" \"0\" \"0\" \"0\" \"0\")" ff)
-        (write-line "第二組鎖點模式=(\"0\" \"0\" \"0\" \"1\" \"1\" \"1\" \"0\" \"0\" \"0\" \"0\" \"0\" \"0\")" ff)
-        (write-line "第三組鎖點模式=(\"0\" \"0\" \"0\" \"0\" \"0\" \"0\" \"1\" \"1\" \"1\" \"1\" \"0\" \"0\")" ff)
-        (write-line "第四組鎖點模式=(\"1\" \"1\" \"1\" \"1\" \"0\" \"0\" \"1\" \"0\" \"0\" \"0\" \"0\" \"0\")" ff)
-        (write-line "第五組鎖點模式=(\"0\" \"0\" \"0\" \"0\" \"0\" \"0\" \"0\" \"0\" \"1\" \"1\" \"1\" \"1\")" ff)
+        (write-line "SNAP_MODE_1=(\"1\" \"1\" \"1\" \"0\" \"1\" \"0\" \"0\" \"0\" \"0\" \"0\" \"0\" \"0\")" ff)
+        (write-line "SNAP_MODE_2=(\"0\" \"0\" \"0\" \"1\" \"1\" \"1\" \"0\" \"0\" \"0\" \"0\" \"0\" \"0\")" ff)
+        (write-line "SNAP_MODE_3=(\"0\" \"0\" \"0\" \"0\" \"0\" \"0\" \"1\" \"1\" \"1\" \"1\" \"0\" \"0\")" ff)
+        (write-line "SNAP_MODE_4=(\"1\" \"1\" \"1\" \"1\" \"0\" \"0\" \"1\" \"0\" \"0\" \"0\" \"0\" \"0\")" ff)
+        (write-line "SNAP_MODE_5=(\"0\" \"0\" \"0\" \"0\" \"0\" \"0\" \"0\" \"0\" \"1\" \"1\" \"1\" \"1\")" ff)
         (close ff)
       )
       ((= typ 1)
@@ -60,17 +60,17 @@
 
    (wr_osmode_to_supp 0) ;假如support 目錄下沒有個人化的 osmode.ini, 則自動建立該檔
 
- ; (setq list1 (read (getfile_val (strcat POWDESIGN_path "system.ini") "第一組鎖點模式")))
- ; (setq list2 (read (getfile_val (strcat POWDESIGN_path "system.ini") "第二組鎖點模式")))
- ; (setq list3 (read (getfile_val (strcat POWDESIGN_path "system.ini") "第三組鎖點模式")))
- ; (setq list4 (read (getfile_val (strcat POWDESIGN_path "system.ini") "第四組鎖點模式")))
- ; (setq list5 (read (getfile_val (strcat POWDESIGN_path "system.ini") "第五組鎖點模式")))
+ ; (setq list1 (read (getfile_val (strcat POWDESIGN_path "system.ini") "SNAP_MODE_1")))
+ ; (setq list2 (read (getfile_val (strcat POWDESIGN_path "system.ini") "SNAP_MODE_2")))
+ ; (setq list3 (read (getfile_val (strcat POWDESIGN_path "system.ini") "SNAP_MODE_3")))
+ ; (setq list4 (read (getfile_val (strcat POWDESIGN_path "system.ini") "SNAP_MODE_4")))
+ ; (setq list5 (read (getfile_val (strcat POWDESIGN_path "system.ini") "SNAP_MODE_5")))
 
-   (setq list1 (read (getfile_val osnapfile "第一組鎖點模式")))
-   (setq list2 (read (getfile_val osnapfile "第二組鎖點模式")))
-   (setq list3 (read (getfile_val osnapfile "第三組鎖點模式")))
-   (setq list4 (read (getfile_val osnapfile "第四組鎖點模式")))
-   (setq list5 (read (getfile_val osnapfile "第五組鎖點模式")))
+   (setq list1 (read (getfile_val osnapfile "SNAP_MODE_1")))
+   (setq list2 (read (getfile_val osnapfile "SNAP_MODE_2")))
+   (setq list3 (read (getfile_val osnapfile "SNAP_MODE_3")))
+   (setq list4 (read (getfile_val osnapfile "SNAP_MODE_4")))
+   (setq list5 (read (getfile_val osnapfile "SNAP_MODE_5")))
 
    (set_tile "end1" (nth 0  list1)) (set_tile "end2" (nth 0  list2)) (set_tile "end3" (nth 0  list3)) (set_tile "end4" (nth 0  list4)) (set_tile "end5" (nth 0  list5))
    (set_tile "mid1" (nth 1  list1)) (set_tile "mid2" (nth 1  list2)) (set_tile "mid3" (nth 1  list3)) (set_tile "mid4" (nth 1  list4)) (set_tile "mid5" (nth 1  list5))
@@ -112,6 +112,7 @@
    (action_tile "cancel" "(done_dialog)")
 
    (start_dialog)
+   (unload_dialog dcl_id)
    (setvar "cmdecho" 1)
    (setq list1 nil list2 nil list3 nil list4 nil list5 nil curosmode nil item1 nil item2 nil item3 nil item4 nil item5 nil itemv1 nil itemv2 nil itemv3 nil itemv4 nil itemv5 nil
                      end1 nil end2 nil end3 nil end4 nil end5 nil endv1 nil endv2 nil endv3 nil endv4 nil endv5 nil outitem1 nil
@@ -207,26 +208,26 @@
      ((= "1" item5) (setvar "osmode" itemv5))
      ((= "1" item6) (setvar "osmode" 0))
    )
-   (setq outdata1 (strcat "第一組鎖點模式=(\"" end1 "\" \""  mid1 "\" \"" int1 "\" \"" cen1 "\" \""
+   (setq outdata1 (strcat "SNAP_MODE_1=(\"" end1 "\" \""  mid1 "\" \"" int1 "\" \"" cen1 "\" \""
                                                qua1 "\" \""  tan1 "\" \"" per1 "\" \"" nod1 "\" \""
                                                ins1 "\" \""  nea1 "\" \"" app1 "\" \"" qui1 "\"" ")"))
-   (setq outdata2 (strcat "第二組鎖點模式=(\"" end2 "\" \""  mid2 "\" \"" int2 "\" \"" cen2 "\" \""
+   (setq outdata2 (strcat "SNAP_MODE_2=(\"" end2 "\" \""  mid2 "\" \"" int2 "\" \"" cen2 "\" \""
                                                qua2 "\" \""  tan2 "\" \"" per2 "\" \"" nod2 "\" \""
                                                ins2 "\" \""  nea2 "\" \"" app2 "\" \"" qui2 "\"" ")"))
-   (setq outdata3 (strcat "第三組鎖點模式=(\"" end3 "\" \""  mid3 "\" \"" int3 "\" \"" cen3 "\" \""
+   (setq outdata3 (strcat "SNAP_MODE_3=(\"" end3 "\" \""  mid3 "\" \"" int3 "\" \"" cen3 "\" \""
                                                qua3 "\" \""  tan3 "\" \"" per3 "\" \"" nod3 "\" \""
                                                ins3 "\" \""  nea3 "\" \"" app3 "\" \"" qui3 "\"" ")"))
-   (setq outdata4 (strcat "第四組鎖點模式=(\"" end4 "\" \""  mid4 "\" \"" int4 "\" \"" cen4 "\" \""
+   (setq outdata4 (strcat "SNAP_MODE_4=(\"" end4 "\" \""  mid4 "\" \"" int4 "\" \"" cen4 "\" \""
                                                qua4 "\" \""  tan4 "\" \"" per4 "\" \"" nod4 "\" \""
                                                ins4 "\" \""  nea4 "\" \"" app4 "\" \"" qui4 "\"" ")"))
-   (setq outdata5 (strcat "第五組鎖點模式=(\"" end5 "\" \""  mid5 "\" \"" int5 "\" \"" cen5 "\" \""
+   (setq outdata5 (strcat "SNAP_MODE_5=(\"" end5 "\" \""  mid5 "\" \"" int5 "\" \"" cen5 "\" \""
                                                qua5 "\" \""  tan5 "\" \"" per5 "\" \"" nod5 "\" \""
                                                ins5 "\" \""  nea5 "\" \"" app5 "\" \"" qui5 "\"" ")"))
- ; (file_update  "system.INI" "swapfile.txt" "第一組鎖點模式" "=" outdata1)
- ; (file_update  "system.INI" "swapfile.txt" "第二組鎖點模式" "=" outdata2)
- ; (file_update  "system.INI" "swapfile.txt" "第三組鎖點模式" "=" outdata3)
- ; (file_update  "system.INI" "swapfile.txt" "第四組鎖點模式" "=" outdata4)
- ; (file_update  "system.INI" "swapfile.txt" "第五組鎖點模式" "=" outdata5)
+ ; (file_update  "system.INI" "swapfile.txt" "SNAP_MODE_1" "=" outdata1)
+ ; (file_update  "system.INI" "swapfile.txt" "SNAP_MODE_2" "=" outdata2)
+ ; (file_update  "system.INI" "swapfile.txt" "SNAP_MODE_3" "=" outdata3)
+ ; (file_update  "system.INI" "swapfile.txt" "SNAP_MODE_4" "=" outdata4)
+ ; (file_update  "system.INI" "swapfile.txt" "SNAP_MODE_5" "=" outdata5)
    (wr_osmode_to_supp 1)
 
 )
@@ -279,6 +280,7 @@
  (action_tile "cancel" "(done_dialog)")
 
  (start_dialog)
+ (unload_dialog dcl_id)
  (setvar "cmdecho" 1)
  (prin1)
 )
@@ -347,7 +349,7 @@
   (setq outdata (strcat "圖層定義=(" outtxt1 outtxt2 outtxt3 outtxt4 outtxt5 outtxt6 outtxt7
                                      outtxt8 outtxt9 outtxt10 outtxt11 outtxt12 outtxt13 outtxt14
                                      outtxt15 outtxt16 outtxt17 outtxt18 outtxt19 outtxt20 ")"))
-  (file_update  "SYSTEM.INI" "SYSTEM.NEW" "圖層定義" "=" outdata)
+  (file_update  "SYSTEM.INI" "SYSTEM.NEW" "LAYER_DEF" "=" outdata)
   (get_layerdef)
 )
 
@@ -428,6 +430,7 @@
  (action_tile "cancel" "(done_dialog)")
 
  (start_dialog)
+ (unload_dialog dcl_id)
  (setvar "cmdecho" 1)
  (prin1)
 )
@@ -504,8 +507,8 @@
       (setq outdata (strcat "材料清單欄位定義=(" outtxt1 outtxt2 outtxt3 outtxt4 outtxt5 outtxt6 outtxt7
                                          outtxt8 outtxt9 outtxt10 outtxt11 outtxt12 outtxt13 outtxt14
                                          outtxt15 outtxt16 outtxt17 outtxt18 outtxt19 outtxt20 ")"))
-      (file_update  "SYSTEM.INI" "SYSTEM.NEW" "材料清單欄位定義" "=" outdata)
-      (file_update  "SYSTEM.INI" "SYSTEM.NEW" "數量位置" "=" (strcat "數量位置" "=\""  qtyid "\""))
+      (file_update  "SYSTEM.INI" "SYSTEM.NEW" "BOM_FIELD_DEF" "=" outdata)
+      (file_update  "SYSTEM.INI" "SYSTEM.NEW" "QTY_POS" "=" (strcat "QTY_POS" "=\""  qtyid "\""))
       (done_dialog)
       (get_bomlistdef)
     );progn
@@ -613,6 +616,7 @@
  (action_tile "cancel" "(done_dialog)")
 
  (start_dialog)
+ (unload_dialog dcl_id)
  (setvar "cmdecho" 1)
  (prin1)
 )
@@ -682,7 +686,7 @@
   (setq outdata (strcat "線性定義=(" outtxt1 outtxt2 outtxt3 outtxt4 outtxt5 outtxt6 outtxt7
                                      outtxt8 outtxt9 outtxt10 outtxt11 outtxt12 outtxt13 outtxt14
                                      outtxt15 outtxt16 outtxt17 outtxt18 outtxt19 outtxt20 ")"))
-  (file_update  "SYSTEM.INI" "SYSTEM.NEW" "線性定義" "=" outdata)
+  (file_update  "SYSTEM.INI" "SYSTEM.NEW" "LTYPE_DEF" "=" outdata)
   (redefine_ltype)           ;線型定義
 
 )
@@ -814,6 +818,7 @@
  (action_tile "cancel" "(done_dialog)")
 
  (start_dialog)
+ (unload_dialog dcl_id)
  (setvar "cmdecho" 1)
  (prin1)
 )
@@ -871,7 +876,7 @@
                                              sys_ballpoint_type "\" \"" sys_ballpoint_size "\" \""
                                              sys_balltxt_hei "\"" ")"))
 
-        (file_update  "SYSTEM.INI" "SYSTEM.NEW" "指標球定義" "=" outdata))
+        (file_update  "SYSTEM.INI" "SYSTEM.NEW" "BALLOON_DEF" "=" outdata))
    )
 )
 
@@ -887,31 +892,32 @@
 
  (actdcl (strcat powdesign_dcl_path "system") "defdatetype")
 
- (set_tile (strcat "date" (getfile_val (strcat POWDESIGN_path "shscal.ini") "圖框日期型式")) "1")
+ (set_tile (strcat "date" (getfile_val (strcat POWDESIGN_path "shscal.ini") "DATE_FORMAT")) "1")
  (action_tile "accept" "(defdate_type_ok)(done_dialog)")
  (action_tile "cancel" "(done_dialog)")
 
  (start_dialog)
+ (unload_dialog dcl_id)
  (setvar "cmdecho" 1)
  (prin1)
 )
 (defun defdate_type_ok()
   (cond
-    ((= (get_tile "date0") "1") (setq outdata "圖框日期型式=0"))
-    ((= (get_tile "date1") "1") (setq outdata "圖框日期型式=1"))
-    ((= (get_tile "date2") "1") (setq outdata "圖框日期型式=2"))
-    ((= (get_tile "date3") "1") (setq outdata "圖框日期型式=3"))
-    ((= (get_tile "date4") "1") (setq outdata "圖框日期型式=4"))
-    ((= (get_tile "date5") "1") (setq outdata "圖框日期型式=5"))
-    ((= (get_tile "date6") "1") (setq outdata "圖框日期型式=6"))
-    ((= (get_tile "date7") "1") (setq outdata "圖框日期型式=7"))
-    ((= (get_tile "date8") "1") (setq outdata "圖框日期型式=8"))
-    ((= (get_tile "date9") "1") (setq outdata "圖框日期型式=9"))
-    ((= (get_tile "date10") "1") (setq outdata "圖框日期型式=10"))
-    ((= (get_tile "date11") "1") (setq outdata "圖框日期型式=11"))
-    ((= (get_tile "date12") "1") (setq outdata "圖框日期型式=12"))
+    ((= (get_tile "date0") "1") (setq outdata "DATE_FORMAT=0"))
+    ((= (get_tile "date1") "1") (setq outdata "DATE_FORMAT=1"))
+    ((= (get_tile "date2") "1") (setq outdata "DATE_FORMAT=2"))
+    ((= (get_tile "date3") "1") (setq outdata "DATE_FORMAT=3"))
+    ((= (get_tile "date4") "1") (setq outdata "DATE_FORMAT=4"))
+    ((= (get_tile "date5") "1") (setq outdata "DATE_FORMAT=5"))
+    ((= (get_tile "date6") "1") (setq outdata "DATE_FORMAT=6"))
+    ((= (get_tile "date7") "1") (setq outdata "DATE_FORMAT=7"))
+    ((= (get_tile "date8") "1") (setq outdata "DATE_FORMAT=8"))
+    ((= (get_tile "date9") "1") (setq outdata "DATE_FORMAT=9"))
+    ((= (get_tile "date10") "1") (setq outdata "DATE_FORMAT=10"))
+    ((= (get_tile "date11") "1") (setq outdata "DATE_FORMAT=11"))
+    ((= (get_tile "date12") "1") (setq outdata "DATE_FORMAT=12"))
   );cond
-  (file_update  "shscal.INI" "swapfile.txt" "圖框日期型式" "=" outdata)
+  (file_update  "shscal.INI" "swapfile.txt" "DATE_FORMAT" "=" outdata)
 )
 ;;c:passdfac***********************************************************************************
 
@@ -938,7 +944,7 @@
        ;(setq #class_name_list nil)
        (setq #process_list nil)
 
-       (if (/= (setq gf_val (vgetfile_val&passdfac (strcat powdesign_PATH "system.ini") "零件組合時預設之顏色")) nil)
+       (if (/= (setq gf_val (vgetfile_val&passdfac (strcat powdesign_PATH "system.ini") "ASSEMBLE_COLOR")) nil)
            (progn
                 (setq #process_list (read gf_val))
                 (foreach mm #process_list
@@ -963,6 +969,7 @@
        (action_tile "accept" "(setq exe_st 1)(done_dialog)(write_systemini&passdfac)")
        (action_tile "cancel" "(setq exe_st 0)(done_dialog)(unload_dialog dcL_id)")
        (start_dialog)
+       (unload_dialog dcl_id)
        (if (= exe_st 1)
            (c:passdfac)
        );if      
@@ -1238,33 +1245,33 @@
 
 ;;零件組合時刪除之圖層
 (defun c:psdellay();Part aSsemble DELlete LAYer
-       (lt_dcltr "psdellay" "零件組合時刪除之圖層")
+       (lt_dcltr "psdellay" "ASSEMBLE_DEL_LAYER")
 );defun
 ;;零件組合時刪除之圖塊
 (defun c:psdelblk();Part aSsemble DELlete BLocK
-       (lt_dcltr "psdelblk" "零件組合時刪除之圖塊")
+       (lt_dcltr "psdelblk" "ASSEMBLE_DEL_BLOCK")
 );defun
 ;;自動拆圖時不拆之圖層
 (defun c:auntklay();AUto NoT TaKe LAYer
-       (lt_dcltr "auntklay" "自動拆圖時不拆之圖層")
+       (lt_dcltr "auntklay" "EXPLODE_SKIP_LAYER")
 );defun
 ;;不建立資訊點的圖層
 (defun c:ncinplay();Non Create INformation Point LAYer
-       (lt_dcltr "ncinplay" "不建立資訊點的圖層")
+       (lt_dcltr "ncinplay" "NO_INFO_LAYER")
 );defun
 ;;自動拆圖時不拆之圖塊
 (defun c:auntkblk();AUto NoT TaKe BLocK
-       (lt_dcltr "auntkblk" "自動拆圖時不拆之圖塊")
+       (lt_dcltr "auntkblk" "EXPLODE_SKIP_BLOCK")
 );defun
 
 ;;舊圖框屬性BLOCK名稱
 (defun c:odshtblk();OlD SHeeT BLocK
-       (lt_dcltr "odshtblk" "舊圖框屬性BLOCK名稱")
+       (lt_dcltr "odshtblk" "OLD_FRAME_BLOCK")
 );defun
 
 ;;比例變動時會連動的BLOCK
 (defun c:auto_ch_clk_scal()
-       (lt_dcltr "auto_ch_clk_scal" "比例變動時會連動的BLOCK")
+       (lt_dcltr "auto_ch_clk_scal" "SCALE_SYNC_BLOCK")
 );defun
 
 
@@ -1310,6 +1317,7 @@
        (action_tile "accept" "(setq exe_st 1)(done_dialog)(write_systemini&lt_dcltr)")
        (action_tile "cancel" "(setq exe_st 0)(done_dialog)(unload_dialog dcL_id)")
        (start_dialog)
+       (unload_dialog dcl_id)
        (if (= exe_st 1)
            (lt_dcltr dclname systemname)
        );if      
@@ -1526,7 +1534,7 @@
 
 
 (defun get_defpart()          ;;jackson 90.2.20
-  (setq partdata (read (getfile_val (strcat POWdesign_path "SYSTEM.ini") "零件定義資料")))
+  (setq partdata (read (getfile_val (strcat POWdesign_path "SYSTEM.ini") "PART_DEF")))
   (setq tag_list '() txt_list '())
   (foreach nn partdata
     (setq txt1 (nth 2 nn)
@@ -1586,7 +1594,7 @@
        (setq #process_list nil)
        (setq car1_list '() cadr2_list '() caddr3_list '() cadddr4_list '())
 
-       (if (/= (setq gf_val (vgetfile_val&lt_prtdd (strcat powdesign_PATH "system.ini") "零件定義資料")) nil)
+       (if (/= (setq gf_val (vgetfile_val&lt_prtdd (strcat powdesign_PATH "system.ini") "PART_DEF")) nil)
            (progn
                 (setq #process_list (read gf_val))
                 (foreach mm #process_list
@@ -1636,6 +1644,7 @@
        (action_tile "accept" "(setq exe_st 1)(done_dialog)(write_systemini&lt_prtdd)")
        (action_tile "cancel" "(setq exe_st 0)(done_dialog)(unload_dialog dcL_id)")
        (start_dialog)
+       (unload_dialog dcl_id)
        (if (= exe_st 1)
            (c:lt_prtdd)
        );if      
@@ -2165,7 +2174,7 @@
         );foreach  
         (close ff)
 ;;;重新定義 title.txt 2001/3/12
-        (setq partdata (read (getfile_val (strcat POWdesign_path "SYSTEM.ini") "零件定義資料")))
+        (setq partdata (read (getfile_val (strcat POWdesign_path "SYSTEM.ini") "PART_DEF")))
         (setq titletxt_list (cddr partdata) needlist (list "層名"))
         (foreach nn titletxt_list
           (progn
@@ -2316,7 +2325,7 @@
        (setq gf_val nil)
        (setq #process_list nil)
 
-       (if (/= (setq gf_val (vgetfile_val&goac_inp (strcat powdesign_PATH "system.ini") "取舊圖框屬性建資訊點")) nil)
+       (if (/= (setq gf_val (vgetfile_val&goac_inp (strcat powdesign_PATH "system.ini") "OLD_FRAME_ATTR")) nil)
            (progn
                 (setq #process_list (read gf_val))
                 ;(setq loop_3_head_i 1)
@@ -2360,6 +2369,7 @@
        (action_tile "accept" "(setq exe_st 1)(done_dialog)(write_systemini&goac_inp)")
        (action_tile "cancel" "(setq exe_st 0)(done_dialog)(unload_dialog dcL_id)")
        (start_dialog)
+       (unload_dialog dcl_id)
        (if (= exe_st 1)
            (c:goac_inp)
        );if      
@@ -2943,7 +2953,7 @@
        (setq gf_val nil)
        (setq #process_list nil)
   
-       (if (/= (setq gf_val (vgetfile_val&lt_map (strcat powdesign_PATH "system.ini") "舊圖框屬性對應資訊點標籤")) nil)
+       (if (/= (setq gf_val (vgetfile_val&lt_map (strcat powdesign_PATH "system.ini") "OLD_FRAME_TAG")) nil)
            (progn
                 (setq a 2)
                 (setq #process_list (read gf_val))
@@ -2971,6 +2981,7 @@
        (action_tile "accept" "(setq exe_st 1)(done_dialog)(write_systemini&lt_map)")
        (action_tile "cancel" "(setq exe_st 0)(done_dialog)(unload_dialog dcL_id)")
        (start_dialog)
+       (unload_dialog dcl_id)
        (if (= exe_st 1)
            (c:lt_map)
        );if      
@@ -3467,7 +3478,7 @@
        (setq gf_val nil)
        (setq #process_list nil)
   
-       (if (/= (setq gf_val (vgetfile_val&signing (strcat powdesign_PATH "system.ini") "審核簽名資料")) nil)
+       (if (/= (setq gf_val (vgetfile_val&signing (strcat powdesign_PATH "system.ini") "APPROVAL_SIGN")) nil)
            (progn
                 (setq #process_list (read gf_val))
                 (foreach mm #process_list
@@ -3507,6 +3518,7 @@
        (action_tile "accept" "(setq exe_st 1)(done_dialog)(write_systemini&signing)")
        (action_tile "cancel" "(setq exe_st 0)(done_dialog)(unload_dialog dcL_id)")
        (start_dialog)
+       (unload_dialog dcl_id)
        (if (= exe_st 1)
            (c:signing)
        );if      
@@ -4068,9 +4080,10 @@
  (action_tile "cancel" "(done_dialog)")
 
  (start_dialog)
+ (unload_dialog dcl_id)
  (if dwg_libpath_fg
    (progn
-     (file_update  "system.INI" "swapfile.txt" "圖檔管理預設路徑" "="
+     (file_update  "system.INI" "swapfile.txt" "DWG_MANAGE_PATH" "="
           (strcat "圖檔管理預設路徑=" dwg_path))
      (setq system_dwg_libpath dwg_path)
    );progn
@@ -4111,7 +4124,7 @@
        (setvar "cmdecho" 1)
 
 ;;;===================取出 PDMBOM.INI 零件定義各欄位名稱==================
-       (setq partdata (read (getfile_val (strcat powdesign_path "system.ini") "零件定義資料")))
+       (setq partdata (read (getfile_val (strcat powdesign_path "system.ini") "PART_DEF")))
        (foreach YY partdata
            (setq txt (nth 0 YY))
            (setq needlist (cons txt needlist))
@@ -4120,7 +4133,7 @@
        (SETQ WW NEEDLIST)
 
 ;;;===================取出 SYSTEM.INI 材料清單各欄位名稱==================
-       (setq fielddata (read (getfile_val (strcat POWDESIGN_path "system.ini") "材料清單欄位定義")))
+       (setq fielddata (read (getfile_val (strcat POWDESIGN_path "system.ini") "BOM_FIELD_DEF")))
        (setq i 1)
        (foreach XX fielddata
            (if (= i 1)
@@ -4178,7 +4191,9 @@
        (action_tile "cancel" "(setq action_func nil)(done_dialog)")
 
        (start_dialog)
+   (unload_dialog dcl_id)
 
+       (unload_dialog dcl_id)
        (if action_func
            (progn
                   (setq ff (open (strcat POWDESIGN_path "system.ini") "r"))
@@ -4194,7 +4209,7 @@
                   (setq gg (open (strcat POWDESIGN_path "system.ini") "w"))
                   (setq ffdata (read-line ff))
                   (while ffdata
-                         (if (= (substr ffdata 1 16) "材料清單欄位定義")
+                         (if (= (substr ffdata 1 16) "BOM_FIELD_DEF")
                                 (write-line newdatastr gg)
                                 (write-line ffdata gg)
                          );if
@@ -4363,8 +4378,10 @@
        (action_tile "accept" "(modify_field_defbom_ok title)")
        (action_tile "cancel" "(done_dialog)")
        (start_dialog)
+   (unload_dialog dcl_id)
 
 
+       (unload_dialog dcl_id)
 )
 
 (defun modify_field_defbom_ok(typ / bom pdm wid i wid_err)
@@ -4481,7 +4498,9 @@
    (action_tile "cancel" "(done_dialog)")
 
    (start_dialog)
+   (unload_dialog dcl_id)
 
+   (unload_dialog dcl_id)
 )
              
                   
@@ -4560,6 +4579,7 @@
   (action_tile "accept" "(df_bom_sortcol_ok)")
   (action_tile "cancel" "(done_dialog)")
   (start_dialog)
+  (unload_dialog dcl_id)
 )
 
 (defun df_bom_sortcol_ok(/ ff txt txt1 dbcol qf partdata)
@@ -4748,7 +4768,7 @@
      ;;2001/3/12  (setq #process_list (getfile_value&fieldset (strcat powdesign_PATH "edwgdata.txt")))
        (setq #process_list (getfile_value&fieldset (strcat powdesign_PATH "dataname.txt")))
        (setq #process_list (acad_strlsort #process_list))
-       ;(if (/= (setq gf_val (vgetfile_val&fieldset (strcat powdesign_PATH "system.ini") "舊圖框屬性對應資訊點標籤")) nil)
+       ;(if (/= (setq gf_val (vgetfile_val&fieldset (strcat powdesign_PATH "system.ini") "OLD_FRAME_TAG")) nil)
        ;    (progn
        ;         (setq a 2)
        ;         (setq #process_list (read gf_val))
@@ -4776,6 +4796,7 @@
        (action_tile "accept" "(setq exe_st 1)(done_dialog)(write_systemini&fieldset)")
        (action_tile "cancel" "(setq exe_st 0)(done_dialog)(unload_dialog dcL_id)")
        (start_dialog)
+       (unload_dialog dcl_id)
        ;(if (= exe_st 1)
        ;    (c:fieldset)
        ;);if      
@@ -5023,6 +5044,7 @@
        (action_tile "accept" "(setq exe_st 1)(done_dialog)(write_systemini&trapmage)")
        (action_tile "cancel" "(setq exe_st 0)(done_dialog)(unload_dialog dcL_id)")
        (start_dialog)
+       (unload_dialog dcl_id)
        (if (= exe_st 1)
            (c:trapmage)
        );if      

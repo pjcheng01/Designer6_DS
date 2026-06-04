@@ -90,6 +90,7 @@
   (action_tile "cancel" "(setq blk_name nil)(done_dialog)")
 
   (start_dialog)
+  (unload_dialog dcl_id)
  (if blockuse_id (blockuse_ok))
  (prin1)
   ;; removed FFF
@@ -158,6 +159,7 @@
       (show_sld "sld_name" sldn)
       (action_tile "accept" "(done_dialog)")
       (start_dialog)
+      (unload_dialog dcl_id)
     )
     (set_tile "message" "您尚未選取任何符號圖形!!")
   )
@@ -349,6 +351,7 @@
 
    (action_tile "accept" "(sel_page)(done_dialog)")
    (start_dialog)
+   (unload_dialog dcl_id)
    (if (/= sel_pg "")
      (progn
        (set_tile "page" sel_pg)

@@ -104,6 +104,7 @@
           (action_tile "accept"   "(setq oker 1)(done_dialog)")
           (action_tile "cancel"   "(done_dialog)(unload_dialog dcL_id)(setq oker 0)")
           (start_dialog)
+          (unload_dialog dcl_id)
           (if (= oker 0)
               (exit)
           );if  
@@ -189,6 +190,7 @@
    (action_tile "accept"   "(setq oker 1)(done_dialog)")
    (action_tile "cancel"   "(done_dialog)(unload_dialog dcL_id)(setq oker 0)")
    (start_dialog)
+   (unload_dialog dcl_id)
    (if (or (= oker 0)
            (= ent nil)
        )
@@ -2813,6 +2815,7 @@
        (action_tile "accept" "(setq oker 1)(setq #ang (get_tile \"trapang\"))(done_dialog)")
        (action_tile "cancel" "(setq oker 0)(done_dialog)(unload_dialog dcL_id)")
        (start_dialog)
+       (unload_dialog dcl_id)
        (if (= oker 1)
            (progn
                 (if (= #sdtobd_flag 0)

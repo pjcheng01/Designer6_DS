@@ -25,7 +25,7 @@
     (connect_powerpdm)
     (actdcl (strcat powdesign_dcl_path "bom") "out")
     (setq outlalist (acad_strlsort (coll_layer)) nolalist '())
-    (setq no_outla (read (getfile_val (strcat POWdesign_path "system.ini") "自動拆圖時不拆之圖層")))
+    (setq no_outla (read (getfile_val (strcat POWdesign_path "system.ini") "EXPLODE_SKIP_LAYER")))
     (foreach nn no_outla
        (setq outlalist (removelist nn outlalist))
     );progn
@@ -53,6 +53,7 @@
     (action_tile "cancel" "(done_dialog)")
 
     (start_dialog)
+    (unload_dialog dcl_id)
     (if out_flag (exeout))
     (setvar "cmdecho" 1)
     (PRINC)
@@ -102,6 +103,7 @@
     (action_tile "accept" "(setq sel_sheet_list (pdm_sel_sheet_ok))")   ;;sel_sheet_list ("標準屬性圖框" "A2")
     (action_tile "cancel" "(done_dialog)(setq check_flag nil)")
     (start_dialog)
+    (unload_dialog dcl_id)
     sel_sheet_list   ;;("藝祥圖框" "藝祥 A4")
 )
 
@@ -232,7 +234,7 @@
   );foreach
 ;; tt_list --> (("TYPE" "") ("SURFACE" "") ("QTY" "") ("DRAWER" "") ("DWGNO" "") (" MATERIAL" "") ("DWGNAME" "軸承蓋"))
 ;;  sel_sheet_list   ;;("藝祥圖框" "藝祥 A4")
-   (setq aaa (read (getfile_val (strcat POWDESIGN_path "shscal.ini") "POWERPDM圖框屬性與CAD圖框對應")))
+   (setq aaa (read (getfile_val (strcat POWDESIGN_path "shscal.ini") "POWERPDM_FRAME_MAP")))
 ;;; aaa -> (("屬性一" "藝祥圖框" "atttemp1.txt")("屬性二" "標準屬性圖框" "atttemp2.txt"))
   ;(setq att_name (nth 0 sel_sheet_list))
    (setq att_name sel_sheet_list)
@@ -362,7 +364,7 @@
      (setq manadwg_transfile (open  (strcat POWdesign_path "data.txt") "w"))
 
      (setq acount 1)
-     (setq partdata (read (getfile_val (strcat POWdesign_path "system.ini") "零件定義資料")))
+     (setq partdata (read (getfile_val (strcat POWdesign_path "system.ini") "PART_DEF")))
      (setq chk_list (act_outlist))  ; ("料號" "品名" "機種" "#圖號" "製圖" "規格" "數量" "英文品名" "表面處理" "材質 " "說明")
    
      (if (= "Yes" yyesno)
@@ -833,8 +835,8 @@
    ;; DraftSight: 移除加密狗 WHILE 迴圈
 
 ;(setq partindel_layer '("DIM" "BORDER" "SHEET" "TEMP" "PROJ" "TEXT"))  ; part in 時自動刪除之圖層
- (setq partindel_layer (read (getfile_val (strcat powdesign_path "system.ini") "零件組合時刪除之圖層")))
- (setq partindel_block (read (getfile_val (strcat powdesign_path "system.ini") "零件組合時刪除之圖塊")))
+ (setq partindel_layer (read (getfile_val (strcat powdesign_path "system.ini") "ASSEMBLE_DEL_LAYER")))
+ (setq partindel_block (read (getfile_val (strcat powdesign_path "system.ini") "ASSEMBLE_DEL_BLOCK")))
 
  (initget "Auto Text Sel")
 ;(setq op (getkword "\n自選檔案 S/參考文字檔自動組零件 A/ 參考文字檔手動組合零件 T/ <手動一件一件組合>: "))
@@ -1007,7 +1009,7 @@
 
 (defun selfile_partin(/ ffq)
    (setq ffq (open (strcat powdesign_path "trans\\filelist.txt") "r"))
-   (setq col_list (read (getfile_val (strcat powdesign_path "system.ini") "零件組合時預設之顏色")))
+   (setq col_list (read (getfile_val (strcat powdesign_path "system.ini") "ASSEMBLE_COLOR")))
    (setq parin? (getpoint "\n零件插入點<0,0,0>: "))
    (if (null parin?) (setq parin? (list 0 0 0)))
 
@@ -1468,7 +1470,9 @@
  (action_tile "cancel" "(done_dialog)(setq flag nil)")
 
  (start_dialog)
+   (unload_dialog dcl_id)
 
+ (unload_dialog dcl_id)
  (if flag (ad1xdata ent "BOMLIST_DATA" xdata))
    ;; removed FFF
  (prin1)
@@ -1535,7 +1539,9 @@
  (action_tile "cancel" "(done_dialog)(setq flag nil)")
 
  (start_dialog)
+   (unload_dialog dcl_id)
 
+ (unload_dialog dcl_id)
   (if flag
     (progn
       (ad1xdata ent "BOMLIST_DATA" xdata)
@@ -1611,7 +1617,9 @@
  (action_tile "cancel" "(done_dialog)(setq flag nil)")
 
  (start_dialog)
+   (unload_dialog dcl_id)
 
+ (unload_dialog dcl_id)
  (if flag (drawbom_list_ok))
 
  (setvar "cmdecho" 1)

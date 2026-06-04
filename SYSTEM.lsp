@@ -5,7 +5,7 @@
 ; deflayer_list   : (("圖紙層" "BORDER" "BYBLOCK") ("尺寸標註層" "DIM" "2") ("文字註解層"　"TEXT"　"4")("指標圓球層"　"BALLBOM" "2")("材料清單層"　"MATLIST" "2")("投影線層" "PROJ" "143"))
 ; defltype_list   : (("粗連續線" "CONTINUOUS" "7")("細連續線" "CONTINUOUS" "4")("虛線" "DASHED" "3")("標準中心線(長度20)" "CENTER" "1")("短中心線(長度10)" "CENTER1" "1")("假想線" "PHANTOM" "5")("剖面線" "CONTINUOUS" "6")("假想線" "PHANTOM" "5")("投影線" "CONTINUOUS" "143"))
 ; defbomlist_list : (("件號" "15")("品名" "20")("材質" "10")("料號" "10")("數量" "10")("備註" "30"))
-; defbomqty_id    : "數量位置"    例如: "5"
+; defbomqty_id    : "QTY_POS"    例如: "5"
 
 ; sys_sheet_layer       :     圖框層
 ; sys_sheet_layercol    :     圖框層顏色
@@ -112,6 +112,7 @@
        (set_tile "ms_allert" (strcat (get_language 10000022) (rtos txtid 2 0) (get_language 10000023)))
        (action_tile "accept" "(done_dialog)")
        (start_dialog)
+       (unload_dialog dcl_id)
        (exit)
      )
      (nth 1 (assoc txtid language_total_list))

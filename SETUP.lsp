@@ -167,6 +167,7 @@
       (action_tile "accept"    "(setup_ok)")
       (action_tile "cancel"    "(done_dialog)")
       (start_dialog)
+      (unload_dialog dcl_id)
       (if setup_fg
         (progn
           (write_configdoc)
@@ -188,6 +189,7 @@
   (action_tile "accept" "(setq sp_fg t)(done_dialog)")
   (action_tile "cancel" "(done_dialog)")
   (start_dialog)
+  (unload_dialog dcl_id)
 )
 
 (defun load_softmenu ()
@@ -389,6 +391,7 @@
   (set_tile "ms_allert1" "系統安裝完成,請重新啟動,並請您儲存後,重新使用程式!")
   (action_tile "accept" "(done_dialog)")
   (start_dialog)
+  (unload_dialog dcl_id)
   (princ)
 )
 

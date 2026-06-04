@@ -19,7 +19,7 @@
           (if (null ggg) (setq needlayer (removelist nn needlayer)))
       ));foreach
       (setq bomball_grp (ssget "x" (list (cons 0 "INSERT") (cons 2 "PARTREF"))))  ;;取所有資訊點
-      (setq partdata (read (getfile_val (strcat POWdesign_path "SYSTEM.ini") "零件定義資料")))
+      (setq partdata (read (getfile_val (strcat POWdesign_path "SYSTEM.ini") "PART_DEF")))
       (setq count 0 balllist '() num 1)
 
       (cond ((or (= typ 2)(= typ 0)(= typ 3))(setq ff (open (strcat  POWDESIGN_path "bom.out") "w")))

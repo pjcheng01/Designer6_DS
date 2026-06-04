@@ -49,7 +49,9 @@
           (action_tile "accept" "(autobom_info_ok)")
           (action_tile "cancel" "(done_dialog)")
           (start_dialog)
+   (unload_dialog dcl_id)
 
+          (unload_dialog dcl_id)
           (if autob_fg
               (progn
           ;          (bomdata_yesno)
@@ -278,7 +280,9 @@
           (action_tile "accept" "(autobom_info_ok)")
           (action_tile "cancel" "(done_dialog)")
           (start_dialog)
+   (unload_dialog dcl_id)
 
+          (unload_dialog dcl_id)
           (if autob_fg
               (progn
           ;          (bomdata_yesno)

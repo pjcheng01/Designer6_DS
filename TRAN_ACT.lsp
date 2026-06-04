@@ -17,12 +17,14 @@
 
        (setvar "cmdecho" 0)
        (actdcl (strcat powdesign_dcl_path "transdwg.dcl") "trs")
-       (setq #g_syslt (read (getfile_val (strcat powdesign_path "system.ini") "線性定義")))
+       (setq #g_syslt (read (getfile_val (strcat powdesign_path "system.ini") "LTYPE_DEF")))
        (read_list_transact)
        (action_tile "accept" "(get_key_tranact)(setq ~flag 1)")
        (action_tile "cancel" "(setq ~flag 0)(done_dialog)")
        (start_dialog)
+   (unload_dialog dcl_id)
 
+       (unload_dialog dcl_id)
        (if (= 1 ~flag)
            (progn
                (app_trans_tranact #g_list_id)

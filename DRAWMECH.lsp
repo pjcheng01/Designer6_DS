@@ -25,6 +25,7 @@
     (action_tile "cancel" "(done_dialog)")
 
     (start_dialog)
+    (unload_dialog dcl_id)
     (if lc_flag (draw_lc d w))
     (setvar "cmdecho" 1)
     (PRINC)

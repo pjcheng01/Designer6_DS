@@ -33,6 +33,7 @@
 
   (action_tile "accept" "(done_dialog)")
   (start_dialog)
+  (unload_dialog dcl_id)
   (setvar "cmdecho" 1)
    ;; removed FFF
   (princ)
@@ -145,6 +146,7 @@
         (action_tile "accept" "(add_col_ok)(done_dialog)")
         (action_tile "cancel" "(setq u_col nil d_col nil)(done_dialog)")
         (start_dialog)
+        (unload_dialog dcl_id)
         (cond
          ((= "1" u_col) (add_1_col 1))
          ((= "1" d_col) (add_1_col 2))
@@ -173,6 +175,7 @@
         (action_tile "accept" "(del_col_ok)(done_dialog)")
         (action_tile "cancel" "(SETQ dsave_col nil dall_col nil)(done_dialog)")
         (start_dialog)
+        (unload_dialog dcl_id)
         (cond
           ((= dsave_col "1")(updata ""))
           ((= dall_col "1")(del_1_col))    ;刪一整列

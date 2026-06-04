@@ -44,6 +44,7 @@
 (action_tile "accept"     "(done_dialog)")
 (action_tile "cancel"     "(done_dialog)")
 (start_dialog)
+(unload_dialog dcl_id)
 )
 ;;===============================================================
 ;; 切換型式 STYLE
@@ -76,6 +77,7 @@
  (action_tile "del_style"  "(tile_box 2 0)(read_list 1)(st_button 1)")
  (action_tile "accept" "(done_dialog)(read_list 0)(set_tile \"pop_style\" ~get_lock)")
  (start_dialog)
+ (unload_dialog dcl_id)
 )
 (defun st_button(~flag)
       (mode_tile "mod_style" ~flag)
@@ -110,6 +112,7 @@
     (set_tile "new_dat" #g_Init_new)                         ;;新增 變數是 "" 修改會 (get_tile)
     (action_tile "accept" "(write_xx ~prop_name)(done_dialog)(init_list)(str_list #g_pop_id ~prop)(hide_button)")
     (start_dialog)
+    (unload_dialog dcl_id)
     (if (/= "" gstr_see)(alert gstr_see))
 );defun
 ;;================================================================
@@ -122,6 +125,7 @@
     (set_tile "xxx_st" #g_Init_Tile)
     (action_tile "accept" "(write_st)(done_dialog)(read_list 1)(st_button 1)") ;;有(act_pop_list)函式必須在(done_dialog)之後
     (start_dialog)
+    (unload_dialog dcl_id)
 );defun
 ;;================================================================
 ;;FUNCTION 讀取顯示 STYLE 有哪些型式 或 更新 STYLE LIST 動作
@@ -305,7 +309,7 @@
 ;;================================================================
 ;;
 (defun line_define(/ ~line_def ~num ~data1 ~data2 ~item1 ~item2)
-(setq ~line_def (read (getfile_val (strcat powdesign_path "system.ini") "線性定義")))
+(setq ~line_def (read (getfile_val (strcat powdesign_path "system.ini") "LTYPE_DEF")))
     (setq ~num 0)
     (repeat (length ~line_def)
             (setq ~data1 (nth 0 (nth ~num ~line_def)))

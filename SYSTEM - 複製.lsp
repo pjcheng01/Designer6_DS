@@ -104,6 +104,7 @@
        (set_tile "ms_allert" (strcat (get_language 10000022) (rtos txtid 2 0) (get_language 10000023)))
        (action_tile "accept" "(done_dialog)")
        (start_dialog)
+       (unload_dialog dcl_id)
        (exit)
      )
      (nth 1 (assoc txtid language_total_list))

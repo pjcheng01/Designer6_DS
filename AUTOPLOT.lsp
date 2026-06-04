@@ -65,7 +65,9 @@ AUTOPLOT 程式共有以下檔案:
  (action_tile "cancel" "(setq autoplot_list nil)(done_dialog)")
 
  (start_dialog)
+   (unload_dialog dcl_id)
 
+ (unload_dialog dcl_id)
  (if (/= nil autoplot_list) (exe_autoplot))
 
  (setvar "cmdecho" 1)

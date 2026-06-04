@@ -50,6 +50,7 @@
 
  (action_tile "accept" "(done_dialog)")
  (start_dialog)
+ (unload_dialog dcl_id)
  (setvar "cmdecho" 1)
    ;; removed FFF)
  (prin1)
@@ -222,6 +223,7 @@
 
  (action_tile "accept" "(done_dialog)")
  (start_dialog)
+ (unload_dialog dcl_id)
  (setvar "cmdecho" 1)
    ;; removed FFF)
  (prin1)

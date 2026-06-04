@@ -54,6 +54,7 @@
   (action_tile "accept" "(done_dialog)")
 
   (start_dialog)
+  (unload_dialog dcl_id)
   (if exec_id (dclmenu_exe exec_id))
 
   ;; removed FFF

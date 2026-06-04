@@ -192,7 +192,9 @@
      (action_tile "cancel" "(done_dialog)")
 
      (start_dialog)
+   (unload_dialog dcl_id)
 
+     (unload_dialog dcl_id)
      (if dd_flag (delblock))
  )
 
@@ -278,6 +280,7 @@
 
     (action_tile "accept" "(subok1)(done_dialog)")
     (start_dialog)
+    (unload_dialog dcl_id)
  )
 
  (defun subok1(/ out_data1 out_data10 out_data20 out_data30 out_data40 out_data50 out_data60 change_data change_data_id ffile tfile)
@@ -723,7 +726,9 @@
 
     (action_tile "accept" "(subok)(done_dialog)")
     (start_dialog)
+   (unload_dialog dcl_id)
 
+    (unload_dialog dcl_id)
     (act_pop_list pgnum "page")
     (set_tile "page" page_now)
 

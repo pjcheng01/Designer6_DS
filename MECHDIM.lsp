@@ -25,6 +25,7 @@
     (action_tile "accept" "(cringok)")
     (action_tile "cancel" "(done_dialog)(setq flag 0)")
     (start_dialog)
+    (unload_dialog dcl_id)
     (if (= flag 1)
      (progn
        (setvar "cmdecho" 1)
@@ -130,6 +131,7 @@
     (action_tile "accept" "(dringok)")
     (action_tile "cancel" "(done_dialog)(setq flag 0)")
     (start_dialog)
+    (unload_dialog dcl_id)
     (if (= flag 1)
      (progn
        (setvar "cmdecho" 1)
@@ -233,6 +235,7 @@
     (action_tile "accept" "(eringok)")
     (action_tile "cancel" "(done_dialog)(setq flag 0)")
     (start_dialog)
+    (unload_dialog dcl_id)
     (if (= flag 1)
      (progn
        (setvar "cmdecho" 1)

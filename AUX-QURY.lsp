@@ -94,7 +94,9 @@
 
  (action_tile "accept" "(done_dialog)")
  (start_dialog)
+   (unload_dialog dcl_id)
 
+ (unload_dialog dcl_id)
  (setvar "cmdecho" 1)
    ;; removed FFF
  (prin1)
@@ -450,7 +452,9 @@
 
  (action_tile "accept" "(done_dialog)")
  (start_dialog)
+   (unload_dialog dcl_id)
 
+ (unload_dialog dcl_id)
  (setvar "cmdecho" 1)
    ;; removed FFF
  (prin1)
@@ -465,6 +469,7 @@
   (set_tile "func2" "公式: 寬(M)x長(M)x厚(m/m)x 7.854 = 實量")
   (action_tile "accept" "(done_dialog)")
  (start_dialog)
+ (unload_dialog dcl_id)
  (setvar "cmdecho" 1)
    ;; removed FFF
  (princ)
@@ -502,8 +507,10 @@
 
  (action_tile "accept" "(done_dialog)")
  (start_dialog)
+   (unload_dialog dcl_id)
 
 
+ (unload_dialog dcl_id)
  ;; removed FFF
    ;; removed FFF
  (setvar "cmdecho" 1)
@@ -536,6 +543,7 @@
 
  (action_tile "accept" "(done_dialog)")
  (start_dialog)
+ (unload_dialog dcl_id)
    ;; removed FFF
  (princ)
 )
@@ -567,7 +575,9 @@
 
  (action_tile "accept" "(done_dialog)")
  (start_dialog)
+   (unload_dialog dcl_id)
 
+ (unload_dialog dcl_id)
  ;; removed FFF
  (setvar "cmdecho" 1)
  (princ)

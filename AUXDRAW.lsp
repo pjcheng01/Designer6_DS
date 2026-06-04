@@ -243,6 +243,7 @@
    (action_tile "cancel" "(done_dialog)")
 
    (start_dialog)
+   (unload_dialog dcl_id)
    (if user_keyin_fg
      (progn
        (if (= type_a "A")
@@ -590,7 +591,9 @@
  (action_tile "accept" "(thrill_ok)")
 
  (start_dialog)
+   (unload_dialog dcl_id)
 
+ (unload_dialog dcl_id)
  (setvar "cmdecho" 1)
  (if drawfg
   (progn
@@ -970,6 +973,7 @@
     (action_tile "inch" "(thrill2_creat_sizelist 2)(act_pop_list lablist \"size_list\")")
 
     (start_dialog)
+    (unload_dialog dcl_id)
     (if flag (thrill2_exe ltype))
     (setvar "cmdecho" 1)
    (setq *error* olderr)
@@ -1111,6 +1115,7 @@
     (action_tile "cancel" "(done_dialog)")
 
     (start_dialog)
+    (unload_dialog dcl_id)
     (if flag
       (progn
  ;       (if (= (setq wucs (getvar "worlducs")) 0)
@@ -1274,6 +1279,7 @@
     (action_tile "cancel" "(done_dialog)")
 
     (start_dialog)
+    (unload_dialog dcl_id)
     (if flag
       (progn
         (if (= view_id 1)
@@ -1454,6 +1460,7 @@
    (action_tile "accept" "(pipscrew_ok)")
 
    (start_dialog)
+   (unload_dialog dcl_id)
    (if pipscrew_flag
      (progn
        (cond
