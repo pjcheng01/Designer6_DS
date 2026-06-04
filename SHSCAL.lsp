@@ -48,6 +48,7 @@
     (action_tile "cancel" "(done_dialog)(setq check_p nil)")
     (action_tile "accept" "(setscal_ok)")
     (start_dialog)
+    (unload_dialog dcl_id)
     (if check_p (insert_sheet))
     ;; removed FFF
     (princ)
@@ -55,7 +56,7 @@
 
 ;;取得圖框日期型式
 ;(defun sheet_datetype()
-;    (getfile_val (strcat POWDESIGN_path "shscal.ini") "圖框日期型式")
+;    (getfile_val (strcat POWDESIGN_path "shscal.ini") "DATE_FORMAT")
 ;)
 
 
@@ -152,6 +153,7 @@
    (action_tile "scal_list" "(shscal_getdata $value)")
    (action_tile "accept" "(scal_ok)(done_dialog 0)(settile)")
    (start_dialog)
+   (unload_dialog dcl_id)
 )
 
 (defun scal_ok()
@@ -292,6 +294,7 @@
          (action_tile "accept" "(resetting_ok)")
          (action_tile "cancel" "(done_dialog)")
          (start_dialog)
+         (unload_dialog dcl_id)
 )
 
 
@@ -519,7 +522,7 @@
        (setvar "cmdecho" 0)
        (setq os(getvar "osmode"))
        (setvar "osmode" 0)
-       (setq block_list (read (getfile_val (strcat POWdesign_path "system.ini") "比例變動時會連動的BLOCK")))
+       (setq block_list (read (getfile_val (strcat POWdesign_path "system.ini") "SCALE_SYNC_BLOCK")))
        (foreach XX block_list
                 (setq blockgrp (ssget "x" (list (cons 0 "INSERT") (cons 2 XX))))
                 (setq i 0)
@@ -588,9 +591,10 @@
                       get_cur_scal attlist check_p
                       sca1 sca2 scaletxt fact1 fact2 ?scl sdata attqty ssize
                       xval yval sx ssscal ddx stype stype_data sheetsize_list
-                      attflg attdata_list count cc_list sheet_type sheet_typelist
+                      attflg count cc_list sheet_type sheet_typelist
                       data_list type_list ini_file stype_flag
                       )
+;; DraftSight: attdata_list 改為全域變數，讓 input_attedata_ok 設定後可在 auto_insert_attsheet 存取
 ;(defun ATOshscal(typ)
   ;; DraftSight: 移除加密狗 WHILE 迴圈
 
@@ -653,6 +657,7 @@
     (action_tile "cancel" "(done_dialog)(setq check_p nil)(setq check_p2 t)")
     (action_tile "accept" "(autosetscal_ok)")
     (start_dialog)
+    (unload_dialog dcl_id)
 
     (if check_p
      (progn
@@ -671,9 +676,10 @@
                (resetting_text)
          )
          ((and (= "1" instype) (/= "" (setq attlist (nth 4 sdata))))
-          
+          ;; DraftSight: 儲存區域變數為全域，讓 auto_insert_attsheet 可存取
+          (setq &&vctr vctr &&scl ?scl &&attqty attqty &&sfilename sfilename
+                &&stype_flag stype_flag &&size_flag size_flag &&sys_sheet_layer sys_sheet_layer)
           (input_attedata attlist)
-            
          )
          (T (AUTO_insert_sheet))
        );cond
@@ -745,12 +751,16 @@
    ;(setq ent (entlast))
    ;(setq abc attdata_list)
    (foreach nn data_list
-
        (setq newdata (getrealstr3 (nth 1 nn))
              label (nth 0 nn)
-             data1 (getatt enttt 2 label)
-             data1 (subst (cons 1 newdata) (assoc 1 data1) data1))
-       (entmod data1)
+             data1 (getatt enttt 2 label))
+       (if data1
+           (progn
+             (setq data1 (subst (cons 1 newdata) (assoc 1 data1) data1))
+             (entmod data1)
+           )
+           (princ (strcat "\n[WARN] chg_sheetatt: tag not found: " label))
+       )
    );foreach
    (command "regen")
 )
@@ -763,23 +773,27 @@
          cltype (getvar "celtype")
          attdia_type (getvar "attdia"))
    (setvar "attdia" 0)
+   ;; DraftSight: 若從 input_attedata 呼叫，使用全域備份的變數
+   (if (null sfilename) (setq sfilename &&sfilename))
+   (if (null ?scl)      (setq ?scl &&scl))
+   (if (null attqty)    (setq attqty &&attqty))
+   (if (null stype_flag)(setq stype_flag &&stype_flag))
+   (if (null size_flag) (setq size_flag &&size_flag))
+   (if (null sys_sheet_layer) (setq sys_sheet_layer &&sys_sheet_layer))
    (command "layer" "m" sys_sheet_layer "c" sys_sheet_layercol "" "")
    (setq vctr (getvar "viewctr"))
 
    (setvar "osmode" 0)
-   (if (= "GENIUS" acad_ver)
-     (progn
-      (command ".insert" sfilename vctr ?scl "" "0")
-      (command ".insert" (strcat sfilename "atte") vctr ?scl "" "0")
-     )
-     (progn
-      (command "insert" sfilename vctr ?scl "" "0")
-      (command "insert" (strcat sfilename "tzt") vctr ?scl "" "0")
-     )
-   )
+   ;; DraftSight: 先插入圖框外框（無屬性）在 vctr
+   (command "insert" sfilename vctr ?scl ?scl "0")
+   ;; DraftSight: attreq=0 讓 INSERT 用預設值靜默填入屬性，不彈對話框
+   ;; 之後由 chg_sheetatt 用「圖框屬性」對話框的值覆寫（同 TRANSHT.lsp 做法）
+   (setvar "attreq" 0)
+   (command "insert" (strcat sfilename "tzt") vctr ?scl ?scl "0")
+   (setq tzt_ent (entlast))
+   (setvar "attreq" 1)
 
-   (repeat attqty (command ""))
-   (ad1xdata (entlast) "SHEETFLAG" (list "SHEETFLAG" (cons 1000 stype_flag)(cons 1000 size_flag)))
+   (ad1xdata tzt_ent "SHEETFLAG" (list "SHEETFLAG" (cons 1000 stype_flag)(cons 1000 size_flag)))
    (command "zoom" "E")
    (setvar "attdia" attdia_type)
    (command "layer" "s" cl "")
@@ -788,7 +802,8 @@
    (princ "\n請調整圖框位置...")
    (command "move" (ssget "x" (list (cons 0 "INSERT")(cons 8 sys_sheet_layer))) "" vctr pause)
    (command "zoom" "e")
-   (if (= "1" instype) (chg_sheetatt (entlast) attdata_list))
+   ;; 用 attdata_list 的值寫入 *tzt.dwg 的屬性
+   (if attdata_list (chg_sheetatt tzt_ent attdata_list))
    (princ)
 )
 
@@ -947,7 +962,7 @@
              (if (= 1 (sslength attbomp))
                  (progn
                    (setq dlist (get_bomdata (ssname attbomp 0)))
-                   (setq partdata (read (getfile_val (strcat POWdesign_path "system.ini") "零件定義資料")))
+                   (setq partdata (read (getfile_val (strcat POWdesign_path "system.ini") "PART_DEF")))
                    (setq qqq defatt_list aaalist '())
                    (foreach nn dlist
                      (progn
@@ -995,10 +1010,10 @@
           
           (actdcl "shscal" "sheetatt")
           (setq count 1)
-          (if (null c:creatword)(load " wordlib1"))
+          (if (null c:creatword)(load "wordlib1"))
           (action_tile "editlib" "(c:creatword)(reshow_liblist)")
           (setq aaa defatt_list)
-          (setq ~data (getsys_date (atoi (getfile_val (strcat POWDESIGN_path "shscal.ini") "圖框日期型式"))))
+          (setq ~data (getsys_date (atoi (getfile_val (strcat POWDESIGN_path "shscal.ini") "DATE_FORMAT"))))
           (foreach nn defatt_list
             (progn
               (set_tile (strcat "label" (rtos count 2 0)) (nth 1 nn))
@@ -1177,6 +1192,7 @@
           (action_tile "cancel" "(done_dialog)(setq check_p nil)(setq check_p2 t)")
           (action_tile "accept" "(input_attedata_ok)")
           (start_dialog)
+          (unload_dialog dcl_id)
           (if attflg
              (auto_insert_attsheet)
           )
@@ -1209,7 +1225,7 @@
                      (close ff)
                      (setq aacount 1)
 
-                      (setq ~data (getsys_date (atoi (getfile_val (strcat POWDESIGN_path "shscal.ini") "圖框日期型式"))))
+                      (setq ~data (getsys_date (atoi (getfile_val (strcat POWDESIGN_path "shscal.ini") "DATE_FORMAT"))))
 
                      (foreach nn defatt_list
                        (progn
@@ -1219,7 +1235,7 @@
                             ((= "S" (strcase code_id)) (set_tile (strcat "data" (rtos aacount 2 0)) SCALETXT)(mode_tile (strcat "data" (rtos aacount 2 0)) 1))
                             ((= "T" (strcase code_id)) (set_tile (strcat "data" (rtos aacount 2 0)) sheetsize)(mode_tile (strcat "data" (rtos aacount 2 0)) 1))
                             ((= "D" (strcase code_id)) (set_tile (strcat "data" (rtos aacount 2 0)) ~data))
-                                ;(getsys_date (atoi (getfile_val (strcat POWDESIGN_path "shscal.ini") "圖框日期型式")))))
+                                ;(getsys_date (atoi (getfile_val (strcat POWDESIGN_path "shscal.ini") "DATE_FORMAT")))))
                             ((= "F" (strcase code_id)) (set_tile (strcat "data" (rtos aacount 2 0)) (curdwgname)))
                          )
                          (setq aacount (1+ aacount))
@@ -1619,7 +1635,7 @@
            ((= "S" (strcase code_id)) (mode_tile (strcat "data" (rtos count 2 0)) 1))
            ((= "T" (strcase code_id)) (mode_tile (strcat "data" (rtos count 2 0)) 1))
                 ((= "D" (strcase code_id)) (set_tile (strcat "data" (rtos count 2 0))
-                       (getsys_date (atoi (getfile_val (strcat POWDESIGN_path "shscal.ini") "圖框日期型式")))))
+                       (getsys_date (atoi (getfile_val (strcat POWDESIGN_path "shscal.ini") "DATE_FORMAT")))))
                  ((= "F" (strcase code_id)) (set_tile (strcat "data" (rtos count 2 0)) (curdwgname)))
  
        ;   ((= "D" (strcase code_id)) (set_tile (strcat "data" (rtos count 2 0)) (getsys_date 2)))
@@ -1787,6 +1803,7 @@
     (action_tile "cancel" "(done_dialog)(setq check_p nil)")
     (action_tile "accept" "(setq check_p T)(input_attedata_ok)")
     (start_dialog)
+    (unload_dialog dcl_id)
     (if check_p (aachg_sheetatt))
     (princ)
 )
@@ -1796,10 +1813,14 @@
    (foreach nn attdata_list
      (progn
        (setq newdata (getrealstr3 (nth 1 nn))
-             label (nth 0 nn))
-       (setq data1 (getatt ent 2 label)
-             data1 (subst (cons 1 newdata) (assoc 1 data1) data1))
-       (entmod data1)
+             label (nth 0 nn)
+             data1 (getatt ent 2 label))
+       (if data1
+           (progn
+             (setq data1 (subst (cons 1 newdata) (assoc 1 data1) data1))
+             (entmod data1)
+           )
+       )
      );progn
    );foreach
    (command "regen")
