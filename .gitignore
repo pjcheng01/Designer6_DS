@@ -1,0 +1,22 @@
+# ---- Windows 檔案總管 ----
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# ---- 網路磁碟/掛載殘留 ----
+.fuse_hidden*
+
+# ---- DraftSight / AutoCAD 暫存、鎖定、自動存檔 ----
+*.dwl
+*.dwl2
+*.sv$
+*.ac$
+*.err
+
+# ---- CAMPRO / BOM 執行期輸出 ----
+campro.txt
+CamproBom.txt
+
+# ---- 手動備份檔 ----
+*.bak_*
+*.orig
