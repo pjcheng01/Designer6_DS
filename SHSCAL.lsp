@@ -1381,10 +1381,14 @@
            (setq fg (substr data 3))
            (if (= nn fg)
              (progn
-               (setq rdlist (cons nn rdlist))
                (setq ddata (read-line ff))
                (while (and (/= nil ddata) (/= "**" (substr ddata 1 2)))
-                  (setq rdlist (cons (read ddata) rdlist))
+                  ;; DraftSight: 只收以 "(" 開頭的有效資料列，
+                  ;; 不再依賴「段尾空白行」當作結束標記，
+                  ;; 以免最後一筆資料（如 ASMA3）被 (cdr) 丟掉。
+                  (if (= "(" (substr ddata 1 1))
+                      (setq rdlist (cons (read ddata) rdlist))
+                  );if
                   (setq ddata (read-line ff))
                );while
                (close ff)
@@ -1393,7 +1397,7 @@
              (setq data (read-line ff))
            );if
         );while
-        (setq sheet_typelist (cons (reverse (cdr rdlist)) sheet_typelist))
+        (setq sheet_typelist (cons (cons nn (reverse rdlist)) sheet_typelist))
         (setq rdlist '())
      );progn
    );foreach
