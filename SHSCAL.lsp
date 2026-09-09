@@ -1383,9 +1383,9 @@
              (progn
                (setq ddata (read-line ff))
                (while (and (/= nil ddata) (/= "**" (substr ddata 1 2)))
-                  ;; DraftSight: ¥u¦¬¥H "(" ¶}ÀYªº¦³®Ä¸ê®Æ¦C¡A
-                  ;; ¤£¦A¨Ì¿à¡u¬q§ÀªÅ¥Õ¦æ¡v·í§@µ²§ô¼Ğ°O¡A
-                  ;; ¥H§K³Ì«á¤@µ§¸ê®Æ¡]¦p ASMA3¡^³Q (cdr) ¥á±¼¡C
+                  ;; DraftSight: åªæ”¶ä»¥ "(" é–‹é ­çš„æœ‰æ•ˆè³‡æ–™åˆ—ï¼Œ
+                  ;; ä¸å†ä¾è³´ã€Œæ®µå°¾ç©ºç™½è¡Œã€ç•¶ä½œçµæŸæ¨™è¨˜ï¼Œ
+                  ;; ä»¥å…æœ€å¾Œä¸€ç­†è³‡æ–™ï¼ˆå¦‚ ASMA3ï¼‰è¢« (cdr) ä¸Ÿæ‰ã€‚
                   (if (= "(" (substr ddata 1 1))
                       (setq rdlist (cons (read ddata) rdlist))
                   );if

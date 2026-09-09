@@ -1,22 +1,22 @@
-# ---- Windows ÀÉ®×Á`ºŞ ----
+# ---- Windows æª”æ¡ˆç¸½ç®¡ ----
 Thumbs.db
 ehthumbs.db
 desktop.ini
 
-# ---- ºô¸ôºÏºĞ/±¾¸ü´İ¯d ----
+# ---- ç¶²è·¯ç£ç¢Ÿ/æ›è¼‰æ®˜ç•™ ----
 .fuse_hidden*
 
-# ---- DraftSight / AutoCAD ¼È¦s¡BÂê©w¡B¦Û°Ê¦sÀÉ ----
+# ---- DraftSight / AutoCAD æš«å­˜ã€é–å®šã€è‡ªå‹•å­˜æª” ----
 *.dwl
 *.dwl2
 *.sv$
 *.ac$
 *.err
 
-# ---- CAMPRO / BOM °õ¦æ´Á¿é¥X ----
+# ---- CAMPRO / BOM åŸ·è¡ŒæœŸè¼¸å‡º ----
 campro.txt
 CamproBom.txt
 
-# ---- ¤â°Ê³Æ¥÷ÀÉ ----
+# ---- æ‰‹å‹•å‚™ä»½æª” ----
 *.bak_*
 *.orig
