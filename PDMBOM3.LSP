@@ -142,11 +142,25 @@
         );progn
      );if
      (close ff)
-     (if (and (= 1 typ) (findfile (strcat  powdesign_path "pdmbom3.txt")))(progn
-          (startapp (strcat  POWDESIGN_path "pdmbom3.exe"))
-	  (if (null c:cad_to_pdm)(load "pdm-cad"))
-	  (c:cad_to_pdm)
-     ))
+;;; 2026-09-10：移除兩個外送步驟，只保留匯出 pdmbom3.txt。
+;;;
+;;; 原本這裡在寫完檔案之後還做兩件事：
+;;;   (startapp "pdmbom3.exe")          把資料送進晶英 ERP
+;;;   (load "pdm-cad")(c:cad_to_pdm)    把圖框屬性寫進 POWERPDM
+;;;
+;;; 兩個目標系統在移植版都已不存在：
+;;;   - 晶英 ERP 的資料庫已停用（同 campro，見手冊 §10.5）
+;;;   - PDM 模組於移植時刻意移除（手冊 §6 已完成第 3 項）。pdm-cad.lsp
+;;;     只剩 PDMSERVER\Autocad\ 底下的殘留，不在支援路徑上，
+;;;     (load "pdm-cad") 必定失敗。就算載得到，c:cad_to_pdm 用的
+;;;     powerpdm_attribdata_path 與 powerpdm_path 在 config.doc 裡
+;;;     根本沒有設定，一樣會炸。
+;;;
+;;; 資料檔本身的產生是正確的，錯誤只發生在這兩個外送步驟。
+;;; 現在改為印出檔案路徑，由使用者自行取用。
+     (if (and (= 1 typ) (findfile (strcat  powdesign_path "pdmbom3.txt")))
+         (princ (strcat "\n物料清單已匯出: " powdesign_path "pdmbom3.txt"))
+     )
     );progn
     (progn
       (c:sortcol)
