@@ -17,6 +17,7 @@ desktop.ini
 campro.txt
 CamproBom.txt
 bom.out
+pdmbom3.txt
 
 # ---- ini 寫回時的中繼檔 ----
 # file_update 與 c:defbom 的流程是 xxx.ini -> 中繼檔 -> xxx.ini，
