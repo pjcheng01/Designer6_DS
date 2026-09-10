@@ -1070,7 +1070,19 @@
      (setq ename (nth 1 nn))
      (setq lay (strcase (cdr (assoc 8 (entget ename)))))
      
-     (if (= "partref"　(cdr (assoc 2 (entget ename))))(progn
+     ;; 2026-09-10 修正：球號沒有寫進資訊點的「組合件號」(TAG1)。
+     ;; 原本這一行是   (if (= "partref"<U+3000>(cdr (assoc 2 (entget ename))))
+     ;; 兩個獨立的問題，都會讓判斷變成 nil、整段跳過：
+     ;;   ① "partref" 與 (cdr (assoc 2 ...)) 之間夾了一個全形空白 U+3000。
+     ;;      AutoLISP 的讀取器若不把它當空白，就會讀成一個未繫結的符號，
+     ;;      使 (= a b c) 變成三個引數的比較而永遠不成立。
+     ;;   ② = 比對字串區分大小寫，而 block 名稱的大小寫由 CAD 決定。
+     ;;      同一支檔案的 1159、1219 行用大寫 "PARTREF" 比對，這裡用小寫，
+     ;;      兩種寫法不可能都對。
+     ;; 改成 strcase 之後不管 block 存成 partref/PARTREF/PartRef 都成立。
+     ;; 保留與 PARTDEF（假資訊點）的區別——那些不該寫入 TAG1。
+     ;; 原版 C:\DESIGNER6\MANAPART.lsp 同一行也是這樣寫，不是移植造成的。
+     (if (= "PARTREF" (strcase (cdr (assoc 2 (entget ename)))))(progn
          (setq oldlist (get_bomdata ename))  ;舊的資訊點資料串列
 
          (setq oldtag1 (assoc "TAG1" oldlist))                              ;舊的資訊點 TAG1 資料串列
