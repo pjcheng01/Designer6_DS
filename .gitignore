@@ -18,5 +18,6 @@ campro.txt
 CamproBom.txt
 
 # ---- 手動備份檔 ----
+*.bak
 *.bak_*
 *.orig
