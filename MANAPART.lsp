@@ -2131,12 +2131,16 @@
 ;;; 第一個分隔符為止（料號平均 9 字元，整行約 60 字元）。
 ;;; 這個迴圈要跑 8 萬次以上，差別會被放大。
 ;;; ------------------------------------------------------------------
-(defun first_field (line delim / i n pos)
-   (setq i 1 n (strlen line) pos nil)
-   (while (and (<= i n) (null pos))
-      (if (= delim (substr line i 1)) (setq pos i) (setq i (1+ i)))
+;;; 區域變數一律加 ff_ 前綴：手冊 §5.5 記載 DraftSight 的動態作用域行為
+;;; 與 AutoCAD 不同，不能假設同名區域變數會正確存檔還原。原本這裡的 n
+;;; 與 read_partdata_file 的計數器 n 同名，而這個函式在那個迴圈裡被呼叫
+;;; 8 萬次，撞名的後果會被放大。
+(defun first_field (line delim / ff_i ff_len ff_pos)
+   (setq ff_i 1 ff_len (strlen line) ff_pos nil)
+   (while (and (<= ff_i ff_len) (null ff_pos))
+      (if (= delim (substr line ff_i 1)) (setq ff_pos ff_i) (setq ff_i (1+ ff_i)))
    )
-   (if pos (substr line 1 (1- pos)) line)
+   (if ff_pos (substr line 1 (1- ff_pos)) line)
 )
 
 ;;; ------------------------------------------------------------------
@@ -2171,11 +2175,21 @@
          (setq want '())
          (foreach nn ntlayer (setq want (cons (strcase nn) want)))
 
-         (setq ff (open fname "r"))
-         (setq hdr (read-line ff))
+         ;; 開檔前先收拾上一次殘留的控制代碼。AutoLISP 沒有 try/finally，
+         ;; 迴圈中途若被 Esc 中斷或出錯，下面的 (close) 就跑不到，控制代碼
+         ;; 會一直洩漏；跑個幾次就可能耗盡而讓 DraftSight 掛掉。
+         ;; 用全域變數記住它、下次進來先關，是這裡唯一能做的保險。
+         (if &&partdata_ff
+            (progn (princ "\n[提醒] 關閉上次殘留的檔案控制代碼")
+                   (close &&partdata_ff)
+                   (setq &&partdata_ff nil))
+         )
+
+         (setq &&partdata_ff (open fname "r"))
+         (setq hdr (read-line &&partdata_ff))
          (setq lst '() n 0 hit 0)
          (princ "\n讀取料號資料檔")
-         (while (setq line (read-line ff))
+         (while (setq line (read-line &&partdata_ff))
             (setq n (1+ n))
             (setq key (strcase (first_field line ";")))
             (if (member key want)
@@ -2183,7 +2197,8 @@
             )
             (if (= 0 (rem n 10000)) (princ "."))
          )
-         (close ff)
+         (close &&partdata_ff)
+         (setq &&partdata_ff nil)
          (princ (strcat "\n共 " (rtos n 2 0) " 筆料號，圖面命中 " (rtos hit 2 0) " 筆"))
          (cons hdr (reverse lst))
       )
