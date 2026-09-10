@@ -21,3 +21,7 @@ CamproBom.txt
 *.bak
 *.bak_*
 *.orig
+
+# ---- Python 工具的產物 ----
+__pycache__/
+*.pyc
