@@ -346,7 +346,10 @@
   (if (/= "" (get_tile "label20")) (setq label20 (get_tile "label20") ltype20 (get_tile "ltype20") ltycol20 (get_tile "ltycol20")
                                          outtxt20 (strcat "(\"" label20 "\" \"" ltype20 "\" \"" ltycol20 "\")"))
                                    (setq outtxt20 ""))
-  (setq outdata (strcat "圖層定義=(" outtxt1 outtxt2 outtxt3 outtxt4 outtxt5 outtxt6 outtxt7
+  ;; 2026-09-10：key 英文化（f55c9c1）只改了讀取端與 file_update 的比對參數，
+  ;; 沒改 outdata 自己帶的 key。file_update 會正確找到 LAYER_DEF= 那一行，
+  ;; 卻把它換成「圖層定義=」開頭的行——存檔一次就把 key 破壞掉。對照見手冊 §10.3。
+  (setq outdata (strcat "LAYER_DEF=(" outtxt1 outtxt2 outtxt3 outtxt4 outtxt5 outtxt6 outtxt7
                                      outtxt8 outtxt9 outtxt10 outtxt11 outtxt12 outtxt13 outtxt14
                                      outtxt15 outtxt16 outtxt17 outtxt18 outtxt19 outtxt20 ")"))
   (file_update  "SYSTEM.INI" "SYSTEM.NEW" "LAYER_DEF" "=" outdata)
@@ -504,7 +507,8 @@
       (if (/= "" (get_tile "label20")) (setq label20 (get_tile "label20") ltype20 (get_tile "ltype20")
                                              outtxt20 (strcat "(\"" label20 "\" \"" ltype20 "\")"))
                                        (setq outtxt20 ""))
-      (setq outdata (strcat "材料清單欄位定義=(" outtxt1 outtxt2 outtxt3 outtxt4 outtxt5 outtxt6 outtxt7
+      ;; 2026-09-10：同 deflayer_ok，寫出的 key 未跟著英文化，見手冊 §10.3
+      (setq outdata (strcat "BOM_FIELD_DEF=(" outtxt1 outtxt2 outtxt3 outtxt4 outtxt5 outtxt6 outtxt7
                                          outtxt8 outtxt9 outtxt10 outtxt11 outtxt12 outtxt13 outtxt14
                                          outtxt15 outtxt16 outtxt17 outtxt18 outtxt19 outtxt20 ")"))
       (file_update  "SYSTEM.INI" "SYSTEM.NEW" "BOM_FIELD_DEF" "=" outdata)
@@ -683,7 +687,8 @@
   (if (/= "" (get_tile "label20")) (setq label20 (get_tile "label20") ltype20 (nth (atoi (get_tile "ltype20")) curlty_list)  ltycol20 (get_tile "ltycol20")
                                          outtxt20 (strcat "(\"" label20 "\" \"" ltype20 "\" \"" ltycol20 "\")"))
                                    (setq outtxt20 ""))
-  (setq outdata (strcat "線性定義=(" outtxt1 outtxt2 outtxt3 outtxt4 outtxt5 outtxt6 outtxt7
+  ;; 2026-09-10：同 deflayer_ok，寫出的 key 未跟著英文化，見手冊 §10.3
+  (setq outdata (strcat "LTYPE_DEF=(" outtxt1 outtxt2 outtxt3 outtxt4 outtxt5 outtxt6 outtxt7
                                      outtxt8 outtxt9 outtxt10 outtxt11 outtxt12 outtxt13 outtxt14
                                      outtxt15 outtxt16 outtxt17 outtxt18 outtxt19 outtxt20 ")"))
   (file_update  "SYSTEM.INI" "SYSTEM.NEW" "LTYPE_DEF" "=" outdata)
@@ -872,7 +877,8 @@
         (done_dialog)
  ;格式:      ("圓球有無" "圓球直徑" "圓點有無" "圓點直徑" "字高")
  ;指標球定義=("1" "10" "0" "0" "6")
-        (setq outdata (strcat "指標球定義=(\"" sys_ball_yesno "\" \""  sys_ball_dia "\" \""
+        ;; 2026-09-10：同 deflayer_ok，寫出的 key 未跟著英文化，見手冊 §10.3
+        (setq outdata (strcat "BALLOON_DEF=(\"" sys_ball_yesno "\" \""  sys_ball_dia "\" \""
                                              sys_ballpoint_type "\" \"" sys_ballpoint_size "\" \""
                                              sys_balltxt_hei "\"" ")"))
 
@@ -4083,8 +4089,9 @@
  (unload_dialog dcl_id)
  (if dwg_libpath_fg
    (progn
+     ;; 2026-09-10：同 deflayer_ok，寫出的 key 未跟著英文化，見手冊 §10.3
      (file_update  "system.INI" "swapfile.txt" "DWG_MANAGE_PATH" "="
-          (strcat "圖檔管理預設路徑=" dwg_path))
+          (strcat "DWG_MANAGE_PATH=" dwg_path))
      (setq system_dwg_libpath dwg_path)
    );progn
  );if
@@ -4209,7 +4216,14 @@
                   (setq gg (open (strcat POWDESIGN_path "system.ini") "w"))
                   (setq ffdata (read-line ff))
                   (while ffdata
-                         (if (= (substr ffdata 1 16) "BOM_FIELD_DEF")
+                         ;; 2026-09-10 修正：原本是 (substr ffdata 1 16)。
+                         ;; 那個 16 是舊中文 key「材料清單欄位定義」的長度
+                         ;; （8 個中文字，Big5 下 16 位元組）。key 英文化時
+                         ;; （commit f55c9c1）換了比對字串卻沒改長度，
+                         ;; 於是拿 16 個字元去比一個 13 字元的字串，永遠不相等，
+                         ;; 整個 ini 被原封不動重寫，編輯結果完全寫不進去。
+                         ;; 改用 strlen 動態取長度，之後 key 再改也不會失效。
+                         (if (= (substr ffdata 1 (strlen "BOM_FIELD_DEF")) "BOM_FIELD_DEF")
                                 (write-line newdatastr gg)
                                 (write-line ffdata gg)
                          );if
@@ -4248,7 +4262,11 @@
                                (setq i (+ i 1))
                        );repeat
                        (setq newfielddata(reverse newfielddata))
-                       (setq newdatastr (strcat "材料清單欄位定義=((\"" pbom "\" \"" pwid "\" \"" ppdm "\")"))
+                       ;; 2026-09-10 修正：原本寫出的是舊中文 key「材料清單欄位定義=」，
+                       ;; 但第 4136 行讀的是英文 key BOM_FIELD_DEF。讀寫用不同的 key，
+                       ;; 就算上面的比對修好了，寫出去的也是讀不到的行。
+                       ;; key 對照見手冊 §10.3。
+                       (setq newdatastr (strcat "BOM_FIELD_DEF=((\"" pbom "\" \"" pwid "\" \"" ppdm "\")"))
                        (foreach XX newfielddata
                              (setq newdatastr(strcat newdatastr "(\"" (nth 0 XX) "\" \"" (nth 1 XX) "\" \"" (nth 2 XX) "\")"))
                        );foreach
