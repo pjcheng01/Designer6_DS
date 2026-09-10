@@ -174,17 +174,32 @@
 )
 
 
+;;; 取得目前圖形所佔的範圍（寬 SX、高 SY），供對話框預設比例用。
+;;;
+;;; 2026-09-10 修正：圖面上有圖元時「放圖框定比例」會出現「錯誤:除以零」。
+;;;
+;;; 原版用 VSMIN / VSMAX（目前視埠的左下與右上角）算出視埠長寬比，再乘上
+;;; VIEWSIZE 還原成寬高。但 **DraftSight 的 VSMIN / VSMAX 永遠回傳 (0 0 0)**
+;;; （2026-09-10 實測），於是除數 (- 0 0) 為 0，必定除以零。
+;;;
+;;; 為什麼空圖不會出錯：ATOshscal 先做 (command "select" "ALL" "")，空圖選不到
+;;; 東西，(ssget "p") 回 nil，整段被跳過，SX 維持 nil，cala_scale 走 else 分支
+;;; 填 1:1。有圖元才會走進來踩到除法。
+;;;
+;;; 改用 EXTMIN / EXTMAX——那本來就是圖形範圍，直接相減即得寬高，
+;;; 語意更直接，而且**完全不需要除法**，沒有除零的可能。
+;;; 實測 DraftSight 的 EXTMIN / EXTMAX 正常（extmin=2599.796,-4192.45
+;;; extmax=6952.092,-3258.263）。保留前後的 zoom e / zoom p：
+;;; EXTMIN/EXTMAX 要重生成才會更新，zoom e 可確保取到的是最新值。
 (defun comp_cur_limits()
    (if (ssget "p")
      (progn
        (command "zoom" "e")
        (setq VCTR (getvar "viewctr")
-             LEFT_DOWN (getvar "vsmin")
-             RIGHT_UP (getvar "vsmax")
-             S_RATIO (/ (- (car RIGHT_UP) (car LEFT_DOWN))
-                        (- (cadr RIGHT_UP) (cadr LEFT_DOWN)))
-             SY (getvar "viewsize")
-             SX (* S_RATIO SY)
+             LEFT_DOWN (getvar "extmin")
+             RIGHT_UP (getvar "extmax")
+             SX (- (car RIGHT_UP)  (car LEFT_DOWN))
+             SY (- (cadr RIGHT_UP) (cadr LEFT_DOWN))
        )
        (command "zoom" "p")
      ) )
@@ -834,7 +849,10 @@
 
     (mode_tile "out_mm" 0)
     (mode_tile "out_unit" 0)
-    (if (/= sx nil)
+    ;; 2026-09-10：條件補上 sx 不為 0。原本只擋 nil，但 sx 是圖形範圍的寬度，
+    ;; 圖元全落在一條垂直線上時會是 0，aascal 跟著是 0，下面的 (/ 1 aascal)
+    ;; 就會再爆一次「除以零」。0 的情況沒有合理的建議比例，直接填 1:1。
+    (if (and (/= sx nil) (/= sx 0) (/= xval 0))
        (progn
           (setq aascal (/ sx xval))
           (cond
