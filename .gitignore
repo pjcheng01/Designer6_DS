@@ -16,8 +16,12 @@ desktop.ini
 # ---- CAMPRO / BOM 執行期輸出 ----
 campro.txt
 CamproBom.txt
+CamproPdm.txt
 bom.out
 pdmbom3.txt
+
+# ---- 程式產生後隨即執行的暫時 script ----
+delfile.scr
 
 # ---- ini 寫回時的中繼檔 ----
 # file_update 與 c:defbom 的流程是 xxx.ini -> 中繼檔 -> xxx.ini，
