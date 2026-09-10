@@ -4371,6 +4371,7 @@
 
 ;;;===========新增;編輯============
 (defun modify_field_defbom(title / bom wid pbom)
+       (setq modify_defbom_fg nil)   ;; 2026-09-10：見本函式末端的說明
        (setq pbom(get_tile "pbom"))
        (if index
                (progn
@@ -4400,6 +4401,40 @@
 
 
        (unload_dialog dcl_id)
+
+       ;; 2026-09-10：主對話框清單的更新搬到這裡。
+       ;;
+       ;; 原本這一整串寫在 modify_field_defbom_ok 裡，而且排在 (done_dialog)
+       ;; 之後。done_dialog 一執行，modify 對話框就關閉了，後續的 mode_tile /
+       ;; act_pop_list / set_tile 在 DraftSight 下打不到任何對話框——AutoCAD
+       ;; 容忍這種寫法，DraftSight 不容忍。症狀是編輯後主畫面仍顯示舊值，
+       ;; 要關掉再重開才看得到新值。
+       ;;
+       ;; 搬到 start_dialog 返回之後才正確：本函式是 c:defbom 的
+       ;; action_tile "edit" / "add" 回呼，此時 modify 對話框已關、執行環境
+       ;; 回到主對話框，set_tile 才會作用在主對話框的清單上。
+       ;; （若放在 start_dialog 之前，set_tile 會打到 modify 對話框自己的
+       ;;   同名 tile（bom / pdm / wid 三個編輯框），一樣不對。）
+       ;;
+       ;; 用 modify_defbom_fg 區分「按確定」與「按取消」：取消時不該更新，
+       ;; 也不該動 edit/del/up/down 的啟用狀態。原本的程式碼沒有這個區分。
+       (if modify_defbom_fg
+          (progn
+             (if (= title "新增")
+                (progn
+                   (mode_tile "edit" 0)(mode_tile "del" 0)
+                   (mode_tile "up" 0)(mode_tile "down" 1)
+                   (if (= "0" index) (mode_tile "up" 1))
+                )
+             )
+             (act_pop_list bomlist "bom")
+             (act_pop_list pdmlist "pdm")
+             (act_pop_list widlist "wid")
+             (set_tile "bom" index)
+             (set_tile "pdm" index)
+             (set_tile "wid" index)
+          )
+       )
 )
 
 (defun modify_field_defbom_ok(typ / bom pdm wid i wid_err)
@@ -4433,16 +4468,13 @@
                             (setq widlist (replace_list_defbom widlist wid))
                      )
                  );cond
+                 ;; 2026-09-10：原本這裡在 (done_dialog) 之後還接了一串
+                 ;; mode_tile / act_pop_list / set_tile，想更新主對話框的清單，
+                 ;; 但那時 modify 對話框已經關閉，這些呼叫在 DraftSight 下全部
+                 ;; 落空。改為只設旗標，真正的更新搬到 modify_field_defbom 的
+                 ;; start_dialog 返回之後（見該處註解）。
+                 (setq modify_defbom_fg T)
                  (done_dialog)
-                 (if (= typ "新增") (progn(mode_tile "edit" 0)(mode_tile "del" 0)(mode_tile "up" 0)(mode_tile "down" 1)))
-                 (if (and (= typ "新增")(= "0" index)) (mode_tile "up" 1))
-                 (act_pop_list bomlist "bom")
-                 (act_pop_list pdmlist "pdm")
-                 (act_pop_list widlist "wid")
-                 (set_tile "bom" index)
-                 (set_tile "pdm" index)
-                 (set_tile "wid" index)
-
              )
        );cond
 )
