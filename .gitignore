@@ -16,6 +16,14 @@ desktop.ini
 # ---- CAMPRO / BOM 執行期輸出 ----
 campro.txt
 CamproBom.txt
+bom.out
+
+# ---- ini 寫回時的中繼檔 ----
+# file_update 與 c:defbom 的流程是 xxx.ini -> 中繼檔 -> xxx.ini，
+# 每次用到那些設定對話框都會重寫，不該進版控。
+system.swr
+SYSTEM.NEW
+swapfile.txt
 
 # ---- 手動備份檔 ----
 *.bak
