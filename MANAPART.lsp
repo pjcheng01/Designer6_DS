@@ -2100,7 +2100,15 @@
 ;       (action_tile "accept" "(done_dialog)(setq noautono t)")
 ;       (action_tile "cancel" " (done_dialog)")
 ;       (start_dialog)
-(unload_dialog dcl_id)
+;;; 2026-09-10 移除：這裡原本有一行沒被註解的 (unload_dialog dcl_id)。
+;;; 它是批次補 unload_dialog（commit 4cd4282）時插錯位置——被放進這段
+;;; 「已整段註解掉的巢狀對話框」中間，卻沒跟著加註解符號，於是變成在
+;;; automakepart_ok（action_tile "accept" 的回呼）裡執行，也就是主對話框
+;;; 還開著就把 DCL 卸載，接著才 (done_dialog)，最後 c:automakepart 又對
+;;; 同一個 dcl_id 卸載第二次。等於 use-after-free 加 double-free，會不會
+;;; 當掉取決於當下記憶體狀態，症狀就是「按下 OK 後隨機閃退」。
+;;; 原版 C:\DESIGNER6\MANAPART.lsp 沒有這一行。
+;;; 正確的 unload_dialog 在 c:automakepart 的 (start_dialog) 之後，只此一次。
 ;       (if noautono
 ;        (progn
 ;          (setq automakepart_fg t)
