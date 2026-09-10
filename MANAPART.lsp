@@ -2125,14 +2125,90 @@
 
 ;(defun autocreat_bomp(/ qdata1 qdata2 qdata3 qdata4 qdata5 qdata6 qdata7 qdata8 qdata9 qdata10 qdata11 qdata12 qdata13
 ;                         qdata14 qdata15 ff data data database_list count idd)
+;;; ------------------------------------------------------------------
+;;; DraftSight 移植：取出一列的第一個欄位（料號）
+;;; 不用 get_word 是因為它會先對整行做 strcase，而這裡一行只需要看到
+;;; 第一個分隔符為止（料號平均 9 字元，整行約 60 字元）。
+;;; 這個迴圈要跑 8 萬次以上，差別會被放大。
+;;; ------------------------------------------------------------------
+(defun first_field (line delim / i n pos)
+   (setq i 1 n (strlen line) pos nil)
+   (while (and (<= i n) (null pos))
+      (if (= delim (substr line i 1)) (setq pos i) (setq i (1+ i)))
+   )
+   (if pos (substr line 1 (1- pos)) line)
+)
+
+;;; ------------------------------------------------------------------
+;;; DraftSight 移植：以外部檔案取代 CAMPRO ERP 查詢
+;;;
+;;; 原本 campro_getbom_data 的做法是：寫出 campro.txt（欄位對應 + 圖層
+;;; 清單）→ startapp camprobom.bat → camprobom.exe 查 SQL → delay 5000
+;;; → 讀回 CamproBom.txt。ERP 資料庫已不存在，且 camprobom.bat 裡是
+;;; 「cd designer6」（指向原版目錄而非 _DS），這條路已經斷了兩層。
+;;;
+;;; 改為直接讀 partdata.txt：cp950、分號分隔、CRLF，第一行是欄位對應。
+;;; 該檔由 tools\xml2partdata.py 從 ERP 的 XML 匯出轉出。
+;;;
+;;; 沿用分號而非 TAB 當分隔符，是為了不動到 PUB-LISP.lsp 的 get_word 與
+;;; MANAPART.lsp / campro.lsp 兩份重複的 get_taglist（都把 ";" 寫死）。
+;;; 轉檔腳本保證欄位值裡不含分號。
+;;;
+;;; 回傳格式與 campro_getbom_data 相同：(表頭行 資料行 資料行 ...)，
+;;; 所以下游的 get_taglist、database_assoc_list、get_database&subst 不必更動。
+;;; 過濾在讀檔時就做掉——原架構是送圖層清單給 ERP 過濾，這裡是送給讀檔
+;;; 迴圈過濾，語意一致，且索引只會留下圖面上真正用到的料號。
+;;; ------------------------------------------------------------------
+(defun read_partdata_file (ntlayer / fname ff line hdr want key lst n hit)
+   (setq fname (strcat powdesign_path "partdata.txt"))
+   (if (null (findfile fname))
+      (progn
+         (princ (strcat "\n[錯誤] 找不到料號資料檔：" fname))
+         (princ "\n請先用 tools\\xml2partdata.py 從 ERP 的 XML 匯出產生此檔。")
+         nil
+      )
+      (progn
+         (setq want '())
+         (foreach nn ntlayer (setq want (cons (strcase nn) want)))
+
+         (setq ff (open fname "r"))
+         (setq hdr (read-line ff))
+         (setq lst '() n 0 hit 0)
+         (princ "\n讀取料號資料檔")
+         (while (setq line (read-line ff))
+            (setq n (1+ n))
+            (setq key (strcase (first_field line ";")))
+            (if (member key want)
+               (progn (setq lst (cons line lst)) (setq hit (1+ hit)))
+            )
+            (if (= 0 (rem n 10000)) (princ "."))
+         )
+         (close ff)
+         (princ (strcat "\n共 " (rtos n 2 0) " 筆料號，圖面命中 " (rtos hit 2 0) " 筆"))
+         (cons hdr (reverse lst))
+      )
+   )
+)
+
+;;; DraftSight 移植：外層守衛。資料檔讀不到就乾淨收手，不進主流程。
+;;; 拆成兩個函式而不是在主體裡用 (exit)，因為 AutoLISP 的 exit 是丟出錯誤
+;;; 讓 *error* 接，會在命令列留下錯誤訊息，不是正常返回。
 (defun autocreat_bomp()
+   ;;* 2026.09.10 改讀外部檔案，原 CAMPRO ERP 查詢見 read_partdata_file 註解
+   (setq database_list (read_partdata_file ntlayer))
+   (if (null database_list)
+      (princ "\n[中止] 沒有料號資料，未建立任何資訊點。")
+      (autocreat_bomp_run)
+   )
+   (princ)
+)
+
+(defun autocreat_bomp_run()
   (setq oldos (getvar "osmode"))
   (setvar "osmode" 0)
   (setq count 1)
 ;; 建立資料索引檔..
 
-   ;;* 2013.05.15
-   (setq database_list (campro_getbom_data ntlayer))
    (setq taglist (get_taglist (nth 0 database_list)))
    (setq database_assoc_list '())
    (princ "\n建立資料索引檔..")
