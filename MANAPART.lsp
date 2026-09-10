@@ -1340,9 +1340,23 @@
                      qty ent data8 qf data bomdata outtxt tag txt num outf)
   (if (findfile (strcat POWdesign_path "title.txt"))
     (progn
+      ;; 2026-09-10 修正：這三行原本會讓整個功能無聲失敗。
+      ;; Windows 10 的 UAC 下非提權執行寫不進 C 槽根目錄，open 回傳 nil，
+      ;; 而 DraftSight 的 write-line 拿到 nil 檔案代碼會【靜默中止整個運算式】
+      ;; ——不報錯，但同一行後面的東西也不執行了，函式就這樣安靜地結束。
+      ;; AutoCAD 在這裡是會丟出錯誤訊息的，所以原版看得到問題、移植版看不到。
+      ;;
+      ;; bompath.txt 是寫給 manadwg.exe 認系統路徑用的，而 manadwg.exe 只有
+      ;; c:opendwg(437 行) 與 c:insdwg(512 行) 會啟動；bomtree 從頭到尾沒用到它
+      ;; （typ=2 啟動 tree1.exe、typ=0/3 啟動 bom1.exe、typ=1 不啟動任何程式）。
+      ;; 所以這裡寫不成功無所謂，加守衛讓它不要擋住主流程即可。
       (setq qq (open "c:\\bompath.txt" "w"))
-      (write-line  POWdesign_path qq)  ;;寫出系統路徑,給manadwg.exe辨認
-      (close qq)
+      (if qq
+         (progn
+            (write-line  POWdesign_path qq)  ;;寫出系統路徑,給manadwg.exe辨認
+            (close qq)
+         )
+      )
       (setq needlayer (coll_all_layer))  ;; 選擇所有圖層,並過濾不建立資訊點的圖層
       (foreach nn needlayer
         (progn
@@ -1356,7 +1370,17 @@
       (setq count 0 balllist '() num 1)
       (cond
        ((or (= typ 2)(= typ 0)(= typ 3))(setq ff (open (strcat  POWDESIGN_path "bom.out") "w")))
-       ((= typ 1)(setq fname (getstring "\n檔名: ")) (setq ff (open (strcat  fname ".xls") "w")))
+       ;; 2026-09-10：原本存成 .xls，但內容其實是分號分隔的純文字，
+       ;; Excel 開啟時不會分欄（全部擠在 A 欄），還會跳「格式與副檔名不符」。
+       ;; 改存 .csv，並在第一行寫 Excel 的分隔符指令 sep=;
+       ;; 之所以不能只改副檔名：Excel 的 .csv 是依「系統清單分隔符」分欄，
+       ;; 繁中 Windows 的預設是逗號而非分號，所以必須用 sep=; 明講。
+       ;; 資料本身維持分號分隔不動——改成逗號會撞到欄位內容裡的逗號。
+       ;; AutoLISP 無法產生真正的 .xlsx（那是 ZIP 壓縮檔），這是純 LISP
+       ;; 能達到「Excel 正確分欄」的最小做法。
+       ((= typ 1)(setq fname (getstring "\n檔名: "))
+                 (setq ff (open (strcat  fname ".csv") "w"))
+                 (write-line "sep=;" ff))
       )
       (setq rf (open (strcat  POWDESIGN_path "title.txt") "r"))
       (setq tittxt (read-line rf))                               ;;tittxt 層名;品名;材質;圖號;製圖;說明;數量;表面處理;機種;規格;英文品名
@@ -1492,7 +1516,7 @@
               (close ff)
               (if (/= "0" ffdata)(c:subassname_into_infopoint))
           )
-          ((= 1 typ) (princ (strcat fname ".xls 建立完成 !")))
+          ((= 1 typ) (princ (strcat "\n" fname ".csv 建立完成 !")))
           (T (princ "\n結構資料重新產生完成!" ))
          );cond
        );progn
