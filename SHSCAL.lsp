@@ -703,6 +703,7 @@
     ;; removed FFF
     (setvar "osmode" &oldos)
     (setq instype nil sheet_typedata nil &&sheet_id nil)
+    (setq *error* oerr)   ;; 2026-09-11 正常結束也要還原（見手冊 §5.16）
     (princ)
 )
 

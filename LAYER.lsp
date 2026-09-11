@@ -137,13 +137,18 @@
   (setq *error* olderr)   ;; 2026-09-11 見手冊 §5.16：原為 (if olderr …)
   (princ)
 )
-(defun ssx (/ olderr)
+(defun ssx (/ olderr ssx_ret)
   (gc)                                ; close any sel-sets
   (setq olderr *error*
         *error* ssx_er
   )
   (setq fltr (ssx_fe))
-  (ssx_gf fltr)
+  ;; 2026-09-11：正常結束也要還原 *error*（見手冊 §5.16）。
+  ;; 回傳值被 LAYER.lsp:103 的 (setq gro-ent (ssx)) 取用，
+  ;; 所以先接住再還原，最後把它當作回傳值。
+  (setq ssx_ret (ssx_gf fltr))
+  (setq *error* olderr)
+  ssx_ret
 )
 (defun ssx_gf (f1 / t1 t2 t3 f1 f2)
   (while

@@ -954,6 +954,7 @@
           (setvar "cmdecho" 1)
           (SETQ FFF nil)
    )
+   (setq *error* oerr)   ;; 2026-09-11 正常結束也要還原（見手冊 §5.16）
    (princ)
 )
 
@@ -1190,6 +1191,7 @@
           (SETQ FFF nil)
    );while
 ;   (setvar "cmdecho" 1)
+   (setq *error* oerr)   ;; 2026-09-11 正常結束也要還原（見手冊 §5.16）
    (princ)
 )
 
@@ -1397,6 +1399,7 @@
           (setvar "cmdecho" 1)
           (SETQ FFF nil)
    )
+   (setq *error* oerr)   ;; 2026-09-11 正常結束也要還原（見手冊 §5.16）
    (princ)
 )
 
@@ -1605,6 +1608,7 @@
           (SETQ FFF nil)
    )
    (setvar "cmdecho" 1)
+   (setq *error* oerr)   ;; 2026-09-11 正常結束也要還原（見手冊 §5.16）
    (princ)
 )
 

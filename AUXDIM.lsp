@@ -1924,6 +1924,7 @@
       (command "dimstyle" "r" dimst)
   );if
   (redraw)
+  (setq *error* oerr)   ;; 2026-09-11 正常結束也要還原（見手冊 §5.16）
 )
 
 (defun c:dimgeo_base(/ os gap txt scl point_list i)
@@ -1982,6 +1983,7 @@
       (setvar "dimblk" ".") ;R14
   );if
   (redraw)
+  (setq *error* oerr)   ;; 2026-09-11 正常結束也要還原（見手冊 §5.16）
 )
 (defun te_err(msg)
    (if (/= msg "Function cancelled")(princ (strcat "\nError: " msg)))
@@ -2385,6 +2387,7 @@
   );if
 
   (reset_sysvar)
+  (setq *error* oerr)   ;; 2026-09-11 正常結束也要還原（見手冊 §5.16）
   (princ)
 )
 
@@ -2696,6 +2699,7 @@
    ;; removed FFF
  (setvar "cmdecho" 1)
  (setvar "osmode" int_os)
+ (setq *error* oerr)   ;; 2026-09-11 正常結束也要還原（見手冊 §5.16）
  (prinC)
 )
 
@@ -3924,6 +3928,7 @@
             (setvar "dimfit" dim_fit)
             (setvar "osmode" os)
      (redraw)       
+     (setq *error* oerr)   ;; 2026-09-11 正常結束也要還原（見手冊 §5.16）
 )
 
 (defun te_err_con_dim(msg)
@@ -4466,6 +4471,7 @@
         (setq lst_dim1 (subst lst_dim3 lst_dim2 lst_dim1))
         (entmod lst_dim1)
         (setvar "osmode" osmode)
+        (setq *error* oerr)   ;; 2026-09-11 正常結束也要還原（見手冊 §5.16）
 )
 (defun te_err_keydim(msg)
    (if (/= msg "Function cancelled")(princ (strcat "\nError: " msg)))

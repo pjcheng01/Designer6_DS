@@ -289,6 +289,7 @@
     (resetting_text)
       
     (setvar "osmode" &oldos)
+    (setq *error* oerr)   ;; 2026-09-11 正常結束也要還原（見手冊 §5.16）
     (princ)
 )
 (defun campro_shscal(/ DrawNo)
