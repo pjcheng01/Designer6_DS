@@ -257,8 +257,8 @@
                 <menu UID="{615821a6-b13f-4c51-ab7d-711141efc586}" name="產生圖面材料清單" definition_ref="{0af0637e-3a0d-49f4-af54-b25ffae68ab9}"/>
                 <menu UID="{c0ce0e37-bcae-4bde-884d-cb0771b52684}" name="全自動指標球" definition_ref="{f73b6a47-7297-4be4-b476-3c84c84add07}"/>
                 <menu name="" definition_ref=""/>
-                <menu UID="{896ad097-af44-4a3e-897a-a3ae3f7b1129}" name="組合圖拆出零件圖" definition_ref="{8688f455-0e6f-4219-af0a-68d45a65de7b}"/>
-                <menu UID="{3ea0e5e3-089f-4465-8a47-8d9bc9d9e241}" name="零件圖組裝成組合圖" definition_ref="{45757511-a3ac-4473-a6b9-d1a769d7bff2}"/>
+                <menu UID="{cf16f223-9e9a-45fc-9ea9-c2488b3cba6b}" name="組合圖拆出零件圖" definition_ref="{56d1facf-d526-453d-9a6a-05c77e01ed3e}"/>
+                <menu UID="{3bf611fd-265e-47d5-943b-b760b27f49d6}" name="零件圖組裝成組合圖" definition_ref="{abe984b0-0d5b-424d-a5b0-f2f45b68e432}"/>
             </menu>
             <menu UID="{68f25101-7ee0-408d-bce0-eaf88d40947f}" name="機械元件" definition_ref="">
                 <aliases>
@@ -859,6 +859,8 @@
             <definition iconRecource="" lightIconName="" iconName="" id="{09b09048-98ee-4c95-90be-c753bdff4227}" name="放圖框定比例" darkIconName="" smallIconName="" command="^C^C&amp;autoSHSCAL" description="放圖框定比例"/>
             <definition iconRecource="" lightIconName="SETSPP.bmp" iconName="" id="{0a680304-268c-4fcc-a44c-dc9042070314}" name="設定成短假想線(SPP)" darkIconName="BSETSPP.bmp" smallIconName="" command="^C^C&amp;SPL&amp;" description=""/>
             <definition iconRecource="" lightIconName="" iconName="" id="{0af0637e-3a0d-49f4-af54-b25ffae68ab9}" name="產生圖面材料清單" darkIconName="" smallIconName="" command="^C^C^P&amp;bomlist" description="產生圖面材料清單"/>
+            <definition iconRecource="" lightIconName="" iconName="" id="{56d1facf-d526-453d-9a6a-05c77e01ed3e}" name="組合圖拆出零件圖" darkIconName="" smallIconName="" command="^C^C&amp;out" description="組合圖拆出零件圖"/>
+            <definition iconRecource="" lightIconName="" iconName="" id="{abe984b0-0d5b-424d-a5b0-f2f45b68e432}" name="零件圖組裝成組合圖" darkIconName="" smallIconName="" command="^C^C&amp;in" description="零件圖組裝成組合圖"/>
             <definition iconRecource="" lightIconName="" iconName="" id="{0b2da341-0dce-49cc-91db-7bca6e982d55}" name="印表機出圖" darkIconName="" smallIconName="" command="^C^C&amp;hp" description="印表機出圖"/>
             <definition iconRecource="" lightIconName="auxcr.bmp" iconName="" id="{0b367bea-1d0d-4dec-af64-f6dc6495814a}" name="拷貝,旋轉換線性" darkIconName="bauxcr.bmp" smallIconName="" command="^C^C&amp;c&amp;r&amp;lt" description=""/>
             <definition iconRecource="" lightIconName="osnap2.bmp" iconName="" id="{0b3db1d0-0f74-4a70-923f-76da8fb9b5c4}" name="第 2 組鎖點模式" darkIconName="Bosnap2.bmp" smallIconName="" command="^C^CO2" description=""/>
