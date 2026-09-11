@@ -15,29 +15,17 @@
         (load "config")
       )
       (loaddesigner)
-      ;; campro 模組：有安裝才載入
-      (if (findfile (strcat POWDESIGN_path "campro.lsp"))
-        (progn
-          (load "campro")
-          (if (= "1" (getini (strcat POWDESIGN_path "campro.ini") "SHEET" "update"))
-            (progn
-              (setq DrawNo (string_remove (getvar "DWGNAME") ".DWG"))
-              (startapp "campro.exe" (strcat DrawNo ";0"))
-            )
-          )
-        )
-      )
+      ;; 2026-09-11 瘦身階段 2：移除 campro（CAMPRO ERP）模組的載入與自動外呼。
+      ;; 原本這裡先 (load "campro")，再依 campro.ini 的 [SHEET] update 旗標
+      ;; 決定要不要 (startapp "campro.exe" "圖號;0")——也就是每開一張新圖
+      ;; 就啟動一次 campro.exe。CAMPRO 後端 ERP 已不存在，這個外呼只會安靜
+      ;; 失敗或留下沒有回應的處理程序。
+      ;; campro.lsp 自此不再被載入，檔案本身留待下一階段一併移除。
+      ;; 詳見 docs/瘦身分析-PDM與外部程式.md
     )
   )
 )
 
-
-;;�ͬf�Ȼs
-(defun c:campro_change_onoff() (change_onoff))	;;�۰ʧ�s�}��
-(defun c:campro_update_sheet() (update_sheet))	;;��s�Ϯظ��
-(defun c:campro_sheet_to_pdm() (sheet_to_pdm))	;;�Ϯظ�Ƽg�JPDM
-(defun c:campro_auto_shscal()  (campro_shscal)) ;;PDM��Ϯةw���
-(defun c:campro_cap_sybom() (c:autoload) (campro_sybom)) ;;�զX�Ϯظ�Ƽg�JPDM
 
 ;;�ϥΪ̦۩w�Ϯw
 (defun c:userblk1()(c:autoload) (setq dclmenu_path bmanager_path)(PRINC) (cond ((null userblkm)(load "userblkm"))(t (princ))) (userblkm "userblkm" "userblkm" "BOM2" "poweriso" 0))
