@@ -276,13 +276,13 @@
                 (if (or (= yesno "") (= yesno "Y"))
                     (progn
                          (setq insp (getpoint "\n插入點: "))
-                         (command "wblock" out_dwgname "y" "" insp outent "")
+                         (command "wblock" (strcat out_dwgname ".dwg") "y" "" insp outent "")  ;; 2026-09-11：DraftSight 的 WBLOCK 不會自動補 .dwg（AutoCAD 會），必須明講
                     );progn
                 );if
            );progn
            (progn
                 (setq insp (getpoint "\n插入點: "))
-                (command "wblock" out_dwgname "" insp outent "")
+                (command "wblock" (strcat out_dwgname ".dwg") "" insp outent "")
                 (princ "    完成!")
            );progn
        );if
@@ -358,10 +358,10 @@
 
    (if (or (= yesno "") (= yesno "Y"))
        (progn
-            (command "wblock" out_dwgname "y" "" insp outent "")
+            (command "wblock" (strcat out_dwgname ".dwg") "y" "" insp outent "")  ;; 2026-09-11：DraftSight 的 WBLOCK 不會自動補 .dwg（AutoCAD 會），必須明講
        )
        (progn
-            (command "wblock" out_dwgname "" insp outent "")
+            (command "wblock" (strcat out_dwgname ".dwg") "" insp outent "")
        )
    )
 
