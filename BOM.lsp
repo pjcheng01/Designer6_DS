@@ -47,7 +47,6 @@
     (action_tile "out" "(set_tile \"error\" \"\")(creat_outlist)")
     (action_tile "exe" "(set_tile \"error\" \"\")(exenooutgrp)")
 
-    (if (= "Yes" yyesno) (pdm_ctl_dcl_status))
 
     (action_tile "accept" "(out_ok)")
     (action_tile "cancel" "(done_dialog)")
@@ -333,19 +332,6 @@
 
 ;(defun exeout(/ pdmdata ffcod cnum water_num qq data datalist)
 (defun exeout()
- (if (= "Yes" yyesno)
-   (progn
-     (setq pdmdata (pdm_get_curset))
-     (setq ffcod (nth 0 pdmdata)           ;; ffcode 前置碼
-           bbcod (nth 3 pdmdata)           ;; bbcode 後置碼
-           cnum (nth 1 pdmdata)            ;; cnum  目前拆圖可用起始編號
-           water_num (nth 2 pdmdata))      ;; 流水號位數
-
- ;   (startapp (strcat powerpdm_path "sendtitle.exe"))   ;;產生 pdmcad.txt 所有圖框類型屬性於 powerpdm 目錄內
-
-    (ccctest)
-   );progn
- );if
 
  (setq attlist_bak attlist)
  (initget "Yes No")
@@ -367,18 +353,6 @@
      (setq partdata (read (getfile_val (strcat POWdesign_path "system.ini") "PART_DEF")))
      (setq chk_list (act_outlist))  ; ("料號" "品名" "機種" "#圖號" "製圖" "規格" "數量" "英文品名" "表面處理" "材質 " "說明")
    
-     (if (= "Yes" yyesno)
-       (progn
-         (setq ii (open (strcat powerpdm_path "temp\\topdmatt.txt") "w")) 
-         (write-line (getvar "dwgprefix") ii)                                  ;;powerpdm 2001
-         (write-line $pdm_user ii)                                             ;;powerpdm 2001
-         (write-line $pdm_case_type ii)                                        ;;powerpdm 2001
-         (write-line $pdm_tree_id ii)                                          ;;powerpdm 2001
-         (write-line $pdm_water_id ii)                                         ;;powerpdm 2001
-         (write-line "1" ii)                                                   ;;;未完成  ;;powerpdm 2001
-         (close ii)
-       );progn
-     );progn
      
      (command "layer" "s" (nth 0 lalst) "")
      
@@ -452,7 +426,6 @@
    (command "layer" "t" "*" "")
    (command "zoom" "e")
 
-     (if (= "Yes" yyesno) (progn (close ii)(startapp (strcat powerpdm_path "\\autocad\\acadpartout\\topdmatt.exe"))))
      (close manadwg_transfile)
 
      (if (/= "Yes" yyesno) (close doc_file))
@@ -548,10 +521,7 @@
 
 (defun head()
      (setq dwg_path partpath)
-     (if (= "Yes" yyesno)
-       (setq insp (list 0 0 0 ))
-       (setq insp (getpoint "\n零件插入點: "))
-     )
+     (setq insp (getpoint "\n零件插入點: "))
 )
 (defun process()
         (if (ssget "x" (list (cons 8 lay_na)))
@@ -585,26 +555,6 @@
 ;    (setq ffcod (nth 0 pdmdata)
 ;          cnum (nth 1 pdmdata)
 ;          water_num (nth 2 pdmdata))
-   (if (= "Yes" yyesno)
-       (progn
-
-            (setq cnum (rtos (atoi cnum) 2))
-
-            (setq len (strlen cnum))
-
-            (setq txt0 "")
-
-            (repeat (- (atoi water_num) len)
-
-               (setq txt0 (strcat txt0 "0"))
-            )
-
-            (setq ddwgname (strcat ffcod txt0 cnum bbcod))            ;;powerpdm 2001
-            (setq out_dwgname (strcat partpath ffcod txt0 cnum bbcod))
-            (setq cnum (rtos (1+ (atoi cnum)) 2 0))
-            (setq datatxt (get_att_data_list))   ;;寫出轉入 powerpdm 的資料 topdmatt.txt
-       );progn
-   );if
 ;;----------------
    (if (= "1" onebyone) ;;一個一個拆
        (princ (strcat "\n零件拆出成 " (strcase out_dwgname) ".DWG............"))
@@ -636,18 +586,6 @@
    );if
    (if (null findbomp_ent)(load "manapart"))
 
-   (if (= "Yes" yyesno)
-       (progn
-            (if (findfile (strcat out_dwgname ".dwg"))
-                (progn
-                     (princ (strcat out_dwgname ".DWG 已經存在 !!"))
-                     (initget "Y N")
-                     (setq yesno (getkword "\n是否要將該檔覆蓋<Y>: "))
-                     (if (null yesno) (setq yesno "Y"))
-                );progn
-            );if
-       );progn
-   );if
    (if (or (= yesno "") (= yesno "Y"))
        (progn
             (command "wblock" out_dwgname "y" "" insp outent "")
@@ -788,7 +726,6 @@
 ;(setq out_flag nil)
 ;)
 (defun out_ok()
-  (if (and (/= nil powerpdm_path)(/= nil $pdm_dwgname)) (pdm_out_ok))  ;;powerpdm 2001
   (setq oldlay (get_tile "oldlay"))
   (setq subassem (get_tile "subassem"))
   (setq part (get_tile "part"))
