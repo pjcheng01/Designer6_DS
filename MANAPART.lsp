@@ -332,15 +332,172 @@
   (initget "Yes No")
   (setq yesno (getkword "\n是否建立物料資訊?<Yes>:"))
   (if (or (null yesno) (= "Yes" yesno))
-     (append_to_dwg_db)
+     (append_to_dwg_db (dwglib_partno name))
   )
   (setq  lib_id nil)
  (princ)
 )
-(defun append_to_dwg_db()
+;;; ------------------------------------------------------------------
+;;; 2026-09-11：建立物料資訊改為「以料號查 partdata.txt 自動帶入」，
+;;; 並直接寫進純文字圖庫檔，不再經由 change.exe 與 dwg.db。
+;;;
+;;; 原本的流程是：對話框手動輸入 -> 寫 data.txt 一行 -> change.exe 併入
+;;; dwg.db。change.exe 相依 idapi32.dll（Borland Database Engine），
+;;; 本機未安裝且已無從安裝，所以那一步從移植以來就沒有成功過——使用者
+;;; 按了「是」、填完資料，卻什麼都沒發生（無聲失敗）。
+;;;
+;;; 欄位對應不寫死在程式裡：SYSTEM.ini 的 PART_DEF 第四欄就是 dwgdata.txt
+;;; 的 A_xx 代號，兩邊靠它接起來。使用者日後用 c:fieldset 調整欄位，
+;;; 對應會自動跟著走。
+;;;
+;;; 詳見 docs/盤點-圖檔管理.md §6。
+;;; ------------------------------------------------------------------
+
+;;; 從完整路徑取出料號（去路徑、去副檔名）
+(defun dwglib_partno (path / i c p)
+   (if (or (null path) (= "" path))
+      ""
+      (progn
+         (setq i (strlen path) p nil)
+         (while (> i 0)
+            (setq c (substr path i 1))
+            (if (or (= c "\\") (= c "/") (= c ":"))
+               (progn (setq p (substr path (1+ i))) (setq i 0))
+               (setq i (1- i))
+            )
+         )
+         (if (null p) (setq p path))
+         (if (and (> (strlen p) 4) (= "." (substr p (- (strlen p) 3) 1)))
+            (setq p (substr p 1 (- (strlen p) 4)))
+         )
+         (strcase p)
+      )
+   )
+)
+
+;;; 在串列中找出 item 的位置（0 起算），找不到回 nil
+(defun dwglib_idx (item lst / i n)
+   (setq i 0 n nil)
+   (foreach x lst
+      (if (and (null n) (= x item)) (setq n i))
+      (setq i (1+ i))
+   )
+   n
+)
+
+;;; 圖庫檔的完整路徑。
+;;; 優先用 system_dwg_libpath，但要注意 SYSTEM.lsp 只把它設成 ""，
+;;; 而 DWG_MANAGE_PATH 從來沒有在啟動時被讀回來（只有 c:dwg_libpath
+;;; 會寫出去），所以這裡自己補讀一次。都取不到才退回系統目錄。
+(defun dwglib_file ( / p)
+   (setq p system_dwg_libpath)
+   (if (or (null p) (= "" p))
+      (setq p (getfile_val (strcat POWdesign_path "system.ini") "DWG_MANAGE_PATH"))
+   )
+   (if (or (null p) (= "" p))
+      (setq p POWdesign_path)
+   )
+   (if (/= "\\" (substr p (strlen p) 1)) (setq p (strcat p "\\")))
+   (strcat p "dwglib.txt")
+)
+
+;;; 讀 dwgdata.txt，建立 lab_codes（A_xx）與 lab_list（顯示名稱）。
+;;; 不需要對話框，所以可以在 actdcl 之前先做完。
+(defun dwglib_read_fields ( / ff data pos)
+   (setq lab_list '() lab_codes '())
+   (setq ff (open (strcat POWdesign_path "dwgdata.txt") "r"))
+   (if (null ff)
+      (alert (strcat "找不到欄位定義檔：\n" POWdesign_path "dwgdata.txt"))
+      (progn
+         (setq data (read-line ff))
+         (while data
+            (setq pos (get_word data ";"))
+            (if pos
+               (progn
+                  (setq lab_codes (cons (strcase (substr data 1 (1- pos))) lab_codes))
+                  (setq lab_list  (cons (substr data (1+ pos)) lab_list))
+               )
+            )
+            (setq data (read-line ff))
+         )
+         (close ff)
+      )
+   )
+   (setq lab_list (reverse lab_list) lab_codes (reverse lab_codes))
+   (length lab_list)
+)
+
+;;; 以料號查 partdata.txt，回傳與 lab_codes 同順序的值串列；查不到回 nil。
+;;; 對應規則：dwgdata 的 A_xx -> PART_DEF 第四欄 -> 該筆的 TAGn
+;;;           -> partdata.txt 表頭中 TAGn 的欄位位置
+(defun dwglib_lookup (partno / rows hdr cols defs tag idx v out)
+   (setq out nil)
+   (if (and partno (/= "" partno))
+      (progn
+         (setq rows (read_partdata_file (list partno)))
+         (if (and rows (cdr rows))
+            (progn
+               (setq hdr  (TXT_TRAN_LIST (car rows)))
+               (setq cols (TXT_TRAN_LIST (cadr rows)))
+               (setq defs (read (getfile_val (strcat POWdesign_path "system.ini") "PART_DEF")))
+               (foreach code lab_codes
+                  (setq v "")
+                  (if (= code "A_01")
+                     (setq v (nth 0 cols))
+                     (progn
+                        (setq tag nil)
+                        (foreach dd defs
+                           (if (and (listp dd) (= 4 (length dd))
+                                    (= code (strcase (nth 3 dd))))
+                              (setq tag (nth 2 dd))
+                           )
+                        )
+                        (if tag
+                           (progn
+                              (setq idx (dwglib_idx tag hdr))
+                              (if (and idx (< idx (length cols)))
+                                 (setq v (nth idx cols))
+                              )
+                           )
+                        )
+                     )
+                  )
+                  (if (or (null v) (= "nil" v)) (setq v ""))
+                  (setq out (cons v out))
+               )
+               (setq out (reverse out))
+            )
+         )
+      )
+   )
+   out
+)
+
+;;; 圖庫檔第一行的表頭，讓檔案自己說明欄位
+(defun dwglib_header ( / s)
+   (setq s "")
+   (foreach n lab_list
+      (if (= "" s) (setq s n) (setq s (strcat s ";" n)))
+   )
+   s
+)
+
+(defun append_to_dwg_db (partno / vals)
+      ;; 先把欄位定義與 partdata 查詢做完，再開對話框——
+      ;; read_partdata_file 要掃 8 萬多筆、會印進度點，放在對話框開啟後做
+      ;; 會看起來像卡住。
+      (dwglib_read_fields)
+      (setq vals (dwglib_lookup partno))
+      (if vals
+         (princ (strcat "\n已由 partdata.txt 帶入料號 " partno " 的資料"))
+         (if (and partno (/= "" partno))
+            (princ (strcat "\npartdata.txt 查無料號 " partno "，請自行填寫"))
+         )
+      )
       (actdcl (strcat POWDESIGN_dcl_path "manapart") "cbomdata")
-      (setq lib_id 16)  ;; lib_id 公用變數
+      (setq lib_id 16)  ;; lib_id 為全域變數
       (append_to_dwg_db_show lib_id)
+      (if vals (append_to_dwg_db_setvals vals))
       (action_tile "data1" "(setq lib_id 1)")
       (action_tile "data2" "(setq lib_id 2)")
       (action_tile "data3" "(setq lib_id 3)")
@@ -364,28 +521,28 @@
       (start_dialog)
       (unload_dialog dcl_id)
 );defun
-(defun append_to_dwg_db_show(l_id)
-  (setq lab_list '())
-  (setq ff (open (strcat POWdesign_path "dwgdata.txt") "r"))
-  (setq data (read-line ff))
-  (while data
-    (setq data (substr data (1+ (get_word data ";"))))
-    (setq lab_list (cons data lab_list))
-    (setq data (read-line ff))
-  );while
-  (close ff)
-  (setq count 1)
-  (foreach nn (reverse lab_list)
-    (set_tile (strcat "lab" (rtos count 2 0)) nn)
-    (setq count (1+ count))
-  );foreach
-  (repeat (- l_id count)
-    (mode_tile (strcat "data" (rtos count 2 0)) 1)
-    (setq count (1+ count))
-  )
+
+(defun append_to_dwg_db_setvals (vals / i)
+   (setq i 1)
+   (foreach v vals
+      (if (/= "" v) (set_tile (strcat "data" (rtos i 2 0)) v))
+      (setq i (1+ i))
+   )
 )
 
-(defun append_to_dwg_db_ok(/ tdata count data ff)
+(defun append_to_dwg_db_show (l_id / count)
+   (setq count 1)
+   (foreach nn lab_list
+      (set_tile (strcat "lab" (rtos count 2 0)) nn)
+      (setq count (1+ count))
+   )
+   (repeat (- l_id count)
+      (mode_tile (strcat "data" (rtos count 2 0)) 1)
+      (setq count (1+ count))
+   )
+)
+
+(defun append_to_dwg_db_ok (/ tdata count data ff fname newfile)
   (setq tdata (get_tile "data1"))
   (if (= "" tdata) (setq tdata "nil"))
   (setq count 2)
@@ -395,26 +552,28 @@
     (setq tdata (strcat tdata ";" data))
     (setq count (1+ count))
   );repeat
-  (setq ff (open (strcat POWdesign_path "data.txt") "w"))
-  (write-line tdata ff)
-  (close ff)
-  (trans_data_todwg_db)
-  (princ)
-);defun
-
-
-
-
-;;轉檔到 dwg.db
-;; 以 dwgdata.txt 為輸出格式 , 產生 DATA.TXT
-;; 範例 MSA-M6X50;內六角承窩螺絲;夾緊機;MSA-M6X50;js;6mm*50mm*P1.0;1;Screw.SKT.HD CAP;nil;nil;nil
-(defun trans_data_todwg_db(/ ff qf data)
-  (setq ff (open "c:\\bompath.txt" "w"))
- ; (write-line powdesign_path ff)   ;; 以 dwgdata.txt 為輸出格式 , 產生 DATA.TXT 在 powdesign_path
-  (write-line system_dwg_libpath ff) ;; 以 dwgdata.txt 為輸出格式 , 產生 DATA.TXT 在 powdesign_path
-  (close ff)
-  (startapp (strcat POWdesign_path "change"))
-  (princ "\n轉檔完成!")
+  (setq fname (dwglib_file))
+  (setq newfile (null (findfile fname)))
+  (setq ff (open fname "a"))
+  ;; 圖庫路徑可能不存在或不可寫（例如 System.ini 裡留著別台機器的路徑），
+  ;; 這時退回系統目錄，總比無聲失敗好。
+  (if (null ff)
+     (progn
+        (princ (strcat "\n[警告] 無法寫入 " fname))
+        (setq fname (strcat POWdesign_path "dwglib.txt"))
+        (setq newfile (null (findfile fname)))
+        (setq ff (open fname "a"))
+     )
+  )
+  (if (null ff)
+     (alert (strcat "無法建立圖庫檔：\n" fname "\n\n請確認資料夾可寫入。"))
+     (progn
+        (if newfile (write-line (dwglib_header) ff))
+        (write-line tdata ff)
+        (close ff)
+        (princ (strcat "\n物料資訊已寫入: " fname))
+     )
+  )
   (princ)
 );defun
 
@@ -1218,17 +1377,14 @@
                      qty ent data8 qf data bomdata outtxt tag txt num outf)
   (if (findfile (strcat POWdesign_path "title.txt"))
     (progn
-      ;; 2026-09-11 瘦身階段 6：原本這裡會寫 c:\bompath.txt，用來告訴
+      ;; 2026-09-11 瘦身：原本這裡會寫 c:\bompath.txt，用來告訴
       ;; bom1.exe / tree1.exe 系統裝在哪（那兩支 exe 的年代路徑寫死在
-      ;; C:\DESIGNER6）。bomtree 現在四種 typ 都不再啟動任何外部程式，
-      ;; 這個檔對它已無用途，連同寫入的程式碼一起移除。
+      ;; C:\DESIGNER6）。bomtree 已不再啟動任何外部程式，整段移除。
       ;;
-      ;; 同樣的寫法只剩 trans_data_todwg_db 一處，服務 change.exe——
-      ;; 那支同樣相依 idapi32.dll（Borland Database Engine），本機未安裝，
-      ;; 目前一樣是壞的。c:opendwg 與 c:insdwg 已於 2026-09-11 移除。
-      ;; 若日後要處理，兩個已知陷阱：C 槽根目錄在 UAC 下不可寫；
-      ;; 其下新建的檔案會繼承高完整性標籤，光給 ACL 權限沒用，
-      ;; 必須 icacls <檔> /setintegritylevel Medium。詳見手冊。
+      ;; 追記：c:opendwg、c:insdwg 與 trans_data_todwg_db 也都已移除，
+      ;; 所以【全專案不再有任何程式寫 c:\bompath.txt】，
+      ;; 對 C 槽根目錄的依賴到此結束——連帶擺脫了「C 槽新建檔案會繼承
+      ;; 高完整性標籤、光給 ACL 權限也寫不進去」這個麻煩（見手冊）。
       (setq needlayer (coll_all_layer))  ;; 選擇所有圖層,並過濾不建立資訊點的圖層
       (foreach nn needlayer
         (progn
