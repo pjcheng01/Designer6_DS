@@ -290,7 +290,7 @@ xxx.exe
 | **2** | 移除 campro 的外呼與 5 個選單項 | 低 | **完成** `70af588` + `5efea7f`，已實測 |
 | **3** | 刪 `PDMSERVER/`、13 支 PDM exe/設定、孤立的 campro 模組 | 極低 | **完成** `8ef2594` + `eb3bf8c` + `fc7e4d3` |
 | **4** | 清 `BOM.lsp` 的 PDM 程式碼 | 中 | **完成** `834f7cd`(4a) + `aebecf8`(4b)，4a 已實測 |
-| **5** | `bomtree` typ=2 改 .csv，移除 `tree1.exe` | 低 | 待辦 — 跑「結構樹」確認產出 .csv |
+| **5** | `bomtree` typ=2 改 .csv，移除 `tree1.exe` | 低 | **完成** `f7092da` + `1765c24` |
 | **6** | `bomtree` typ=0 改 .csv，移除 `bom1.exe` | 中 | 待辦 — 需先確認次組立名稱回寫還用不用 |
 | **7** | 刪 5 支重複／舊版 .lsp | 極低 | 待辦 |
 | **8** | 加密狗相關（`KB/`、`安裝Key程式/`、`SYSDRVR/`） | 極低 | 待辦 — 您決定是否保留授權來源 |
@@ -362,6 +362,62 @@ BOM.lsp 1902 → 1590 行，**共減 312 行**。
   `trans_datatxt`，現已無人使用。
 - `DCL/Bom.dcl:367` 的 `pdm_selsheet` 對話框定義：隨 `pdm_sel_sheet`
   失去用途。該檔是 cp950，另案處理較安全。
+
+### 階段 5：評估結論被實測推翻
+
+原本的評估是「`tree1.exe` 跑得好好的，改成 .csv 會失去 GUI 樹狀呈現，
+要權衡」。實測後發現**前提不成立——它從移植到現在就沒有成功執行過**。
+
+`tree1.exe` 是 Delphi 4 以「執行期套件」方式編譯的，啟動時需要：
+
+| 檔案 | 用途 |
+|------|------|
+| `Vcl40.bpl` | Delphi 4 VCL 執行期套件 |
+| `borlndmm.dll` | Borland 記憶體管理員 |
+| `cp3245mt.dll` | Borland C++ 執行期程式庫 |
+
+三個都不是 Windows 內建。全機搜尋（`C:\Windows`、`C:\DESIGNER6`、
+`C:\DESIGNER6_DS`、`C:\POWPARTS`）**一個都沒有**。
+Windows 載入器找不到就直接放棄建立行程，而 `startapp` 用的 `ShellExecute`
+失敗時不回報，所以症狀是「執行後毫無反應」，連錯誤訊息都沒有。
+
+對照組：`bom1.exe` 856 KB（執行期靜態連結）可以執行，
+`tree1.exe` 只有 32 KB（依賴外部套件）不能——差別就在這裡。
+**判斷一支舊 exe 能不能跑，看檔案大小與匯入表比看它有沒有被呼叫更準。**
+
+所以這一步不是「用 GUI 換 .csv」，而是**把一個壞掉的功能修好**。
+
+### 階段 5 順帶處理的三件事
+
+1. **表頭補上階層三欄。** typ=0/2/3 的資料列開頭多了「有無資訊點、流水號、
+   父系編號」，但表頭原本只有 `title.txt` 的欄位名——那兩支 exe 自己知道
+   格式所以無所謂，給 Excel 看就會整排錯開。只對 typ=2 補，
+   不影響 `bom1.exe` 讀的 `bom.out` 格式。
+2. **裸圖名改為 `組合圖;<圖名>`**，否則在 Excel 裡是孤立的一格。
+3. **補上 `open` 失敗的守衛**，四種 typ 都受惠（見手冊 §5.11）。
+
+### 另一個實測發現：`C:\bompath.txt` 與完整性標籤
+
+`bom1.exe` 與 `tree1.exe` 都要讀 `C:\bompath.txt` 才知道系統路徑
+（那兩支 exe 的年代路徑寫死在 `C:\DESIGNER6`）。而 Windows 10 的 UAC
+不允許非提權程式寫入 C 槽根目錄，所以這個檔一直不存在。
+
+**光是建立檔案並給 ACL 權限還不夠**——C 槽根目錄會讓其下建立的檔案繼承
+「高完整性等級」標籤（`Mandatory Label\High Mandatory Level:(NW)`），
+中完整性的行程（DraftSight 這種一般程式）**不論 ACL 給什麼權限都無法寫入**。
+
+以系統管理員身分執行，兩段缺一不可：
+
+```bat
+> C:\bompath.txt echo C:\DESIGNER6_DS\
+icacls C:\bompath.txt /setintegritylevel Medium
+```
+
+注意重導向要寫在前面（`> 檔案 echo 內容`），否則 cmd 會在內容尾端留一個空格。
+
+這個設定是**每台機器專屬**、沒有進版控。`c:opendwg`、`c:insdwg`、
+`trans_data_todwg_db` 三個功能同樣依賴它，而且它們還要讀 `manadwg.exe`
+寫的 `c:\part.txt`，那個檔很可能有同樣的完整性標籤問題（未驗證）。
 ---
 
 ## 6. 尚待您確認的三件事
