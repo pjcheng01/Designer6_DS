@@ -733,10 +733,10 @@
 
 (defun te_err_ho(msg)
    (if (/= msg "Function cancelled")(princ (strcat "\nError: " msg)))
-   (if oerr (setq *error* oerr))
-   (setvar "cecolor" ccolor)
-   (setvar "celtype" cltype)
-   (setvar "osmode" oldosmode)
+   (setq *error* oerr)   ;; 2026-09-11 見手冊 §5.16
+   (if ccolor    (setvar "cecolor" ccolor))
+   (if cltype    (setvar "celtype" cltype))
+   (if oldosmode (setvar "osmode" oldosmode))   ;; nil 會在處理器內部再炸一次
    (princ)
 )
 

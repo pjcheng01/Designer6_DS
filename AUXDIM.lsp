@@ -1985,7 +1985,7 @@
 )
 (defun te_err(msg)
    (if (/= msg "Function cancelled")(princ (strcat "\nError: " msg)))
-   (if oerr (setq *error* oerr))
+   (setq *error* oerr)   ;; 2026-09-11 見手冊 §5.16：原為 (if oerr …)，oerr 為 nil 時不還原，*error* 就永遠卡在自訂處理器上
    (reset_sysvar)
  ;  (setvar "osmode" os)
  ;  (setvar "dimgap" gap)
@@ -2026,7 +2026,7 @@
 
 (defun dimgeo_err(msg)
    (if (/= msg "Function cancelled")(princ (strcat "\nError: " msg)))
-   (if oerr (setq *error* oerr))
+   (setq *error* oerr)   ;; 2026-09-11 見手冊 §5.16：原為 (if oerr …)，oerr 為 nil 時不還原，*error* 就永遠卡在自訂處理器上
    (reset_sysvar)
    (princ)
 )
@@ -2599,9 +2599,9 @@
 
 (defun te_err_ppub(msg)
    (if (/= msg "Function cancelled")(princ (strcat "\nError: " msg)))
-   (if oerr (setq *error* oerr))
+   (setq *error* oerr)   ;; 2026-09-11 見手冊 §5.16：原為 (if oerr …)，oerr 為 nil 時不還原，*error* 就永遠卡在自訂處理器上
 
-      (setvar "osmode" int_os)
+      (if int_os (setvar "osmode" int_os))   ;; nil 會在處理器內部再炸一次
    (princ)
 )
 ;;熔接標註
@@ -3928,13 +3928,16 @@
 
 (defun te_err_con_dim(msg)
    (if (/= msg "Function cancelled")(princ (strcat "\nError: " msg)))
-   (if oerr (setq *error* oerr))
+   (setq *error* oerr)   ;; 2026-09-11 見手冊 §5.16：原為 (if oerr …)，oerr 為 nil 時不還原，*error* 就永遠卡在自訂處理器上
       (progn
-            (setvar "dimsah" dim_sah)
-            (command "dimblk1" dim_blk1)
-            (command "dimblk2" dim_blk2)
-            (setvar "dimfit" dim_fit)
-            (setvar "osmode" os)
+            ;; 2026-09-11：復原動作補 nil 守衛。這些變數若是 nil，
+            ;; setvar/command 會在【錯誤處理器內部】再引發一次錯誤，
+            ;; 把原本要顯示的錯誤訊息徹底沖掉（見手冊 §5.16）。
+            (if dim_sah  (setvar "dimsah" dim_sah))
+            (if dim_blk1 (command "dimblk1" dim_blk1))
+            (if dim_blk2 (command "dimblk2" dim_blk2))
+            (if dim_fit  (setvar "dimfit" dim_fit))
+            (if os       (setvar "osmode" os))
       )
    (princ)
 )
@@ -4466,9 +4469,9 @@
 )
 (defun te_err_keydim(msg)
    (if (/= msg "Function cancelled")(princ (strcat "\nError: " msg)))
-   (if oerr (setq *error* oerr))
+   (setq *error* oerr)   ;; 2026-09-11 見手冊 §5.16：原為 (if oerr …)，oerr 為 nil 時不還原，*error* 就永遠卡在自訂處理器上
       (progn
-       (setvar "osmode" osmode)
+       (if osmode (setvar "osmode" osmode))   ;; nil 會在處理器內部再炸一次
       )
    (princ)
 )

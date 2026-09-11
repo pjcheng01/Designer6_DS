@@ -589,9 +589,9 @@
 
 (defun te_err_pub(msg)
    (if (/= msg "Function cancelled")(princ (strcat "\nError: " msg)))
-   (if oerr (setq *error* oerr))
+   (setq *error* oerr)   ;; 2026-09-11 見手冊 §5.16
       (progn
-           (setvar "osmode" &oldos)
+           (if &oldos (setvar "osmode" &oldos))   ;; nil 會在處理器內部再炸一次
       )
    (princ)
 )

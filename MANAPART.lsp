@@ -3347,10 +3347,10 @@
 
 (defun te_err_bomlist(msg)
    (if (/= msg "Function cancelled")(princ (strcat "\nError: " msg)))
-   (if oerr (setq *error* oerr))
+   (setq *error* oerr)   ;; 2026-09-11 見手冊 §5.16
 
-   (setvar "osmode" os)
-   (setvar "blipmode" oldblipmode)
+   (if os           (setvar "osmode" os))       ;; nil 會在處理器內部再炸一次
+   (if oldblipmode  (setvar "blipmode" oldblipmode))
    (princ)
 )
 

@@ -134,7 +134,7 @@
   (if (/= s "程式中斷")
     (princ (strcat "\n錯誤: " s))
   )
-  (if olderr (setq *error* olderr))   ; Restore old *error* handler
+  (setq *error* olderr)   ;; 2026-09-11 見手冊 §5.16：原為 (if olderr …)
   (princ)
 )
 (defun ssx (/ olderr)
