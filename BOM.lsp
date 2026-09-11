@@ -19,10 +19,6 @@
 (defun c:out(/ out_flag)
   (setvar "cmdecho" 0)
 ; (startapp (strcat designer2000_path  "makesubdir"))
-; (startapp (strcat powerpdm_path "topdmatt"))         ;執行建立資料進入 powerpdm統
-; (startapp (strcat powerpdm_path "partout"))
-    (setq yyesno nil)
-    (connect_powerpdm)
     (actdcl (strcat powdesign_dcl_path "bom") "out")
     (setq outlalist (acad_strlsort (coll_layer)) nolalist '())
     (setq no_outla (read (getfile_val (strcat POWdesign_path "system.ini") "EXPLODE_SKIP_LAYER")))
@@ -57,64 +53,6 @@
     (setvar "cmdecho" 1)
     (PRINC)
 )
-
-;;若與 pdm 聯結,則淡化部分功能
-(defun pdm_ctl_dcl_status()
-   (mode_tile "subassem" 1)
-   (mode_tile "onebyone" 1)
-   (mode_tile "oldlay" 1)
-   (mode_tile "partpath" 1)
-   (mode_tile "fcode" 1)
-   (mode_tile "bcode" 1)
-)
-
-
-(defun connect_powerpdm()
-    (if (and (/= nil powerpdm_path)(/= nil $pdm_dwgname))
-      (progn
-;        (if (findfile (strcat powerpdm_attribdata_path (curdwgname) ".txt"))   ;;判斷此圖是否經由圖文管理系統領號
-         (if (= (strcase $pdm_dwgname) (strcase (curdwgname)))   ;;判斷此圖是否經由圖文管理系統領號  powerpdm 2001   ;;;BUG
-          (progn
-            (initget "Yes No")                                                             
-            (setq yyesno (getkword "\n拆圖功能是否與 POWERPDM 圖文管理系統結合<YES>:"))
-            (if (null yyesno) (setq yyesno "Yes"))
-            (if (= yyesno "Yes") (setq sel_sheet_list (pdm_sel_sheet)))
-           );progn
-           (setq yyesno "No")
-        );if
-      );progn
-    );if
-);defun
-
-;;相關檔案 shscal.lsp, bom.dcl
-(defun pdm_sel_sheet(/ sel_sheet_list)
-    (setq check_flag nil sel_sheet_list nil)
-    (if (null ATOshscal)(load "shscal"))
-    (actdcl (strcat powdesign_dcl_path "bom") "pdm_selsheet")
-
-    (read_autoshscal_data) ;;得到  sheet_type ("標準屬性圖框" "組立圖框" "無屬性圖框")
-    (act_pop_list sheet_type "type")
-    (set_tile "type" "0")
-    (action_tile "type" "(reset_sheettype)(set_tile \"size\" (rtos (- (length sheetsize_list) 1) 2 0))")
-
-    (reset_sheettype)   ;;得到  sheetsize_list ("A0" "A1" "A2" "A3" "A4")
-    (set_tile "size" (rtos (- (length sheetsize_list) 1) 2 0))
-    (action_tile "accept" "(setq sel_sheet_list (pdm_sel_sheet_ok))")   ;;sel_sheet_list ("標準屬性圖框" "A2")
-    (action_tile "cancel" "(done_dialog)(setq check_flag nil)")
-    (start_dialog)
-    (unload_dialog dcl_id)
-    sel_sheet_list   ;;("藝祥圖框" "藝祥 A4")
-)
-
-(defun pdm_sel_sheet_ok(/ typ_id size_id sh_type sh_size)
-  (setq typ_id  (get_tile "type"))
-; (setq size_id (get_tile "size"))
-  (setq sh_type (nth (atoi (get_tile "type")) sheet_type))
-; (setq sh_size (nth (atoi (get_tile "size")) sheetsize_list))
-  (done_dialog)(setq check_flag T)
-; (list sh_type sh_size)
-  sh_type
-);defun
 
 (defun actsubassem()
     (set_tile "error" "")
@@ -186,150 +124,6 @@
      (reverse wr_outlist)   ; ("料號" "品名" "機種" "#圖號" "製圖" "規格" "數量" "英文品名" "表面處理" "材質 " "說明")
 )
 
-;;;
-(defun pdm_get_curset(/ yy data1 ffcod cnum water_num bbcod)
-;("BA1B1" "002" "自動夾緊機" "護罩" "2D 零件圖")
-;3
-   (if (= yyesno "Yes")
-     (progn
- ;      (startapp (strcat POWERPDM_path "partout.exe"))
- ;      (setq yy (open (strcat POWERPDM_path "partout.txt") "r"))
- ;      (setq data1 (read (read-line yy)))
- ;      (setq ffcod (nth 0 data1)
- ;            cnum (nth 1 data1))
- ;     (setq water_num (read-line yy))
- ;     (close yy)
-
-        (startapp (strcat powerpdm_path "\\autocad\\ACADpartout\\partout.exe"))
-        (setq yy (open (strcat POWERPDM_path "\\temp\\partout.txt") "r")) 
-        (setq data1 (read (read-line yy)))
-        (setq data2 (read (read-line yy)))
-        (setq data3 (read (read-line yy)))
-        (close yy)
-        (setq ffcod (nth 0 data1))
-        (setq cnum (nth 1 data1))
-        (setq bbcod (nth 2 data1))
-        (setq water_num (rtos (strlen cnum) 2 0))    ;;流水號幾位數
-     );progn
-   );progn
-;   (list ffcod cnum water_num)
-   (list ffcod cnum water_num bbcod)
-
-)
-
-(defun get_att_data_list(/ tt_list att qq TAG# dda)
-;(defun get_att_data_list()
- (ccctest)
-  (setq tt_list '())
-  (foreach qq partdata
-     (setq att (nth 1 qq))
-     (if (/= "" att)
-       (progn
-         (setq TAG# (nth 2 qq))
-         (setq dda (nth 1 (assoc TAG# attdata)))
-         (setq tt_list (cons (list att dda) tt_list))
-       );progn
-     );if
-  );foreach
-;; tt_list --> (("TYPE" "") ("SURFACE" "") ("QTY" "") ("DRAWER" "") ("DWGNO" "") (" MATERIAL" "") ("DWGNAME" "軸承蓋"))
-;;  sel_sheet_list   ;;("藝祥圖框" "藝祥 A4")
-   (setq aaa (read (getfile_val (strcat POWDESIGN_path "shscal.ini") "POWERPDM_FRAME_MAP")))
-;;; aaa -> (("屬性一" "藝祥圖框" "atttemp1.txt")("屬性二" "標準屬性圖框" "atttemp2.txt"))
-  ;(setq att_name (nth 0 sel_sheet_list))
-   (setq att_name sel_sheet_list)
-   (foreach qq aaa
-     (progn
-;      (if (= (nth 1 qq) att_name) (setq sh_type (nth 0 qq) tmpfile (nth 2 qq)))    ;;sh_type -> "屬性一"
-       (if (= (nth 1 qq) att_name) (setq sh_type (nth 0 qq)))  ;;sh_type -> "屬性一"
-     );progn
-   );foreach
-
-   (setq datatxt "")
-   (foreach ee attlist
-      (progn
-                           ; ee -> ("屬性一" "FD_12" "8" "設變單號" "DWGNO_C" "0")
-                           ; tt_list --> (("TYPE" "") ("SURFACE" "") ("QTY" "") ("DRAWER" "") ("DWGNO" "") (" MATERIAL" "") ("DWGNAME" "軸承蓋"))
-         (setq TAG (nth 4 ee)
-               num (nth 2 ee))
-         (setq txt_list (assoc TAG tt_list))
-         (if (= (nth 1 ee) "FD_01")
-           (progn
-              (setq txt ddwgname)
-           ;  (setq txt (strcat ffcod txt0 cnum))
-              (setq newtxt (col_tab (- (atoi num) (strlen txt))))
-              (setq datatxt (strcat datatxt txt newtxt))
-           );progn
-           (progn
-              (if (/= nil txt_list)
-                (progn
-                  (setq txt (nth 1 txt_list))
-                  (setq newtxt (col_tab (- (atoi num) (strlen txt))))
-                  (setq datatxt (strcat datatxt txt newtxt))
-                );progn
-                (progn
-                  (setq newtxt (col_tab (atoi num)))
-                  (setq datatxt (strcat datatxt newtxt))
-                );progn
-              );if
-           );progn
-         );if
-      );progn
-   );foreach
-)
-
-(defun ccctest()
-    (setq qq (open (strcat powerpdm_path "\\temp\\pdmcad.txt") "r"))
-    (setq data (read-line qq) attlist '())
-    (while data
-      (setq datalist (read data))
-      (if (= (nth 0 datalist) sh_type)(setq attlist (cons datalist attlist)))
-      (setq data (read-line qq))
-    );while
-    (close qq)
-    (setq attlist (reverse attlist))
-)
-
-;;trans_datatx ==> powerpdm 20001
-(defun trans_datatxt(ffdata)
-
-  (if (null powerpdm_sheet_att_def)(load "shscal"))
- ; pdm_sheetatt (("CADNO" "8")("DWGNO" "12")("DWGNAME" "36")("TYPE" "12")("DRAWER" "8")("DATE1" "8")("SCALE" "6")("DATE2" "8")("MATERIAL" "12")("QTY" "4")("DATE_C" "8")("DRAWING_C" "8")("DWGNO_C" "8"))
-
-  (setq countt 1 txtcount 1 ootxt "")
-
-  (setq edms_sheetatt (powerpdm_sheet_att_def "1"))  ;POWERPDM 2001  未完成
-
-  (foreach nn edms_sheetatt
-    (progn
-       (setq attdata (substr ffdata txtcount (atoi (nth 1 nn))))
-;;檢查 attdata 是否是 "    ";若是則將 attdata 變成 "",否則去除 attdata 前後之空格       PDM2001
-       (if (/= 0 (setq num (strlen attdata)))                                        ;PDM2001
-         (progn                                                                      ;PDM2001
-            (setq txt_flag nil acount 1)                                             ;PDM2001
-            (repeat num                                                              ;PDM2001
-              (if (/= " " (substr attdata acount 1))(setq txt_flag t))              ;PDM2001
-              (setq acount (1+ acount))                                             ;PDM2001
-            );repeat                                                                 ;PDM2001
-            (if (null txt_flag) (setq attdata "")                                    ;PDM2001
-              (progn                                                                 ;PDM2001
-                 (setq attdata (getrealstr4 attdata)) ;;去除文字串前後面所有空格      ;PDM2001
-              );progn                                                                ;PDM2001
-            );if                                                                     ;PDM2001
-          );progn                                                                     ;PDM2001
-       );if 
-                                                                            ;PDM2001
-       (if (/= "" attdata) (setq ootxt (strcat ootxt ";" attdata))
-                           (setq ootxt (strcat ootxt ";nil")))
-;       (princ ootxt)
-       (setq txtcount (+ txtcount (atoi (nth 1 nn))) countt (1+ countt))
-    );progn
-  );foreach
-
-  (substr ootxt 2)
-
-  
-)
-
 ;(defun exeout(/ pdmdata ffcod cnum water_num qq data datalist)
 (defun exeout()
 
@@ -345,7 +139,7 @@
      (setq lalst outlalist)
 
      (setq ddwg (substr (getvar "dwgname") 1 (- (get_word (getvar "dwgname") ".") 1)))
-     (if (/= "Yes" yyesno) (setq doc_file (open (strcat dwg_path ddwg ".doc") "w")))
+     (setq doc_file (open (strcat dwg_path ddwg ".doc") "w"))
 
      (setq manadwg_transfile (open  (strcat POWdesign_path "data.txt") "w"))
 
@@ -397,25 +191,6 @@
    ;   (command "zoom" "e")
 
         (process)
-        (if (and (/= nil datatxt)(/= nil infp))
-          (progn
-;            (write-line datatxt ii)
-           
-            (setq ii (open (strcat powerpdm_path "temp\\topdmatt.txt") "a")) 
-
-            (setq aapp (trans_datatxt datatxt))
-
-            (write-line aapp ii)
-
-            (close ii)
-
-            (setq yy (open (strcat powerpdm_attribdata_path ddwgname  ".txt") "w"))
-            (write-line datatxt yy) 
-            (write-line "1" yy)                         ;;未完成
-            (write-line out_dwgname yy)
-            (close yy)  ;;yy -> 屬性萃取資料檔
-          );progn
-        );if
 
     ;  (command "layer" "t" "*" "")
 
@@ -428,7 +203,7 @@
 
      (close manadwg_transfile)
 
-     (if (/= "Yes" yyesno) (close doc_file))
+     (close doc_file)
      (princ "\n======================================================")
      (setq acount nil)
      (princ (strcat "\n   拆零件完成,並已產生 " (strcase (strcat dwg_path ddwg ".doc"))))
@@ -447,8 +222,7 @@
       (setq acount 1)
       (setq ddwg (substr (getvar "dwgname") 1 (- (get_word (getvar "dwgname") ".") 1)))
       (head)
-;      (if (/= "Yes" yyesno) (setq doc_file (open (strcat (getvar "dwgname") ".doc") "w")))
-      (if (/= "Yes" yyesno) (setq doc_file (open (strcat dwg_path ddwg ".doc") "w")))
+      (setq doc_file (open (strcat dwg_path ddwg ".doc") "w"))
       (setq entdata (entsel "\n選取欲拆出的零件:"))
       (while entdata
              (setq sel_la (cdr (assoc 8 (entget (car entdata)))))
@@ -459,7 +233,7 @@
              (setq entdata (entsel "\n選取欲拆出的零件:"))
              (if (= entdata nil)
                  (progn
-                      (if (/= "Yes" yyesno) (close doc_file))
+                      (close doc_file)
                       (princ "\n======================================================")
                      ; (princ (strcat "\n   拆零件完成,並已產生 " (getvar "dwgname") ".DOC"))
                       (princ (strcat "\n   拆零件完成,並已產生 " dwg_path ddwg ".DOC"))
@@ -548,13 +322,9 @@
   (setq 1txt (strcat out_dwgname " "))
   (setq 2txt (strcat layname_doc " "))
   (setq 3txt (rtos (cdr (assoc 62 lay_data)) 2 0))
-  (if (/= "Yes" yyesno) (write-line (strcat 1txt 2txt 3txt) doc_file))
+  (write-line (strcat 1txt 2txt 3txt) doc_file)
 )
 (defun chg##()
-;;;POWERPDM
-;    (setq ffcod (nth 0 pdmdata)
-;          cnum (nth 1 pdmdata)
-;          water_num (nth 2 pdmdata))
 ;;----------------
    (if (= "1" onebyone) ;;一個一個拆
        (princ (strcat "\n零件拆出成 " (strcase out_dwgname) ".DWG............"))
@@ -706,25 +476,6 @@
       (mode_tile "out" 1)(mode_tile "noout" 1)
 
 )
-
-;;pdm_out_ok   powerpdm 2001
-(defun pdm_out_ok(/ part_out_qty otxt1 pdmoutff)                               ;;powerpdm 2001
-    (setq part_out_qty (rtos (length outlalist) 2 0))                          ;;powerpdm 2001
-    (if (= "" $pdm_bcode) (setq otxt1 (strcat $pdm_fcode ";nil"))              ;;powerpdm 2001
-                          (setq otxt1 (strcat $pdm_fcode ";" $pdm_bcode)))     ;;powerpdm 2001
-    (setq pdmoutff (open (strcat powerpdm_path "temp\\partnum.txt") "w"))      ;;powerpdm 2001
-    (write-line otxt1 pdmoutff)                                                ;;powerpdm 2001
-    (write-line $pdm_case_type pdmoutff)                                       ;;powerpdm 2001
-    (write-line $pdm_tree_id pdmoutff)                                         ;;powerpdm 2001
-    (write-line $pdm_water_id pdmoutff)                                        ;;powerpdm 2001
-    (write-line part_out_qty pdmoutff)                                         ;;powerpdm 2001
-    (close pdmoutff)
-   ; (pdm_get_curset)
-)
-;(defun out_ok()
-;  (pdm_out_ok)
-;(setq out_flag nil)
-;)
 (defun out_ok()
   (setq oldlay (get_tile "oldlay"))
   (setq subassem (get_tile "subassem"))
