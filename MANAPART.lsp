@@ -1336,7 +1336,7 @@
 ;; typ = 3  --> 產生結構詳細
 ;;
 ;(defun bomtree(typ / qq needlayer bomball_grp partdata count balllist num ff fname rf tittxt title_list
-(defun bomtree(typ / qq bomball_grp partdata count balllist num ff fname rf tittxt title_list
+(defun bomtree(typ / qq bomball_grp partdata count balllist num ff fname outfname rf tittxt title_list
                      qty ent data8 qf data bomdata outtxt tag txt num outf)
   (if (findfile (strcat POWdesign_path "title.txt"))
     (progn
@@ -1380,7 +1380,20 @@
       (setq partdata (read (getfile_val (strcat POWdesign_path "SYSTEM.ini") "PART_DEF")))
       (setq count 0 balllist '() num 1)
       (cond
-       ((or (= typ 2)(= typ 0)(= typ 3))(setq ff (open (strcat  POWDESIGN_path "bom.out") "w")))
+       ;; typ=0（物料結構樹）與 typ=3（物料清單再更新）維持寫 bom.out：
+       ;; bom1.exe 讀它，而 bom1.exe 是可以執行的（見本函式開頭的 bompath.txt 說明）。
+       ((or (= typ 0)(= typ 3))
+                 (setq outfname (strcat  POWDESIGN_path "bom.out")))
+       ;; 2026-09-11 瘦身階段 5：typ=2（瀏覽結構樹）改為直接輸出 .csv。
+       ;; 原本是寫 bom.out 再 (startapp tree1.exe)，但 tree1.exe 是 Delphi 4
+       ;; 以「執行期套件」方式編譯的，啟動時需要 Vcl40.bpl、borlndmm.dll、
+       ;; cp3245mt.dll 三個檔——本機、原版 C:\DESIGNER6 與系統目錄都沒有。
+       ;; Windows 載入器找不到就直接放棄建立行程，而 startapp 用的 ShellExecute
+       ;; 失敗時不回報，所以症狀是「執行後毫無反應」，連錯誤訊息都沒有。
+       ;; 資料端一直是好的（bom.out 都有正常產出），壞的只有顯示端，
+       ;; 所以改成輸出 .csv 交給 Excel 看。階層三欄與其餘欄位一個都沒有少。
+       ((= typ 2)
+                 (setq outfname (strcat (getvar "dwgprefix") (curdwgname) "_結構樹.csv")))
        ;; 2026-09-10：原本存成 .xls，但內容其實是分號分隔的純文字，
        ;; Excel 開啟時不會分欄（全部擠在 A 欄），還會跳「格式與副檔名不符」。
        ;; 改存 .csv，並在第一行寫 Excel 的分隔符指令 sep=;
@@ -1390,15 +1403,30 @@
        ;; AutoLISP 無法產生真正的 .xlsx（那是 ZIP 壓縮檔），這是純 LISP
        ;; 能達到「Excel 正確分欄」的最小做法。
        ((= typ 1)(setq fname (getstring "\n檔名: "))
-                 (setq ff (open (strcat  fname ".csv") "w"))
-                 (write-line "sep=;" ff))
+                 (setq outfname (strcat  fname ".csv")))
       )
+      (setq ff (open outfname "w"))
+      ;; open 失敗時 write-line 會靜默中止整個函式（手冊 §5.11），
+      ;; 先講清楚原因，否則使用者只會看到「什麼都沒發生」。
+      (if (null ff)
+          (alert (strcat "無法建立檔案：\n" outfname "\n\n請確認該資料夾可寫入。"))
+      )
+      ;; .csv 要讓 Excel 正確分欄，第一行必須是分隔符指令
+      (if (or (= typ 1)(= typ 2))(write-line "sep=;" ff))
       (setq rf (open (strcat  POWDESIGN_path "title.txt") "r"))
       (setq tittxt (read-line rf))                               ;;tittxt 層名;品名;材質;圖號;製圖;說明;數量;表面處理;機種;規格;英文品名
       (close rf)                                                 ;; 寫出本組合圖名
-      (write-line tittxt ff)
+      ;; typ=0/2/3 的資料列開頭多三個階層欄位（有無資訊點、流水號、父系編號），
+      ;; 表頭原本沒有對應名稱——bom1.exe / tree1.exe 自己知道格式所以無所謂，
+      ;; 但要給 Excel 看就必須補上，否則整排欄位會錯開一格以上。
+      (if (= typ 2)
+          (write-line (strcat "有無資訊點;流水號;父系編號;" tittxt) ff)
+          (write-line tittxt ff)
+      )
       (setq title_list (TXT_TRAN_LIST tittxt))                   ;;title_list ("層名" "品名" "材質" ...)
-      (if (or (= typ 2)(= typ 0)(= typ 3))(write-line (curdwgname) ff))
+      (if (or (= typ 0)(= typ 3))(write-line (curdwgname) ff))
+      ;; typ=2 這一行原本是裸的圖名，在 Excel 裡會變成孤立的一格，加上標籤才讀得懂
+      (if (= typ 2)(write-line (strcat "組合圖;" (curdwgname)) ff))
       (princ "\n建立結構樹資料庫.")
       (if (/= nil bomball_grp)
         (progn
@@ -1511,13 +1539,13 @@
         );progn
      );if
      (close ff)
-     (setq outf (open (strcat POWDESIGN_path "bom.out") "r"))
+     (setq outf (open outfname "r"))
      (setq data (read-line outf))
      (close outf)
      (if (null data)(princ "\n無物料結構!")
        (progn
          (cond
-          ((= 2 typ) (startapp (strcat  POWDESIGN_path "tree1.exe")))
+          ((= 2 typ) (princ (strcat "\n結構樹已匯出: " outfname)))
           ((= 0 typ)
            (startapp (strcat  POWDESIGN_path "bom1.exe"))
 
