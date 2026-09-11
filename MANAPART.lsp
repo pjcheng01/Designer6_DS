@@ -418,143 +418,17 @@
   (princ)
 );defun
 
-;; 以圖管開圖
-;;相關檔案 dwgdata.txt : 圖的相關顯示欄位
-;          C:\bompath.txt : 起始路徑
-;          c:\part.txt    : 選圖後回應值
-;          openfile.scr
-(defun c:opendwg(/ ff qf data fname datalist data_id yesno name flag)
-   (setq olderr *error*)
-   (defun *error* (msg)
-      (princ msg)
-      (if (/= nil qf) (close qf))
-      (setq *error* olderr)
-   )
-  (setq ff (open "c:\\bompath.txt" "w"))
-  (write-line system_dwg_libpath ff)
-; (write-line (getvar "dwgprefix") ff)
-  (close ff)
-  (startapp (strcat POWdesign_path "manadwg"))
-  (getpoint "\n請選取檔案後按 Enter 鍵!")
-  (setq qf (open "c:\\part.txt" "r"))
-  (setq data (read-line qf))
-  (if (null data)
-    (close qf)
-    (progn
-      (if (findfile data)
-        (progn
-          (setq fname data)
-          (setq data (read-line qf))
-          (setq datalist '())
-          (while data
-             (setq data_id (get_word data ":"))
-             (setq data (substr data (1+ data_id)))
-             (setq datalist (cons data datalist))
-             (setq data (read-line qf))
-          );while
-          (close qf)
-          (initget "Yes No")
-         (setq yesno (getkword "\n是否儲存目前圖檔<Y>?"))
-         (if (or (= "Yes" yseno) (null yesno))
-           (progn
-              (setq name (getfiled "儲存檔案為" (strcat (getvar "dwgprefix")(getvar "dwgname")) "dwg" 8))
-              (if (/= nil name) (command "qsave") (setq flag t))
-           );progn
-         );if
-         (if (/= flag t)
-           (progn
-             (if (null datalist) (setq datalist (reverse datalist)))
-             (command "point" "0,0,0")(command "erase" (entlast) "")
-             (if (/= "14" (substr (getvar "acadver") 1 2))
-                 (progn
-                    (setq ff (open (strcat POWDESIGN_path "openfile.scr") "w"))
-                    (write-line "open" ff)
-                    (write-line (strcat "\"" fname "\"") ff)
-                    (close ff)
-                 );progn
-                 (progn     ;;;AutoCAD R14
-                    (setq ff (open (strcat POWDESIGN_path "openfile.scr") "w"))
-                    (write-line "open" ff)
-                    (write-line "y" ff)
-                    (write-line (strcat "\"" fname "\"") ff)
-                ;    (write-line fname ff)
-                    (close ff)
-                 );progn
-             );if
-             (command "script" (strcat POWDESIGN_path "openfile"))
-           );progn
-         );if
-       );progn
-     );if
-    );progn
-  );if
-  (setq *error* olderr)
-  (princ)
-);defun
-
-
-;; 以圖管插入圖形
-;;相關檔案 dwgdata.txt : 圖的相關顯示欄位
-;          C:\bompath.txt : 起始路徑
-;          c:\part.txt    : 選圖後回應值
-;          openfile.scr
-;(defun c:insdwg(/ ff qf data fname datalist data_id yesno name flag)
-(defun c:insdwg(/ ff qf data fname data_id yesno name flag)
-  (setq olderr *error*)
-  (defun *error* (msg)
-     (princ msg)
-     (if (/= nil qf) (close qf))
-     (setq *error* olderr)
-  )
- (setq ff (open "c:\\bompath.txt" "w"))
- (write-line system_dwg_libpath ff)
- (close ff)
- (startapp (strcat POWdesign_path "manadwg"))
- (getpoint "\n請選取檔案後按 Enter 鍵!")
- (setq qf (open "c:\\part.txt" "r"))
- (setq data (read-line qf))
- (if (null data)
-   (close qf)
-   (progn
-     (if (findfile data)
-       (progn
-         (setq fname data)
-         (setq data (read-line qf))
-         (setq datalist '())
-         (while data
-            (setq data_id (get_word data ":"))
-            (setq data (substr data (1+ data_id)))
-            (setq datalist (cons data datalist))
-            (setq data (read-line qf))
-         );while
-         (close qf)
-         (if (null datalist) (setq datalist (reverse datalist)))
-         (initget "Yes No")
-         (setq yesno (getkword "\n圖塊是否炸開<N>?"))
-         (if (or (= "No" yseno) (null yesno))
-           (progn
-             (setq ff (open (strcat powdesign_path "openfile.scr") "w"))
-             (write-line "insert" ff)
-             (write-line (strcat "\"" fname "\"") ff)
-          ;   (write-line fname ff)
-             (close ff)
-           );progn
-           (progn
-             (setq ff (open (strcat powdesign_path "openfile.scr") "w"))
-             (write-line "insert" ff)
-           ;  (write-line (strcat "*" fname) ff)
-             (write-line (strcat "\"*" fname "\"") ff)
-             (close ff)
-           );progn
-         );if
-         (command "script" (strcat powdesign_path "openfile.scr"))
-       );progn
-     );if
-   );progn
- );if
- (setq *error* olderr)
- (princ)
-);defun
+;; 2026-09-11 瘦身：移除 c:opendwg（以圖管開啟）與 c:insdwg（以圖管插入圖形）。
+;;
+;; 兩支都靠 manadwg.exe 瀏覽 dwg.db 選圖，再從 c:\part.txt 讀回選中的檔名。
+;; manadwg.exe 相依 idapi32.dll（Borland Database Engine），本機未安裝且
+;; 已無從安裝，所以這兩個功能從移植以來就沒有成功執行過。
+;;
+;; 它們也不在任何選單上——新版 Powsoft_Light.xml 與舊版 .mns 都沒有，
+;; 只能靠命令列打 &opendwg / &insdwg 才叫得到。
+;;
+;; 使用者確認：dwg.db 裡 2009 年的資料沒有保留價值，這兩個功能也沒在用。
+;; 詳見 docs/盤點-圖檔管理.md
 
 ; sys_ball_layer        :     指標圓球層
 ; sys_ball_layercol     :     指標圓球層顏色
@@ -1349,9 +1223,9 @@
       ;; C:\DESIGNER6）。bomtree 現在四種 typ 都不再啟動任何外部程式，
       ;; 這個檔對它已無用途，連同寫入的程式碼一起移除。
       ;;
-      ;; 同樣的寫法還在 c:opendwg、c:insdwg、trans_data_todwg_db 三處
-      ;; （服務 manadwg.exe 與 change.exe），那三支同樣相依 idapi32.dll
-      ;; （Borland Database Engine），本機未安裝，目前一樣是壞的。
+      ;; 同樣的寫法只剩 trans_data_todwg_db 一處，服務 change.exe——
+      ;; 那支同樣相依 idapi32.dll（Borland Database Engine），本機未安裝，
+      ;; 目前一樣是壞的。c:opendwg 與 c:insdwg 已於 2026-09-11 移除。
       ;; 若日後要處理，兩個已知陷阱：C 槽根目錄在 UAC 下不可寫；
       ;; 其下新建的檔案會繼承高完整性標籤，光給 ACL 權限沒用，
       ;; 必須 icacls <檔> /setintegritylevel Medium。詳見手冊。

@@ -386,8 +386,6 @@
 (defun c:&chlacol()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:chlacol))                      ;��ܹs��s�C��
 (defun c:&dwg_libpath()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:defdwg_path)(load "dfsystem"))(t (princ)))(c:dwg_libpath))
 
-(defun c:&opendwg()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:opendwg))                       ;�}�¹�
-(defun c:&insdwg()(c:autoload) (cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:insdwg))           ;���J�¹�
 (defun c:&AUTOB()(c:autoload)  (cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:AUTOB))             ;���۰ʫ��вy
 (defun c:&pdmwblk()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:pdmwblk))         ;�إߤ��� BLOCK
 (defun c:&defbom()(c:autoload) (cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:df_bomdbase)(load "dfsystem"))(t (princ)))(c:defbom))           ;�w�q���ƲM�����
