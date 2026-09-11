@@ -383,8 +383,6 @@
 (defun c:&sortcol()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:sortcol))                      ;���Ƶ��c�P���ɺ޲z�����춶��
 (defun c:&bomtree1()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(bomtree 1))                     ;���ƲM��ץX��Excel
 (defun c:&bomtree0()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(bomtree 0))                     ;���Ƶ��c��
-(defun c:&bomtree2()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(bomtree 2))                     ;�s��
-(defun c:&bomtree3()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(bomtree 3))                     ;���ƲM��A��s
 (defun c:&chlacol()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:chlacol))                      ;��ܹs��s�C��
 (defun c:&dwg_libpath()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:defdwg_path)(load "dfsystem"))(t (princ)))(c:dwg_libpath))
 

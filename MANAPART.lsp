@@ -1330,10 +1330,14 @@
 
 
 ;; 產生結構樹
-;; typ = 0  --> 產生結構樹(含詳細資料)
-;; typ = 1  --> 匯出檔案到 Excel
-;; typ = 2  --> 匯出檔案到
-;; typ = 3  --> 產生結構詳細
+;; typ = 0  --> 產生結構樹 .csv（含階層三欄，Excel 可直接開）
+;; typ = 1  --> 匯出材料清單 .csv（平鋪，使用者指定檔名）
+;;
+;; 2026-09-11 瘦身階段 6：原本還有 typ=2（瀏覽結構樹）與 typ=3（物料清單
+;; 再更新）。這四種 typ 產生的資料列其實逐字節相同，差別只在寫到哪個檔、
+;; 以及寫完之後啟動哪支外部程式。tree1.exe 缺 Delphi 4 執行期、
+;; bom1.exe 缺 Borland Database Engine，兩支都無法執行，
+;; typ=2/3 因此失去存在意義，由使用者決定移除。
 ;;
 ;(defun bomtree(typ / qq needlayer bomball_grp partdata count balllist num ff fname rf tittxt title_list
 (defun bomtree(typ / bomball_grp partdata count balllist num ff fname outfname rf tittxt title_list
@@ -1363,12 +1367,7 @@
       (setq partdata (read (getfile_val (strcat POWdesign_path "SYSTEM.ini") "PART_DEF")))
       (setq count 0 balllist '() num 1)
       (cond
-       ;; typ=3（物料清單再更新）仍寫 bom.out。
-       ;; 但要注意：bom.out 現在已經沒有任何程式會讀——bom1.exe 與 tree1.exe
-       ;; 都無法執行（見下方說明），所以這個 typ 目前實質上不產生任何作用。
-       ((= typ 3)
-                 (setq outfname (strcat  POWDESIGN_path "bom.out")))
-       ;; 2026-09-11 瘦身階段 5：typ=2（瀏覽結構樹）改為直接輸出 .csv。
+       ;; 2026-09-11 瘦身階段 5/6：結構樹改為直接輸出 .csv，不再啟動外部程式。
        ;; 原本是寫 bom.out 再 (startapp tree1.exe)，但 tree1.exe 是 Delphi 4
        ;; 以「執行期套件」方式編譯的，啟動時需要 Vcl40.bpl、borlndmm.dll、
        ;; cp3245mt.dll 三個檔——本機、原版 C:\DESIGNER6 與系統目錄都沒有。
@@ -1376,7 +1375,7 @@
        ;; 失敗時不回報，所以症狀是「執行後毫無反應」，連錯誤訊息都沒有。
        ;; 資料端一直是好的（bom.out 都有正常產出），壞的只有顯示端，
        ;; 所以改成輸出 .csv 交給 Excel 看。階層三欄與其餘欄位一個都沒有少。
-       ((or (= typ 0)(= typ 2))
+       ((= typ 0)
                  (setq outfname (strcat (getvar "dwgprefix") (curdwgname) "_結構樹.csv")))
        ;; 2026-09-10：原本存成 .xls，但內容其實是分號分隔的純文字，
        ;; Excel 開啟時不會分欄（全部擠在 A 欄），還會跳「格式與副檔名不符」。
@@ -1396,28 +1395,27 @@
           (alert (strcat "無法建立檔案：\n" outfname "\n\n請確認該資料夾可寫入。"))
       )
       ;; .csv 要讓 Excel 正確分欄，第一行必須是分隔符指令
-      (if (or (= typ 0)(= typ 1)(= typ 2))(write-line "sep=;" ff))
+      (if (or (= typ 0)(= typ 1))(write-line "sep=;" ff))
       (setq rf (open (strcat  POWDESIGN_path "title.txt") "r"))
       (setq tittxt (read-line rf))                               ;;tittxt 層名;品名;材質;圖號;製圖;說明;數量;表面處理;機種;規格;英文品名
       (close rf)                                                 ;; 寫出本組合圖名
       ;; typ=0/2/3 的資料列開頭多三個階層欄位（有無資訊點、流水號、父系編號），
       ;; 表頭原本沒有對應名稱——bom1.exe / tree1.exe 自己知道格式所以無所謂，
       ;; 但要給 Excel 看就必須補上，否則整排欄位會錯開一格以上。
-      (if (or (= typ 0)(= typ 2))
+      (if (= typ 0)
           (write-line (strcat "有無資訊點;流水號;父系編號;" tittxt) ff)
           (write-line tittxt ff)
       )
       (setq title_list (TXT_TRAN_LIST tittxt))                   ;;title_list ("層名" "品名" "材質" ...)
-      (if (= typ 3)(write-line (curdwgname) ff))
-      ;; typ=2 這一行原本是裸的圖名，在 Excel 裡會變成孤立的一格，加上標籤才讀得懂
-      (if (or (= typ 0)(= typ 2))(write-line (strcat "組合圖;" (curdwgname)) ff))
+      ;; 這一行原本是裸的圖名，在 Excel 裡會變成孤立的一格，加上標籤才讀得懂
+      (if (= typ 0)(write-line (strcat "組合圖;" (curdwgname)) ff))
       (princ "\n建立結構樹資料庫.")
       (if (/= nil bomball_grp)
         (progn
           (setq qty (sslength bomball_grp))
 
        ;;;寫出次阻立 REX
-          (if (or (= typ 0)(= typ 2)(= typ 3))
+          (if (= typ 0)
               (progn
                      (setq num2 1 count2 0 subdata_list '() sub_list '() subname_list '())
                      (repeat qty
@@ -1462,7 +1460,7 @@
 ;;title_list ("層名" "品名" "材質" "#圖號" "製圖" "數量" "表面處理" "英文品名" "規格" "機種" "說明")
 ;;bomdata (("TAG3" "內六角承窩螺絲") ("TAG8" "") ("TAG13" "") ("TAG1" "") ("TAG2" "") ("TAG6" "") ("TAG7" "") ("TAG11" "") ("TAG12" "") ("TAG4" "") ("TAG5" "") ("TAG10" "8mm*20mm*P1.25") ("TAG9" "Screw.SKT.HD CAP") ("TAG14" "") ("TAG15" ""))
 ;;partdata (("組合件號" "" "TAG1") ("次組合名稱" "" "TAG2") ("品名" "PARTNAME" "TAG3") ("材質" "MATERIAL" "TAG4") ("#圖號" "DWGNO" "TAG5") ("製圖" "DRAWER" "TAG6") ("數量" "QTY" "TAG7") ("表面處理" "SURFACE" "TAG8") ("英文品名" "" "TAG9") ("規格" "" "TAG10") ("機種" "ITEM" "TAG11") ("說明" "" "TAG12"))
-            (if (or (= typ 0)(= typ 2)(= typ 3))
+            (if (= typ 0)
                 (progn
                       (if (assoc count subdata_list)                                     ;rex
                           (setq subid (nth 1 (assoc count subdata_list)))                ;rex
@@ -1481,7 +1479,7 @@
                 (setq txt (nth 1 (assoc tag bomdata)))
                 (if (= "" txt)
                   (progn
-                    (if(or(= typ 2)(= typ 3) (= typ 0))(setq txt "nil") (setq txt ""))
+                    (if (= typ 0)(setq txt "nil") (setq txt ""))
                   );progn
                 );if
                 (setq outtxt (strcat outtxt ";" txt))
@@ -1502,7 +1500,7 @@
         (progn
              (foreach nn needlayer
                 (progn
-                     (if (or (= typ 0)(= typ 2)(= typ 3))                          ;; 0;5;0;nil;nil;nil;nil;nil;nil;nil;nil;nil;nil;nil
+                     (if (= typ 0)                          ;; 0;5;0;nil;nil;nil;nil;nil;nil;nil;nil;nil;nil;nil
                          (progn                                                    ;; │││ │
                               (setq outtxt (strcat "0;" (rtos num 2 ) ";0;" nn))   ;; │││ └─────  第 4 筆以後: 與 title_list 欄位對應的資料
                               (repeat (- (length title_list) 1)                    ;; ││└─────── 第 3 筆: 父系編號
@@ -1529,7 +1527,6 @@
      (if (null data)(princ "\n無物料結構!")
        (progn
          (cond
-          ((= 2 typ) (princ (strcat "\n結構樹已匯出: " outfname)))
           ;; 2026-09-11 瘦身階段 6：原本這裡啟動 bom1.exe，再讀它寫出的
           ;; bomup.txt 去更新次組立名稱（c:subassname_into_infopoint）。
           ;; 使用者確認該回寫功能不再使用，且 bom1.exe 相依 idapi32.dll
