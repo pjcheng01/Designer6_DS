@@ -1336,38 +1336,21 @@
 ;; typ = 3  --> 產生結構詳細
 ;;
 ;(defun bomtree(typ / qq needlayer bomball_grp partdata count balllist num ff fname rf tittxt title_list
-(defun bomtree(typ / qq bomball_grp partdata count balllist num ff fname outfname rf tittxt title_list
+(defun bomtree(typ / bomball_grp partdata count balllist num ff fname outfname rf tittxt title_list
                      qty ent data8 qf data bomdata outtxt tag txt num outf)
   (if (findfile (strcat POWdesign_path "title.txt"))
     (progn
-      ;; 2026-09-10 修正：這三行原本會讓整個功能無聲失敗。
-      ;; Windows 10 的 UAC 下非提權執行寫不進 C 槽根目錄，open 回傳 nil，
-      ;; 而 DraftSight 的 write-line 拿到 nil 檔案代碼會【靜默中止整個運算式】
-      ;; ——不報錯，但同一行後面的東西也不執行了，函式就這樣安靜地結束。
-      ;; AutoCAD 在這裡是會丟出錯誤訊息的，所以原版看得到問題、移植版看不到。
+      ;; 2026-09-11 瘦身階段 6：原本這裡會寫 c:\bompath.txt，用來告訴
+      ;; bom1.exe / tree1.exe 系統裝在哪（那兩支 exe 的年代路徑寫死在
+      ;; C:\DESIGNER6）。bomtree 現在四種 typ 都不再啟動任何外部程式，
+      ;; 這個檔對它已無用途，連同寫入的程式碼一起移除。
       ;;
-      ;; 2026-09-11 更正：上面這段原本接著寫「bompath.txt 只是給 manadwg.exe
-      ;; 用的，bomtree 沒用到，所以寫不成功無所謂」——【那是錯的】。
-      ;; 使用者實測 &bomtree0 時 bom1.exe 直接跳出
-      ;;     Cannot open file c:\bompath.txt.
-      ;; bom1.exe 與 tree1.exe 都要靠這個檔才知道 POWDESIGN_path 在哪，
-      ;; 因為那兩支 exe 的年代路徑是寫死的 C:\DESIGNER6。
-      ;;
-      ;; 當初判斷錯誤的原因：我只查了「哪些 LISP 程式碼讀 bompath.txt」，
-      ;; 而那兩支是二進位檔、查不到，卻仍下了肯定的結論。
-      ;; 教訓見手冊 §9.5：掃描結果是線索不是結論，尤其在涉及外部程式時。
-      ;;
-      ;; 守衛本身仍要保留（沒有它整個函式會靜默中止），但真正要解決的是
-      ;; C 槽根目錄在 UAC 下不可寫。解法二選一：
-      ;;   (a) 以系統管理員身分建立 C:\bompath.txt 並給使用者寫入權限
-      ;;   (b) 改用 .csv 輸出、不再啟動這兩支 exe（瘦身階段 5/6）
-      (setq qq (open "c:\\bompath.txt" "w"))
-      (if qq
-         (progn
-            (write-line  POWdesign_path qq)  ;;寫出系統路徑,給manadwg.exe辨認
-            (close qq)
-         )
-      )
+      ;; 同樣的寫法還在 c:opendwg、c:insdwg、trans_data_todwg_db 三處
+      ;; （服務 manadwg.exe 與 change.exe），那三支同樣相依 idapi32.dll
+      ;; （Borland Database Engine），本機未安裝，目前一樣是壞的。
+      ;; 若日後要處理，兩個已知陷阱：C 槽根目錄在 UAC 下不可寫；
+      ;; 其下新建的檔案會繼承高完整性標籤，光給 ACL 權限沒用，
+      ;; 必須 icacls <檔> /setintegritylevel Medium。詳見手冊。
       (setq needlayer (coll_all_layer))  ;; 選擇所有圖層,並過濾不建立資訊點的圖層
       (foreach nn needlayer
         (progn
@@ -1380,9 +1363,10 @@
       (setq partdata (read (getfile_val (strcat POWdesign_path "SYSTEM.ini") "PART_DEF")))
       (setq count 0 balllist '() num 1)
       (cond
-       ;; typ=0（物料結構樹）與 typ=3（物料清單再更新）維持寫 bom.out：
-       ;; bom1.exe 讀它，而 bom1.exe 是可以執行的（見本函式開頭的 bompath.txt 說明）。
-       ((or (= typ 0)(= typ 3))
+       ;; typ=3（物料清單再更新）仍寫 bom.out。
+       ;; 但要注意：bom.out 現在已經沒有任何程式會讀——bom1.exe 與 tree1.exe
+       ;; 都無法執行（見下方說明），所以這個 typ 目前實質上不產生任何作用。
+       ((= typ 3)
                  (setq outfname (strcat  POWDESIGN_path "bom.out")))
        ;; 2026-09-11 瘦身階段 5：typ=2（瀏覽結構樹）改為直接輸出 .csv。
        ;; 原本是寫 bom.out 再 (startapp tree1.exe)，但 tree1.exe 是 Delphi 4
@@ -1392,7 +1376,7 @@
        ;; 失敗時不回報，所以症狀是「執行後毫無反應」，連錯誤訊息都沒有。
        ;; 資料端一直是好的（bom.out 都有正常產出），壞的只有顯示端，
        ;; 所以改成輸出 .csv 交給 Excel 看。階層三欄與其餘欄位一個都沒有少。
-       ((= typ 2)
+       ((or (= typ 0)(= typ 2))
                  (setq outfname (strcat (getvar "dwgprefix") (curdwgname) "_結構樹.csv")))
        ;; 2026-09-10：原本存成 .xls，但內容其實是分號分隔的純文字，
        ;; Excel 開啟時不會分欄（全部擠在 A 欄），還會跳「格式與副檔名不符」。
@@ -1412,21 +1396,21 @@
           (alert (strcat "無法建立檔案：\n" outfname "\n\n請確認該資料夾可寫入。"))
       )
       ;; .csv 要讓 Excel 正確分欄，第一行必須是分隔符指令
-      (if (or (= typ 1)(= typ 2))(write-line "sep=;" ff))
+      (if (or (= typ 0)(= typ 1)(= typ 2))(write-line "sep=;" ff))
       (setq rf (open (strcat  POWDESIGN_path "title.txt") "r"))
       (setq tittxt (read-line rf))                               ;;tittxt 層名;品名;材質;圖號;製圖;說明;數量;表面處理;機種;規格;英文品名
       (close rf)                                                 ;; 寫出本組合圖名
       ;; typ=0/2/3 的資料列開頭多三個階層欄位（有無資訊點、流水號、父系編號），
       ;; 表頭原本沒有對應名稱——bom1.exe / tree1.exe 自己知道格式所以無所謂，
       ;; 但要給 Excel 看就必須補上，否則整排欄位會錯開一格以上。
-      (if (= typ 2)
+      (if (or (= typ 0)(= typ 2))
           (write-line (strcat "有無資訊點;流水號;父系編號;" tittxt) ff)
           (write-line tittxt ff)
       )
       (setq title_list (TXT_TRAN_LIST tittxt))                   ;;title_list ("層名" "品名" "材質" ...)
-      (if (or (= typ 0)(= typ 3))(write-line (curdwgname) ff))
+      (if (= typ 3)(write-line (curdwgname) ff))
       ;; typ=2 這一行原本是裸的圖名，在 Excel 裡會變成孤立的一格，加上標籤才讀得懂
-      (if (= typ 2)(write-line (strcat "組合圖;" (curdwgname)) ff))
+      (if (or (= typ 0)(= typ 2))(write-line (strcat "組合圖;" (curdwgname)) ff))
       (princ "\n建立結構樹資料庫.")
       (if (/= nil bomball_grp)
         (progn
@@ -1546,15 +1530,12 @@
        (progn
          (cond
           ((= 2 typ) (princ (strcat "\n結構樹已匯出: " outfname)))
-          ((= 0 typ)
-           (startapp (strcat  POWDESIGN_path "bom1.exe"))
-
-              (setq cc(getstring "\n按任意鍵更新次組立名稱..."))
-              (setq ff (open (strcat POWDESIGN_path "bomup.txt") "r"))
-              (setq ffdata(read-line ff))
-              (close ff)
-              (if (/= "0" ffdata)(c:subassname_into_infopoint))
-          )
+          ;; 2026-09-11 瘦身階段 6：原本這裡啟動 bom1.exe，再讀它寫出的
+          ;; bomup.txt 去更新次組立名稱（c:subassname_into_infopoint）。
+          ;; 使用者確認該回寫功能不再使用，且 bom1.exe 相依 idapi32.dll
+          ;; （Borland Database Engine），本機未安裝也無法安裝，執行時會跳
+          ;; 「error $2108」。整段移除，改為與 typ=2 一樣輸出 .csv。
+          ((= 0 typ) (princ (strcat "\n物料結構已匯出: " outfname)))
           ((= 1 typ) (princ (strcat "\n" fname ".csv 建立完成 !")))
           (T (princ "\n結構資料重新產生完成!" ))
          );cond
@@ -3692,46 +3673,6 @@
 )
 
 
-;;╭════════════════════════════════════════════╮
-;;║設計日期: 2000.11.16                                                                    ║
-;;║更新日期:                                                                               ║
-;;║設 計 者: 佘宗紋                                                                        ║
-;;║功能說明: 將由結構樹建立之次組合名稱填入資訊點之次組合屬性欄位                          ║
-;;║相關檔案:                                                                               ║
-;;║相關副程式                                                                              ║
-;;╰════════════════════════════════════════════╯
-(defun c:subassname_into_infopoint( / ff data i infopoint_ssg layname infopoint_lay_entname_list subname j)
-       (setvar "cmdecho" 0)
-       (setq i 0 infopoint_lay_entname_list '())
-       (setq infopoint_ssg(ssget "x" '((0 . "INSERT")(2 . "partref"))))
-       (repeat (sslength infopoint_ssg)
-               (setq layname (cdr (assoc 8 (entget (ssname infopoint_ssg i)))))
-               (setq infopoint_lay_entname_list (cons  (list layname (ssname infopoint_ssg i)) infopoint_lay_entname_list))
-               (setq i (+ i 1))
-       );repeat
-     ;  (setq ssg1 infopoint_lay_entname_list)
-       (setq ff (open (strcat POWDESIGN_path "bomup.txt") "r"))
-       (setq data (read-line ff))
-       (setq data (read-line ff))
-       (while data
-              (setq subname (substr data 1 (- (get_word data ";") 1)))
-              (if (= " " subname)(setq subname ""))
-              (setq data (substr data (+ (get_word data ";") 1)))
-              (setq layname (substr data 1 (- (get_word data ";") 1)))
-              (if (assoc layname infopoint_lay_entname_list)
-                  (modifyatt_subassname_into_infopoint (cadr (assoc layname infopoint_lay_entname_list)) subname)
-              );if
-              (setq data (read-line ff))
-       );while
-       (close ff)
-);defun
-
-(defun modifyatt_subassname_into_infopoint(ent newid / $data1)
-       (setq $data1 (getatt ent 2 "TAG2")
-             $data1 (subst (cons 1 newid) (assoc 1 $data1) $data1))
-       (entmod $data1)
-;  (command "regen")
-);
 ;*******************************************************
 (defun vgetfile_val&manapart(fname initxt / ff  needdata data txtid objdata dd)
        (if (= (setq ff   (open fname "r")) nil)
