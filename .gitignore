@@ -18,6 +18,8 @@ campro.txt
 CamproBom.txt
 CamproPdm.txt
 bom.out
+# 拆圖(c:out)寫出的 manadwg 轉檔檔，目前無人讀取
+data.txt
 pdmbom3.txt
 
 # ---- 程式產生後隨即執行的暫時 script ----
