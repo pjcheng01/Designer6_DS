@@ -21,7 +21,11 @@ bom.out
 pdmbom3.txt
 
 # ---- 程式產生後隨即執行的暫時 script ----
+# 沒有前置斜線，所以任何層級都擋（openfile.scr 會出現在 ITEM* 各目錄下）。
+# 注意根目錄的 openfile.scr 從原始匯入起就已納入版控，.gitignore 不會讓
+# 已追蹤的檔案脫離追蹤；要退出版控需另外 git rm --cached。
 delfile.scr
+openfile.scr
 
 # ---- ini 寫回時的中繼檔 ----
 # file_update 與 c:defbom 的流程是 xxx.ini -> 中繼檔 -> xxx.ini，
