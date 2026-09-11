@@ -130,7 +130,7 @@
  (setq attlist_bak attlist)
  (initget "Yes No")
  (princ "\n拆圖後不保留原圖所花費的時間, 會減少 50% ....")
- (setq undoyesno (getkword "\n拆圖後是否 OOPS 保留原圖<NO>: "))
+ (setq undoyesno (getkword "\n拆圖後是否保留原圖<NO>: "))
  (if (or (null undoyesno) (= "No" undoyesno))(setq undoyesno "No")(setq undoyesno "Yes"))
  (setq stime (getvar "cdate"))
  (cond
