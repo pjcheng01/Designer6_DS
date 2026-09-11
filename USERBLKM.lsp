@@ -761,12 +761,28 @@
 ;║相關檔案:                               ║
 ;╰════════════════════╯
 
+;;; 2026-09-10 修正：兩個 while 迴圈都沒有防 read-line 回傳 nil。
+;;;
+;;; DraftSight 的 read-line **不吐檔尾空白行**，讀完最後一筆資料就直接回 nil
+;;; （2026-09-10 實機證實，見手冊 §5.2）。AutoCAD 會先回一個空字串再回 nil，
+;;; 所以原版靠「讀到不是 ( 開頭的行就結束」的寫法在 AutoCAD 下剛好行得通。
+;;;
+;;; SETITEM.DOC 的最後一筆是 ("HRINGS" ...)，其後還有一個空白行。
+;;; AutoCAD：讀到 "" -> (substr "" 1 1) 得 "" -> 不等於 "(" -> 正常結束。
+;;; DraftSight：直接得到 nil -> (substr nil 1 1) -> 「錯誤: 無效的參數」。
+;;;
+;;; 症狀是「使用油氣壓符號」(oilgas2) 與「管理油氣壓符號」(oilgas1) 兩個
+;;; 功能都完全沒反應——因為兩者都經由 c:get_block_set 呼叫本函式，
+;;; 而錯誤訊息又被殘留的 te_err_pub 錯誤處理器吞掉（見手冊 §5.16）。
+;;;
+;;; 下面的 while 迴圈同樣補上守衛：原本若在檔案裡找不到 search_text，
+;;; data 會變成 nil 而 (= nil search_text) 永遠不成立，形成無窮迴圈。
 (defun Binilist(search_text sfile / openfile data flag)
    (setq openfile (open (strcat BMANAGER_path sfile) "r"))
    (setq data (read-line openfile))
    (setq flag T)
    (while flag
-     (if (= data search_text) (setq flag nil)
+     (if (or (null data) (= data search_text)) (setq flag nil)
       (setq data (read-line openfile))
      );if
    );while
@@ -776,7 +792,7 @@
    (setq flag T)
    (while flag
         (setq data (read-line openfile))
-        (if (= "(" (substr data 1 1))
+        (if (and data (= "(" (substr data 1 1)))
          (setq item_list (cons (read data) item_list))
          (setq flag nil)
         )
