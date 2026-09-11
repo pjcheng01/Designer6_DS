@@ -808,7 +808,7 @@
                 <toolbar UID="{70eb07d2-2be5-4bab-b772-2edd045bcd91}" name="鏡設零件" definition_ref="{b02070fc-13ad-4a2e-ab63-f17841410174}"/>
                 <toolbar UID="{3f2680e9-9865-4c8f-8cfb-9013acbb4f8a}" name="旋轉零件" definition_ref="{f5e99095-e47c-44c7-895a-fb1b4d945a25}"/>
             </toolbar>
-            <toolbar UID="{6e58163a-bec0-444d-950a-5e1b85f599c2}" movable="true" def_x_location="200" def_y_location="200" name="物料編碼系統" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
+            <toolbar UID="{6e58163a-bec0-444d-950a-5e1b85f599c2}" movable="true" def_x_location="200" def_y_location="200" name="物料編碼系統" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="true">
                 <toolbar UID="{4449824a-1ed0-4294-a685-2516524fcad4}" name="制定物料編碼" definition_ref="{051d5703-f8d5-4a67-9a06-ef76bbc692cd}"/>
                 <toolbar UID="{bbb33a82-89e9-45e6-9300-38a9fd395d44}" name="使用物料編碼" definition_ref="{22ffa503-d620-4d0a-a647-34f595697685}"/>
                 <toolbar name="" definition_ref=""/>
