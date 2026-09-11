@@ -44,57 +44,87 @@
 
 
 
-(defun userblku(dclfilename dialogname itemname sldname typ)
- ;; 已移除加密狗判斷(progn ;; DraftSight: 移除加密狗 WHILE 迴圈
+;;; 2026-09-11 改寫：DCL 載入一次、對話框用迴圈重建，最後才卸載一次。
+;;;
+;;; 原本的結構是遞迴——blockuse_ok 結尾的「繼續選用其它符號」若答 Yes，
+;;; 就再呼叫一次 userblku，於是每切換一個符號就多一層呼叫堆疊，
+;;; 而每一層都要自己載入與卸載同一個 userblku.dcl。
+;;; 這在 DraftSight 下會踩到兩個坑，而且顧此失彼：
+;;;
+;;;   卸載放在遞迴之前 → 「剛卸載就立刻重載同一個 DCL」，DraftSight 的第一次
+;;;                       load_dialog 會失敗並彈出它自己的錯誤框（內容是壞的：
+;;;                       「DCL 檔案:*** DCL semantic audit of .dcl 找不到」）。
+;;;                       actdcl 會重試成功，功能不受影響，但每切換一次符號
+;;;                       就要多關一次錯誤框。
+;;;   卸載放在遞迴之後 → 每層各佔一個 DCL slot，連續切換約 8 次後耗盡，
+;;;                       變成硬性失敗。
+;;;
+;;; 兩者都源自「每切換一次就重新載入一次 DCL」。改成載入一次、迴圈內只用
+;;; new_dialog 重建對話框，兩個問題同時消失，呼叫堆疊也不再隨切換次數成長。
+;;;
+;;; 配合修改：blockuse_ok 結尾不再遞迴，改為回傳 T/nil 表示要不要繼續。
+;;; 保留 actdcl 的重試邏輯於此處（本函式不再經由 actdcl 載入）。
+(defun userblku(dclfilename dialogname itemname sldname typ / ub_dcl_id ub_again ub_file)
  (setvar "cmdecho" 0)
- (setq blk_name nil)
- (setq blockuse_id nil)
  (if (null block_system) (progn (load "userblkm") (c:get_block_set)))
- (actdcl dclfilename dialogname)
 
-    (setq key_list '("sld11" "sld12" "sld13" "sld14" "sld15" "sld16" "sld17" "sld18"
-                     "sld21" "sld22" "sld23" "sld24" "sld25" "sld26" "sld27" "sld28"
-                     "sld31" "sld32" "sld33" "sld34" "sld35" "sld36" "sld37" "sld38"
-                     "sld41" "sld42" "sld43" "sld44" "sld45" "sld46" "sld47" "sld48"))
+ ;; 2026-09-11：先用 findfile 解析成絕對路徑再交給 load_dialog。
+ ;; 這一組符號庫指令傳進來的 dclfilename 是裸檔名（"userblku"），要靠
+ ;; DraftSight 的支援路徑搜尋去找，而那個搜尋實測不穩定——同一個指令
+ ;; 有時成功、有時失敗（失敗時它會彈出自己的錯誤框，內容還是壞的）。
+ ;; 專案裡其他穩定運作的對話框都是用絕對路徑載入的，例如
+ ;;   (actdcl (strcat powdesign_dcl_path "aux-qury") "carqury")
+ ;; findfile 找不到時保留原字串，行為與先前相同。
+ (setq ub_file (strcat dclfilename ".dcl"))
+ (if (findfile ub_file) (setq ub_file (findfile ub_file)))
+ (setq ub_dcl_id (load_dialog ub_file))
+ (if (< ub_dcl_id 0) (setq ub_dcl_id (load_dialog ub_file)))
+ (if (< ub_dcl_id 0)
+   (princ (strcat "\n[錯誤] DCL 載入失敗（已重試）: " ub_file))
+   (progn
+     (setq ub_again T)
+     (while ub_again
+       (setq ub_again nil)
+       (setq blk_name nil)
+       (setq blockuse_id nil)
+       (setq dcl_pt '(-1 -1))
+       (new_dialog dialogname ub_dcl_id)
 
-  ; (setq txt_list '("txt11" "txt12" "txt13" "txt14" "txt15" "txt16" "txt17" "txt18"
-  ;                  "txt21" "txt22" "txt23" "txt24" "txt25" "txt26" "txt27" "txt28"
-  ;                  "txt31" "txt32" "txt33" "txt34" "txt35" "txt36" "txt37" "txt38"
-  ;                  "txt41" "txt42" "txt43" "txt44" "txt45" "txt46" "txt47" "txt48"))
+       (setq key_list '("sld11" "sld12" "sld13" "sld14" "sld15" "sld16" "sld17" "sld18"
+                        "sld21" "sld22" "sld23" "sld24" "sld25" "sld26" "sld27" "sld28"
+                        "sld31" "sld32" "sld33" "sld34" "sld35" "sld36" "sld37" "sld38"
+                        "sld41" "sld42" "sld43" "sld44" "sld45" "sld46" "sld47" "sld48"))
 
-   (set_tile "item_path" "符號資料正在讀取中! 請稍候!!")
-   (ublock_get_item_page_data)
-;  (show_sld "powersoft" sldname)
+       (set_tile "item_path" "符號資料正在讀取中! 請稍候!!")
+       (ublock_get_item_page_data)
 
-   (setq item_data_list (assoc itemname (nth 1 BLOCK_SYSTEM)))  ;item_data_lista 模組系統索引串列
-   (setq ipath (cadr item_data_list))                          ;ipath 模組系統路目錄
+       (setq item_data_list (assoc itemname (nth 1 BLOCK_SYSTEM)))  ;item_data_list 模組系統索引串列
+       (setq ipath (cadr item_data_list))                           ;ipath 模組系統路目錄
 
-;顯示資料在畫面
+       (ublock_show_data_on_blockuse)
+       (defun reload_block_data()
+          (setq aaa_page_data_list page_data_list)
+          (foreach mm aaa_page_data_list
+            (progn
+               (setq num (substr (nth 0 mm) 7 2))
+                 (set_tile (strcat "txt" num) (nth 1 (nth block_dataset_id (cdr mm))))
+            );progn
+          );foreach
+       );defun
+       (reload_block_data)
 
-  (ublock_show_data_on_blockuse)
-  (defun reload_block_data()
-     (setq aaa_page_data_list page_data_list)
-     (foreach mm aaa_page_data_list
-       (progn
-          (setq num (substr (nth 0 mm) 7 2))
-            (set_tile (strcat "txt" num) (nth 1 (nth block_dataset_id (cdr mm))))
-       );progn
-     );foreach
-  );defun
-  (reload_block_data)
+       (action_tile "zoom_block" "(zoom_block)")
+       (action_tile "accept" "(ook)")
+       (action_tile "cancel" "(setq blk_name nil)(done_dialog)")
 
-  (action_tile "zoom_block" "(zoom_block)")
-; (action_tile "total_page_memo" "(tpage_memo)")
-
-  (action_tile "accept" "(ook)")
-  (action_tile "cancel" "(setq blk_name nil)(done_dialog)")
-
-  (start_dialog)
-  (unload_dialog dcl_id)
- (if blockuse_id (blockuse_ok))
- (prin1)
-  ;; removed FFF
-  (princ)
+       (start_dialog)
+       ;; blockuse_ok 回傳 T 表示使用者要繼續選用其它符號
+       (if blockuse_id (setq ub_again (blockuse_ok)))
+     );while
+     (unload_dialog ub_dcl_id)
+   );progn
+ );if
+ (princ)
 )
 
 (defun ook()
@@ -143,10 +173,10 @@
  );if
         (initget "Yes No")
         (setq cont_yesno (getkword "\n繼續選用其它符號<Yes>: "))
-        (if (/= "No" cont_yesno)
-           (userblku dclfilename dialogname itemname sldname typ)
-        )
- (princ)
+ ;; 2026-09-11：原本這裡是 (userblku dclfilename …) 遞迴呼叫自己的呼叫端，
+ ;; 每切換一個符號就多一層堆疊、多載入一次 DCL。改為回傳 T/nil，
+ ;; 由 userblku 的迴圈決定要不要再開一次對話框。
+ (/= "No" cont_yesno)
 )
 
 
