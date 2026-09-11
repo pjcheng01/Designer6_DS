@@ -315,11 +315,47 @@
 )
 
 ;啟動 DCL
-(defun actdcl(filename gg)
+;;;
+;;; 2026-09-11 修正三個問題：
+;;;
+;;; ① session 裡第一次載入某個 DCL 會失敗，重試一次就成功。
+;;;    實測（全新 session，QUICKTAH2 為第一個指令）：
+;;;        第 1 次 -> 失敗，警告:程式被 EXIT 指令終止。
+;;;        第 2 次 -> 對話框正常出現
+;;;    觸發條件是「load_dialog 之前剛執行過 (load "xxx.lsp")」。
+;;;    c:QUICKTAH2 第一次呼叫時會先 (load "userblku")，而 userblku 內部又會
+;;;    (load "userblkm")，兩個 lsp 載入之後緊接著 load_dialog 就回傳 -1；
+;;;    第二次呼叫時兩個 load 都被守衛跳過，load_dialog 就成功。
+;;;    成因在 DraftSight 內部（AutoCAD 無此現象），這裡只能重試。
+;;;
+;;; ② 原本 (new_dialog gg dcl_id) 排在 (if (< dcl_id 0) (exit)) 之前，
+;;;    dcl_id 是 -1 時仍然會呼叫 new_dialog。檢查應該在前面。
+;;;
+;;; ③ 失敗時完全沒有訊息，只留下 DraftSight 那個內容壞掉的對話框
+;;;    （「DCL 檔案:*** DCL semantic audit of .dcl 找不到」——把自己的
+;;;    內部字串印在檔名欄位）。現在會明講是哪一個檔案。
+;;;
+;;; 注意 (exit) 會讓呼叫端所有的 unload_dialog 都被跳過，所以失敗越多次
+;;; 洩漏越多 slot。保留 (exit) 是因為呼叫端都依賴它中止流程，但把失敗
+;;; 機率降到最低就不會累積。
+(defun actdcl(filename gg / dclfile)
  (setq dcl_pt '(-1 -1))
- (setq dcl_id (load_dialog (strcat filename ".dcl")))
- (new_dialog gg dcl_id)
- (if (< dcl_id 0) (exit))
+ (setq dclfile (strcat filename ".dcl"))
+ ;; 2026-09-11：先用 findfile 解析成絕對路徑。以裸檔名交給 load_dialog 時，
+ ;; DraftSight 的支援路徑搜尋實測不穩定（同一指令有時成功有時失敗）。
+ ;; 專案裡多數呼叫本來就帶絕對路徑（如 powdesign_dcl_path），
+ ;; 只有符號庫那一組傳裸檔名，正是出問題的那一組。
+ ;; findfile 找不到時保留原字串，行為與先前相同。
+ (if (findfile dclfile) (setq dclfile (findfile dclfile)))
+ (setq dcl_id (load_dialog dclfile))
+ (if (< dcl_id 0) (setq dcl_id (load_dialog dclfile)))   ;; 見說明 ①
+ (if (< dcl_id 0)
+    (progn
+       (princ (strcat "\n[錯誤] DCL 載入失敗（已重試）: " dclfile))
+       (exit)
+    )
+    (new_dialog gg dcl_id)
+ )
 )
 
 
