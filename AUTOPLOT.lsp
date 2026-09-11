@@ -216,11 +216,22 @@ AUTOPLOT 程式共有以下檔案:
 )
 
 
-;啟動 DCL
-(defun actdcl(filename gg)
- (setq dcl_pt '(-1 -1))
- (setq dcl_id (load_dialog filename))
- (new_dialog gg dcl_id)
- (if (< dcl_id 0) (exit))
-)
+;;; 2026-09-11 移除：這裡原本有一份 actdcl 的重複定義，內容是
+;;;
+;;;     (setq dcl_id (load_dialog filename))      ← 沒有補 ".dcl"
+;;;
+;;; 手冊 §5.1 記載 DraftSight 的 load_dialog 不會自動補副檔名、會回傳 -1，
+;;; 修法是讓 actdcl 一律補上——但當時只改了 PUB-LISP.lsp 的那一份，
+;;; 漏掉這裡的重複定義。
+;;;
+;;; 後果有兩層：
+;;;   ① AUTOPLOT.lsp 第 42 行自己的呼叫也不帶副檔名，所以連它自己的
+;;;      對話框都開不起來。
+;;;   ② 更糟的是這份定義會**覆蓋**全域的 actdcl。只要這支檔案在任何
+;;;      時間點被載入過（&autoplot），之後整個 session 裡所有功能的
+;;;      DCL 載入都會失敗，症狀是「DCL 檔案 … 找不到」。
+;;;
+;;; 直接刪除即可，不需要修正內容：PUB-LISP.lsp 的版本是正確的，
+;;; 而 c:&autoplot 會先執行 (c:autoload)，保證 PUB-LISP 已經載入。
+;;; 呼叫慣例也一致（全專案的 actdcl 呼叫都不帶副檔名）。
 
