@@ -1,7 +1,0 @@
-0
-CPNAME ╧ЖжИбщ  (Z)8001000
-MATERIAL 
-DWGNO 334051
-DRAWED ыэвзнф
-EPNAME Ballx screw
-MAPP pv500

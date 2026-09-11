@@ -1,7 +1,0 @@
-0
-CPNAME дзаЫ╫гЁпнябщк©
-MATERIAL 
-DWGNO MSA-M12X45
-DRAWED ыэвзнф
-EPNAME Screw.SKT.HD CAP
-MAPP pv500

@@ -1,7 +1,0 @@
-0
-CPNAME жАЁп╦г
-MATERIAL 
-DWGNO 244007
-DRAWED ыэвзнф
-EPNAME Bearing Cap
-MAPP pv500

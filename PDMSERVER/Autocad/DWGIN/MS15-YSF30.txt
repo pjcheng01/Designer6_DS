@@ -1,7 +1,0 @@
-0
-CPNAME кЬ╫Тбщц╠
-MATERIAL 
-DWGNO MS15-YSF30
-DRAWED ыэвзнф
-EPNAME Fix nut
-MAPP pv500

@@ -1,7 +1,0 @@
-0
-CPNAME жАЁп╦г
-MATERIAL 
-DWGNO 344009
-DRAWED ыэвзнф
-EPNAME Bearing cover
-MAPP pv500

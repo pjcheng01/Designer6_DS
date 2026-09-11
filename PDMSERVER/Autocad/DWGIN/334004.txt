@@ -1,7 +1,0 @@
-0
-CPNAME Öá³Ð×ù
-MATERIAL 
-DWGNO 334004
-DRAWED ÙÜ×ÚÎÆ
-EPNAME Bearing housing
-MAPP pv500

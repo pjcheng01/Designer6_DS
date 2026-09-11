@@ -1,7 +1,0 @@
-0
-CPNAME хС╩╛╫см╥
-MATERIAL 
-DWGNO ML06-MSA0
-DRAWED ыэвзнф
-EPNAME Adaptor
-MAPP pv500

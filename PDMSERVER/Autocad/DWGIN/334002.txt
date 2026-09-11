@@ -1,7 +1,0 @@
-0
-CPNAME Öב³Ð×ש³ÄÌ×
-MATERIAL 
-DWGNO 334002
-DRAWED ÙÜ×ÚÎÆ
-EPNAME Sleeve
-MAPP pv500
