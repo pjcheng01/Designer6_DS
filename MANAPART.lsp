@@ -1346,10 +1346,21 @@
       ;; ——不報錯，但同一行後面的東西也不執行了，函式就這樣安靜地結束。
       ;; AutoCAD 在這裡是會丟出錯誤訊息的，所以原版看得到問題、移植版看不到。
       ;;
-      ;; bompath.txt 是寫給 manadwg.exe 認系統路徑用的，而 manadwg.exe 只有
-      ;; c:opendwg(437 行) 與 c:insdwg(512 行) 會啟動；bomtree 從頭到尾沒用到它
-      ;; （typ=2 啟動 tree1.exe、typ=0/3 啟動 bom1.exe、typ=1 不啟動任何程式）。
-      ;; 所以這裡寫不成功無所謂，加守衛讓它不要擋住主流程即可。
+      ;; 2026-09-11 更正：上面這段原本接著寫「bompath.txt 只是給 manadwg.exe
+      ;; 用的，bomtree 沒用到，所以寫不成功無所謂」——【那是錯的】。
+      ;; 使用者實測 &bomtree0 時 bom1.exe 直接跳出
+      ;;     Cannot open file c:\bompath.txt.
+      ;; bom1.exe 與 tree1.exe 都要靠這個檔才知道 POWDESIGN_path 在哪，
+      ;; 因為那兩支 exe 的年代路徑是寫死的 C:\DESIGNER6。
+      ;;
+      ;; 當初判斷錯誤的原因：我只查了「哪些 LISP 程式碼讀 bompath.txt」，
+      ;; 而那兩支是二進位檔、查不到，卻仍下了肯定的結論。
+      ;; 教訓見手冊 §9.5：掃描結果是線索不是結論，尤其在涉及外部程式時。
+      ;;
+      ;; 守衛本身仍要保留（沒有它整個函式會靜默中止），但真正要解決的是
+      ;; C 槽根目錄在 UAC 下不可寫。解法二選一：
+      ;;   (a) 以系統管理員身分建立 C:\bompath.txt 並給使用者寫入權限
+      ;;   (b) 改用 .csv 輸出、不再啟動這兩支 exe（瘦身階段 5/6）
       (setq qq (open "c:\\bompath.txt" "w"))
       (if qq
          (progn
