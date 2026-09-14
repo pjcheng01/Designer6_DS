@@ -399,9 +399,23 @@
 
 
 
+ ;; 2026-09-14：原本是 (defun *error* (msg) (princ)) —— 收到訊息卻什麼都不做。
+ ;; 這是【頂層】定義，載入這支檔案就會永久換掉全域 *error*，於是整個工作
+ ;; 階段之後的錯誤全部無聲。全專案共 19 處同樣的寫法，分布在 8 支檔案，
+ ;; 而 MANAPART 與 DFSYSTEM 幾乎每個功能都會載入——這是手冊 §5.16 那個
+ ;; 「所有錯誤訊息都被吞掉」的真正源頭。
+ ;; 改為照常顯示，只濾掉使用者主動取消／中斷這類不算錯誤的訊息。
+ ;; 訊息文字刻意用 ASCII：HP-K.LSP 是 cp950 而 DraftSight 以 UTF-8 讀 .lsp，
+ ;; 寫中文會變亂碼；"\nError: " 也是本專案既有的主流寫法。
  (defun *error* (msg)
-       (princ)
- );defun
+    (if (and msg
+             (/= msg "Function cancelled")
+             (/= msg "quit / exit abort")
+             (/= msg "console break"))
+       (princ (strcat "\nError: " msg))
+    )
+    (princ)
+ )
 
 
 
