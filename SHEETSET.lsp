@@ -123,7 +123,6 @@
 
               (action_tile "cancel" "(setq func nil flag nil)(done_dialog)")
               (start_dialog)
-   (unload_dialog dcl_id)
 
               (unload_dialog dcl_id)
               (cond
@@ -323,7 +322,6 @@
               (action_tile "cancel" "(setq funct nil)(done_dialog)")
 
               (start_dialog)
-   (unload_dialog dcl_id)
 
               (unload_dialog dcl_id)
               (if (null funct)
@@ -343,7 +341,6 @@
               (action_tile "cancel" "(setq funct nil)(done_dialog)")
 
               (start_dialog)
-   (unload_dialog dcl_id)
 
               (unload_dialog dcl_id)
               (if funct
@@ -678,7 +675,6 @@
 
               (action_tile "cancel" "(setq func nil flag nil)(done_dialog)")
               (start_dialog)
-   (unload_dialog dcl_id)
 
               (unload_dialog dcl_id)
               (cond

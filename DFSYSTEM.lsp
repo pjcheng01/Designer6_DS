@@ -4268,7 +4268,6 @@
        (action_tile "cancel" "(setq action_func nil)(done_dialog)")
 
        (start_dialog)
-   (unload_dialog dcl_id)
 
        (unload_dialog dcl_id)
        (if action_func
@@ -4467,7 +4466,6 @@
        (action_tile "accept" "(modify_field_defbom_ok title)")
        (action_tile "cancel" "(done_dialog)")
        (start_dialog)
-   (unload_dialog dcl_id)
 
 
        (unload_dialog dcl_id)
@@ -4618,7 +4616,6 @@
    (action_tile "cancel" "(done_dialog)")
 
    (start_dialog)
-   (unload_dialog dcl_id)
 
    (unload_dialog dcl_id)
 )

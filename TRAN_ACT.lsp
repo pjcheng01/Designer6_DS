@@ -22,7 +22,6 @@
        (action_tile "accept" "(get_key_tranact)(setq ~flag 1)")
        (action_tile "cancel" "(setq ~flag 0)(done_dialog)")
        (start_dialog)
-   (unload_dialog dcl_id)
 
        (unload_dialog dcl_id)
        (if (= 1 ~flag)

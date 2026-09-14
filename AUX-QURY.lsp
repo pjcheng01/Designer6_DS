@@ -94,7 +94,6 @@
 
  (action_tile "accept" "(done_dialog)")
  (start_dialog)
-   (unload_dialog dcl_id)
 
  (unload_dialog dcl_id)
  (setvar "cmdecho" 1)
@@ -452,7 +451,6 @@
 
  (action_tile "accept" "(done_dialog)")
  (start_dialog)
-   (unload_dialog dcl_id)
 
  (unload_dialog dcl_id)
  (setvar "cmdecho" 1)
@@ -507,7 +505,6 @@
 
  (action_tile "accept" "(done_dialog)")
  (start_dialog)
-   (unload_dialog dcl_id)
 
 
  (unload_dialog dcl_id)
@@ -575,7 +572,6 @@
 
  (action_tile "accept" "(done_dialog)")
  (start_dialog)
-   (unload_dialog dcl_id)
 
  (unload_dialog dcl_id)
  ;; removed FFF

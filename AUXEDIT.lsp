@@ -657,7 +657,6 @@
   	(action_tile "accept" "(setq int_flag 1)(getval_hkring1)(errmsg_hkring1)")
   	(action_tile "cancel" "(setq int_flag 0)(done_dialog)")
   	(start_dialog)
-   (unload_dialog dcl_id)
 
    (unload_dialog dcl_id)
   	(cond ((= 0 int_flag)
@@ -829,7 +828,6 @@
   	(action_tile "accept" "(setq int_flag 1)(getval_hkring2)(errmsg_hkring2)")
   	(action_tile "cancel" "(setq int_flag 0)(done_dialog)")
   	(start_dialog)
-   (unload_dialog dcl_id)
 
    (unload_dialog dcl_id)
   	(cond ((= 0 int_flag)

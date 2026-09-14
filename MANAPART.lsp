@@ -722,7 +722,6 @@
       (action_tile "accept" "(autob_ok)")
       (action_tile "cancel" "(done_dialog)")
       (start_dialog)
-   (unload_dialog dcl_id)
 
       (unload_dialog dcl_id)
       (if autob_fg
@@ -2603,7 +2602,6 @@
   (action_tile "accept" "(makepart_ok)")
   (action_tile "cancel" "(done_dialog)(setq makepart_fg nil)")
   (start_dialog)
-   (unload_dialog dcl_id)
 
   (unload_dialog dcl_id)
  (if makepart_fg

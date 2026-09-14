@@ -591,7 +591,6 @@
  (action_tile "accept" "(thrill_ok)")
 
  (start_dialog)
-   (unload_dialog dcl_id)
 
  (unload_dialog dcl_id)
  (setvar "cmdecho" 1)

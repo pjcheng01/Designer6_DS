@@ -683,7 +683,6 @@
        (action_tile "cancel" "(setq sellayerfg nil)(done_dialog)")
 
        (start_dialog)
-   (unload_dialog dcl_id)
 
        (unload_dialog dcl_id)
        (if sellayerfg
@@ -753,7 +752,6 @@
  (action_tile "cancel" "(done_dialog)")
 
  (start_dialog)
-   (unload_dialog dcl_id)
 
  (unload_dialog dcl_id)
  (if lcontrolfg (command "layer" act_txt lname ""))
@@ -841,7 +839,6 @@
  (action_tile "cancel" "(done_dialog)")
 
  (start_dialog)
-   (unload_dialog dcl_id)
 
  (unload_dialog dcl_id)
  (if ltcontrolfg (control_ltype))

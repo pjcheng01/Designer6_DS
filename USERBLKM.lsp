@@ -192,7 +192,6 @@
      (action_tile "cancel" "(done_dialog)")
 
      (start_dialog)
-   (unload_dialog dcl_id)
 
      (unload_dialog dcl_id)
      (if dd_flag (delblock))
@@ -728,7 +727,6 @@
     (start_dialog)
    (unload_dialog dcl_id)
 
-    (unload_dialog dcl_id)
     (act_pop_list pgnum "page")
     (set_tile "page" page_now)
 

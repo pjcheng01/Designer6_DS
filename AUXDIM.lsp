@@ -410,7 +410,6 @@
              (action_tile "accept" "(dimtol_type)(done_dialog)")
 
              (start_dialog)
-   (unload_dialog dcl_id)
 
              (unload_dialog dcl_id)
              (if toluv
@@ -725,7 +724,6 @@
             (action_tile "cancel" "(setq tolu nil told nil toluv nil)(done_dialog)")
 
             (start_dialog)
-   (unload_dialog dcl_id)
 
             (unload_dialog dcl_id)
             (if toluv
@@ -1415,7 +1413,6 @@
     (start_dialog)
    (unload_dialog dcl_id)
 
-    (unload_dialog dcl_id)
     (if fff_flag (exe_insjinblk))
 
 ;    (setvar "cmdecho" 1)
@@ -1599,7 +1596,6 @@
  (action_tile "cancel" "(done_dialog)")
 
  (start_dialog)
-   (unload_dialog dcl_id)
 
  (unload_dialog dcl_id)
  (if sym_fg (draw_gbase))
@@ -2086,7 +2082,6 @@
  (action_tile "cancel" "(done_dialog)")
 
  (start_dialog)
-   (unload_dialog dcl_id)
 
  (unload_dialog dcl_id)
  (if dimgeo_fg (draw_dimgeo))
@@ -2687,7 +2682,6 @@
  (action_tile "cancel" "(done_dialog)(setq flag 0)")
 
  (start_dialog)
-   (unload_dialog dcl_id)
 
  (unload_dialog dcl_id)
    (cond
@@ -4122,7 +4116,6 @@
               (action_tile "accept" "(setq funcflag T)(ok_cring_auxdim)(done_dialog)")
               (action_tile "cancel" "(setq funcflag nil)(done_dialog)")
               (start_dialog)
-   (unload_dialog dcl_id)
 
               (unload_dialog dcl_id)
               (if funcflag
@@ -5085,7 +5078,6 @@
        (action_tile "cancel" "(setq action_func nil)(done_dialog)")
 
        (start_dialog)
-   (unload_dialog dcl_id)
 
        (unload_dialog dcl_id)
        (if action_func
@@ -5174,7 +5166,6 @@
        (action_tile "accept" "(modify_item_toldim_ok title)")
        (action_tile "cancel" "(done_dialog)")
        (start_dialog)
-   (unload_dialog dcl_id)
 
 
        (unload_dialog dcl_id)

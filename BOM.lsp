@@ -1117,7 +1117,6 @@
  (action_tile "cancel" "(done_dialog)(setq flag nil)")
 
  (start_dialog)
-   (unload_dialog dcl_id)
 
  (unload_dialog dcl_id)
  (if flag (ad1xdata ent "BOMLIST_DATA" xdata))
@@ -1186,7 +1185,6 @@
  (action_tile "cancel" "(done_dialog)(setq flag nil)")
 
  (start_dialog)
-   (unload_dialog dcl_id)
 
  (unload_dialog dcl_id)
   (if flag
@@ -1264,7 +1262,6 @@
  (action_tile "cancel" "(done_dialog)(setq flag nil)")
 
  (start_dialog)
-   (unload_dialog dcl_id)
 
  (unload_dialog dcl_id)
  (if flag (drawbom_list_ok))
