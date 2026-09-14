@@ -1,0 +1,2 @@
+料號1;品名;機種;#圖號;製圖;規格;數量;英文品名;表面處理;材質;說明;未定;未定;未定;未定
+100800005;刀具主軸危險銘牌(中);nil;100800005;nil;nil;nil;TOOL DNAGER MARK;nil;nil;nil;nil;nil;nil;nil
