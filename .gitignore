@@ -20,6 +20,8 @@ CamproPdm.txt
 bom.out
 # 拆圖(c:out)寫出的 manadwg 轉檔檔，目前無人讀取
 data.txt
+# selfile.exe 寫出的多檔選擇結果，每次使用都不同
+TRANS/filelist.txt
 pdmbom3.txt
 
 # ---- 程式產生後隨即執行的暫時 script ----
