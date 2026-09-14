@@ -1307,11 +1307,15 @@
    (setq old_color (getvar "cecolor"))
    (setvar "osmode" 0)
    (make_layer sys_bomlist_layer sys_bomlist_layercol)
-     (cond
-      ((= bomtype 1) (free_list tdata_list defbomlist_list 0   270 colh "M" txth))
-      ((= bomtype 2) (free_list tdata_list defbomlist_list 180 270 colh "M" txth))
-      ((= bomtype 3) (free_list tdata_list defbomlist_list 0   90  colh "M" txth))
-      ((= bomtype 4) (free_list tdata_list defbomlist_list 180 90  colh "M" txth))
+     ;; 2026-09-14：getbomtxt_list 收不到資料時 tdata_list 是 nil，
+     ;; 不要再往下畫表格（原因已在 getbomtxt_list 裡講過了）。
+     (if tdata_list
+      (cond
+       ((= bomtype 1) (free_list tdata_list defbomlist_list 0   270 colh "M" txth))
+       ((= bomtype 2) (free_list tdata_list defbomlist_list 180 270 colh "M" txth))
+       ((= bomtype 3) (free_list tdata_list defbomlist_list 0   90  colh "M" txth))
+       ((= bomtype 4) (free_list tdata_list defbomlist_list 180 90  colh "M" txth))
+      )
      )
    (command "clayer" old_layer "cecolor" old_color)
    (setvar "osmode" old_osmode)
@@ -1345,6 +1349,19 @@
        (setq count (1+ count))
      )
      (setq bomtxt_list (cdr (reverse bomtxt_list)))
+     ;; 2026-09-14：上面的 ssget 只找「件號球圖層上的 TEXT」，找得到不代表
+     ;; 那些球帶了材料清單資料。指標球只有在建立時回答「要不要輸入材料清單
+     ;; 資料」為 Y 才會掛上 BOMLIST_DATA（本檔第 965 行）；資訊點版的指標球
+     ;; （&AUTObom*_info，MANABALL.lsp）那兩處 add_bomball_xdata 是註解掉的，
+     ;; 永遠不會帶。原本這種情況會一路走到 int_list_sort 拿空串列而爆掉，
+     ;; 訊息是莫名其妙的「無效的參數」。改成講清楚。
+     (if (null bomtxt_list)
+       (progn
+         (princ "\n   件號球都沒有附帶材料清單資料，無法產生材料單。")
+         (princ "\n   指標球要在建立時，對「要不要輸入材料清單資料」回答 Y 才會帶資料；")
+         (princ "\n   資訊點版的指標球（&AUTObom*_info）不會帶。")
+       )
+     )
      (setq tdata_list '())
      (foreach nn bomtxt_list
         (progn
@@ -1371,7 +1388,8 @@
        )
      )
 
-     (setq num_list (int_list_sort 0 (reverse num_list)))     ;pub-lisp.lsp (int_list_sort)
+     (if num_list
+       (setq num_list (int_list_sort 0 (reverse num_list))))   ;pub-lisp.lsp (int_list_sort)
   ; 數量加總
      (setq ssget_list '())
      (foreach nn num_list

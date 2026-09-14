@@ -1363,8 +1363,13 @@
 ;║相關檔案:                               ║
 ;╰════════════════════╯
 (defun int_list_sort(typ numlist)
-   (setq numlist (acad_strlsort numlist))
-   (setq max_txtnum (strlen (nth 0 numlist)))
+   ;; 2026-09-14：numlist 為空時原本會走到 (strlen (nth 0 nil))，也就是
+   ;; (strlen nil)，DraftSight 報「錯誤: 無效的參數」。呼叫端拿不到任何
+   ;; 資料是正常情況（例如圖上沒有帶資料的件號球），不該當成錯誤。
+   ;; max_txtnum 為 0 時底下的 repeat 不會跑，newnum_list 維持 '("0")，
+   ;; 最後 (cdr (reverse …)) 自然回傳 nil——正是空輸入該有的結果。
+   (if numlist (setq numlist (acad_strlsort numlist)))
+   (setq max_txtnum (if numlist (strlen (nth 0 numlist)) 0))
    (foreach nn numlist
       (progn
         (if (> (strlen nn) max_txtnum) (setq max_txtnum (strlen nn)))
