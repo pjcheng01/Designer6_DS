@@ -404,7 +404,12 @@
   (c:ds_setting)
 
 ;    );progn
-  (princ "\nLoading Power Design System...")
+;; 2026-09-14：這一行原本是**被註解掉的**試用期到期訊息。原版
+;; C:\DESIGNER6\SYSTEM.lsp:317 是：
+;;     ;    (princ "\n很抱歉! POWER DESIGN 機械設計家試用期已過, 請電洽 …")
+;; 移植時把訊息內容換成 "Loading Power Design System..."，卻把行首的註解
+;; 符號弄丟了，於是原本不會執行的死碼變成無條件執行——啟動時那句話因此
+;; 印了兩次（另一次在上面，那次才是正常的）。改回不執行。
 ;  );IF
 
 
