@@ -106,7 +106,14 @@
             "Y"        ; 17 現在列印嗎?
          )
          (setvar "cmdecho" oldecho)
-         (prompt (strcat "<<<<   " label "  出圖完成    >>>>"))
+         ;; 2026-09-14：原本只印圖框尺寸（沿用原版）。但 A1／A2 圖框走印表機時
+         ;; 實際是縮到 A3 擬合，只看到「A1 出圖完成」會誤以為出的是 A1 尺寸。
+         ;; 改成把實際用的紙張、比例與裝置一起講出來。
+         (prompt (strcat "\n<<<<  " label " 圖框 -> 紙張 " paper
+                         "  比例 "
+                         (if (= 'STR (type scale)) "擬合" (rtos scale 2 4))
+                         "  出圖完成  >>>>"
+                         "\n      裝置: " device))
          (command "zoom" "P")
       )
    )
