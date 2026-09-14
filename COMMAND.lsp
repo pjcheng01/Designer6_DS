@@ -27,33 +27,33 @@
 )
 
 
-;;�ϥΪ̦۩w�Ϯw
+;;使用者自定圖庫
 (defun c:userblk1()(c:autoload) (setq dclmenu_path bmanager_path)(PRINC) (cond ((null userblkm)(load "userblkm"))(t (princ))) (userblkm "userblkm" "userblkm" "BOM2" "poweriso" 0))
 (defun c:userblk2()(c:autoload) (setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblku)(load "userblku"))(t (princ))) (userblku "userblku" "userblku" "BOM2" "poweriso" 0))
 
-;;�o�����Ÿ�
+;;油氣壓符號
 (defun c:oilgas1()(c:autoload)  (setq dclmenu_path bmanager_path)(PRINC) (cond ((null userblkm)(load "userblkm"))(t (princ))) (userblkm "userblkm" "userblkm" "GASE&OIL" "poweriso" 0))
 (defun c:oilgas2()(c:autoload)  (setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblku)(load "userblku"))(t (princ))) (userblku "userblku" "userblku" "GASE&OIL" "poweriso" 0))
 
-;;�o����
+;;油壓缸
 (defun c:OILTANK1()(c:autoload) (setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblkm)(load "userblkm"))(t (princ))) (userblkm "userblkm" "userblkm" "OILTANK" "poweriso" 0))
 (defun c:OILTANK2()(c:autoload) (setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblku)(load "userblku"))(t (princ))) (userblku "userblku" "userblku" "OILTANK" "poweriso" 0))
-;;������
+;;氣壓缸
 (defun c:GASTANK1()(c:autoload) (setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblkm)(load "userblkm"))(t (princ))) (userblkm "userblkm" "userblkm" "GASTANK" "poweriso" 0))
 (defun c:GASTANK2()(c:autoload) (setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblku)(load "userblku"))(t (princ))) (userblku "userblku" "userblku" "GASTANK" "poweriso" 0))
-;;���u�u�]Ũ�M
+;;直線滾珠襯套
 (defun c:LINEBUSH1()(c:autoload) (setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblkm)(load "userblkm"))(t (princ))) (userblkm "userblkm" "userblkm" "LINEBUSH" "poweriso" 0))
 (defun c:LINEBUSH2()(c:autoload) (setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblku)(load "userblku"))(t (princ))) (userblku "userblku" "userblku" "LINEBUSH" "poweriso" 0))
-;;�L�ʶ}��
+;;微動開關
 (defun c:LINESWITCH1()(c:autoload)(setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblkm)(load "userblkm"))(t (princ))) (userblkm "userblkm" "userblkm" "LINESWITCH" "poweriso" 0))
 (defun c:LINESWITCH2()(c:autoload)(setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblku)(load "userblku"))(t (princ))) (userblku "userblku" "userblku" "LINESWITCH" "poweriso" 0))
-;;�u�ʷƭy
+;;線性滑軌
 (defun c:LINERULE1()(c:autoload)(setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblkm)(load "userblkm"))(t (princ))) (userblkm "userblkm" "userblkm" "LINERULE" "poweriso" 0))
 (defun c:LINERULE2()(c:autoload)(setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblku)(load "userblku"))(t (princ))) (userblku "userblku" "userblku" "LINERULE" "poweriso" 0))
-;;�ֳt����
+;;快速夾具
 (defun c:QUICKTAH1()(c:autoload)  (setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblkm)(load "userblkm"))(t (princ))) (userblkm "userblkm" "userblkm" "QUICKTAH" "poweriso" 0))
 (defun c:QUICKTAH2()(c:autoload)  (setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblku)(load "userblku"))(t (princ))) (userblku "userblku" "userblku" "QUICKTAH" "poweriso" 0))
-;;������
+;;環首桿
 (defun c:HRINGS1()(c:autoload)  (setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblkm)(load "userblkm"))(t (princ))) (userblku "userblkm" "userblkm" "HRINGS" "poweriso" 0))
 (defun c:HRINGS2()(c:autoload)  (setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblku)(load "userblku"))(t (princ))) (userblku "userblku" "userblku" "HRINGS" "poweriso" 0))
 
@@ -62,24 +62,24 @@
 (defun loaddesigner()(cond ((null c:ds_setting)(load "system"))(t (princ))))   ;; 2026-09-14：原為 c:#setting，那是加密狗版的函式名，移植時已改名為 c:ds_setting（SYSTEM.lsp:240），守衛卻沒跟著改，導致判斷永遠成立、system 每次都重載
 
 
-(setq  sysdrawbar1     "���Uø��(�@)"
-       sysdrawbar2     "���Uø��(�G)"
-       syseditbar1     "���U�s��(�@)"
-       syseditbar2     "���U�s��(�G)"
-       sysprojbar      "��v�u"
-       syssetlinebar   "�@�Ͻu�ʳ]�w"
-       sysauxdimbar1   "���U�е��@"
-       sysauxdimbar2   "���U�е��G"
-       sysauxdimbar3   "�X�X���t�е�"
-       sysbombar       "�զX�ϻP���ƲM��"
-       syslayerbar     "�ϼh����"
-       sysquarbar      "��Ƭd��"
-       sysscrewbar     "��ѻP����"
-       sysshaftbar     "�b���;�"
-       sysosnapbar     "���I�Ҧ���"
-       sysshscalbar    "��Ϯةw���"
-       sysblkmanbar    "�}��Ϯw"
-       syscal&lib      "��w�P�p���")
+(setq  sysdrawbar1     "輔助繪圖(一)"
+       sysdrawbar2     "輔助繪圖(二)"
+       syseditbar1     "輔助編輯(一)"
+       syseditbar2     "輔助編輯(二)"
+       sysprojbar      "投影線"
+       syssetlinebar   "作圖線性設定"
+       sysauxdimbar1   "輔助標註一"
+       sysauxdimbar2   "輔助標註二"
+       sysauxdimbar3   "幾合公差標註"
+       sysbombar       "組合圖與材料清單"
+       syslayerbar     "圖層控制"
+       sysquarbar      "資料查詢"
+       sysscrewbar     "鍵槽與螺紋"
+       sysshaftbar     "軸產生器"
+       sysosnapbar     "鎖點模式組"
+       sysshscalbar    "放圖框定比例"
+       sysblkmanbar    "開放圖庫"
+       syscal&lib      "辭庫與計算機")
 
 (defun c:chtobyl()(c:autoload) (CHLTYPE "bylayer" "bylayer"))
 (defun c:chtobylk()(c:autoload) (CHLTYPE "byblock" "byblock"))
@@ -93,18 +93,18 @@
 (defun c:chtoSpl()(c:autoload)   (CHLTYPE sys_Sphantom_ltype sys_Sphantom_ltypecol))
 (defun c:chtohl()(c:autoload)   (CHLTYPE sys_hatch_ltype sys_hatch_ltypecol))
 
-;;�\������O
-(defun c:&cns_finish()(c:autoload) (cond ((null c:cns_finish)(load "auxdim"))(t (princ))) (c:cns_finish))            ;[CNS �[�u�Ÿ�]
-(defun c:&out_l_r_arc()(c:autoload) (cond ((null c:out_l_r_arc)(load "auxdim"))(t (princ))) (c:out_l_r_arc))         ;[���k�A��]
-(defun c:&out_cns_finish()(c:autoload) (cond ((null c:out_cns_finish)(load "auxdim"))(t (princ))) (c:out_cns_finish));[����ʥ[�u�Ÿ�]
-(defun c:&jis_finish()(c:autoload) (cond ((null c:jis_finish)(load "auxdim"))(t (princ))) (c:jis_finish))            ;[JIS �[�u�Ÿ�]
+;;功能表指令
+(defun c:&cns_finish()(c:autoload) (cond ((null c:cns_finish)(load "auxdim"))(t (princ))) (c:cns_finish))            ;[CNS 加工符號]
+(defun c:&out_l_r_arc()(c:autoload) (cond ((null c:out_l_r_arc)(load "auxdim"))(t (princ))) (c:out_l_r_arc))         ;[左右括號]
+(defun c:&out_cns_finish()(c:autoload) (cond ((null c:out_cns_finish)(load "auxdim"))(t (princ))) (c:out_cns_finish));[整體性加工符號]
+(defun c:&jis_finish()(c:autoload) (cond ((null c:jis_finish)(load "auxdim"))(t (princ))) (c:jis_finish))            ;[JIS 加工符號]
 ;;-------
-(defun c:&autoSHSCAL()(c:autoload) (cond ((null c:SHSCAL)(load "SHSCAL"))(t (princ))) (c:autoSHSCAL)) ;[��Ϯةw���]
-(defun c:&resetting()(c:autoload) (cond ((null c:resetting)(load "SHSCAL"))(t (princ))) (c:resetting)) ;[���]���]
-(defun c:&SCAL()(c:autoload) (cond ((null c:scal)(load "aux-qury"))(t (princ))) (c:SCAL)) ;[��Ҭd��]
-(defun c:&chsheet_att()(c:autoload) (cond ((null c:chsheet_att)(load "SHSCAL"))(t (princ))) (c:chsheet_att)) ;[�ק�Ϯ��ݩ�]
-(defun c:&autoplot()(c:autoload) (cond ((null c:autoplot)(load "autoplot"))(t (princ))) (c:autoplot)) ;[�۰ʳs��X��]
-(defun c:&draw_autoplot()(c:autoload) (cond ((null c:draw_autoplot)(load "plotset"))(t (princ))) (c:draw_autoplot)) ;[�۰ʳs��X��]
+(defun c:&autoSHSCAL()(c:autoload) (cond ((null c:SHSCAL)(load "SHSCAL"))(t (princ))) (c:autoSHSCAL)) ;[放圖框定比例]
+(defun c:&resetting()(c:autoload) (cond ((null c:resetting)(load "SHSCAL"))(t (princ))) (c:resetting)) ;[重設比例]
+(defun c:&SCAL()(c:autoload) (cond ((null c:scal)(load "aux-qury"))(t (princ))) (c:SCAL)) ;[比例查詢]
+(defun c:&chsheet_att()(c:autoload) (cond ((null c:chsheet_att)(load "SHSCAL"))(t (princ))) (c:chsheet_att)) ;[修改圖框屬性]
+(defun c:&autoplot()(c:autoload) (cond ((null c:autoplot)(load "autoplot"))(t (princ))) (c:autoplot)) ;[自動連續出圖]
+(defun c:&draw_autoplot()(c:autoload) (cond ((null c:draw_autoplot)(load "plotset"))(t (princ))) (c:draw_autoplot)) ;[自動連續出圖]
 ;;-------
 (defun c:&cap_sybom()(c:autoload) (cond ((null c:cap_sybom)(load "PDMBOM3"))(t (princ))) (c:cap_sybom))
 (defun c:&insline()(c:autoload) (cond ((null c:insline)(load "insline"))(t (princ))) (c:insline))
@@ -113,286 +113,286 @@
 (defun c:&hp3()(c:autoload) (cond ((null c:hp3)(load "hp-k"))(t (princ))) (c:hp3))
 (defun c:&batch_plot()(c:autoload) (cond ((null c:batch_plot)(load "hp-k"))(t (princ))) (c:batch_plot))
 ;;-------
-(defun c:&asctext()(c:autoload) (cond ((null c:asctext)(load "asctext"))(t (princ))) (c:asctext)) ;[���J��r��]
+(defun c:&asctext()(c:autoload) (cond ((null c:asctext)(load "asctext"))(t (princ))) (c:asctext)) ;[載入文字檔]
 ;;-------
-(defun c:&chtosl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtosl))   ;[�ʳs��u]
-(defun c:&chtotl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtotl))   ;[�ӳs��u]
-(defun c:&chtocl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtocl))   ;[�зǤ��߽u]
-(defun c:&chtocl2()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtocl2)) ;[�u���߽u]
-(defun c:&chtodl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtodl))   ;[�зǵ�u]
-(defun c:&chtoSdl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtoSdl)) ;[�u��u]
-(defun c:&chtopl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtopl))   ;[�зǰ��Q�u]
-(defun c:&chtoSpl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtoSpl)) ;[�u���Q�u]
-(defun c:&chtohl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtohl))   ;[�孱�u]
-(defun c:&chtodim()(c:autoload) (chltype "continuous" "3")) ;[�ؤo�u]
+(defun c:&chtosl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtosl))   ;[粗連續線]
+(defun c:&chtotl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtotl))   ;[細連續線]
+(defun c:&chtocl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtocl))   ;[標準中心線]
+(defun c:&chtocl2()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtocl2)) ;[短中心線]
+(defun c:&chtodl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtodl))   ;[標準虛線]
+(defun c:&chtoSdl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtoSdl)) ;[短虛線]
+(defun c:&chtopl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtopl))   ;[標準假想線]
+(defun c:&chtoSpl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtoSpl)) ;[短假想線]
+(defun c:&chtohl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtohl))   ;[剖面線]
+(defun c:&chtodim()(c:autoload) (chltype "continuous" "3")) ;[尺寸線]
 
-;;--------�t���ܼƳ]�w
-(defun c:&tran_act()(c:autoload)(load "tran_act") (c:tran_act));�¹���s��(����)
+;;--------系統變數設定
+(defun c:&tran_act()(c:autoload)(load "tran_act") (c:tran_act));舊圖轉新圖(應用)
 
-(defun c:&transdwg()(c:autoload)(load "transdwg") (c:transdwg));�¹���s��(�]�w)
-(defun c:&auto_ch_clk_scal()(c:autoload) (cond ((null c:setosmode)(load "dfsystem"))(t (princ))) (c:auto_ch_clk_scal)) ;[����ܰʮɷ|�s�ʪ�BLOCK
-(defun c:&setosmode()(c:autoload) (cond ((null c:setosmode)(load "dfsystem"))(t (princ))) (c:setosmode)) ;[���I�Ҧ��էO�w�q]
-(defun c:&defball()(c:autoload) (cond ((null c:defball)(load "dfsystem"))(t (princ)))(c:defball)) ;[���вy�w�q]
-(defun c:&defbomlist()(c:autoload) (cond ((null c:defbomlist)(load "dfsystem"))(t (princ)))(c:defbomlist)) ;[���ƲM����e�w�q]
-(defun c:&defltype()(c:autoload) (cond ((null c:defltype)(load "dfsystem"))(t (princ)))(c:defltype)) ;[�]�w�u���t���ܼ�]
-(defun c:&deflayer()(c:autoload) (cond ((null c:deflayer)(load "dfsystem"))(t (princ)))(c:deflayer)) ;[�]�w�ϼh�t���ܼ�]
-(defun c:&defdate_type()(c:autoload) (cond ((null c:defdate_type)(load "dfsystem"))(t (princ)))(c:defdate_type)) ;[�Ϯؤ������]
-(defun c:&passdfac()(c:autoload) (cond ((null c:passdfac)(load "dfsystem"))(t (princ))) (c:passdfac))    ;�s��զX�ɹw�]���C��                    ;�s��զX�ɹw�]���C��]^C^C
-(defun c:&psdellay()(c:autoload) (cond ((null c:psdellay)(load "dfsystem"))(t (princ))) (c:psdellay))    ;�s��զX�ɧR�����ϼh
-(defun c:&psdelblk()(c:autoload) (cond ((null c:psdelblk)(load "dfsystem"))(t (princ))) (c:psdelblk))    ;�s��զX�ɧR�����϶�
-(defun c:&auntklay()(c:autoload) (cond ((null c:auntklay)(load "dfsystem"))(t (princ))) (c:auntklay))    ;�۰ʩ�Ϯɤ���h
-(defun c:&ncinplay()(c:autoload) (cond ((null c:ncinplay)(load "dfsystem"))(t (princ))) (c:ncinplay))    ;���إ߸�T�I���ϼh
-(defun c:&auntkblk()(c:autoload) (cond ((null c:auntkblk)(load "dfsystem"))(t (princ))) (c:auntkblk))    ;�۰ʩ�Ϯɤ���϶�
-(defun c:&lt_prtdd()(c:autoload) (cond ((null c:lt_prtdd)(load "dfsystem"))(t (princ))) (c:lt_prtdd))    ;�s��w�q���
-(defun c:&goac_inp()(c:autoload) (cond ((null c:goac_inp)(load "dfsystem"))(t (princ))) (c:goac_inp))    ;���¹Ϯ��ݩʫظ�T�I
-(defun c:&odshtblk()(c:autoload) (cond ((null c:odshtblk)(load "dfsystem"))(t (princ))) (c:odshtblk))    ;�¹Ϯ��ݩ�BLOCK�W��
-(defun c:&lt_map()(c:autoload) (cond ((null c:lt_map)(load "dfsystem"))(t (princ))) (c:lt_map))        ;�¹Ϯ��ݩʹ�����T��
-(defun c:&trapmage()(c:autoload) (cond ((null c:trapmage)(load "dfsystem"))(t (princ))) (c:trapmage))  ;���ިt�κ޲z
-(defun c:&signing()(c:autoload) (cond ((null c:signing)(load "dfsystem"))(t (princ))) (c:signing));�f��ñ�W���
-(defun c:&sheetset()(c:autoload) (cond ((null c:sheetset)(load "sheetset"))(t (princ)))(c:sheetset)) ;[�Ϯس]�w]
-(defun c:&modsheetset()(c:autoload) (cond ((null c:modsheetset)(load "sheetset"))(t (princ)))(c:modsheetset)) ;[�ק�Ϯس]�w]
+(defun c:&transdwg()(c:autoload)(load "transdwg") (c:transdwg));舊圖轉新圖(設定)
+(defun c:&auto_ch_clk_scal()(c:autoload) (cond ((null c:setosmode)(load "dfsystem"))(t (princ))) (c:auto_ch_clk_scal)) ;[比例變動時會連動的BLOCK
+(defun c:&setosmode()(c:autoload) (cond ((null c:setosmode)(load "dfsystem"))(t (princ))) (c:setosmode)) ;[鎖點模式組別定義]
+(defun c:&defball()(c:autoload) (cond ((null c:defball)(load "dfsystem"))(t (princ)))(c:defball)) ;[指標球定義]
+(defun c:&defbomlist()(c:autoload) (cond ((null c:defbomlist)(load "dfsystem"))(t (princ)))(c:defbomlist)) ;[材料清單欄寬定義]
+(defun c:&defltype()(c:autoload) (cond ((null c:defltype)(load "dfsystem"))(t (princ)))(c:defltype)) ;[設定線型系統變數]
+(defun c:&deflayer()(c:autoload) (cond ((null c:deflayer)(load "dfsystem"))(t (princ)))(c:deflayer)) ;[設定圖層系統變數]
+(defun c:&defdate_type()(c:autoload) (cond ((null c:defdate_type)(load "dfsystem"))(t (princ)))(c:defdate_type)) ;[圖框日期型式]
+(defun c:&passdfac()(c:autoload) (cond ((null c:passdfac)(load "dfsystem"))(t (princ))) (c:passdfac))    ;零件組合時預設之顏色                    ;零件組合時預設之顏色]^C^C
+(defun c:&psdellay()(c:autoload) (cond ((null c:psdellay)(load "dfsystem"))(t (princ))) (c:psdellay))    ;零件組合時刪除之圖層
+(defun c:&psdelblk()(c:autoload) (cond ((null c:psdelblk)(load "dfsystem"))(t (princ))) (c:psdelblk))    ;零件組合時刪除之圖塊
+(defun c:&auntklay()(c:autoload) (cond ((null c:auntklay)(load "dfsystem"))(t (princ))) (c:auntklay))    ;自動拆圖時不拆之層
+(defun c:&ncinplay()(c:autoload) (cond ((null c:ncinplay)(load "dfsystem"))(t (princ))) (c:ncinplay))    ;不建立資訊點的圖層
+(defun c:&auntkblk()(c:autoload) (cond ((null c:auntkblk)(load "dfsystem"))(t (princ))) (c:auntkblk))    ;自動拆圖時不拆之圖塊
+(defun c:&lt_prtdd()(c:autoload) (cond ((null c:lt_prtdd)(load "dfsystem"))(t (princ))) (c:lt_prtdd))    ;零件定義資料
+(defun c:&goac_inp()(c:autoload) (cond ((null c:goac_inp)(load "dfsystem"))(t (princ))) (c:goac_inp))    ;取舊圖框屬性建資訊點
+(defun c:&odshtblk()(c:autoload) (cond ((null c:odshtblk)(load "dfsystem"))(t (princ))) (c:odshtblk))    ;舊圖框屬性BLOCK名稱
+(defun c:&lt_map()(c:autoload) (cond ((null c:lt_map)(load "dfsystem"))(t (princ))) (c:lt_map))        ;舊圖框屬性對應資訊籤
+(defun c:&trapmage()(c:autoload) (cond ((null c:trapmage)(load "dfsystem"))(t (princ))) (c:trapmage))  ;推拔系統管理
+(defun c:&signing()(c:autoload) (cond ((null c:signing)(load "dfsystem"))(t (princ))) (c:signing));審核簽名資料
+(defun c:&sheetset()(c:autoload) (cond ((null c:sheetset)(load "sheetset"))(t (princ)))(c:sheetset)) ;[圖框設定]
+(defun c:&modsheetset()(c:autoload) (cond ((null c:modsheetset)(load "sheetset"))(t (princ)))(c:modsheetset)) ;[修改圖框設定]
 ;;--------
-(defun c:&manauser_menu()(c:autoload) (cond ((null c:usermake_part_sld)(load "userMENU"))(t (princ))) (c:manauser_menu)) ;[�޲z�۫إ\��]
-(defun c:&usermake_part_sld()(c:autoload) (cond ((null c:usermake_part_sld)(load "userMENU"))(t (princ)))(c:usermake_part_sld)) ;[�s�@�\��ۿO��]
+(defun c:&manauser_menu()(c:autoload) (cond ((null c:usermake_part_sld)(load "userMENU"))(t (princ))) (c:manauser_menu)) ;[管理自建功能]
+(defun c:&usermake_part_sld()(c:autoload) (cond ((null c:usermake_part_sld)(load "userMENU"))(t (princ)))(c:usermake_part_sld)) ;[製作功能幻燈片]
 ;;;--------
-(defun c:&mc()(c:autoload) (cond ((null c:mc)(load "auxdraw1"))(t (princ))) (c:mc)) ;�e���ζ�
-(defun c:&POLCIR()(c:autoload) (cond ((null c:POLCIR)(load "auxdraw1"))(t (princ))) (c:POLCIR)) ;�Z��-���� ��
-(defun c:&XYCIR()(c:autoload) (cond ((null c:XYCIR)(load "auxdraw1"))(t (princ))) (c:XYCIR))    ;X-Y ��
-(defun c:&2cir()(c:autoload) (cond ((null c:2cir)(load "auxdraw1"))(t (princ))) (c:2cir))       ;�����׵e��
-(defun c:&3e()(c:autoload) (cond ((null c:3e)(load "auxdraw1"))(t (princ))) (c:3e))             ;�x��
-(defun c:&srect()(c:autoload) (cond ((null c:srect)(load "auxdraw1"))(t (princ))) (c:srect))    ;�x��
-(defun c:&crect()(c:autoload) (cond ((null c:crect)(load "auxdraw1"))(t (princ))) (c:crect))    ;�x��
-(defun c:&srect1()(c:autoload) (cond ((null c:srect1)(load "auxdraw1"))(t (princ))) (c:srect1)) ;�x��
-(defun c:&mrect()(c:autoload) (cond ((null c:mrect)(load "auxdraw1"))(t (princ))) (c:mrect))    ;�x��
-(defun c:&codim()(c:autoload) (cond ((null c:co)(load "auxdraw1"))(t (princ))) (c:codim))       ;�ꨤ���U�е��ϧ�
-(defun c:&codim1()(c:autoload) (cond ((null c:co1)(load "auxdraw1"))(t (princ))) (c:codim1))    ;�ꨤ���U�е��ϧ�
-(defun c:&c-slot()(c:autoload) (cond ((null c:c-slot)(load "auxedit"))(t (princ))) (c:c-slot))  ;�z�����s�Τ�
+(defun c:&mc()(c:autoload) (cond ((null c:mc)(load "auxdraw1"))(t (princ))) (c:mc)) ;畫環形圓
+(defun c:&POLCIR()(c:autoload) (cond ((null c:POLCIR)(load "auxdraw1"))(t (princ))) (c:POLCIR)) ;距離-角度 圓
+(defun c:&XYCIR()(c:autoload) (cond ((null c:XYCIR)(load "auxdraw1"))(t (princ))) (c:XYCIR))    ;X-Y 圓
+(defun c:&2cir()(c:autoload) (cond ((null c:2cir)(load "auxdraw1"))(t (princ))) (c:2cir))       ;等角度畫圓
+(defun c:&3e()(c:autoload) (cond ((null c:3e)(load "auxdraw1"))(t (princ))) (c:3e))             ;矩形
+(defun c:&srect()(c:autoload) (cond ((null c:srect)(load "auxdraw1"))(t (princ))) (c:srect))    ;矩形
+(defun c:&crect()(c:autoload) (cond ((null c:crect)(load "auxdraw1"))(t (princ))) (c:crect))    ;矩形
+(defun c:&srect1()(c:autoload) (cond ((null c:srect1)(load "auxdraw1"))(t (princ))) (c:srect1)) ;矩形
+(defun c:&mrect()(c:autoload) (cond ((null c:mrect)(load "auxdraw1"))(t (princ))) (c:mrect))    ;矩形
+(defun c:&codim()(c:autoload) (cond ((null c:co)(load "auxdraw1"))(t (princ))) (c:codim))       ;圓角輔助標註圖形
+(defun c:&codim1()(c:autoload) (cond ((null c:co1)(load "auxdraw1"))(t (princ))) (c:codim1))    ;圓角輔助標註圖形
+(defun c:&c-slot()(c:autoload) (cond ((null c:c-slot)(load "auxedit"))(t (princ))) (c:c-slot))  ;鈑金件彎形孔
 ;;;--------
-(defun c:&sec5()(c:autoload) (cond ((null c:sec5)(load "auxdraw1"))(t (princ)))(c:sec5)) ;�s��孱
-(defun c:&sec1()(c:autoload) (cond ((null c:sec1)(load "auxdraw1"))(t (princ)))(c:sec1)) ;�孱
-(defun c:&sec2()(c:autoload) (cond ((null c:sec2)(load "auxdraw1"))(t (princ)))(c:sec2)) ;�孱��r
-(defun c:&sec3()(c:autoload) (cond ((null c:sec3)(load "auxdraw1"))(t (princ)))(c:sec3)) ;�ԹϤ�r
-(defun c:&sec4()(c:autoload) (cond ((null c:sec4)(load "auxdraw1"))(t (princ)))(c:sec4)) ;�Թϫ���
-(defun c:&sec6()(c:autoload) (cond ((null c:sec6)(load "auxdraw1"))(t (princ)))(c:sec6)) ;�Թϫ���( ? �ڵ���)
-(defun c:&cen1()(c:autoload) (cond ((null c:cen1)(load "auxdraw1"))(t (princ)))(c:cen1)) ;�b���߽u
-(defun c:&cen2()(c:autoload) (cond ((null c:cen2)(load "auxdraw1"))(t (princ)))(c:cen2)) ;�ꤤ�߽u
-(defun c:&stock()(c:autoload) (cond ((null c:stock)(load "auxdraw1"))(t (princ)))(c:stock)) ;���U�e�T����
-(defun c:&mcir()(c:autoload) (cond ((null c:wcir)(load "auxdraw1"))(t (princ)))(c:mcir)) ;�P�߶�
-(defun c:&wedmark()(c:autoload) (cond ((null c:wedmark)(load "auxdim"))(t (princ)))(c:wedmark)) ;�����I
-(defun c:&holemark()(c:autoload) (cond ((null c:holemark)(load "auxdraw1"))(t (princ)))(c:holemark)) ;��ǤղŸ�
+(defun c:&sec5()(c:autoload) (cond ((null c:sec5)(load "auxdraw1"))(t (princ)))(c:sec5)) ;連續剖面
+(defun c:&sec1()(c:autoload) (cond ((null c:sec1)(load "auxdraw1"))(t (princ)))(c:sec1)) ;剖面
+(defun c:&sec2()(c:autoload) (cond ((null c:sec2)(load "auxdraw1"))(t (princ)))(c:sec2)) ;剖面文字
+(defun c:&sec3()(c:autoload) (cond ((null c:sec3)(load "auxdraw1"))(t (princ)))(c:sec3)) ;詳圖文字
+(defun c:&sec4()(c:autoload) (cond ((null c:sec4)(load "auxdraw1"))(t (princ)))(c:sec4)) ;詳圖指標
+(defun c:&sec6()(c:autoload) (cond ((null c:sec6)(load "auxdraw1"))(t (princ)))(c:sec6)) ;詳圖指標( ? 矢視圖)
+(defun c:&cen1()(c:autoload) (cond ((null c:cen1)(load "auxdraw1"))(t (princ)))(c:cen1)) ;軸中心線
+(defun c:&cen2()(c:autoload) (cond ((null c:cen2)(load "auxdraw1"))(t (princ)))(c:cen2)) ;圓中心線
+(defun c:&stock()(c:autoload) (cond ((null c:stock)(load "auxdraw1"))(t (princ)))(c:stock)) ;輔助畫三視圖
+(defun c:&mcir()(c:autoload) (cond ((null c:wcir)(load "auxdraw1"))(t (princ)))(c:mcir)) ;同心圓
+(defun c:&wedmark()(c:autoload) (cond ((null c:wedmark)(load "auxdim"))(t (princ)))(c:wedmark)) ;熔接點
+(defun c:&holemark()(c:autoload) (cond ((null c:holemark)(load "auxdraw1"))(t (princ)))(c:holemark)) ;精準孔符號
 ;;;--------
-(defun c:&chtobyl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ)))(c:chtobyl))    ;�ܴ���BYLAYER�u��
-(defun c:&chtobylk()(c:autoload) (cond ((null c:chtobylk)(load "auxedit"))(t (princ)))(c:chtobylk)) ;�ܴ���BYBLOCK�u��
-(defun c:&chtosl()(c:autoload) (cond ((null c:chtosl)(load "auxedit"))(t (princ)))(c:chtosl))    ;�ܴ��ʳs��u��
-(defun c:&chtocl()(c:autoload) (cond ((null c:chtocl)(load "auxedit"))(t (princ)))(c:chtocl))    ;�ܴ��зǤ��߽u��
-(defun c:&chtocl2()(c:autoload) (cond ((null c:chtocl2)(load "auxedit"))(t (princ)))(c:chtocl2)) ;�ܴ��u���߽u��
-(defun c:&chtotl()(c:autoload) (cond ((null c:chtotl)(load "auxedit"))(t (princ)))(c:chtotl))    ;�ܴ��ӳs��u��
-(defun c:&chtodl()(c:autoload) (cond ((null c:chtodl)(load "auxedit"))(t (princ)))(c:chtodl))    ;�ܴ���u��
-(defun c:&chtopl()(c:autoload) (cond ((null c:chtopl)(load "auxedit"))(t (princ)))(c:chtopl))    ;�ܴ����Q�u��
-(defun c:&chtohl()(c:autoload) (cond ((null c:chtohl)(load "auxedit"))(t (princ)))(c:chtohl))    ;�ܴ��孱�u��
-(defun c:&1CHAM()(c:autoload) (cond ((null c:1CHAM)(load "auxedit"))(t (princ)))(c:1CHAM))    ;�O�d�@��ɨ�
-(defun c:&1FILL()(c:autoload) (cond ((null c:1FILL)(load "auxedit"))(t (princ)))(c:1FILL))    ;�O�d�@��ꨤ
-(defun c:&c&r&lt()(c:autoload) (cond ((null c:c&r&lt)(load "auxedit"))(t (princ)))(c:c&r&lt)) ;����,���ഫ�u��
-(defun c:&c&r&la()(c:autoload) (cond ((null c:c&r&la)(load "auxedit"))(t (princ)))(c:c&r&la)) ;����,���ഫ�ϼh
-(defun c:&c&s()(c:autoload) (cond ((null c:c&s)(load "auxedit"))(t (princ)))(c:c&s))          ;�������Y����
-;;;���U�s��(�G)
-(defun c:&bshaft()(c:autoload) (cond ((null c:bshaft)(load "auxedit"))(t (princ)))(C:bshaft))         ;�I�_�b
-(defun c:&sheetbrk()(c:autoload) (cond ((null c:sheetbrk)(load "auxdraw"))(t (princ))) (c:sheetbrk))  ;�z���I�_�u
-(defun c:&mbreak()(c:autoload)   (cond ((null c:mbreak)(load "auxdraw1"))(t (princ))) (c:mbreak))     ;�s����I�I�_
-(defun c:&mbrl()(c:autoload)     (cond ((null c:mbrl)(load "auxdraw1"))(t (princ))) (c:mbrl))         ;�s��I�_��e�I
-(defun c:&cirhi()(c:autoload)    (cond ((null c:cirhi)(load "auxdraw1"))(t (princ))) (c:cirhi))       ;��γQ�e���B��
-(defun c:&1hid()(c:autoload)     (cond ((null c:1hid)(load "auxdraw1"))(t (princ))) (c:1hid))         ;�u�q�Q�e���B��
-(defun c:&ext()(c:autoload)      (cond ((null c:ext)(load "auxdraw1"))(t (princ))) (c:ext))           ;�����u�q
-(defun c:&aoff()(c:autoload)     (cond ((null c:aoff)(load "auxedit"))(t (princ))) (c:aoff))          ;OFFSET�ܴ��u��
-(defun c:&offl()(c:autoload)     (cond ((null c:offl)(load "auxedit"))(t (princ))) (c:offl))          ;OFFSET�ܴ��ϼh
-;;;���U�s��(�T)
-(defun c:&cir_enLg()(c:autoload)     (cond ((null c:c:cir_enLg)(load "cir_enLg"))(t (princ))) (c:cir_enLg))       ;��Χ�����j
-(defun c:&rec_enLg()(c:autoload)     (cond ((null c:c:rec_enLg)(load "rec_enLg"))(t (princ))) (c:rec_enLg))       ;�x�Χ�����j
-(defun c:&hkring1()(c:autoload)      (cond ((null c:hkring1)(load "auxedit"))(t (princ))) (c:hkring1))            ;������(�ե�)
-(defun c:&hkring2()(c:autoload)      (cond ((null c:hkring2)(load "auxedit"))(t (princ))) (c:hkring2))            ;������(�b��)
-;;��v�u
-(defun c:&pul()(c:autoload)      (cond ((null c:pul)(load "projline"))(t (princ)))(c:pul))                ;�����v�u
-(defun c:&pur()(c:autoload)      (cond ((null c:pur)(load "projline"))(t (princ)))(c:pur))                ;�����v�u
-(defun c:&pdl()(c:autoload)      (cond ((null c:pdl)(load "projline"))(t (princ)))(c:pdl))                ;�����v�u
-(defun c:&pdr()(c:autoload)      (cond ((null c:pdr)(load "projline"))(t (princ)))(c:pdr))                ;�����v�u
-(defun c:&delproj()(c:autoload)  (cond ((null c:delproj)(load "projline"))(t (princ)))(c:delproj))        ;������v�u
-(defun c:&hline()(c:autoload)    (cond ((null c:hline)(load "projline"))(t (princ)))(c:hline))            ;������v�u
-(defun c:&vline()(c:autoload)    (cond ((null c:vline)(load "projline"))(t (princ)))(c:vline))            ;������v�u
-(defun c:&hvline()(c:autoload)   (cond ((null c:hvline)(load "projline"))(t (princ)))(c:hvline))          ;�Q�r��v�u
-(defun c:&tline()(c:autoload)    (cond ((null c:tline)(load "projline"))(t (princ)))(c:tline))            ;���ק�v�u
-(defun c:&ptline()(c:autoload)   (cond ((null c:ptline)(load "projline"))(t (princ)))(c:ptline))          ;�P�u�����v�u
-(defun c:&vtline()(c:autoload)   (cond ((null c:vtline)(load "projline"))(t (princ)))(c:vtline))          ;�P�u������v�u
-(defun c:&angline()(c:autoload)  (cond ((null c:angline)(load "projline"))(t (princ)))(c:angline))        ;���N���ק�v�u
-(defun c:&ofpjline()(c:autoload) (cond ((null c:ofpjline)(load "projline"))(t (princ)))(c:ofpjline))      ;������v�u
-;;���U�е��@
-(defun c:&rectdim()(c:autoload)    (cond ((null c:rectdim)(load "auxdim"))(t (princ)))(c:rectdim))        ;����е��Ÿ�
-(defun c:&facedim1()(c:autoload)   (cond ((null c:rectdim)(load "auxdim"))(t (princ)))(c:facedim1))       ;���е��Ÿ�
-(defun c:&facedim2()(c:autoload)   (cond ((null c:rectdim)(load "auxdim"))(t (princ)))(c:facedim2))       ;���е��Ÿ�
-(defun c:&refdim()(c:autoload)     (cond ((null c:autodim)(load "auxdim"))(t (princ)))(c:refdim))         ;�ѦҼе��Ÿ�
-(defun c:&diadim()(c:autoload)     (cond ((null c:autodim)(load "auxdim"))(t (princ)))(c:diadim))         ;���|�е��Ÿ�
-(defun c:&autodia()(c:autoload)    (cond ((null c:autodim)(load "auxdim"))(t (princ)))(c:autodia))        ;���|�е�
-(defun c:&rtdim()(c:autoload)      (cond ((null c:autodim)(load "auxdim"))(t (princ)))(c:rt_dim))         ;�٭�
-(defun c:&con_dim()(c:autoload)    (cond ((null c:con_dim)(load "auxdim"))(t (princ)))(c:con_dim))        ;�o�s��е�
-(defun c:&wedding1()(c:autoload)    (cond ((null c:wedding)(load "auxdim"))(t (princ)))(wedding 1))       ;�亲��
-(defun c:&wedding2()(c:autoload)    (cond ((null c:wedding)(load "auxdim"))(t (princ)))(wedding 2))       ;���亲��
-(defun c:&chg_dim()(c:autoload)    (cond ((null c:chg_dim)(load "auxdim"))(t (princ)))(c:chg_dim))        ; ��(�����)
-(defun c:&d-tol()(c:autoload)      (cond ((null c:chg_dim)(load "auxdim"))(t (princ)))(c:d-tol))          ; �е�(������)
-(defun c:&no_tol()(c:autoload)     (cond ((null c:no_tol)(load "auxdim"))(t (princ)))(c:no_tol))          ;���t�е�
-(defun c:&toler_hole()(c:autoload) (cond ((null c:toler_hole)(load "auxdim"))(t (princ)))(c:toler_hole))  ;�դؤo�e�\�t
-(defun c:&toler_sha()(c:autoload)  (cond ((null c:toler_sha)(load "auxdim"))(t (princ)))(c:toler_sha))    ;�b�ؤo�e�\�t
-;;���U�е��G
-(defun c:&mdim()(c:autoload)        (cond ((null c:mdim)(load "mdim"))(t (princ)))(c:mdim))               ;���I�е��k
-(defun c:&newmo()(c:autoload)       (cond ((null c:newmo)(load "auxdraw1"))(t (princ)))(c:newmo))         ;�]�w x,y �s���I
-(defun c:&wcood1()(c:autoload)      (cond ((null c:wcood)(load "auxdraw1"))(t (princ)))(c:wcood 1))       ;�g�X�y��x,y
-(defun c:&wcood3()(c:autoload)      (cond ((null c:wcood)(load "auxdraw1"))(t (princ)))(c:wcood 3))       ;�g�X�y��(x,y)
-(defun c:&lexplode()(c:autoload)    (cond ((null c:lexplode)(load "auxdim"))(t (princ)))(c:lexplode))     ;�ؤo�z���^��h
-(defun c:&autolead()(c:autoload)    (cond ((null c:autolead)(load "auxdim"))(t (princ)))(c:autolead))     ;�޽u�a��w(����)
-(defun c:&autolead2()(c:autoload)   (cond ((null c:autolead2)(load "auxdim"))(t (princ)))(c:autolead2))   ;�޽u�a��w(����)
-(defun c:&dimcham()(c:autoload)     (cond ((null c:dimcham)(load "auxdim"))(t (princ)))(c:dimcham))       ;45�׭˨��е�
-(defun c:&dimcham2()(c:autoload)     (cond ((null c:dimcham)(load "auxdim"))(t (princ)))(c:dimcham2))     ;45�׭˨��е�
-(defun c:&cring_auxdim()(c:autoload)  (cond ((null c:dimcham)(load "auxdim"))(t (princ)))(c:cring_auxdim));�����е�
-(defun c:&keydim()(c:autoload)        (cond ((null c:keydim)(load "auxdim"))(t (princ)))(c:keydim))       ;�����y�е�
-;;�X�X���t�е�
-(defun c:&dimgeo()(c:autoload) (cond ((null c:dimgeo)(load "auxdim"))(t (princ)))(c:dimgeo))               ;�X�󤽮t�е�
-(defun c:&dimgeo_base()(c:autoload) (cond ((null c:dimgeo_base)(load "auxdim"))(t (princ)))(c:dimgeo_base));�X�󤽮t�е�(��ǭ�)
-(defun c:&bsline()(c:autoload)  (cond ((null c:bsline)(load "auxdim"))(t (princ)))(c:bsline))              ;��ǽu
-(defun c:&lealine()(c:autoload) (cond ((null c:lealine)(load "auxdim"))(t (princ)))(c:lealine))            ;���޽u
-(defun c:&dim-gbase()(c:autoload)(cond ((null c:dim-gbase)(load "auxdim"))(t (princ)))(c:dim-gbase))       ;��ǭ�
-;;�զX�ϻP���ƲM��
-(defun c:&AUTObom90()(c:autoload)  (cond ((null bom)(load "bom"))(t (princ))) (AUTObom 90))   ;�V�W�w�Z(�s��)
-(defun c:&AUTObom270()(c:autoload) (cond ((null bom)(load "bom"))(t (princ))) (AUTObom 270))  ;�V�U�w�Z(�s��)
-(defun c:&AUTObom0()(c:autoload)   (cond ((null bom)(load "bom"))(t (princ))) (AUTObom 0))    ;�V���w�Z(�s��)
-(defun c:&AUTObom180()(c:autoload) (cond ((null bom)(load "bom"))(t (princ))) (AUTObom 180))  ;�V�k�w�Z(�s��)
-(defun c:&keyin_bom90()(c:autoload)     (cond ((null bom)(load "bom"))(t (princ)))(keyin_bom 90))   ;�V�W�w�Z(���s��)
-(defun c:&keyin_bom270()(c:autoload)    (cond ((null bom)(load "bom"))(t (princ)))(keyin_bom 270))  ;�V�U�w�Z(���s��)
-(defun c:&keyin_bom0()(c:autoload)      (cond ((null bom)(load "bom"))(t (princ)))(keyin_bom 0))    ;�V���w�Z(���s��)
-(defun c:&keyin_bom180()(c:autoload)    (cond ((null bom)(load "bom"))(t (princ)))(keyin_bom 180))  ;�V�k�w�Z(���s��)
-(defun c:&autobom1()(c:autoload)        (cond ((null bom)(load "bom"))(t (princ)))(autobom 1))      ;�ۥѩԥX(�s��)
-(defun c:&keyin_bom1()(c:autoload)      (cond ((null bom)(load "bom"))(t (princ)))(keyin_bom 1))    ;�ۥѩԥX(���s��)
-(defun c:&addbomtxt_xdata()(c:autoload) (cond ((null bom)(load "bom"))(t (princ)))(C:addbomtxt_xdata))   ;�s����вy
-(defun c:&drawbom_list()(c:autoload)    (cond ((null bom)(load "bom"))(t (princ)))(C:drawbom_list))      ;���ͧ��Ƴ�ϧ�
-(defun c:&delbom_list()(c:autoload)     (cond ((null bom)(load "bom"))(t (princ)))(C:delbom_list))       ;�R�����Ƴ�ϧ�
-(defun c:&bomlist_txt()(c:autoload)     (cond ((null bom)(load "bom"))(t (princ)))(C:bomlist_txt))       ;���ͧ��Ƴ��r��
-(defun c:&out()(c:autoload)             (cond ((null bom)(load "bom"))(t (princ)))(c:out))               ;�զX�ϩ�X�s���
-(defun c:&in()(c:autoload)              (cond ((null bom)(load "bom"))(t (princ)))(c:in))                ;�s��ϲո˦��զX��
-;;;;;;�Ѹ�T�I���ͫ��вy
-(defun c:&AUTObom90_info()(c:autoload)  (cond ((null manaball)(load "manaball"))(t (princ))) (AUTObom_info 90))   ;�V�W�w�Z(�s��)
-(defun c:&AUTObom270_info()(c:autoload) (cond ((null manaball)(load "manaball"))(t (princ))) (AUTObom_info 270))  ;�V�U�w�Z(�s��)
-(defun c:&AUTObom0_info()(c:autoload)   (cond ((null manaball)(load "manaball"))(t (princ))) (AUTObom_info 0))    ;�V���w�Z(�s��)
-(defun c:&AUTObom180_info()(c:autoload) (cond ((null manaball)(load "manaball"))(t (princ))) (AUTObom_info 180))  ;�V�k�w�Z(�s��)
-(defun c:&keyin_bom90_info()(c:autoload)     (cond ((null manaball)(load "manaball"))(t (princ)))(keyin_bom_info 90))   ;�V�W�w�Z(���s��)
-(defun c:&keyin_bom270_info()(c:autoload)    (cond ((null manaball)(load "manaball"))(t (princ)))(keyin_bom_info 270))  ;�V�U�w�Z(���s��)
-(defun c:&keyin_bom0_info()(c:autoload)      (cond ((null manaball)(load "manaball"))(t (princ)))(keyin_bom_info 0))    ;�V���w�Z(���s��)
-(defun c:&keyin_bom180_info()(c:autoload)    (cond ((null manaball)(load "manaball"))(t (princ)))(keyin_bom_info 180))  ;�V�k�w�Z(���s��)
-(defun c:&autobom1_info()(c:autoload)        (cond ((null manaball)(load "manaball"))(t (princ)))(autobom_info 1))          ;�ۥѩԥX(�s��)
-(defun c:&keyin_bom1_info()(c:autoload)      (cond ((null manaball)(load "manaball"))(t (princ)))(keyin_bom_info 1))      ;�ۥѩԥX(���s��)
-;;�ϼh����
-(defun c:&pshow()(c:autoload)      (cond ((null c:pshow)(load "LAYER"))(t (princ)))(c:pshow))                 ;��ܼh
-(defun c:&phide()(c:autoload)      (cond ((null c:phide)(load "LAYER"))(t (princ)))(c:phide))                 ;���üh
-(defun c:&BSHOW()(c:autoload)      (cond ((null c:BSHOW)(load "LAYER"))(t (princ)))(c:BSHOW))                 ;��� BLOCK
-(defun c:&ashow()(c:autoload)      (cond ((null c:ASHOW)(load "LAYER"))(t (princ)))(c:ASHOW))                 ;�������
-(defun c:&THRAW()(c:autoload)      (cond ((null c:THRAW)(load "LAYER"))(t (princ)))(c:THRAW))                 ;�ѭ�h
-(defun c:&PFREE()(c:autoload)      (cond ((null c:PFREE)(load "LAYER"))(t (princ)))(c:PFREE))                 ;�N��h
-(defun c:&LTCONTROL()(c:autoload)  (cond ((null c:LTCONTROL)(load "LAYER"))(t (princ)))(c:LTCONTROL))         ;�u����ܱ���
-(defun c:&mlc()(c:autoload)        (cond ((null c:MLC)(load "LAYER"))(t (princ)))(c:MLC))                     ;�s�@�h
-(defun c:&AUTOMLC()(c:autoload)    (cond ((null c:AUTOMLC)(load "LAYER"))(t (princ)))(c:AUTOMLC))             ;�إ߳s��ϼh
-(defun c:&CHLAY()(c:autoload)      (cond ((null c:CHLAY)(load "LAYER"))(t (princ)))(c:CHLAY))                 ;���ܼh
-(defun c:&CHto_clayer()(c:autoload)(cond ((null c:CHto_clayer)(load "LAYER"))(t (princ)))(c:CHto_clayer))     ;�ܴ��Ϥ���ثe�h
-(defun c:&DLAY()(c:autoload)       (cond ((null c:DLAY)(load "LAYER"))(t (princ)))(c:DLAY))                   ;�R���h
-(defun c:&SLAY()(c:autoload)       (cond ((null c:SLAY)(load "LAYER"))(t (princ)))(c:SLAY))                   ;���w�ثe�h
-(defun c:&LCONTROL()(c:autoload)   (cond ((null c:LCONTROL)(load "LAYER"))(t (princ)))(c:LCONTROL))           ;��J�h�W�H����ϼh
-(defun c:&SLTYPE()(c:autoload)     (cond ((null c:SLTYPE)(load "LAYER"))(t (princ)))(c:SLTYPE))               ;�u�����
-(defun c:&SPART()(c:autoload)      (cond ((null c:SPART)(load "LAYER"))(t (princ)))(c:SPART))                 ;�h�����
-(defun c:RS()(c:autoload)      (cond ((null c:ASHOW)(load "LAYER"))(t (princ)))(c:ASHOW))                 ;�������
+(defun c:&chtobyl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ)))(c:chtobyl))    ;變換成BYLAYER線性
+(defun c:&chtobylk()(c:autoload) (cond ((null c:chtobylk)(load "auxedit"))(t (princ)))(c:chtobylk)) ;變換成BYBLOCK線性
+(defun c:&chtosl()(c:autoload) (cond ((null c:chtosl)(load "auxedit"))(t (princ)))(c:chtosl))    ;變換粗連續線性
+(defun c:&chtocl()(c:autoload) (cond ((null c:chtocl)(load "auxedit"))(t (princ)))(c:chtocl))    ;變換標準中心線性
+(defun c:&chtocl2()(c:autoload) (cond ((null c:chtocl2)(load "auxedit"))(t (princ)))(c:chtocl2)) ;變換短中心線性
+(defun c:&chtotl()(c:autoload) (cond ((null c:chtotl)(load "auxedit"))(t (princ)))(c:chtotl))    ;變換細連續線性
+(defun c:&chtodl()(c:autoload) (cond ((null c:chtodl)(load "auxedit"))(t (princ)))(c:chtodl))    ;變換虛線性
+(defun c:&chtopl()(c:autoload) (cond ((null c:chtopl)(load "auxedit"))(t (princ)))(c:chtopl))    ;變換假想線性
+(defun c:&chtohl()(c:autoload) (cond ((null c:chtohl)(load "auxedit"))(t (princ)))(c:chtohl))    ;變換剖面線性
+(defun c:&1CHAM()(c:autoload) (cond ((null c:1CHAM)(load "auxedit"))(t (princ)))(c:1CHAM))    ;保留一邊導角
+(defun c:&1FILL()(c:autoload) (cond ((null c:1FILL)(load "auxedit"))(t (princ)))(c:1FILL))    ;保留一邊圓角
+(defun c:&c&r&lt()(c:autoload) (cond ((null c:c&r&lt)(load "auxedit"))(t (princ)))(c:c&r&lt)) ;拷貝,旋轉換線性
+(defun c:&c&r&la()(c:autoload) (cond ((null c:c&r&la)(load "auxedit"))(t (princ)))(c:c&r&la)) ;拷貝,旋轉換圖層
+(defun c:&c&s()(c:autoload) (cond ((null c:c&s)(load "auxedit"))(t (princ)))(c:c&s))          ;拷貝並縮放比例
+;;;輔助編輯(二)
+(defun c:&bshaft()(c:autoload) (cond ((null c:bshaft)(load "auxedit"))(t (princ)))(C:bshaft))         ;截斷軸
+(defun c:&sheetbrk()(c:autoload) (cond ((null c:sheetbrk)(load "auxdraw"))(t (princ))) (c:sheetbrk))  ;鈑金截斷線
+(defun c:&mbreak()(c:autoload)   (cond ((null c:mbreak)(load "auxdraw1"))(t (princ))) (c:mbreak))     ;連續原點截斷
+(defun c:&mbrl()(c:autoload)     (cond ((null c:mbrl)(load "auxdraw1"))(t (princ))) (c:mbrl))         ;連續截斷交叉點
+(defun c:&cirhi()(c:autoload)    (cond ((null c:cirhi)(load "auxdraw1"))(t (princ))) (c:cirhi))       ;圓形被前景遮住
+(defun c:&1hid()(c:autoload)     (cond ((null c:1hid)(load "auxdraw1"))(t (princ))) (c:1hid))         ;線段被前景遮住
+(defun c:&ext()(c:autoload)      (cond ((null c:ext)(load "auxdraw1"))(t (princ))) (c:ext))           ;延伸線段
+(defun c:&aoff()(c:autoload)     (cond ((null c:aoff)(load "auxedit"))(t (princ))) (c:aoff))          ;OFFSET變換線型
+(defun c:&offl()(c:autoload)     (cond ((null c:offl)(load "auxedit"))(t (princ))) (c:offl))          ;OFFSET變換圖層
+;;;輔助編輯(三)
+(defun c:&cir_enLg()(c:autoload)     (cond ((null c:c:cir_enLg)(load "cir_enLg"))(t (princ))) (c:cir_enLg))       ;圓形局部放大
+(defun c:&rec_enLg()(c:autoload)     (cond ((null c:c:rec_enLg)(load "rec_enLg"))(t (princ))) (c:rec_enLg))       ;矩形局部放大
+(defun c:&hkring1()(c:autoload)      (cond ((null c:hkring1)(load "auxedit"))(t (princ))) (c:hkring1))            ;扣環槽(孔用)
+(defun c:&hkring2()(c:autoload)      (cond ((null c:hkring2)(load "auxedit"))(t (princ))) (c:hkring2))            ;扣環槽(軸用)
+;;投影線
+(defun c:&pul()(c:autoload)      (cond ((null c:pul)(load "projline"))(t (princ)))(c:pul))                ;旋轉投影線
+(defun c:&pur()(c:autoload)      (cond ((null c:pur)(load "projline"))(t (princ)))(c:pur))                ;旋轉投影線
+(defun c:&pdl()(c:autoload)      (cond ((null c:pdl)(load "projline"))(t (princ)))(c:pdl))                ;旋轉投影線
+(defun c:&pdr()(c:autoload)      (cond ((null c:pdr)(load "projline"))(t (princ)))(c:pdr))                ;旋轉投影線
+(defun c:&delproj()(c:autoload)  (cond ((null c:delproj)(load "projline"))(t (princ)))(c:delproj))        ;消除投影線
+(defun c:&hline()(c:autoload)    (cond ((null c:hline)(load "projline"))(t (princ)))(c:hline))            ;水平投影線
+(defun c:&vline()(c:autoload)    (cond ((null c:vline)(load "projline"))(t (princ)))(c:vline))            ;垂直投影線
+(defun c:&hvline()(c:autoload)   (cond ((null c:hvline)(load "projline"))(t (princ)))(c:hvline))          ;十字投影線
+(defun c:&tline()(c:autoload)    (cond ((null c:tline)(load "projline"))(t (princ)))(c:tline))            ;角度投影線
+(defun c:&ptline()(c:autoload)   (cond ((null c:ptline)(load "projline"))(t (princ)))(c:ptline))          ;與線平行投影線
+(defun c:&vtline()(c:autoload)   (cond ((null c:vtline)(load "projline"))(t (princ)))(c:vtline))          ;與線垂直投影線
+(defun c:&angline()(c:autoload)  (cond ((null c:angline)(load "projline"))(t (princ)))(c:angline))        ;任意角度投影線
+(defun c:&ofpjline()(c:autoload) (cond ((null c:ofpjline)(load "projline"))(t (princ)))(c:ofpjline))      ;偏移投影線
+;;輔助標註一
+(defun c:&rectdim()(c:autoload)    (cond ((null c:rectdim)(load "auxdim"))(t (princ)))(c:rectdim))        ;方體標註符號
+(defun c:&facedim1()(c:autoload)   (cond ((null c:rectdim)(load "auxdim"))(t (princ)))(c:facedim1))       ;面標註符號
+(defun c:&facedim2()(c:autoload)   (cond ((null c:rectdim)(load "auxdim"))(t (princ)))(c:facedim2))       ;面標註符號
+(defun c:&refdim()(c:autoload)     (cond ((null c:autodim)(load "auxdim"))(t (princ)))(c:refdim))         ;參考標註符號
+(defun c:&diadim()(c:autoload)     (cond ((null c:autodim)(load "auxdim"))(t (princ)))(c:diadim))         ;直徑標註符號
+(defun c:&autodia()(c:autoload)    (cond ((null c:autodim)(load "auxdim"))(t (princ)))(c:autodia))        ;直徑標註
+(defun c:&rtdim()(c:autoload)      (cond ((null c:autodim)(load "auxdim"))(t (princ)))(c:rt_dim))         ;還原
+(defun c:&con_dim()(c:autoload)    (cond ((null c:con_dim)(load "auxdim"))(t (princ)))(c:con_dim))        ;寸連續標註
+(defun c:&wedding1()(c:autoload)    (cond ((null c:wedding)(load "auxdim"))(t (princ)))(wedding 1))       ;邊熔接
+(defun c:&wedding2()(c:autoload)    (cond ((null c:wedding)(load "auxdim"))(t (princ)))(wedding 2))       ;對邊熔接
+(defun c:&chg_dim()(c:autoload)    (cond ((null c:chg_dim)(load "auxdim"))(t (princ)))(c:chg_dim))        ; 註(整體性)
+(defun c:&d-tol()(c:autoload)      (cond ((null c:chg_dim)(load "auxdim"))(t (princ)))(c:d-tol))          ; 標註(分離性)
+(defun c:&no_tol()(c:autoload)     (cond ((null c:no_tol)(load "auxdim"))(t (princ)))(c:no_tol))          ;公差標註
+(defun c:&toler_hole()(c:autoload) (cond ((null c:toler_hole)(load "auxdim"))(t (princ)))(c:toler_hole))  ;孔尺寸容許差
+(defun c:&toler_sha()(c:autoload)  (cond ((null c:toler_sha)(load "auxdim"))(t (princ)))(c:toler_sha))    ;軸尺寸容許差
+;;輔助標註二
+(defun c:&mdim()(c:autoload)        (cond ((null c:mdim)(load "mdim"))(t (princ)))(c:mdim))               ;原點標註法
+(defun c:&newmo()(c:autoload)       (cond ((null c:newmo)(load "auxdraw1"))(t (princ)))(c:newmo))         ;設定 x,y 新原點
+(defun c:&wcood1()(c:autoload)      (cond ((null c:wcood)(load "auxdraw1"))(t (princ)))(c:wcood 1))       ;寫出座標x,y
+(defun c:&wcood3()(c:autoload)      (cond ((null c:wcood)(load "auxdraw1"))(t (princ)))(c:wcood 3))       ;寫出座標(x,y)
+(defun c:&lexplode()(c:autoload)    (cond ((null c:lexplode)(load "auxdim"))(t (princ)))(c:lexplode))     ;尺寸爆炸回原層
+(defun c:&autolead()(c:autoload)    (cond ((null c:autolead)(load "auxdim"))(t (princ)))(c:autolead))     ;引線帶辭庫(分離)
+(defun c:&autolead2()(c:autoload)   (cond ((null c:autolead2)(load "auxdim"))(t (princ)))(c:autolead2))   ;引線帶辭庫(整體)
+(defun c:&dimcham()(c:autoload)     (cond ((null c:dimcham)(load "auxdim"))(t (princ)))(c:dimcham))       ;45度倒角標註
+(defun c:&dimcham2()(c:autoload)     (cond ((null c:dimcham)(load "auxdim"))(t (princ)))(c:dimcham2))     ;45度倒角標註
+(defun c:&cring_auxdim()(c:autoload)  (cond ((null c:dimcham)(load "auxdim"))(t (princ)))(c:cring_auxdim));扣環標註
+(defun c:&keydim()(c:autoload)        (cond ((null c:keydim)(load "auxdim"))(t (princ)))(c:keydim))       ;鍵槽鍵座標註
+;;幾合公差標註
+(defun c:&dimgeo()(c:autoload) (cond ((null c:dimgeo)(load "auxdim"))(t (princ)))(c:dimgeo))               ;幾何公差標註
+(defun c:&dimgeo_base()(c:autoload) (cond ((null c:dimgeo_base)(load "auxdim"))(t (princ)))(c:dimgeo_base));幾何公差標註(基準面)
+(defun c:&bsline()(c:autoload)  (cond ((null c:bsline)(load "auxdim"))(t (princ)))(c:bsline))              ;基準線
+(defun c:&lealine()(c:autoload) (cond ((null c:lealine)(load "auxdim"))(t (princ)))(c:lealine))            ;指引線
+(defun c:&dim-gbase()(c:autoload)(cond ((null c:dim-gbase)(load "auxdim"))(t (princ)))(c:dim-gbase))       ;基準面
+;;組合圖與材料清單
+(defun c:&AUTObom90()(c:autoload)  (cond ((null bom)(load "bom"))(t (princ))) (AUTObom 90))   ;向上定距(連續號)
+(defun c:&AUTObom270()(c:autoload) (cond ((null bom)(load "bom"))(t (princ))) (AUTObom 270))  ;向下定距(連續號)
+(defun c:&AUTObom0()(c:autoload)   (cond ((null bom)(load "bom"))(t (princ))) (AUTObom 0))    ;向左定距(連續號)
+(defun c:&AUTObom180()(c:autoload) (cond ((null bom)(load "bom"))(t (princ))) (AUTObom 180))  ;向右定距(連續號)
+(defun c:&keyin_bom90()(c:autoload)     (cond ((null bom)(load "bom"))(t (princ)))(keyin_bom 90))   ;向上定距(不連續號)
+(defun c:&keyin_bom270()(c:autoload)    (cond ((null bom)(load "bom"))(t (princ)))(keyin_bom 270))  ;向下定距(不連續號)
+(defun c:&keyin_bom0()(c:autoload)      (cond ((null bom)(load "bom"))(t (princ)))(keyin_bom 0))    ;向左定距(不連續號)
+(defun c:&keyin_bom180()(c:autoload)    (cond ((null bom)(load "bom"))(t (princ)))(keyin_bom 180))  ;向右定距(不連續號)
+(defun c:&autobom1()(c:autoload)        (cond ((null bom)(load "bom"))(t (princ)))(autobom 1))      ;自由拉出(連續號)
+(defun c:&keyin_bom1()(c:autoload)      (cond ((null bom)(load "bom"))(t (princ)))(keyin_bom 1))    ;自由拉出(不連續號)
+(defun c:&addbomtxt_xdata()(c:autoload) (cond ((null bom)(load "bom"))(t (princ)))(C:addbomtxt_xdata))   ;編輯指標球
+(defun c:&drawbom_list()(c:autoload)    (cond ((null bom)(load "bom"))(t (princ)))(C:drawbom_list))      ;產生材料單圖形
+(defun c:&delbom_list()(c:autoload)     (cond ((null bom)(load "bom"))(t (princ)))(C:delbom_list))       ;刪除材料單圖形
+(defun c:&bomlist_txt()(c:autoload)     (cond ((null bom)(load "bom"))(t (princ)))(C:bomlist_txt))       ;產生材料單文字檔
+(defun c:&out()(c:autoload)             (cond ((null bom)(load "bom"))(t (princ)))(c:out))               ;組合圖拆出零件圖
+(defun c:&in()(c:autoload)              (cond ((null bom)(load "bom"))(t (princ)))(c:in))                ;零件圖組裝成組合圖
+;;;;;;由資訊點產生指標球
+(defun c:&AUTObom90_info()(c:autoload)  (cond ((null manaball)(load "manaball"))(t (princ))) (AUTObom_info 90))   ;向上定距(連續號)
+(defun c:&AUTObom270_info()(c:autoload) (cond ((null manaball)(load "manaball"))(t (princ))) (AUTObom_info 270))  ;向下定距(連續號)
+(defun c:&AUTObom0_info()(c:autoload)   (cond ((null manaball)(load "manaball"))(t (princ))) (AUTObom_info 0))    ;向左定距(連續號)
+(defun c:&AUTObom180_info()(c:autoload) (cond ((null manaball)(load "manaball"))(t (princ))) (AUTObom_info 180))  ;向右定距(連續號)
+(defun c:&keyin_bom90_info()(c:autoload)     (cond ((null manaball)(load "manaball"))(t (princ)))(keyin_bom_info 90))   ;向上定距(不連續號)
+(defun c:&keyin_bom270_info()(c:autoload)    (cond ((null manaball)(load "manaball"))(t (princ)))(keyin_bom_info 270))  ;向下定距(不連續號)
+(defun c:&keyin_bom0_info()(c:autoload)      (cond ((null manaball)(load "manaball"))(t (princ)))(keyin_bom_info 0))    ;向左定距(不連續號)
+(defun c:&keyin_bom180_info()(c:autoload)    (cond ((null manaball)(load "manaball"))(t (princ)))(keyin_bom_info 180))  ;向右定距(不連續號)
+(defun c:&autobom1_info()(c:autoload)        (cond ((null manaball)(load "manaball"))(t (princ)))(autobom_info 1))          ;自由拉出(連續號)
+(defun c:&keyin_bom1_info()(c:autoload)      (cond ((null manaball)(load "manaball"))(t (princ)))(keyin_bom_info 1))      ;自由拉出(不連續號)
+;;圖層控制
+(defun c:&pshow()(c:autoload)      (cond ((null c:pshow)(load "LAYER"))(t (princ)))(c:pshow))                 ;顯示層
+(defun c:&phide()(c:autoload)      (cond ((null c:phide)(load "LAYER"))(t (princ)))(c:phide))                 ;隱藏層
+(defun c:&BSHOW()(c:autoload)      (cond ((null c:BSHOW)(load "LAYER"))(t (princ)))(c:BSHOW))                 ;顯示 BLOCK
+(defun c:&ashow()(c:autoload)      (cond ((null c:ASHOW)(load "LAYER"))(t (princ)))(c:ASHOW))                 ;全部顯示
+(defun c:&THRAW()(c:autoload)      (cond ((null c:THRAW)(load "LAYER"))(t (princ)))(c:THRAW))                 ;解凍層
+(defun c:&PFREE()(c:autoload)      (cond ((null c:PFREE)(load "LAYER"))(t (princ)))(c:PFREE))                 ;冷凍層
+(defun c:&LTCONTROL()(c:autoload)  (cond ((null c:LTCONTROL)(load "LAYER"))(t (princ)))(c:LTCONTROL))         ;線型顯示控制
+(defun c:&mlc()(c:autoload)        (cond ((null c:MLC)(load "LAYER"))(t (princ)))(c:MLC))                     ;製作層
+(defun c:&AUTOMLC()(c:autoload)    (cond ((null c:AUTOMLC)(load "LAYER"))(t (princ)))(c:AUTOMLC))             ;建立連續圖層
+(defun c:&CHLAY()(c:autoload)      (cond ((null c:CHLAY)(load "LAYER"))(t (princ)))(c:CHLAY))                 ;改變層
+(defun c:&CHto_clayer()(c:autoload)(cond ((null c:CHto_clayer)(load "LAYER"))(t (princ)))(c:CHto_clayer))     ;變換圖元到目前層
+(defun c:&DLAY()(c:autoload)       (cond ((null c:DLAY)(load "LAYER"))(t (princ)))(c:DLAY))                   ;刪除層
+(defun c:&SLAY()(c:autoload)       (cond ((null c:SLAY)(load "LAYER"))(t (princ)))(c:SLAY))                   ;指定目前層
+(defun c:&LCONTROL()(c:autoload)   (cond ((null c:LCONTROL)(load "LAYER"))(t (princ)))(c:LCONTROL))           ;輸入層名以控制圖層
+(defun c:&SLTYPE()(c:autoload)     (cond ((null c:SLTYPE)(load "LAYER"))(t (princ)))(c:SLTYPE))               ;線色顯示
+(defun c:&SPART()(c:autoload)      (cond ((null c:SPART)(load "LAYER"))(t (princ)))(c:SPART))                 ;層色顯示
+(defun c:RS()(c:autoload)      (cond ((null c:ASHOW)(load "LAYER"))(t (princ)))(c:ASHOW))                 ;全部顯示
 (defun c:LS()(c:autoload)      (cond ((null c:pshow)(load "LAYER"))(t (princ)))(c:pshow))
-;;��Ƭd��
+;;資料查詢
 (defun c:&ironsize1()(c:autoload)  (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(ironsize 1))
 (defun c:&ironsize2()(c:autoload)  (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(ironsize 2))
 (defun c:&carqury2()(c:autoload)   (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(carqury 2))
-(defun c:&ironsize3()(c:autoload)  (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(ironsize 3))  ;�¥տ��޳W��
-(defun c:&ironsize4()(c:autoload)  (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(ironsize 4))  ;�տ��޳W��
-(defun c:&funcc()(c:autoload)      (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(c:funcc))     ;�q�p��k
-(defun c:&ironsize5()(c:autoload)  (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(ironsize 5))  ;�O
-(defun c:&ironsize6()(c:autoload)  (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(ironsize 6))  ;���K
-(defun c:&ironsize7()(c:autoload)  (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(ironsize 7))  ;�T���K
-(defun c:&carqury1()(c:autoload)   (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(carqury 1))   ;�o��
-(defun c:&e-len()(c:autoload)      (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(c:e-len))     ;�^�����
-(defun c:&d-2p()(c:autoload)       (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(c:d-2p))      ;�^��Z��
-(defun c:&arclen()(c:autoload)     (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(c:arclen))    ;��
-;;��ѻP����
-(defun c:&SLOT4()(c:autoload) (cond ((null c:SLOT4)(load "DRAWMECH"))(t (princ)))(c:SLOT4)) ;������
-(defun c:&SLOT1()(c:autoload) (cond ((null c:SLOT4)(load "DRAWMECH"))(t (princ)))(c:SLOT1)) ;������
-(defun c:&SLOT2()(c:autoload) (cond ((null c:SLOT4)(load "DRAWMECH"))(t (princ)))(c:SLOT2)) ;������
-(defun c:&SLOT5()(c:autoload) (cond ((null c:SLOT4)(load "DRAWMECH"))(t (princ)))(c:SLOT5)) ;������
-(defun c:&SLOT3()(c:autoload) (cond ((null c:SLOT4)(load "DRAWMECH"))(t (princ)))(c:SLOT3)) ;�b����
-(defun c:&lc()(c:autoload) (cond ((null c:SLOT4)(load "DRAWMECH"))(t (princ)))(c:lc))       ;�b������
-(defun c:&keyway_1()(c:autoload) (cond ((null c:keyway_1)(load "auxdraw"))(t (princ)))(c:keyway_1))    ;����,�e��ѻP��y
-(defun c:&keyway_2()(c:autoload) (cond ((null c:keyway_1)(load "auxdraw"))(t (princ)))(c:keyway_2))    ;�L��,�e��ѻP��y
-(defun c:&drill5()(c:autoload) (cond ((null c:keyway_1)(load "auxdraw"))(t (princ)))(c:drill5))        ;�p��
-(defun c:&drill4()(c:autoload) (cond ((null c:keyway_1)(load "auxdraw"))(t (princ)))(c:drill4))        ;�q
-(defun c:&thrill()(c:autoload) (cond ((null c:keyway_1)(load "auxdraw"))(t (princ)))(c:thrill))        ;���
-(defun c:&thRILl2()(c:autoload) (cond ((null c:keyway_1)(load "auxdraw"))(t (princ)))(c:thRILl2))      ;���(�q��)
-(defun c:&thrill3()(c:autoload) (cond ((null c:keyway_1)(load "auxdraw"))(t (princ)))(c:thrill3))      ;�I��������
-(defun c:&thrill4()(c:autoload) (cond ((null c:keyway_1)(load "auxdraw"))(t (princ)))(C:thrill4))      ;����������
-(defun c:&pipscrew()(c:autoload) (cond ((null c:keyway_1)(load "auxdraw"))(t (princ)))(C:pipscrew))    ;��������",
-;;�����~��
+(defun c:&ironsize3()(c:autoload)  (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(ironsize 3))  ;黑白鋼管規格
+(defun c:&ironsize4()(c:autoload)  (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(ironsize 4))  ;白鋼管規格
+(defun c:&funcc()(c:autoload)      (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(c:funcc))     ;量計算法
+(defun c:&ironsize5()(c:autoload)  (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(ironsize 5))  ;板
+(defun c:&ironsize6()(c:autoload)  (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(ironsize 6))  ;角鐵
+(defun c:&ironsize7()(c:autoload)  (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(ironsize 7))  ;三角鐵
+(defun c:&carqury1()(c:autoload)   (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(carqury 1))   ;寸表
+(defun c:&e-len()(c:autoload)      (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(c:e-len))     ;英制長度
+(defun c:&d-2p()(c:autoload)       (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(c:d-2p))      ;英制距離
+(defun c:&arclen()(c:autoload)     (cond ((null c:ironsize)(load "aux-qury"))(t (princ)))(c:arclen))    ;詢
+;;鍵槽與螺紋
+(defun c:&SLOT4()(c:autoload) (cond ((null c:SLOT4)(load "DRAWMECH"))(t (princ)))(c:SLOT4)) ;雙圓鍵
+(defun c:&SLOT1()(c:autoload) (cond ((null c:SLOT4)(load "DRAWMECH"))(t (princ)))(c:SLOT1)) ;雙圓鍵
+(defun c:&SLOT2()(c:autoload) (cond ((null c:SLOT4)(load "DRAWMECH"))(t (princ)))(c:SLOT2)) ;雙圓鍵
+(defun c:&SLOT5()(c:autoload) (cond ((null c:SLOT4)(load "DRAWMECH"))(t (princ)))(c:SLOT5)) ;雙圓鍵
+(defun c:&SLOT3()(c:autoload) (cond ((null c:SLOT4)(load "DRAWMECH"))(t (princ)))(c:SLOT3)) ;半圓鍵
+(defun c:&lc()(c:autoload) (cond ((null c:SLOT4)(load "DRAWMECH"))(t (princ)))(c:lc))       ;軸銑雙邊
+(defun c:&keyway_1()(c:autoload) (cond ((null c:keyway_1)(load "auxdraw"))(t (princ)))(c:keyway_1))    ;有圓,畫鍵槽與鍵座
+(defun c:&keyway_2()(c:autoload) (cond ((null c:keyway_1)(load "auxdraw"))(t (princ)))(c:keyway_2))    ;無圓,畫鍵槽與鍵座
+(defun c:&drill5()(c:autoload) (cond ((null c:keyway_1)(load "auxdraw"))(t (princ)))(c:drill5))        ;鑽孔
+(defun c:&drill4()(c:autoload) (cond ((null c:keyway_1)(load "auxdraw"))(t (princ)))(c:drill4))        ;通
+(defun c:&thrill()(c:autoload) (cond ((null c:keyway_1)(load "auxdraw"))(t (princ)))(c:thrill))        ;攻牙
+(defun c:&thRILl2()(c:autoload) (cond ((null c:keyway_1)(load "auxdraw"))(t (princ)))(c:thRILl2))      ;攻牙(通孔)
+(defun c:&thrill3()(c:autoload) (cond ((null c:keyway_1)(load "auxdraw"))(t (princ)))(c:thrill3))      ;沉窩螺絲孔
+(defun c:&thrill4()(c:autoload) (cond ((null c:keyway_1)(load "auxdraw"))(t (princ)))(C:thrill4))      ;推拔螺絲孔
+(defun c:&pipscrew()(c:autoload) (cond ((null c:keyway_1)(load "auxdraw"))(t (princ)))(C:pipscrew))    ;管螺絲孔",
+;;螺紋外牙
 (defun c:&Screwline()(c:autoload) (cond ((null c:Screwline)(load "scrwline"))(t (princ)))(c:Screwline))
-;;���զX 
+;;次組合 
 (defun c:&subsys()    (c:autoload)(cond ((null c:subsys)    (load "s_asmset"))(t (princ)))(c:subsys))
 (defun c:&sub_on_off()(c:autoload)(cond ((null c:sub_on_off)(load "s_asmset"))(t (princ)))(c:sub_on_off))
 (defun c:&sub_remove()(c:autoload)(cond ((null c:sub_remove)(load "s_asmset"))(t (princ)))(c:sub_remove))
 (defun c:&part_cr()   (c:autoload)(cond ((null c:part_cr)   (load "s_asmset"))(t (princ)))(c:part_cr))
 (defun c:&part_del()  (c:autoload)(cond ((null c:part_del)  (load "s_asmset"))(t (princ)))(c:part_del))
-;;�b���;�
-(defun c:&ho1()(c:autoload) (cond ((null c:ho1)(load "auxdraw1"))(t (princ)))(C:ho1))   ;�b�孱
-(defun c:&ho2()(c:autoload) (cond ((null c:ho2)(load "auxdraw1"))(t (princ)))(C:ho2))   ;�b�孱
-(defun c:&ho()(c:autoload)  (cond ((null c:ho)(load "auxdraw1"))(t (princ)))(C:ho))     ;�b�~��
-(defun c:&sha()(c:autoload) (cond ((null c:sha)(load "auxdraw1"))(t (princ)))(C:sha))   ;�b�~��
+;;軸產生器
+(defun c:&ho1()(c:autoload) (cond ((null c:ho1)(load "auxdraw1"))(t (princ)))(C:ho1))   ;軸剖面
+(defun c:&ho2()(c:autoload) (cond ((null c:ho2)(load "auxdraw1"))(t (princ)))(C:ho2))   ;軸剖面
+(defun c:&ho()(c:autoload)  (cond ((null c:ho)(load "auxdraw1"))(t (princ)))(C:ho))     ;軸外形
+(defun c:&sha()(c:autoload) (cond ((null c:sha)(load "auxdraw1"))(t (princ)))(C:sha))   ;軸外形
 
-;;��w�P�p���(��ƦW�٧��ɻݤ@�P��� sheetset.lsp �����W��)
-(defun c:&useword()(c:autoload) (cond ((null c:useword)(load "wordlib1"))(t (princ)))(c:useword))       ;�ϥ���w
-(defun c:&creatword()(c:autoload) (cond ((null c:creatword)(load "wordlib1"))(t (princ)))(c:creatword)) ;��w�إ�
+;;辭庫與計算機(函數名稱更改時需一同更改 sheetset.lsp 中之名稱)
+(defun c:&useword()(c:autoload) (cond ((null c:useword)(load "wordlib1"))(t (princ)))(c:useword))       ;使用辭庫
+(defun c:&creatword()(c:autoload) (cond ((null c:creatword)(load "wordlib1"))(t (princ)))(c:creatword)) ;辭庫建立
 
-;;;[�զX�Ͼ�X�\��]
-(defun c:&moveparts() (c:autoload)(cond ((null c:moveparts)(load "assembly"))(t (princ)))(c:moveparts)) ;[���ʹs��]
-(defun c:&copyparts() (c:autoload)(cond ((null c:copyparts)(load "assembly"))(t (princ)))(c:copyparts)) ;[�ƻs�s��]
-(defun c:&delparts()  (c:autoload)(cond ((null c:delparts)(load "assembly"))(t (princ)))(c:delparts))   ;[�R���s��]
-(defun c:&roteparts() (c:autoload)(cond ((null c:roteparts)(load "assembly"))(t (princ)))(c:roteparts)) ;[����s��]
-(defun c:&mirparts()  (c:autoload)(cond ((null c:mirparts)(load "assembly"))(t (princ)))(c:mirparts))   ;[��g�s��]
+;;;[組合圖整合功能]
+(defun c:&moveparts() (c:autoload)(cond ((null c:moveparts)(load "assembly"))(t (princ)))(c:moveparts)) ;[移動零件]
+(defun c:&copyparts() (c:autoload)(cond ((null c:copyparts)(load "assembly"))(t (princ)))(c:copyparts)) ;[複製零件]
+(defun c:&delparts()  (c:autoload)(cond ((null c:delparts)(load "assembly"))(t (princ)))(c:delparts))   ;[刪除零件]
+(defun c:&roteparts() (c:autoload)(cond ((null c:roteparts)(load "assembly"))(t (princ)))(c:roteparts)) ;[旋轉零件]
+(defun c:&mirparts()  (c:autoload)(cond ((null c:mirparts)(load "assembly"))(t (princ)))(c:mirparts))   ;[鏡射零件]
 
-;;��Ϯةw���
-(defun c:&resetting()(c:autoload)(if (null c:resetting)(load "shscal"))(C:resetting)) ;���]���
-(defun c:&ch_sheet()(c:autoload)(load "shscal")(ch_sheet 1)) ;�󴫹Ϯ�
-(defun c:&SCAl()(c:autoload) (cond ((null c:scal)(load "aux-qury"))(t (princ)))(C:SCAL)) ;��Ҭd��
+;;放圖框定比例
+(defun c:&resetting()(c:autoload)(if (null c:resetting)(load "shscal"))(C:resetting)) ;重設比例
+(defun c:&ch_sheet()(c:autoload)(load "shscal")(ch_sheet 1)) ;更換圖框
+(defun c:&SCAl()(c:autoload) (cond ((null c:scal)(load "aux-qury"))(t (princ)))(C:SCAL)) ;比例查詢
 
-;;���I�Ҧ���
-(defun c:&setosmode()(c:autoload) (cond ((null c:setosmode)(load "dfsystem"))(t (princ)))(C:setosmode)) ;�]�w���I�Ҧ���
+;;鎖點模式組
+(defun c:&setosmode()(c:autoload) (cond ((null c:setosmode)(load "dfsystem"))(t (princ)))(C:setosmode)) ;設定鎖點模式組
 
-;;���Ƶ��c
-(defun c:&makepart()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:makepart))                    ;�إ߷s�s��ϼh
-(defun c:&edit_bomp()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:edit_bomp))                  ;�ק��T�I���
-(defun c:&addbomp()(c:autoload) (cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ))) (c:addbomp))                    ;�إ߸�T�I(�ۤv��J���)
-(defun c:&addbom_olddwg()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ))) (c:addbom_olddwg))         ;�إ߸�T�I(���X�ϭ��W��r)
-(defun c:&addbomp_sheet()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:addbomp_sheet))          ;�إ߸�T�I(�ѹϮ��ݩʵѨ�)
-(defun c:&move_bomp()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ))) (c:move_bomp))                 ;���ʸ�T�I(��ܹϤ�)
-(defun c:&on_bomlayer()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:on_bomlayer))              ;���}��T�I
-(defun c:&off_bomlayer()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ))) (c:off_bomlayer))           ;������T�I
-(defun c:&automakepart()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ))) (c:automakepart))           ;�۰ʫإ߸�T�I
-(defun c:&layer_how()(c:autoload)  (cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ))) (c:layer_how))               ;�p��s��
-(defun c:&creat_bmpf()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ))) (c:creat_bmpf))               ;�إ߼v����
-(defun c:&sortcol()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:sortcol))                      ;���Ƶ��c�P���ɺ޲z�����춶��
-(defun c:&bomtree1()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(bomtree 1))                     ;���ƲM��ץX��Excel
-(defun c:&bomtree0()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(bomtree 0))                     ;���Ƶ��c��
-(defun c:&chlacol()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:chlacol))                      ;��ܹs��s�C��
+;;物料結構
+(defun c:&makepart()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:makepart))                    ;建立新零件圖層
+(defun c:&edit_bomp()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:edit_bomp))                  ;修改資訊點資料
+(defun c:&addbomp()(c:autoload) (cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ))) (c:addbomp))                    ;建立資訊點(自己輸入資料)
+(defun c:&addbom_olddwg()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ))) (c:addbom_olddwg))         ;建立資訊點(取出圖面上文字)
+(defun c:&addbomp_sheet()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:addbomp_sheet))          ;建立資訊點(由圖框屬性萃取)
+(defun c:&move_bomp()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ))) (c:move_bomp))                 ;移動資訊點(選擇圖元)
+(defun c:&on_bomlayer()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:on_bomlayer))              ;打開資訊點
+(defun c:&off_bomlayer()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ))) (c:off_bomlayer))           ;關閉資訊點
+(defun c:&automakepart()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ))) (c:automakepart))           ;自動建立資訊點
+(defun c:&layer_how()(c:autoload)  (cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ))) (c:layer_how))               ;計算零件
+(defun c:&creat_bmpf()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ))) (c:creat_bmpf))               ;建立影像檔
+(defun c:&sortcol()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:sortcol))                      ;物料結構與圖檔管理顯示欄位順序
+(defun c:&bomtree1()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(bomtree 1))                     ;物料清單匯出到Excel
+(defun c:&bomtree0()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(bomtree 0))                     ;物料結構樹
+(defun c:&chlacol()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:chlacol))                      ;選擇零件新顏色
 (defun c:&dwg_libpath()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:defdwg_path)(load "dfsystem"))(t (princ)))(c:dwg_libpath))
 
-(defun c:&AUTOB()(c:autoload)  (cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:AUTOB))             ;���۰ʫ��вy
-(defun c:&pdmwblk()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:pdmwblk))         ;�إߤ��� BLOCK
-(defun c:&defbom()(c:autoload) (cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:df_bomdbase)(load "dfsystem"))(t (princ)))(c:defbom))           ;�w�q���ƲM�����
-(defun c:&bomlist()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:bomlist))          ;���͹ϭ����ƲM��
-(defun c:&mana_database()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:mana_database)(load "manapart"))(t (princ)))(c:mana_database))          ;�޲z���Ƹ�Ʈw
-(defun c:&df_bomdbase()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:df_bomdbase)(load "dfsystem"))(t (princ)))(c:df_bomdbase))          ;���Ƹ�Ʈw���w�q
-(defun c:&fieldset()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:fieldset)(load "dfsystem"))(t (princ)))(c:fieldset))          ;���ɺ޲z��Ʈw���]�w��
+(defun c:&AUTOB()(c:autoload)  (cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:AUTOB))             ;全自動指標球
+(defun c:&pdmwblk()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:pdmwblk))         ;建立公用 BLOCK
+(defun c:&defbom()(c:autoload) (cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:df_bomdbase)(load "dfsystem"))(t (princ)))(c:defbom))           ;定義材料清單欄位
+(defun c:&bomlist()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:makepart)(load "manapart"))(t (princ)))(c:bomlist))          ;產生圖面材料清單
+(defun c:&mana_database()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:mana_database)(load "manapart"))(t (princ)))(c:mana_database))          ;管理物料資料庫
+(defun c:&df_bomdbase()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:df_bomdbase)(load "dfsystem"))(t (princ)))(c:df_bomdbase))          ;物料資料庫欄位定義
+(defun c:&fieldset()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:fieldset)(load "dfsystem"))(t (princ)))(c:fieldset))          ;圖檔管理資料庫欄位設定值
 
 ;;Power Offset
 (defun c:offtosl() (c:autoload) (cond ((null aoff_to_which_ltype)(load "auxedit2"))(t (princ))) (aoff_to_which_ltype sys_CONT_ltype sys_CONT_ltypecol) )
@@ -408,159 +408,159 @@
 (defun c:&chtodim() (c:autoload) (cond ((null aoff_to_which_ltype)(load "auxedit2")) (t (princ)) ) (ch_to_objlayer sys_dim_layer) )
 (defun c:&chtotxt() (c:autoload) (cond ((null aoff_to_which_ltype)(load "auxedit2"))(t (princ)))(ch_to_objlayer sys_text_layer))
 ;;=============================================================================================
-;;���������
-(defun c:&isomenu1()(c:autoload)(c:isomenu1))  ;�����Ϣ�
-(defun c:&isomenu2()(c:autoload)(c:isomenu2))  ;�����Ϣ�
-(defun c:&isoblk1()(c:autoload)(c:isoblk1))    ;�z���ϹϮw�޲z
-(defun c:&isoblk2()(c:autoload)(c:isoblk2))    ;�ϥ��z���ϹϮw
+;;等角立體圖
+(defun c:&isomenu1()(c:autoload)(c:isomenu1))  ;等角圖１
+(defun c:&isomenu2()(c:autoload)(c:isomenu2))  ;等角圖２
+(defun c:&isoblk1()(c:autoload)(c:isoblk1))    ;爆炸圖圖庫管理
+(defun c:&isoblk2()(c:autoload)(c:isoblk2))    ;使用爆炸圖圖庫
 
 ;;=============================================================================================
-;;���񤸥� [�P]
-(defun c:&openpin()(c:autoload)(c:openpin))  ;�}�f�P
-(defun c:&sprpin()(c:autoload)(c:sprpin))    ;�u®�P
-(defun c:&parpinA()(c:autoload)(c:parpinA))  ;A ������P
-(defun c:&parpinB()(c:autoload)(c:parpinB))  ;B ������P
-(defun c:&tappin()(c:autoload)(c:tappin))    ;���޾P
+;;機械元件 [銷]
+(defun c:&openpin()(c:autoload)(c:openpin))  ;開口銷
+(defun c:&sprpin()(c:autoload)(c:sprpin))    ;彈簧銷
+(defun c:&parpinA()(c:autoload)(c:parpinA))  ;A 型平行銷
+(defun c:&parpinB()(c:autoload)(c:parpinB))  ;B 型平行銷
+(defun c:&tappin()(c:autoload)(c:tappin))    ;推拔銷
 
-;;���񤸥� [��]
-(defun c:&parkey7()(c:autoload)(c:parkey7))  ;A �إb����
-(defun c:&parkey8()(c:autoload)(c:parkey8))  ;B �إb����
-(defun c:&parkey6()(c:autoload)(c:parkey6))  ;�a�Y����
-(defun c:&parkey5()(c:autoload)(c:parkey5))  ;������(����)
-(defun c:&parkey1()(c:autoload)(c:parkey1))  ;��������Y���
-(defun c:&parkey2()(c:autoload)(c:parkey2))  ;���������Y���
-(defun c:&parkey3()(c:autoload)(c:parkey3))  ;��������Y�y��
-(defun c:&parkey4()(c:autoload)(c:parkey4))  ;���������Y�y��
+;;機械元件 [鍵]
+(defun c:&parkey7()(c:autoload)(c:parkey7))  ;A 種半圓鍵
+(defun c:&parkey8()(c:autoload)(c:parkey8))  ;B 種半圓鍵
+(defun c:&parkey6()(c:autoload)(c:parkey6))  ;帶頭斜鍵
+(defun c:&parkey5()(c:autoload)(c:parkey5))  ;推拔鍵(斜鍵)
+(defun c:&parkey1()(c:autoload)(c:parkey1))  ;平行鍵單頭圓形
+(defun c:&parkey2()(c:autoload)(c:parkey2))  ;平行鍵雙頭圓形
+(defun c:&parkey3()(c:autoload)(c:parkey3))  ;平行鍵單頭尖形
+(defun c:&parkey4()(c:autoload)(c:parkey4))  ;平行鍵雙頭尖形
 
-;;���񤸥� [�o ��]
-(defun c:&soilseal()(c:autoload) (c:soilseal))   ;S �� �a�u®�󽦥~�P
-(defun c:&smoilseal()(c:autoload)(c:smoilseal))  ;SM�� �a�u®���ݥ~�P
-(defun c:&saoilseal()(c:autoload)(c:saoilseal))  ;SA�� �a�u®���զ�
-(defun c:&doilseal()(c:autoload) (c:doilseal))   ;D �� �a�u®�󽦥~�P������
-(defun c:&dmoilseal()(c:autoload)(c:dmoilseal))  ;DM�� �a�u®���ݥ~�P������
-(defun c:&daoilseal()(c:autoload)(c:daoilseal))  ;DA�� �a�u®���զ�������
-(defun c:&goilseal()(c:autoload) (c:goilseal))   ;G �� ���a�u®�󽦥~�P
-(defun c:&gmoilseal()(c:autoload)(c:gmoilseal))  ;GM�� ���a�u®���ݥ~�P
-(defun c:&gaoilseal()(c:autoload)(c:gaoilseal))  ;GA�� ���a�u®���զ�
+;;機械元件 [油 封]
+(defun c:&soilseal()(c:autoload) (c:soilseal))   ;S 型 帶彈簧橡膠外周
+(defun c:&smoilseal()(c:autoload)(c:smoilseal))  ;SM型 帶彈簧金屬外周
+(defun c:&saoilseal()(c:autoload)(c:saoilseal))  ;SA型 帶彈簧之組成
+(defun c:&doilseal()(c:autoload) (c:doilseal))   ;D 型 帶彈簧橡膠外周附防塵
+(defun c:&dmoilseal()(c:autoload)(c:dmoilseal))  ;DM型 帶彈簧金屬外周附防塵
+(defun c:&daoilseal()(c:autoload)(c:daoilseal))  ;DA型 帶彈簧之組成附防塵
+(defun c:&goilseal()(c:autoload) (c:goilseal))   ;G 型 未帶彈簧橡膠外周
+(defun c:&gmoilseal()(c:autoload)(c:gmoilseal))  ;GM型 未帶彈簧金屬外周
+(defun c:&gaoilseal()(c:autoload)(c:gaoilseal))  ;GA型 未帶彈簧之組成
 
-;;���񤸥� [�s�y�b�Ӳ�]
-(defun c:&UcF()(c:autoload)(c:UcF))    ;UCF��W�էΨ��Y�t��
-(defun c:&Ucpp()(c:autoload)(c:Ucpp))  ;UCP��W�էγs�y��
-(defun c:&Uct()(c:autoload)(c:Uct))    ;UCT�굩�էΦ��Y��
-(defun c:&Ukf()(c:autoload)(c:UkF))    ;UKF�׫פէΨ��Y�t��
-(defun c:&Ukp()(c:autoload)(c:Ukp))    ;UKP�׫פէγs�y��
-(defun c:&Ukt()(c:autoload)(c:Ukt))    ;UKT�׫פէΦ���
-(defun c:&UcFl()(c:autoload)(c:UcFl))  ;UCFL��W�էε٧ΥY�t��
-(defun c:&UkFl()(c:autoload)(c:UkFl))  ;UKFL�׫פէε٧ΥY�t��
-(defun c:&UcFc()(c:autoload)(c:UcFc))  ;UCFC��W�էήM�޶�Y�t��
-(defun c:&UkFc()(c:autoload)(c:UkFc))  ;UKFC ���ާΪ����ӱ��X��Y�t��
+;;機械元件 [連座軸承組]
+(defun c:&UcF()(c:autoload)(c:UcF))    ;UCF圓柱孔形角凸緣型
+(defun c:&Ucpp()(c:autoload)(c:Ucpp))  ;UCP圓柱孔形連座型
+(defun c:&Uct()(c:autoload)(c:Uct))    ;UCT圓筒孔形收縮形
+(defun c:&Ukf()(c:autoload)(c:UkF))    ;UKF斜度孔形角凸緣型
+(defun c:&Ukp()(c:autoload)(c:Ukp))    ;UKP斜度孔形連座型
+(defun c:&Ukt()(c:autoload)(c:Ukt))    ;UKT斜度孔形收緊型
+(defun c:&UcFl()(c:autoload)(c:UcFl))  ;UCFL圓柱孔形菱形凸緣型
+(defun c:&UkFl()(c:autoload)(c:UkFl))  ;UKFL斜度孔形菱形凸緣型
+(defun c:&UcFc()(c:autoload)(c:UcFc))  ;UCFC圓柱孔形套管圓凸緣型
+(defun c:&UkFc()(c:autoload)(c:UkFc))  ;UKFC 推拔形附插承接合圓凸緣型
 
-;;���񤸥�[�إq(�԰�)]
-(defun c:&cirwash1()(c:autoload)(c:cirwash1))    ;��Υ��԰�(�p��)
-(defun c:&recwash1()(c:autoload)(c:recwash1))    ;��Υ��԰�(�p��)
-(defun c:&recwash2()(c:autoload)(c:recwash2))    ;��Υ��԰�(�j��)
-(defun c:&spwasher()(c:autoload)(c:spwasher))    ;�u®�԰�
-;(defun c:&bearwash1()(c:autoload)(c:bearwash1))  ;���ޫ����u�ʶb�����U�ι԰�
-;(defun c:&bearwash2()(c:autoload)(c:bearwash2))  ;�s�ޫ����u�ʶb�����U�ι԰�
+;;機械元件[華司(墊圈)]
+(defun c:&cirwash1()(c:autoload)(c:cirwash1))    ;圓形平墊圈(小形)
+(defun c:&recwash1()(c:autoload)(c:recwash1))    ;方形平墊圈(小形)
+(defun c:&recwash2()(c:autoload)(c:recwash2))    ;方形平墊圈(大形)
+(defun c:&spwasher()(c:autoload)(c:spwasher))    ;彈簧墊圈
+;(defun c:&bearwash1()(c:autoload)(c:bearwash1))  ;直舌型式滾動軸承螺帽用墊圈
+;(defun c:&bearwash2()(c:autoload)(c:bearwash2))  ;彎舌型式滾動軸承螺帽用墊圈
 
-(defun c:&bearwash1()(c:autoload)(c:shnutwasher))  ;���ޫ����u�ʶb�����U�ι԰�
-(defun c:&bearwash2()(c:autoload)(c:shnutwasher2))  ;�s�ޫ����u�ʶb�����U�ι԰�
+(defun c:&bearwash1()(c:autoload)(c:shnutwasher))  ;直舌型式滾動軸承螺帽用墊圈
+(defun c:&bearwash2()(c:autoload)(c:shnutwasher2))  ;彎舌型式滾動軸承螺帽用墊圈
 
-;;���񤸥�[�����t�C]
-(defun c:&l_steel()(c:autoload)(c:l_steel))    ;L �ε��䨤��
-(defun c:&c_steel()(c:autoload)(c:c_steel))    ;��(C)����
-(defun c:&i_steel()(c:autoload)(c:i_steel))    ;I �ο�
-(defun c:&h_steel()(c:autoload)(c:h_steel))    ;H �ο�
-(defun c:&l_steel2()(c:autoload)(c:l_steel2))  ;����׿����䨤��
-(defun c:&l_steel3()(c:autoload)(c:l_steel3))  ;�����䨤��
-(defun c:&l_steel4()(c:autoload)(c:l_steel4))  ;�����䤣���p
-(defun c:&t_steel()(c:autoload)(c:t_steel))    ;T �ο�
+;;機械元件[型鋼系列]
+(defun c:&l_steel()(c:autoload)(c:l_steel))    ;L 形等邊角鋼
+(defun c:&c_steel()(c:autoload)(c:c_steel))    ;槽(C)型鋼
+(defun c:&i_steel()(c:autoload)(c:i_steel))    ;I 形鋼
+(defun c:&h_steel()(c:autoload)(c:h_steel))    ;H 形鋼
+(defun c:&l_steel2()(c:autoload)(c:l_steel2))  ;熱軋不銹鋼等邊角鋼
+(defun c:&l_steel3()(c:autoload)(c:l_steel3))  ;不等邊角鋼
+(defun c:&l_steel4()(c:autoload)(c:l_steel4))  ;不等邊不等厚
+(defun c:&t_steel()(c:autoload)(c:t_steel))    ;T 形鋼
 
-;;���񤸥�[���q����]
-(defun c:&SCsteel1()(c:autoload)(c:SCsteel1))    ;���ѧο�
-(defun c:&SNsteel()(c:autoload)(c:SNsteel))      ;�U�ο�
-(defun c:&SCsteel2()(c:autoload)(c:SCsteel2))    ;�B�ѧο�
-(defun c:&SLsteel()(c:autoload)(c:SLsteel))      ;������
-(defun c:&SZsteel1()(c:autoload)(c:SZsteel1))    ;�� Z �ο�
-(defun c:&SZsteel2()(c:autoload)(c:SZsteel2))    ;�B Z �ο�
+;;機械元件[輕量型鋼]
+(defun c:&SCsteel1()(c:autoload)(c:SCsteel1))    ;輕槽形鋼
+(defun c:&SNsteel()(c:autoload)(c:SNsteel))      ;帽形鋼
+(defun c:&SCsteel2()(c:autoload)(c:SCsteel2))    ;唇槽形鋼
+(defun c:&SLsteel()(c:autoload)(c:SLsteel))      ;輕角鋼
+(defun c:&SZsteel1()(c:autoload)(c:SZsteel1))    ;輕 Z 形鋼
+(defun c:&SZsteel2()(c:autoload)(c:SZsteel2))    ;唇 Z 形鋼
 
-;;���񤸥�[����P���U]
-(defun c:&Jbase()(c:autoload)(c:Jbase))                ;J����¦����
-(defun c:&lbase()(c:autoload)(c:lbase))                ;L����¦����
-(defun c:&lAbase()(c:autoload)(c:lAbase))              ;LA����¦����
-(defun c:&JAbase()(c:autoload)(c:JAbase))              ;JA����¦����
-(defun c:&sockhead()(c:autoload)(c:sockhead))          ;����������
-(defun c:&outsixp()(c:autoload)(c:outsixp))            ;���κݤ����Y����
-(defun c:&6screwendcp()(c:autoload)(c:6screwendcp))    ;��κݤ����Y����
-(defun c:&6sgefp()(c:autoload)(c:6sgefp))              ;���κݤ����Y����. �t�԰�
-(defun c:&6sgecp()(c:autoload)(c:6sgecp))              ;��κݤ����Y����. �t�԰�
-(defun c:&sqscwp()(c:autoload)(c:sqscwp))              ;���κݤ��Y����
-(defun c:&sqsecp()(c:autoload)(c:sqsecp))              ;��κݤ��Y����
-(defun c:&1sisefp()(c:autoload)(c:1sisefp))            ;���κݤ@�r�ѮI�Y����
-(defun c:&1sisecp()(c:autoload)(c:1sisecp))            ;��κݤ@�r�ѮI�Y����
-(defun c:&1siskefp()(c:autoload)(c:1siskefp))          ;���� . ���κݤ@�r�ѮI�Y����
-(defun c:&1siskecp()(c:autoload)(c:1siskecp))          ;���� . ��κݤ@�r�ѮI�Y����
-(defun c:&6f_nceap()(c:autoload)(c:6f_nceap))          ;��Ω��Ӻ� . ���W�Y�ݤ����Ӻ۩T�w����
-(defun c:&6f_ncetp()(c:autoload)(c:6f_ncetp))          ;��Ω��Ӻ� . �@�κ�  �����Ӻ۩T�w����
-(defun c:&6f_nceup()(c:autoload)(c:6f_nceup))          ;��Ω��Ӻ� . �M�κ�  �����Ӻ۩T�w����
-(defun c:&6f_ntefp()(c:autoload)(c:6f_ntefp))          ;���@���Ӻ� . ���κ�  �����Ӻ۩T�w����
-(defun c:&6f_nteap()(c:autoload)(c:6f_nteap))          ;���@���Ӻ� . ���W�Y�ݤ����Ӻ۩T�w����
-(defun c:&6f_ntetp()(c:autoload)(c:6f_ntetp))          ;���@���Ӻ� . �@�κ�  �����Ӻ۩T�w����
-(defun c:&6f_nteup()(c:autoload)(c:6f_nteup))          ;���@���Ӻ� . �M�κ�  �����Ӻ۩T�w����
-(defun c:&6f_ndeap()(c:autoload)(c:6f_ndeap))          ;���p���Ӻ� . ���W�Y�ݤ����Ӻ۩T�w����
-(defun c:&6f_ndetp()(c:autoload)(c:6f_ndetp))          ;���p���Ӻ� . �@�κ�  �����Ӻ۩T�w����
-(defun c:&6f_ndeup()(c:autoload)(c:6f_ndeup))          ;���p���Ӻ� . �M�κ�  �����Ӻ۩T�w����
-(defun c:&wing_1erp()(c:autoload)(c:wing_1erp))        ;1 �� . ���W���l������
-(defun c:&wing_1efp()(c:autoload)(c:wing_1efp))        ;1 �� . ���κ��l������
-(defun c:&wing_1ecp()(c:autoload)(c:wing_1ecp))        ;1 �� . ��κ��l������
-(defun c:&wing_2erp()(c:autoload)(c:wing_2erp))        ;2 �� . ���W���l������
-(defun c:&wing_2efp()(c:autoload)(c:wing_2efp))        ;2 �� . ���κ��l������
-(defun c:&wing_2ecp()(c:autoload)(c:wing_2ecp))        ;2 �� . ��κ��l������
-(defun c:&wing_3erp()(c:autoload)(c:wing_3erp))        ;3 �� . ���W���l������
-(defun c:&wing_3efp()(c:autoload)(c:wing_3efp))        ;3 �� . ���κ��l������
-(defun c:&wing_3ecp()(c:autoload)(c:wing_3ecp))        ;3 �� . ��κ��l������
-(defun c:&Lnkscrewp()(c:autoload)(c:Lnkscrewp))        ;�Ǳ�����
-(defun c:&skescrewp()(c:autoload)(c:skescrewp))        ;�V������
-(defun c:&eyeboltp()(c:autoload)(c:eyeboltp))          ;��������
-(defun c:&sockless()(c:autoload)(c:sockless))          ;�L�Y�T�w����
-(defun c:&fixsock()(c:autoload)(c:fixsock))            ;���ѩT�w����
-(defun c:&tscrew()(c:autoload)(c:tscrew))              ;���κݢ������
-(defun c:&tscrewcp()(c:autoload)(c:tscrewcp))          ;��κݢ������
-(defun c:&six-snut()(c:autoload)(c:six-snut))          ;�������U(�p)
-(defun c:&six-bnut()(c:autoload)(c:six-bnut))          ;�������U(�j)
-(defun c:&bearth()(c:autoload)(c:bearth))              ;�u�ʶb�ӥ����U
+;;機械元件[螺栓與螺帽]
+(defun c:&Jbase()(c:autoload)(c:Jbase))                ;J型基礎螺栓
+(defun c:&lbase()(c:autoload)(c:lbase))                ;L型基礎螺栓
+(defun c:&lAbase()(c:autoload)(c:lAbase))              ;LA型基礎螺栓
+(defun c:&JAbase()(c:autoload)(c:JAbase))              ;JA型基礎螺栓
+(defun c:&sockhead()(c:autoload)(c:sockhead))          ;內六角螺栓
+(defun c:&outsixp()(c:autoload)(c:outsixp))            ;平形端六角頭螺栓
+(defun c:&6screwendcp()(c:autoload)(c:6screwendcp))    ;圓形端六角頭螺栓
+(defun c:&6sgefp()(c:autoload)(c:6sgefp))              ;平形端六角頭螺栓. 含墊圈
+(defun c:&6sgecp()(c:autoload)(c:6sgecp))              ;圓形端六角頭螺栓. 含墊圈
+(defun c:&sqscwp()(c:autoload)(c:sqscwp))              ;平形端方頭螺栓
+(defun c:&sqsecp()(c:autoload)(c:sqsecp))              ;圓形端方頭螺栓
+(defun c:&1sisefp()(c:autoload)(c:1sisefp))            ;平形端一字槽埋頭螺栓
+(defun c:&1sisecp()(c:autoload)(c:1sisecp))            ;圓形端一字槽埋頭螺栓
+(defun c:&1siskefp()(c:autoload)(c:1siskefp))          ;有鍵 . 平形端一字槽埋頭螺栓
+(defun c:&1siskecp()(c:autoload)(c:1siskecp))          ;有鍵 . 圓形端一字槽埋頭螺栓
+(defun c:&6f_nceap()(c:autoload)(c:6f_nceap))          ;圓形底承窩 . 全柱頭端六角承窩固定螺栓
+(defun c:&6f_ncetp()(c:autoload)(c:6f_ncetp))          ;圓形底承窩 . 錐形端  六角承窩固定螺栓
+(defun c:&6f_nceup()(c:autoload)(c:6f_nceup))          ;圓形底承窩 . 杯形端  六角承窩固定螺栓
+(defun c:&6f_ntefp()(c:autoload)(c:6f_ntefp))          ;圓錐底承窩 . 平形端  六角承窩固定螺栓
+(defun c:&6f_nteap()(c:autoload)(c:6f_nteap))          ;圓錐底承窩 . 全柱頭端六角承窩固定螺栓
+(defun c:&6f_ntetp()(c:autoload)(c:6f_ntetp))          ;圓錐底承窩 . 錐形端  六角承窩固定螺栓
+(defun c:&6f_nteup()(c:autoload)(c:6f_nteup))          ;圓錐底承窩 . 杯形端  六角承窩固定螺栓
+(defun c:&6f_ndeap()(c:autoload)(c:6f_ndeap))          ;圓鑽底承窩 . 全柱頭端六角承窩固定螺栓
+(defun c:&6f_ndetp()(c:autoload)(c:6f_ndetp))          ;圓鑽底承窩 . 錐形端  六角承窩固定螺栓
+(defun c:&6f_ndeup()(c:autoload)(c:6f_ndeup))          ;圓鑽底承窩 . 杯形端  六角承窩固定螺栓
+(defun c:&wing_1erp()(c:autoload)(c:wing_1erp))        ;1 種 . 粗糙端翼形螺栓
+(defun c:&wing_1efp()(c:autoload)(c:wing_1efp))        ;1 種 . 平形端翼形螺栓
+(defun c:&wing_1ecp()(c:autoload)(c:wing_1ecp))        ;1 種 . 圓形端翼形螺栓
+(defun c:&wing_2erp()(c:autoload)(c:wing_2erp))        ;2 種 . 粗糙端翼形螺栓
+(defun c:&wing_2efp()(c:autoload)(c:wing_2efp))        ;2 種 . 平形端翼形螺栓
+(defun c:&wing_2ecp()(c:autoload)(c:wing_2ecp))        ;2 種 . 圓形端翼形螺栓
+(defun c:&wing_3erp()(c:autoload)(c:wing_3erp))        ;3 種 . 粗糙端翼形螺栓
+(defun c:&wing_3efp()(c:autoload)(c:wing_3efp))        ;3 種 . 平形端翼形螺栓
+(defun c:&wing_3ecp()(c:autoload)(c:wing_3ecp))        ;3 種 . 圓形端翼形螺栓
+(defun c:&Lnkscrewp()(c:autoload)(c:Lnkscrewp))        ;鉸接螺栓
+(defun c:&skescrewp()(c:autoload)(c:skescrewp))        ;敲擊螺栓
+(defun c:&eyeboltp()(c:autoload)(c:eyeboltp))          ;環首螺栓
+(defun c:&sockless()(c:autoload)(c:sockless))          ;無頭固定螺栓
+(defun c:&fixsock()(c:autoload)(c:fixsock))            ;有槽固定螺栓
+(defun c:&tscrew()(c:autoload)(c:tscrew))              ;平形端Ｔ形螺栓
+(defun c:&tscrewcp()(c:autoload)(c:tscrewcp))          ;圓形端Ｔ形螺栓
+(defun c:&six-snut()(c:autoload)(c:six-snut))          ;六角螺帽(小)
+(defun c:&six-bnut()(c:autoload)(c:six-bnut))          ;六角螺帽(大)
+(defun c:&bearth()(c:autoload)(c:bearth))              ;滾動軸承用螺帽
 
-;;���񤸥� [�b����]
-(defun c:&bear32x()(c:autoload)(c:bear32x))    ;���@�u�l�b��
-(defun c:&bear6x()(c:autoload)(c:bear6x))      ;�`�Ѻu�]�b��
-(defun c:&bear12x()(c:autoload)(c:bear12x))    ;�۰ʽդߺu�]�b��
-(defun c:&bear230x()(c:autoload)(c:bear230x))  ;�۰ʽդߺu�l�b��
+;;機械元件 [軸承類]
+(defun c:&bear32x()(c:autoload)(c:bear32x))    ;圓錐滾子軸承
+(defun c:&bear6x()(c:autoload)(c:bear6x))      ;深槽滾珠軸承
+(defun c:&bear12x()(c:autoload)(c:bear12x))    ;自動調心滾珠軸承
+(defun c:&bear230x()(c:autoload)(c:bear230x))  ;自動調心滾子軸承
 
-(defun c:&bear51x()(c:autoload)(c:bear51x))  ;��V����u�]�b��
-(defun c:&bear52x()(c:autoload)(c:bear52x))  ;���V����u�]�b��
-(defun c:&bear29x()(c:autoload)(c:bear29x))  ;�۰ʽդߤ���u�l�b��
-(defun c:&bear7x() (c:autoload)(c:bear7x))   ;��Ĳ���u�]�b��
-(defun c:&bear5x() (c:autoload)(c:bear5x))   ;���C�u�]�b��
-(defun c:&bearn2x()(c:autoload)(c:bearn2x))  ;���C�굩�u�l�b��
+(defun c:&bear51x()(c:autoload)(c:bear51x))  ;單向止推滾珠軸承
+(defun c:&bear52x()(c:autoload)(c:bear52x))  ;雙向止推滾珠軸承
+(defun c:&bear29x()(c:autoload)(c:bear29x))  ;自動調心止推滾子軸承
+(defun c:&bear7x() (c:autoload)(c:bear7x))   ;接觸角滾珠軸承
+(defun c:&bear5x() (c:autoload)(c:bear5x))   ;雙列滾珠軸承
+(defun c:&bearn2x()(c:autoload)(c:bearn2x))  ;雙列圓筒滾子軸承
 
-(defun c:&bearnxx()(c:autoload)(c:bearnxx))    ;�굩�u�l�b��
+(defun c:&bearnxx()(c:autoload)(c:bearnxx))    ;圓筒滾子軸承
 
-;;���񤸥� [����]
-(defun c:&shaftc()(c:autoload)(c:shaftc))  ;�b�� C ������
-(defun c:&holec()(c:autoload)(c:holec))    ;�ե� C ������
-(defun c:&shafte()(c:autoload)(c:shafte))  ;E ������
+;;機械元件 [扣環]
+(defun c:&shaftc()(c:autoload)(c:shaftc))  ;軸用 C 型扣環
+(defun c:&holec()(c:autoload)(c:holec))    ;孔用 C 型扣環
+(defun c:&shafte()(c:autoload)(c:shafte))  ;E 型扣環
 
-;;���񤸥� [���]
-(defun c:&b_sgear()(c:autoload)(c:b_sgear))  ;B ���쾦��
-(defun c:&5-1_gear()(c:autoload)(c:5-1_gear));������
-(defun c:&5-2_gear()(c:autoload)(c:5-2_gear));���۾���
-(defun c:&5-3_gear()(c:autoload)(c:5-3_gear));����
-(defun c:&5-4_gear()(c:autoload)(c:5-4_gear));�ʾ���
-(defun c:&5-5_gear()(c:autoload)(c:5-5_gear));����
-(defun c:&5-6_gear()(c:autoload)(c:5-6_gear));����
-(defun c:&5-7_gear()(c:autoload)(c:5-7_gear));�T���ֱa��
+;;機械元件 [鏈輪]
+(defun c:&b_sgear()(c:autoload)(c:b_sgear))  ;B 型鏈齒輪
+(defun c:&5-1_gear()(c:autoload)(c:5-1_gear));正齒輪
+(defun c:&5-2_gear()(c:autoload)(c:5-2_gear));螺旋齒輪
+(defun c:&5-3_gear()(c:autoload)(c:5-3_gear));齒條
+(defun c:&5-4_gear()(c:autoload)(c:5-4_gear));傘齒輪
+(defun c:&5-5_gear()(c:autoload)(c:5-5_gear));蝸桿
+(defun c:&5-6_gear()(c:autoload)(c:5-6_gear));蝸輪
+(defun c:&5-7_gear()(c:autoload)(c:5-7_gear));三角皮帶輪
 ;;=============================================================================================
-;;�t�Τ��w²�����O
+;;系統內定簡易指令
 (defun ch_lt_c(lty colr)
  (setq aa colr)
  (setq bb lty)
@@ -596,71 +596,71 @@
 (defun c:tll()(c:autoload)(c:&tl&)(command "script" (strcat powdesign_path "drawline"))(princ))
 (defun c:hll()(c:autoload)(c:&hl&)(command "script" (strcat powdesign_path "drawline"))(princ))
 ;;==============================
-;;;;�t�Τ��w�u��&�ϼh�Ƶ{��
-;;�ʳs��u
+;;;;系統內定線型&圖層副程式
+;;粗連續線
 (defun c:&sl&()(c:autoload)
   (loaddesigner)
  (setvar "cmdecho" 0)
  (ch_lt_c sys_CONT_ltype sys_CONT_ltypecol)
 ; (setvar "cmdecho" 1)
 )
-;;��u
+;;虛線
 (defun c:&dl&()(c:autoload)
   (loaddesigner)
  (setvar "cmdecho" 0)
  (ch_lt_c sys_dashed_ltype sys_dashed_ltypecol)
 ; (setvar "cmdecho" 1)
 )
-;;�u��u
+;;短虛線
 (defun c:&Sdl&()(c:autoload)
   (loaddesigner)
  (setvar "cmdecho" 0)
  (ch_lt_c sys_Sdashed_ltype sys_Sdashed_ltypecol)
 ; (setvar "cmdecho" 1)
 )
-;;���߽u
+;;中心線
 (defun c:&cl&()(c:autoload)
   (loaddesigner)
  (setvar "cmdecho" 0)
  (ch_lt_c sys_center_ltype sys_center_ltypecol)
 ; (setvar "cmdecho" 1)
 )
-;;�u���߽u
+;;短中心線
 (defun c:&scl&()(c:autoload)
   (loaddesigner)
  (setvar "cmdecho" 0)
  (ch_lt_c sys_stcenter_ltype sys_stcenter_ltypecol)
 ; (setvar "cmdecho" 1)
 )
-;;���Q�u
+;;假想線
 (defun c:&pl&()(c:autoload)
   (loaddesigner)
  (setvar "cmdecho" 0)
  (ch_lt_c sys_phantom_ltype  sys_phantom_ltypecol)
 ; (setvar "cmdecho" 1)
 )
-;;���Q�u
+;;假想線
 (defun c:&Spl&()(c:autoload)
   (loaddesigner)
  (setvar "cmdecho" 0)
  (ch_lt_c sys_Sphantom_ltype  sys_Sphantom_ltypecol)
 ; (setvar "cmdecho" 1)
 )
-;;�ӹ�u
+;;細實線
 (defun c:&tl&()(c:autoload)
   (loaddesigner)
  (setvar "cmdecho" 0)
  (ch_lt_c sys_CONT1_ltype sys_CONT1_ltypecol)
 ; (setvar "cmdecho" 1)
 )
-;;�孱�u
+;;剖面線
 (defun c:&hl&()(c:autoload)
   (loaddesigner)
  (setvar "cmdecho" 0)
  (ch_lt_c sys_hatch_ltype sys_hatch_ltypecol)
 ; (setvar "cmdecho" 1)
 )
-;;������s��~�μh
+;;切換到零件外形層
 (defun c:&0&()(c:autoload)
   (loaddesigner)
   (setvar "cmdecho" 0)
@@ -668,7 +668,7 @@
 ; (setvar "cmdecho" 1)
   (princ)
 )
-;;������ؤo�h
+;;切換到尺寸層
 (defun c:&d&()(c:autoload)
   (loaddesigner)
   (setvar "cmdecho" 0)
@@ -676,7 +676,7 @@
   (ch_lt_c "BYLAYER" "BYLAYER")
 ;  (setvar "cmdecho" 1)
 )
-;;�������r�h
+;;切換到文字層
 (defun c:&t&()(c:autoload)
   (loaddesigner)
   (setvar "cmdecho" 0)
@@ -684,14 +684,14 @@
   (ch_lt_c "BYLAYER" "BYLAYER")
 ; (setvar "cmdecho" 1)
 )
-;;������s��~�μh
+;;切換到零件外形層
 (defun c:&by&()(c:autoload)
   (loaddesigner)
   (setvar "cmdecho" 0)
   (ch_lt_c "BYLAYER" "BYLAYER")
 ; (setvar "cmdecho" 1)
 )
-;;�������v�u�h
+;;切換到投影線層
 (defun c:&p&()(c:autoload)
  (loaddesigner)
   (setvar "cmdecho" 0)
@@ -718,11 +718,11 @@
    ;; 已改：原用 dctcust（AutoCAD LT），改用 get_support_path（DraftSight）
    (setq OUT_LSPPATH (get_support_path))
    (setq osnapfile (strcat OUT_LSPPATH "osmode.ini"))
-   ;���psupport �ؿ��U�S���ӤH�ƪ� osmode.ini, �h�۰ʫإ߸���
+   ;假如support 目錄下沒有個人化的 osmode.ini, 則自動建立該檔
    (if (null (findfile osnapfile)) (wr_osmode_to_supp))
-   (setq list1 (read (getfile_val osnapfile "�Ĥ@�����I�Ҧ�")))
+   (setq list1 (read (getfile_val osnapfile "第一組鎖點模式")))
    (setvar "osmode" ($getosval list1))
-   (princ "\n�w�]�w���Ĥ@�����I�Ҧ�!")
+   (princ "\n已設定成第一組鎖點模式!")
    (princ)
 )
 (defun c:O2(/ list1)
@@ -730,11 +730,11 @@
    ;; 已改：原用 dctcust（AutoCAD LT），改用 get_support_path（DraftSight）
    (setq OUT_LSPPATH (get_support_path))
    (setq osnapfile (strcat OUT_LSPPATH "osmode.ini"))
-   ;���psupport �ؿ��U�S���ӤH�ƪ� osmode.ini, �h�۰ʫإ߸���
+   ;假如support 目錄下沒有個人化的 osmode.ini, 則自動建立該檔
    (if (null (findfile osnapfile)) (wr_osmode_to_supp))
-   (setq list1 (read (getfile_val osnapfile "�ĤG�����I�Ҧ�")))
+   (setq list1 (read (getfile_val osnapfile "第二組鎖點模式")))
    (setvar "osmode" ($getosval list1))
-   (princ "\n�w�]�w���ĤG�����I�Ҧ�!")
+   (princ "\n已設定成第二組鎖點模式!")
    (princ)
 )
 (defun c:O3(/ list1)
@@ -742,11 +742,11 @@
    ;; 已改：原用 dctcust（AutoCAD LT），改用 get_support_path（DraftSight）
    (setq OUT_LSPPATH (get_support_path))
    (setq osnapfile (strcat OUT_LSPPATH "osmode.ini"))
-   ;���psupport �ؿ��U�S���ӤH�ƪ� osmode.ini, �h�۰ʫإ߸���
+   ;假如support 目錄下沒有個人化的 osmode.ini, 則自動建立該檔
    (if (null (findfile osnapfile)) (wr_osmode_to_supp))
-   (setq list1 (read (getfile_val osnapfile "�ĤT�����I�Ҧ�")))
+   (setq list1 (read (getfile_val osnapfile "第三組鎖點模式")))
    (setvar "osmode" ($getosval list1))
-   (princ "\n�w�]�w���ĤT�����I�Ҧ�!")
+   (princ "\n已設定成第三組鎖點模式!")
    (princ)
 )
 (defun c:O4(/ list1)
@@ -754,11 +754,11 @@
    ;; 已改：原用 dctcust（AutoCAD LT），改用 get_support_path（DraftSight）
    (setq OUT_LSPPATH (get_support_path))
    (setq osnapfile (strcat OUT_LSPPATH "osmode.ini"))
-   ;���psupport �ؿ��U�S���ӤH�ƪ� osmode.ini, �h�۰ʫإ߸���
+   ;假如support 目錄下沒有個人化的 osmode.ini, 則自動建立該檔
    (if (null (findfile osnapfile)) (wr_osmode_to_supp))
-   (setq list1 (read (getfile_val osnapfile "�ĥ|�����I�Ҧ�")))
+   (setq list1 (read (getfile_val osnapfile "第四組鎖點模式")))
    (setvar "osmode" ($getosval list1))
-   (princ "\n�w�]�w���ĥ|�����I�Ҧ�!")
+   (princ "\n已設定成第四組鎖點模式!")
    (princ)
 )
 (defun c:O5(/ list1)
@@ -766,15 +766,15 @@
    ;; 已改：原用 dctcust（AutoCAD LT），改用 get_support_path（DraftSight）
    (setq OUT_LSPPATH (get_support_path))
    (setq osnapfile (strcat OUT_LSPPATH "osmode.ini"))
-   ;���psupport �ؿ��U�S���ӤH�ƪ� osmode.ini, �h�۰ʫإ߸���
+   ;假如support 目錄下沒有個人化的 osmode.ini, 則自動建立該檔
    (if (null (findfile osnapfile)) (wr_osmode_to_supp))
-   (setq list1 (read (getfile_val osnapfile "�Ĥ������I�Ҧ�")))
+   (setq list1 (read (getfile_val osnapfile "第五組鎖點模式")))
    (setvar "osmode" ($getosval list1))
-   (princ "\n�w�]�w���Ĥ������I�Ҧ�!")
+   (princ "\n已設定成第五組鎖點模式!")
    (princ)
 )
 (defun c:O6()(c:autoload) (setvar "osmode" 0)
-   (princ "\n�w�]�w���Ĥ������I�Ҧ�!")
+   (princ "\n已設定成第六組鎖點模式!")
 (princ))
 
 
@@ -795,7 +795,7 @@
 
 (princ)
 
-;;;�ϼh (BLOCK) ��
+;;;圖層 (BLOCK) 關
 (defun c:&creatblk()    (c:autoload)(cond ((null c:creatblk)    (load "creatblk"))(t (princ)))(c:creatblk))
 (defun c:&showblk()     (c:autoload)(cond ((null c:showblk)     (load "showblk"))(t (princ)))(c:showblk))
 (defun c:&s_allblk()     (c:autoload)(cond ((null c:s_allblk)     (load "s_allblk"))(t (princ)))(c:s_allblk))
