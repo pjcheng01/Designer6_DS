@@ -430,9 +430,9 @@ icacls C:\bompath.txt /setintegritylevel Medium
 
 ---
 
-## 7. ⚠ 發現：版本庫歷史中有明文資料庫密碼
+## 7. 版本庫歷史中的明文資料庫密碼（已決定不處理）
 
-階段 3 刪除 `CamproPdm.ini` 時發現的，**與瘦身本身無關，但需要您處理**。
+階段 3 刪除 `CamproPdm.ini` 時發現的，與瘦身本身無關。處置見下方。
 
 該檔內容包含：
 
@@ -449,25 +449,26 @@ ServerName=sr2
 它自 `a0c0ec6`（第一個 commit）就存在，任何人 clone 這個 repo
 或瀏覽該 commit 都看得到。
 
-### 要判斷的第一件事
+### ✅ 已決定（2026-09-14）：不重寫歷史
 
-`github.com/pjcheng01/Designer6_DS` 這個 repo 目前是 public 還是 private？
+使用者確認 **`github.com/pjcheng01/Designer6_DS` 是 private repo**，
+決定：**新的 commit 起移除該檔（已於 `8ef2594` 完成），已經進入歷史的部分保留原樣。**
 
-- **若是 public** — 應視為已外洩。即使 Oracle 主機 `sr2` 早已不存在，
-  `campro35638042` 這組密碼若在別處重複使用過，那些地方都要換掉。
-- **若是 private** — 風險低很多，但仍建議處理。
+理由是重寫歷史的代價（force-push、所有 commit 的 SHA 改變、已 clone 的人
+要重新 clone）不值得為一個 private repo 裡、指向早已不存在的 Oracle 主機
+`sr2` 的舊密碼付出。
 
-### 可選的處理方式
+**這是經過判斷的決定，不是疏漏。** 記在這裡是為了避免日後有人（或安全掃描
+工具）看到歷史裡的密碼又重提一次。
 
-| 做法 | 效果 | 代價 |
-|------|------|------|
-| 什麼都不做 | 密碼留在歷史 | 若 repo 為 public 則持續暴露 |
-| 改掉該帳號密碼 | 歷史中的字串失效 | 需要能存取該 Oracle 主機；若主機已不存在則無從改起 |
-| 用 `git filter-repo` 重寫歷史 | 從所有 commit 中抹除 | **需要 force-push，會改寫所有 commit 的 SHA**；已 clone 的人要重新 clone |
-| 把 repo 轉為 private | 阻止外部存取 | 歷史仍在，但只有您看得到 |
+殘留的風險範圍，僅供日後判斷時參考：
 
-**我沒有擅自處理**，因為重寫歷史是破壞性操作且需要 force-push，
-而這個環境沒有 GitHub 憑證。這是您的決定。
+- 有此 repo 存取權的人（協作者、日後新增的成員）都看得到 `a0c0ec6` 裡的內容
+- 若這個 repo 將來轉為 public，或內容被 fork／匯出到別處，密碼就會跟著出去
+- 若 `campro35638042` 這組字串曾在別的系統重複使用，那些系統不受本決定保護
+
+要重新評估時，當初列出的四個選項是：什麼都不做／改掉該帳號密碼／
+用 `git filter-repo` 重寫歷史／把 repo 轉為 private。
 
 另外掃過其餘 233 個文字檔，只有 `PDMsys.ini` 有 `UserName=sa`
 但 `Password=` 是空的，沒有其他外洩。
