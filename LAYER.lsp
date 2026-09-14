@@ -345,7 +345,17 @@
         (setq ent (entsel " "))
       )
     );progn
-  );if)
+  );if
+  ;; 2026-09-14：這個右括號關掉的是第 334 行的 (progn。
+  ;; 它原本緊接在「);if」後面，中間只有一個孤立的 CR 而不是完整換行，
+  ;; 所以算不算數要看直譯器把不把單獨的 CR 當行尾。若不當，它就落在
+  ;; ;if 這個註解裡面，(defun c:dlay 會一路吃到檔尾，它之後的 30 個
+  ;; 函式全部定義不出來——其中 12 個有分派點：&DLAY &SPART &SLTYPE
+  ;; &THRAW &PFREE &BSHOW &phide &pshow LS &LCONTROL &LTCONTROL
+  ;; &CHto_clayer。
+  ;; 成因是移除加密狗那一輪：原本的 (WHILE ... (SETQ FFF nil)) 改寫成
+  ;; (progn ...) 時，收尾括號前面的換行只寫了一半。原版檔案是平衡的。
+  )
   (setvar "cmdecho" 1)(princ)
 )
 
