@@ -111,18 +111,6 @@
 
 
 ;;============================================================================================
-(defun act_outlist(/ rtf data wr_outlist)
-;     (setq rtf (open (strcat POWdesign_data_path "dwgdata.txt") "r"))
-     (setq rtf (open (strcat POWdesign_path "dwgdata.txt") "r"))
-     (setq data (read-line rtf))
-     (setq wr_outlist '())
-     (while data
-        (setq wr_outlist (cons (substr data (1+ (get_word data ";"))) wr_outlist)      )
-        (setq data (read-line rtf))
-     );while
-     (close rtf)
-     (reverse wr_outlist)   ; ("料號" "品名" "機種" "#圖號" "製圖" "規格" "數量" "英文品名" "表面處理" "材質 " "說明")
-)
 
 ;(defun exeout(/ pdmdata ffcod cnum water_num qq data datalist)
 (defun exeout()
@@ -141,47 +129,19 @@
      (setq ddwg (substr (getvar "dwgname") 1 (- (get_word (getvar "dwgname") ".") 1)))
      (setq doc_file (open (strcat dwg_path ddwg ".doc") "w"))
 
-     (setq manadwg_transfile (open  (strcat POWdesign_path "data.txt") "w"))
+     ;; 2026-09-14 瘦身：移除寫出 data.txt 的整條路徑。
+     ;; 那個檔是要給圖檔管理的 change.exe 併進 dwg.db 用的，但拆圖從來
+     ;; 沒有呼叫 trans_data_todwg_db，所以寫出來就沒有人讀；而 change.exe
+     ;; 與 dwg.db 也已於 2026-09-11 移除。連同只服務這段的 act_outlist、
+     ;; partdata、chk_list 一起清掉。詳見 docs/盤點-圖檔管理.md §3。
 
      (setq acount 1)
-     (setq partdata (read (getfile_val (strcat POWdesign_path "system.ini") "PART_DEF")))
-     (setq chk_list (act_outlist))  ; ("料號" "品名" "機種" "#圖號" "製圖" "規格" "數量" "英文品名" "表面處理" "材質 " "說明")
    
      
      (command "layer" "s" (nth 0 lalst) "")
      
      (foreach nn lalst
        (progn
-         (if (null findbomp_ent)(load "manapart")) 
-         (setq infp (findbomp_ent nn))
-         (if (/= nil infp)
-           (progn
-             (setq attdata (get_bomdata infp))    ;取出 infp 資訊點的屬性串列 (("TAG1" "aaa") ("TAG2" "bbb") ("TAG3" "ccc")...)
-
-             (setq otxt nn) ;;圖層即料號
-             (foreach qq (cdr chk_list)
-               (progn
-
-            ;     (if (/= qq "未定")
-             ;      (progn
-                      (setq ad1 (assoc qq partdata))           ;;ad1 ("品名" "PARTNAME"  "TAG3" "A_02")
-
-                  (if (/= nil ad1)
-                    (progn
-                      (setq ad1_id (nth 2 ad1))                ;;ad1_id  "TAG3"
-                      (setq tt (nth 1 (assoc ad1_id attdata)))  ;;tt      "ccc"
-                      (if (= "" tt)(setq tt "nil"))
-
-                      (setq otxt (strcat otxt ";" tt))
-           ;         );progn
-           ;      );if
-                    );progn
-                  );if 
-               );progn
-             );foreach
-             (write-line otxt manadwg_transfile)
-           );progn
-        );if
         (setq ent_la nn
               layname_doc ent_la
               lay_na ent_la)
@@ -201,7 +161,6 @@
    (command "layer" "t" "*" "")
    (command "zoom" "e")
 
-     (close manadwg_transfile)
 
      (close doc_file)
      (princ "\n======================================================")
