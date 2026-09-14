@@ -385,10 +385,12 @@
    n
 )
 
-;;; 圖庫檔的完整路徑。
-;;; 優先用 system_dwg_libpath，但要注意 SYSTEM.lsp 只把它設成 ""，
-;;; 而 DWG_MANAGE_PATH 從來沒有在啟動時被讀回來（只有 c:dwg_libpath
-;;; 會寫出去），所以這裡自己補讀一次。都取不到才退回系統目錄。
+;;; 圖庫檔的完整路徑：system_dwg_libpath → System.ini 的 DWG_MANAGE_PATH
+;;; → 系統目錄。
+;;;
+;;; 第二段在 2026-09-14 之前是必要的，因為 SYSTEM.lsp 只把
+;;; system_dwg_libpath 設成 ""、從不讀回設定值。該缺陷已修（SYSTEM.lsp:168），
+;;; 這裡保留第二段當作保險——若 SYSTEM.lsp 因故未載入，變數會是 nil。
 (defun dwglib_file ( / p)
    (setq p system_dwg_libpath)
    (if (or (null p) (= "" p))

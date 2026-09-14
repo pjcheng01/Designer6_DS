@@ -165,7 +165,27 @@
 )
 
 
-(setq system_dwg_libpath "") ;; default
+;; 2026-09-14：原本這裡只寫死 ""，而 DWG_MANAGE_PATH 從來沒有在啟動時
+;; 被讀回來——c:dwg_libpath 會把設定寫進 System.ini，但下次啟動又變回
+;; 空字串，等於「設定圖庫路徑」設了沒有作用。這裡補上讀取。
+;;
+;; 可以安全使用 getfile_val（PUB-LISP.lsp）與 strip_cr、getrealstr2
+;; （CONFIG.lsp）：SYSTEM.lsp 只由 COMMAND.lsp 的 loaddesigner 載入，
+;; 而那是在 (load "designer") → PUB-LISP + config 之後。
+;;
+;; 刻意不用 config.lsp 讀其他路徑時慣用的 sys_getstring——它會在第一個
+;; 空白處截斷，路徑含空白就會被砍掉後半段。
+(setq system_dwg_libpath "")
+(if (and POWdesign_path (findfile (strcat POWdesign_path "system.ini")))
+   (progn
+      (setq &&dwglibpath
+            (getfile_val (strcat POWdesign_path "system.ini") "DWG_MANAGE_PATH"))
+      (if &&dwglibpath
+         (setq system_dwg_libpath (strip_cr (getrealstr2 &&dwglibpath)))
+      )
+      (setq &&dwglibpath nil)
+   )
+)
 
 ;線型定義=(("粗連續線" "CONTINUOUS" 7)("細連續線" "CONTINUOUS" 4)("虛線" "DASHED" 3)("標準中心線(長度20)" "CENTER" 1)("短中心線(長度10)" "CENTER1" 1)("假想線" "PHANTOM" 5)("剖面線" "CONTINUOUS" 6)("假想線" "PHANTOM" 5)("投影線" "CONTINUOUS" 143 "PROJ"))
 (defun get_ltypedef()
