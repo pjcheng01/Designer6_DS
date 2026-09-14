@@ -76,14 +76,21 @@
 ;;
 ;; ⚠ 序列裡有條件式提示（蔭影模式只在 Model 頁籤問、「是否列印至檔案」
 ;;   只在裝置是系統印表機時問）。(command) 餵的是固定長度的參數列，
-;;   只要少問一項，後面整串就會錯位。所以這裡刻意把 cmdecho 打開，
-;;   出問題時看得到卡在哪一問；確認穩定之後可以把 hpk_echo 設成 0。
+;;   只要少問一項，後面整串就會錯位。
+;;
+;;   2026-09-14 實測：&hp / &hp2 / &hp3 與批次出圖四項全部通過，17 個回答
+;;   零錯位，所以預設把 cmdecho 關掉（批次出圖會連續呼叫 &hp3，每張吐 17 行
+;;   提示太吵）。要再看那串提示時，跑之前下 (setq hpk_echo 1) 即可。
+;;
+;;   ⚠ 那 17 問是在「Model 頁籤 + 系統印表機」這個組合下成立的。換到圖頁
+;;   頁籤、或把裝置換成內建的 PDF／JPG／PNG／SVG，問題數會變，這串參數就會
+;;   錯位。三支都固定餵 "Model"，所以不受影響。
 (defun hpk_print (device paper label scale / ctb oldecho)
    (setq ctb (hpk_need "PRINT_STYLE"))
    (if (and device paper ctb)
       (progn
          (setq oldecho (getvar "cmdecho"))
-         (if (null hpk_echo) (setq hpk_echo 1))
+         (if (null hpk_echo) (setq hpk_echo 0))
          (setvar "cmdecho" hpk_echo)
          (command "zoom" "e")
          (command "_-PRINT"
