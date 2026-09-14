@@ -1,151 +1,174 @@
-(defun c:hp(/ block_con block_sz)
-	(setvar "cmdecho" 0)
+;;;====================================================================
+;;; 2026-09-14：DraftSight 重新移植（手冊 §7.3）
+;;;
+;;; 原本三個出圖函式在 DraftSight 2025 上有三處不成立：
+;;;   1. 指令是 -PRINT，提示序列與 AutoCAD 的 .plot 不同
+;;;   2. 寫死的 HP LaserJet 5100 / HP DesignJet 500 都已不存在
+;;;   3. acad.ctb 在 DraftSight 沒有這個檔
+;;;
+;;; 裝置、紙張與列印樣式一律改從 System.ini 讀，不再寫死在程式裡——
+;;; 這次會壞掉，正是因為 2003 年寫死的機種早就退役了。換機器只要改 ini。
+;;;
+;;; System.ini 需要的 key（值必須與 -PRINT 按 ? 列出的字串逐字相同）：
+;;;   PRINT_PRINTER      印表機（雷射）裝置名稱
+;;;   PRINT_PLOTTER      繪圖機裝置名稱
+;;;   PRINT_STYLE        列印樣式表，例如 monochrome.ctb
+;;;   PRINTER_PAPER_A1..A4   圖框尺寸 -> 印表機的紙張名稱
+;;;   PLOTTER_PAPER_A1..A4   圖框尺寸 -> 繪圖機的紙張名稱
+;;;====================================================================
 
-	(cond ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "A1tzt"))))
-		(setq block_sz 1))
-	      ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "A2tzt"))))
-		(setq block_sz 2))
-	      ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "A3tzt"))))
-  		(setq block_sz 3))
-	      ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "A4tzt"))))
-		(setq block_sz 4))
-              ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "ASMA1tzt"))))
-              	(setq block_sz 5))
-              ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "ASMA2tzt"))))
-              	(setq block_sz 6))
-              ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "ASMA3tzt"))))
-		(setq block_sz 7))
-	      (t (princ (strcat (getvar "DWGNAME") " 找不到圖框! 無法列印")))
- 	)
-
-  	(cond ((= 1 block_sz)(hp_plot "A3" "A1"))
-	      ((= 2 block_sz)(hp_plot "A3" "A2"))
-	      ((= 3 block_sz)(hp_plot "A3" "A3"))
-	      ((= 4 block_sz)(hp_plot "A4" "A4"))
-	      ((= 5 block_sz)(hp_plot "A3" "A1"))
-              ((= 6 block_sz)(hp_plot "A3" "A2"))
-              ((= 7 block_sz)(hp_plot "A3" "A3"))
-	)
-  	(setvar "cmdecho" 1)
+;; 讀一個 System.ini 的 key，讀不到或空字串都回 nil。
+;; 用 getfile_val + getrealstr2 + strip_cr，與 SYSTEM.lsp 讀 DWG_MANAGE_PATH
+;; 同一套。刻意不用 sys_getstring——它會在第一個空白處截斷，而印表機名稱
+;; 含空白（"...TASKalfa 3212i(RDPS3-1)"）。
+(defun hpk_ini (key / v)
+   (if (and POWdesign_path (findfile (strcat POWdesign_path "system.ini")))
+      (setq v (getfile_val (strcat POWdesign_path "system.ini") key))
+   )
+   (if v (setq v (strip_cr (getrealstr2 v))))
+   (if (= "" v) (setq v nil))
+   v
 )
 
-(defun hp_plot(paper_size paper_style)
-
-	(command "zoom" "e")
-     	(setq pp1 '(5 7 0))
-     	(setq cmddia_setvar (getvar "cmddia"))
-     	(setq ltscale_setvar (getvar "ltscale"))
-     	
-  	(if (or (= "A3" paper_style)(= "A4" paper_style))
-	    (setq scale_size (/ 1.0 (* ltscale_setvar 1)))         ;;出圖比例       A1= A3 * 2
-            (setq scale_size "fit")
-  	)
-
-  	(command "cmddia" 0)
-	(command ".plot" "Y" "MODEL" "HP LaserJet 5100 PCL 6" paper_size "M" "L" "N" "E" scale_size "c" "Y" "acad.ctb" "Y" "N" "N" "N" "y")
-  	;(command ".plot" "Y" "MODEL" "HP..." paper_size "M" "L" "N" "L" scale_size pp1 "Y" "形式表名稱" "N" "N" "N" "N" "N")
-  	;(command ".plot" "e" "5" "y" "HP DesignJet 350C" "e" "5" "n" "y" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.3" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.35" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2"  "x" "n" "m" pp1 paper_size  "0" "n" scale_size "" )
-     	(command "cmddia" "1")
-  	(prompt (strcat "<<<<   " paper_style "  出圖完成    >>>>"))
-     	(command "zoom" "P")
-
+;; 同上，但讀不到時明講是哪個 key 少了。不要無聲失敗（手冊 §5.18）。
+(defun hpk_need (key / v)
+   (setq v (hpk_ini key))
+   (if (null v)
+      (princ (strcat "\n[出圖] System.ini 缺少設定 " key "，請補上這一行後重試。"))
+   )
+   v
 )
 
-(defun c:hp2(/ block_con block_sz)
-	(setvar "cmdecho" 0)
-  
-	(cond ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "A1tzt"))))
-		(setq block_sz 1))
-	      ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "A2tzt"))))
-		(setq block_sz 2))
-	      ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "A3tzt"))))
-  		(setq block_sz 3))
-	      ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "A4tzt"))))
-		(setq block_sz 4))
-              ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "ASMA1tzt"))))
-              	(setq block_sz 5))
-              ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "ASMA2tzt"))))
-              	(setq block_sz 6))
-              ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "ASMA3tzt"))))
-		(setq block_sz 7))
-	      (t (princ (strcat (getvar "DWGNAME") " 找不到圖框! 無法列印")))
- 	)
-
-  	(cond ((= 1 block_sz)(hp2_plot "較大尺寸：ISO A1  (portrait)" "A1"))
-	      ((= 2 block_sz)(hp2_plot "較大尺寸：ISO A2  (landscape)" "A2"))
-	      ((= 3 block_sz)(hp2_plot "較大尺寸：ISO A3  (landscape)" "A3"))
-	      ((= 4 block_sz)(hp2_plot "較大尺寸：ISO A4  (landscape)" "A4"))
-	      ((= 5 block_sz)(hp2_plot "較大尺寸：ISO A1  (portrait)" "A1"))
-              ((= 6 block_sz)(hp2_plot "較大尺寸：ISO A2  (landscape)" "A2"))
-              ((= 7 block_sz)(hp2_plot "較大尺寸：ISO A3  (landscape)" "A3"))
-	)
-  	(setvar "cmdecho" 1)
+;; 找圖框 block，回傳 1..7；找不到回 nil。
+;; A1tzt..A4tzt = 1..4（零件圖），ASMA1tzt..ASMA3tzt = 5..7（組合圖）
+(defun hpk_frame ( / )
+   (cond ((ssget "X" (list (cons 0 "INSERT") (cons 2 "A1tzt")))    1)
+         ((ssget "X" (list (cons 0 "INSERT") (cons 2 "A2tzt")))    2)
+         ((ssget "X" (list (cons 0 "INSERT") (cons 2 "A3tzt")))    3)
+         ((ssget "X" (list (cons 0 "INSERT") (cons 2 "A4tzt")))    4)
+         ((ssget "X" (list (cons 0 "INSERT") (cons 2 "ASMA1tzt"))) 5)
+         ((ssget "X" (list (cons 0 "INSERT") (cons 2 "ASMA2tzt"))) 6)
+         ((ssget "X" (list (cons 0 "INSERT") (cons 2 "ASMA3tzt"))) 7)
+         (t (princ (strcat "\n" (getvar "DWGNAME") " 找不到圖框! 無法列印"))
+            nil)
+   )
 )
 
-(defun hp2_plot(paper_size paper_style)
-
-	(command "zoom" "e")
-     	(setq pp1 '(5 7 0))
-     	(setq cmddia_setvar (getvar "cmddia"))
-     	(setq ltscale_setvar (getvar "ltscale"))
-     	(setq scale_size (/ 1.0 (* ltscale_setvar 1)))         ;;出圖比例       A1= A3 * 2
-
-  	(command "cmddia" 0)
-	(command ".plot" "Y" "MODEL" "HP DesignJet 500 42 by HP(POWER)" paper_size "M" "L" "N" "E" scale_size "c" "Y" "acad.ctb" "Y" "N" "N" "N" "y")
-  	;(command ".plot" "e" "5" "y" "HP DesignJet 350C" "e" "5" "n" "y" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.3" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.35" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2"  "x" "n" "m" pp1 paper_size  "0" "n" scale_size "" )
-     	(command "cmddia" "1")
-  	(prompt (strcat "<<<<   " paper_style "  出圖完成    >>>>"))
-     	(command "zoom" "P")
+;; 1..7 -> 圖框尺寸標籤。5,6,7 是組合圖的 A1,A2,A3，紙張與零件圖同尺寸。
+(defun hpk_label (n)
+   (nth (1- n) (list "A1" "A2" "A3" "A4" "A1" "A2" "A3"))
 )
-(defun c:hp3(/ block_con block_sz)
-	(setvar "cmdecho" 0)
 
-	(cond ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "A1tzt"))))
-		(setq block_sz 1))
-	      ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "A2tzt"))))
-		(setq block_sz 2))
-	      ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "A3tzt"))))
-  		(setq block_sz 3))
-	      ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "A4tzt"))))
-		(setq block_sz 4))
-              ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "ASMA1tzt"))))
-              	(setq block_sz 5))
-              ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "ASMA2tzt"))))
-              	(setq block_sz 6))
-              ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "ASMA3tzt"))))
-		(setq block_sz 7))
-	      (t (princ (strcat (getvar "DWGNAME") " 找不到圖框! 無法列印")))
- 	)
-
-  	(cond ((= 1 block_sz)(hp3_plot "較大尺寸：ISO A1  (portrait)" "A1"))
-	      ((= 2 block_sz)(hp3_plot "較大尺寸：ISO A2  (landscape)" "A2"))
-	      ((= 3 block_sz)(hp3_plot "A3" "A3"))
-	      ((= 4 block_sz)(hp3_plot "A4" "A4"))
-	      ((= 5 block_sz)(hp3_plot "較大尺寸：ISO A1  (portrait)" "A1"))
-              ((= 6 block_sz)(hp3_plot "較大尺寸：ISO A2  (landscape)" "A2"))
-              ((= 7 block_sz)(hp3_plot "A3" "A3"))
-	)
-  	(setvar "cmdecho" 1)
+;; 出圖比例。原版是 (/ 1.0 (* ltscale 1))：拿 ltscale 當比例。
+;; ltscale 為 0 時原版會除以零，這裡退回 1:1。
+(defun hpk_scale ( / ls)
+   (setq ls (getvar "ltscale"))
+   (if (or (null ls) (<= ls 0)) (setq ls 1.0))
+   (/ 1.0 ls)
 )
-(defun hp3_plot(paper_size paper_style)
 
-	(command "zoom" "e")
-     	(setq pp1 '(5 7 0))
-     	(setq cmddia_setvar (getvar "cmddia"))
-     	(setq ltscale_setvar (getvar "ltscale"))
-     	(setq scale_size (/ 1.0 (* ltscale_setvar 1)))         ;;出圖比例       A1= A3 * 2
+;; 送一張圖到 -PRINT。
+;;   device 裝置名稱  paper 紙張名稱  label 圖框尺寸（只用於訊息）
+;;   scale  比例數值，或 "F" 表示擬合紙張
+;;
+;; 這是「進階列印選項 = 是」、在 Model 頁籤、裝置是系統印表機那條路徑，
+;; 共 17 個回答。完整的提示對照表在手冊 §7.3。
+;;
+;; ⚠ 序列裡有條件式提示（蔭影模式只在 Model 頁籤問、「是否列印至檔案」
+;;   只在裝置是系統印表機時問）。(command) 餵的是固定長度的參數列，
+;;   只要少問一項，後面整串就會錯位。所以這裡刻意把 cmdecho 打開，
+;;   出問題時看得到卡在哪一問；確認穩定之後可以把 hpk_echo 設成 0。
+(defun hpk_print (device paper label scale / ctb oldecho)
+   (setq ctb (hpk_need "PRINT_STYLE"))
+   (if (and device paper ctb)
+      (progn
+         (setq oldecho (getvar "cmdecho"))
+         (if (null hpk_echo) (setq hpk_echo 1))
+         (setvar "cmdecho" hpk_echo)
+         (command "zoom" "e")
+         (command "_-PRINT"
+            "Y"        ;  1 進階列印選項?
+            "Model"    ;  2 指定圖頁名稱
+            device     ;  3 指定印表機名稱
+            paper      ;  4 指定紙張大小
+            "M"        ;  5 指定單位：毫米
+            "L"        ;  6 指定方向：橫向
+            "N"        ;  7 是否上下顛倒列印?
+            "A"        ;  8 指定列印範圍：所有幾何（等同 AutoCAD 的 Extents）
+            scale      ;  9 指定列印比例
+            "C"        ; 10 指定列印 X、Y 位移：中心
+            "Y"        ; 11 使用列印樣式表格嗎?
+            ctb        ; 12 列印樣式名稱
+            "Y"        ; 13 使用指定的線寬嗎?
+            "D"        ; 14 蔭影模式：如顯示的
+            "N"        ; 15 列印至檔案?
+            "N"        ; 16 套用列印設定至圖頁?
+            "Y"        ; 17 現在列印嗎?
+         )
+         (setvar "cmdecho" oldecho)
+         (prompt (strcat "<<<<   " label "  出圖完成    >>>>"))
+         (command "zoom" "P")
+      )
+   )
+   (princ)
+)
 
-  	(command "cmddia" 0)
-  	(cond ((or (= "A1" paper_style)(= "A2" paper_style))
-	       (command ".plot" "Y" "MODEL" "HP DesignJet 500 42 by HP(POWER)" paper_size "M" "L" "N" "E" scale_size "c" "Y" "acad.ctb" "Y" "N" "N" "N" "y")
-	      )
-	      ((or (= "A3" paper_style)(= "A4" paper_style))
-	       (command ".plot" "Y" "MODEL" "HP LaserJet 5100 PCL 6" paper_size "M" "L" "N" "E" scale_size "c" "Y" "acad.ctb" "Y" "N" "N" "N" "y")
-	      )
-	)
-	(command "cmddia" "1")
-  	(prompt (strcat "<<<<   " paper_style "  出圖完成    >>>>"))
-     	(command "zoom" "P")
+;;;--------------------------------------------------------------------
+;;; 印表機出圖（選單 1.1.10）
+;;; 原版行為：A1/A2 的圖縮印到 A3（擬合），A3/A4 照 ltscale 原比例。
+;;;--------------------------------------------------------------------
+(defun c:hp ( / n label device paper scale)
+   (setq n (hpk_frame))
+   (if n
+      (progn
+         (setq label  (hpk_label n))
+         (setq device (hpk_need "PRINT_PRINTER"))
+         (setq paper  (hpk_need (strcat "PRINTER_PAPER_" label)))
+         (setq scale  (if (or (= "A3" label) (= "A4" label))
+                         (hpk_scale)
+                         "F"))
+         (hpk_print device paper label scale)
+      )
+   )
+   (princ)
+)
+
+;;;--------------------------------------------------------------------
+;;; 繪圖機出圖（選單 1.1.11）
+;;; 原版行為：一律照 ltscale 原比例，紙張跟著圖框尺寸走。
+;;;--------------------------------------------------------------------
+(defun c:hp2 ( / n label device paper)
+   (setq n (hpk_frame))
+   (if n
+      (progn
+         (setq label  (hpk_label n))
+         (setq device (hpk_need "PRINT_PLOTTER"))
+         (setq paper  (hpk_need (strcat "PLOTTER_PAPER_" label)))
+         (hpk_print device paper label (hpk_scale))
+      )
+   )
+   (princ)
+)
+
+;;;--------------------------------------------------------------------
+;;; 混合出圖（批次出圖走這支）
+;;; 原版行為：A1/A2 走繪圖機，A3/A4 走印表機，一律原比例。
+;;;--------------------------------------------------------------------
+(defun c:hp3 ( / n label device paper)
+   (setq n (hpk_frame))
+   (if n
+      (progn
+         (setq label (hpk_label n))
+         (if (or (= "A1" label) (= "A2" label))
+            (setq device (hpk_need "PRINT_PLOTTER")
+                  paper  (hpk_need (strcat "PLOTTER_PAPER_" label)))
+            (setq device (hpk_need "PRINT_PRINTER")
+                  paper  (hpk_need (strcat "PRINTER_PAPER_" label)))
+         )
+         (hpk_print device paper label (hpk_scale))
+      )
+   )
+   (princ)
 )
 ;;;┌────────────────────────────────┐
 ;;;│  程  式 : 批次出圖			                     │
