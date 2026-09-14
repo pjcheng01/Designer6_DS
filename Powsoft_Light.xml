@@ -434,26 +434,6 @@
             </menu>
         </menus>
         <toolbars>
-            <toolbar UID="{86711597-6438-4104-b2b2-ac99944abea1}" movable="true" def_x_location="200" def_y_location="200" name="藝祥資訊機械設計" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="true">
-                <toolbar type="2" UID="{d8750ded-6f2a-429a-89d5-7a8e5e983f5d}" name="輔助繪圖(一)" definition_ref="POWSOFT.AUXDRAW1"/>
-                <toolbar type="2" UID="{9e8f5360-a63a-455c-972b-09d0bb1d6892}" name="輔助繪圖(二)" definition_ref="POWSOFT.AUXDRAW2"/>
-                <toolbar type="2" UID="{5d5c9b88-7d83-4748-8b32-443756e05609}" name="輔助編輯(一)" definition_ref="POWSOFT.AUXEDIT1"/>
-                <toolbar type="2" UID="{67090458-378c-4b1b-b425-78e6157aa9d5}" name="輔助編輯(二)" definition_ref="POWSOFT.AUXEDIT2"/>
-                <toolbar name="" definition_ref=""/>
-                <toolbar type="2" UID="{9acd8ed8-21b1-4590-a46a-c2f93c8002d2}" name="投影線" definition_ref="POWSOFT.PROJLINE"/>
-                <toolbar type="2" UID="{95929705-9227-4a03-ad71-534f40d4038c}" name="作圖線性設定" definition_ref="POWSOFT.SETLINE"/>
-                <toolbar name="" definition_ref=""/>
-                <toolbar type="2" UID="{026c5aa8-2307-4ac6-83b0-46a28c502a9c}" name="輔助標註一" definition_ref="POWSOFT.AUXDIM1"/>
-                <toolbar type="2" UID="{b0be3e32-0498-4f9e-a32f-17ca6c72038c}" name="輔助標註二" definition_ref="POWSOFT.AUXDIM3"/>
-                <toolbar type="2" UID="{94041600-6786-4f6b-88f3-11bc1ed55197}" name="幾合公差標註" definition_ref="POWSOFT.AUXDIM2"/>
-                <toolbar name="" definition_ref=""/>
-                <toolbar type="2" UID="{ce229efb-b499-4a18-8a71-5e517eed4b0b}" name="組合圖與材料清單" definition_ref="POWSOFT.BOM1"/>
-                <toolbar type="2" UID="{62ebf823-f43c-4593-b0b0-64817fb5283c}" name="圖層控制" definition_ref="POWSOFT.AUXDISP1"/>
-                <toolbar name="" definition_ref=""/>
-                <toolbar type="2" UID="{81b6d512-2c8c-430b-80f6-c634c9f821d5}" name="資料查詢" definition_ref="POWSOFT.AUXQURY1"/>
-                <toolbar type="2" UID="{6d7e7ce6-a1ca-4460-bb74-dfe832437906}" name="鍵槽與螺紋" definition_ref="POWSOFT.MECDRAW1"/>
-                <toolbar type="2" UID="{f0a4a2a5-b7a3-4972-908a-626fc10ac186}" name="軸產生器" definition_ref="POWSOFT.MECDRAW2"/>
-            </toolbar>
             <toolbar UID="{e7d3a85a-f9ac-4b82-9bb9-11b07b10e038}" movable="true" def_x_location="200" def_y_location="200" name="輔助繪圖(一)" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="true">
                 <toolbar UID="{b69efaaa-1b62-4ddf-b4c8-fcb95f5d8c8f}" name="輔助繪圖(一)" definition_ref="{3590b1f7-43ec-4c1c-88dd-eed18970a5f1}"/>
                 <toolbar UID="{a42ccb5a-80b9-47e7-9071-848511034a1c}" name="畫環形圓" definition_ref="{fba1af5c-0079-489d-9636-66c312e651ce}"/>
@@ -482,7 +462,7 @@
                 <toolbar UID="{6441ed14-0587-4c62-b97b-b841a50f7c0e}" name="熔接點" definition_ref="{7edfad5d-ccb3-433d-a0e1-293e487ad63e}"/>
                 <toolbar UID="{324dc002-40f2-40d8-b3ea-bf5320eb2e9d}" name="精準孔符號" definition_ref="{eca2806f-2950-4c7c-9cab-904eff7f1f09}"/>
             </toolbar>
-            <toolbar UID="{12163110-333b-46a6-93d9-91d808cf57d4}" movable="true" def_x_location="200" def_y_location="200" name="輔助編輯(一)" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
+            <toolbar UID="{12163110-333b-46a6-93d9-91d808cf57d4}" movable="true" def_x_location="200" def_y_location="200" name="輔助編輯(一)" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="true">
                 <toolbar UID="{de46f6ab-14bd-4a80-82ca-1575fee4eab8}" name="輔助編輯(一)" definition_ref="{ce8f5b6e-f9dd-46ef-9f05-2a82ecbbd941}"/>
                 <toolbar UID="{1d0fe072-de98-48e5-8b7b-132d042ee402}" name="變換成BYLAYER線性" definition_ref="{848b4bc8-0a7b-4e21-bf89-9fdb08c41407}"/>
                 <toolbar UID="{615d9384-3198-4874-9444-26645810842e}" name="變換成BYBLOCK線性" definition_ref="{02e2cb51-8f3f-47a6-86ac-ed58d975ff3e}"/>
@@ -714,15 +694,7 @@
                 <toolbar UID="{22df9252-a69f-4c72-8766-bf47f2a40c12}" name="定義材料清單欄位" definition_ref="{a4b13b42-4c24-409f-8926-9245131a25fd}"/>
                 <toolbar UID="{dbf35669-ee9d-402b-a276-c2d6f3fffa5c}" name="產生圖面材料清單" definition_ref="{3fc35541-aebe-4725-a690-fcfaa90f7c86}"/>
             </toolbar>
-            <toolbar UID="{9fbea57c-d6fe-4575-93b2-fbf1b2f1a985}" movable="true" def_x_location="200" def_y_location="200" name="貼心小幫手" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="true">
-                <toolbar type="2" UID="{4e028ed1-9543-4067-9231-e08bb147d0f1}" name="設定目前線性" definition_ref="POWERSOFT.SET_CURLTYPE"/>
-                <toolbar type="2" UID="{3aa24ae9-9cb1-44b8-adfb-c890d1d8e731}" name="設定目前圖層" definition_ref="POWERSOFT.SET_CURLAYER"/>
-                <toolbar type="2" UID="{bb4781db-29b4-4ba0-92d8-a2cf8e389c0e}" name="畫線" definition_ref="POWERSOFT.POWERLINE"/>
-                <toolbar type="2" UID="{c23dbf38-a04a-464a-bcaa-d451e80a0c37}" name="改變線性" definition_ref="POWERSOFT.CHG_LTYPE"/>
-                <toolbar type="2" UID="{22a763b1-d45f-476c-8b5f-1b93de90b8ea}" name="Power Offset" definition_ref="POWERSOFT.POWER_OFFSET"/>
-                <toolbar type="2" UID="{ffebf94a-2d9d-4fb2-8b8c-98d0f0142a39}" name="Power 改變 LAYER" definition_ref="POWERSOFT.POWER_CHLAYER"/>
-            </toolbar>
-            <toolbar UID="{8862aa73-af27-4209-b94c-cd1bb2120f6c}" movable="true" def_x_location="200" def_y_location="200" name="設定目前線性" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
+            <toolbar UID="{8862aa73-af27-4209-b94c-cd1bb2120f6c}" movable="true" def_x_location="200" def_y_location="200" name="設定目前線性" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="true">
                 <toolbar UID="{3e7deaa6-8968-41c8-a7e4-f5bb982f9e10}" name="設定成粗連續線(SS)" definition_ref="{fefe0649-a08a-445c-b808-930dd6f9e42e}"/>
                 <toolbar UID="{379f82ae-c7c3-4544-bec2-0c8c0139ffc2}" name="設定成細連續線(TT)" definition_ref="{c11382b7-763e-416c-9298-86c111b4c6f8}"/>
                 <toolbar name="" definition_ref=""/>
@@ -743,7 +715,7 @@
                 <toolbar UID="{e1b6a16d-9996-4faa-a0cf-2b54bf742182}" name="設定成尺寸線(LLD)" definition_ref="{689024a0-0991-4ee3-b7c7-15a0b95fa4c2}"/>
                 <toolbar UID="{84fb7119-44ab-4bde-934d-48e1e7ef486c}" name="指定目前層" definition_ref="{7350529c-4550-4bfc-a97b-98ac7de9dee7}"/>
             </toolbar>
-            <toolbar UID="{f38e6dd5-b9d5-4481-b5aa-c113b7413252}" movable="true" def_x_location="200" def_y_location="200" name="畫線" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
+            <toolbar UID="{f38e6dd5-b9d5-4481-b5aa-c113b7413252}" movable="true" def_x_location="200" def_y_location="200" name="畫線" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="true">
                 <toolbar UID="{a318bd9d-d09a-43e3-8dc6-ff03949d6c1a}" name="畫粗連續線(SLL)" definition_ref="{c3bf1961-ac20-43ef-8ecc-937b8b98910e}"/>
                 <toolbar UID="{be0c4942-5e60-4910-b328-36f882889ee4}" name="畫細連續線(TLL)" definition_ref="{897386bd-5819-46d8-86ca-6537660cb887}"/>
                 <toolbar name="" definition_ref=""/>
@@ -800,12 +772,6 @@
                 <toolbar UID="{a89c18f0-8db2-4340-a0a1-95b68a0cdbc9}" name="DELPARTS" definition_ref="{4258af5e-d923-4623-9153-afd3c8a93d74}"/>
                 <toolbar UID="{70eb07d2-2be5-4bab-b772-2edd045bcd91}" name="鏡設零件" definition_ref="{b02070fc-13ad-4a2e-ab63-f17841410174}"/>
                 <toolbar UID="{3f2680e9-9865-4c8f-8cfb-9013acbb4f8a}" name="旋轉零件" definition_ref="{f5e99095-e47c-44c7-895a-fb1b4d945a25}"/>
-            </toolbar>
-            <toolbar UID="{d87127a3-0922-43ba-8d3a-35c0df81e2d7}" movable="true" def_x_location="200" def_y_location="200" name="POWERISO 等角立體系統圖" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="true">
-                <toolbar UID="{4ba685fa-1760-4044-9c84-dafb953eee0a}" name="轉等角圖" definition_ref="{dafdb3e1-ed77-4e37-a133-3b17be659f27}"/>
-                <toolbar UID="{2f6a623e-761d-4b6d-869d-50d002e8157e}" name="等角參數零件" definition_ref="{5e62ed1b-5ab8-4ca1-9ba9-54d427a8c719}"/>
-                <toolbar UID="{cd16e0ee-a3b0-456f-ade7-a50a2fe976ab}" name="圖庫管理" definition_ref="{dd0be20c-5905-4699-84d6-b0288cf582bc}"/>
-                <toolbar UID="{f4b0d145-450d-4349-9e09-df86e673e124}" name="使用圖庫" definition_ref="{2a1f34e4-bd41-4987-bb81-3eee74700e7a}"/>
             </toolbar>
         </toolbars>
         <ribbon_tab_selectors/>
@@ -912,7 +878,6 @@
             <definition iconRecource="" lightIconName="dmrtn.bmp" iconName="" id="{284fbdf3-a377-4e8d-a191-97c2d91cdcc1}" name="尺寸還原" darkIconName="bdmrtn.bmp" smallIconName="" command="^C^C&amp;rtdim" description=""/>
             <definition iconRecource="" lightIconName="AUXOFLA.BMP" iconName="" id="{29128ffd-948c-4185-9cbc-2b768393f752}" name="OFFSET變換圖層" darkIconName="bAUXOFLA.bmp" smallIconName="" command="^C^C&amp;offl" description=""/>
             <definition iconRecource="" lightIconName="" iconName="" id="{2928ce45-f42f-4a9c-86cb-ecce5d545b67}" name="管理自建功能" darkIconName="" smallIconName="" command="^C^C&amp;manauser_menu" description="管理自建功能"/>
-            <definition iconRecource="" lightIconName="ISO4.bmp" iconName="" id="{2a1f34e4-bd41-4987-bb81-3eee74700e7a}" name="使用圖庫" darkIconName="BISO4.bmp" smallIconName="" command="^C^C&amp;isoblk2" description=""/>
             <definition iconRecource="" lightIconName="dimcham2.bmp" iconName="" id="{2a591a6c-13b2-4903-8833-e2faf7f661ba}" name="45度倒角標註" darkIconName="bdmcham2.bmp" smallIconName="" command="^C^C&amp;dimcham2" description=""/>
             <definition iconRecource="" lightIconName="key4.bmp" iconName="" id="{2a75be2c-d3f2-4527-ab5a-a89bd9d990ab}" name="雙圓鍵" darkIconName="bkey4.bmp" smallIconName="" command="^C^C&amp;SLOT5" description=""/>
             <definition iconRecource="" lightIconName="CHTOCLA.bmp" iconName="" id="{2aa48e49-d5ba-4eef-8803-2c50a03a7fb0}" name="變換圖元到目前層" darkIconName="bCHTOCLA.bmp" smallIconName="" command="^C^C&amp;CHto_clayer" description=""/>
@@ -1023,7 +988,6 @@
             <definition iconRecource="" lightIconName="AUXDIM2.bmp" iconName="" id="{5c99c191-d804-4792-bcb6-5dac7e8ed662}" name="幾合公差標註" darkIconName="BAUXDIM2.bmp" smallIconName="" command="^C^C888" description=""/>
             <definition iconRecource="" lightIconName="" iconName="" id="{5ca047de-80ff-409b-b760-985fe068a1b3}" name="有鍵 . 平形端" darkIconName="" smallIconName="" command="^C^C&amp;1siskefp" description="有鍵 . 平形端"/>
             <definition iconRecource="" lightIconName="" iconName="" id="{5d61ae98-e4fa-4f0d-bb9a-d2c8cf7ee22b}" name="輔助編輯 EDIT(1)" darkIconName="" smallIconName="" command="^C^C222" description="輔助編輯 EDIT(1)"/>
-            <definition iconRecource="" lightIconName="ISO2.bmp" iconName="" id="{5e62ed1b-5ab8-4ca1-9ba9-54d427a8c719}" name="等角參數零件" darkIconName="BISO2.bmp" smallIconName="" command="^C^C&amp;isomenu2" description=""/>
             <definition iconRecource="" lightIconName="BOM2.bmp" iconName="" id="{5e96c821-b4df-4dfc-a74c-b29b206825ba}" name="修改資訊點資料" darkIconName="bBOM2.bmp" smallIconName="" command="^C^C^P&amp;edit_bomp" description=""/>
             <definition iconRecource="" lightIconName="DMDIA1.BMP" iconName="" id="{5f25ec5e-d466-435c-8077-b47f5a2c3bd3}" name="加入直徑標註符號" darkIconName="bDMDIA1.bmp" smallIconName="" command="^C^C&amp;diadim" description=""/>
             <definition iconRecource="" lightIconName="" iconName="" id="{5fe82e23-df26-47b9-ac13-d78012a7897a}" name="尺寸線(LLD)" darkIconName="" smallIconName="" command="^C^C&amp;D&amp;" description="尺寸線(LLD)"/>
@@ -1272,12 +1236,10 @@
             <definition iconRecource="" lightIconName="" iconName="" id="{d9746331-dbdc-4f37-8add-ba841bdbba0c}" name="製作功能幻燈片" darkIconName="" smallIconName="" command="^C^C&amp;usermake_part_sld" description="製作功能幻燈片"/>
             <definition iconRecource="" lightIconName="" iconName="" id="{d9d946e1-3d65-4c5c-97c1-cc1b16aa9a47}" name="軸產生器" darkIconName="" smallIconName="" command="^C^C-toolbar 軸產生器 s" description="軸產生器"/>
             <definition iconRecource="" lightIconName="" iconName="" id="{dac93a67-7fa7-4dd9-9f4f-8702795ba243}" name="CNS 加工符號" darkIconName="" smallIconName="" command="^C^C&amp;cns_finish" description="CNS 加工符號"/>
-            <definition iconRecource="" lightIconName="ISO1.bmp" iconName="" id="{dafdb3e1-ed77-4e37-a133-3b17be659f27}" name="轉等角圖" darkIconName="BISO1.bmp" smallIconName="" command="^C^C&amp;isomenu1" description=""/>
             <definition iconRecource="" lightIconName="" iconName="" id="{db56816e-1200-432c-a886-d3236c054302}" name="變更圖紙大小" darkIconName="" smallIconName="" command="^C^C&amp;ch_sheet" description="變更圖紙大小"/>
             <definition iconRecource="" lightIconName="PDMWBLK.bmp" iconName="" id="{dc9f7505-619f-46c9-b229-4d8d2ce3618f}" name="建立公用 BLOCK" darkIconName="BPDMWBLK.bmp" smallIconName="" command="^C^C^P&amp;pdmwblk" description=""/>
             <definition iconRecource="" lightIconName="" iconName="" id="{dcb18f56-e080-4956-9689-6215ad381a0a}" name="平形端" darkIconName="" smallIconName="" command="^C^C&amp;outsixp" description="平形端"/>
             <definition iconRecource="" lightIconName="DRWSDL.bmp" iconName="" id="{dd0abc03-9a1f-423a-8261-dd48d2fc6df3}" name="畫短虛線(SDLL)" darkIconName="BDRWSDL.bmp" smallIconName="" command="^C^CSDLL" description=""/>
-            <definition iconRecource="" lightIconName="ISO3.bmp" iconName="" id="{dd0be20c-5905-4699-84d6-b0288cf582bc}" name="圖庫管理" darkIconName="BISO3.bmp" smallIconName="" command="^C^C&amp;isoblk1" description=""/>
             <definition iconRecource="" lightIconName="BALLNFR.BMP" iconName="" id="{dd2d5144-d1e8-4779-9b24-f9a3df8ca76d}" name="向右定距(不連續號)" darkIconName="bBALLNFR.bmp" smallIconName="" command="^C^C&amp;keyin_bom180" description=""/>
             <definition iconRecource="" lightIconName="shaft1.bmp" iconName="" id="{dd908bcc-7135-4771-bab9-ff5cc88fb2f4}" name="軸外形" darkIconName="bshaft1.bmp" smallIconName="" command="^C^C&amp;sha" description=""/>
             <definition iconRecource="" lightIconName="dimnori.bmp" iconName="" id="{ddbf8b20-bd1e-4e82-a728-6f3c2a875fc1}" name="設定 x,y 新原點" darkIconName="bdimnori.bmp" smallIconName="" command="^C^C&amp;newmo" description=""/>
