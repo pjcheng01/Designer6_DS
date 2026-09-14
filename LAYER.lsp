@@ -82,7 +82,8 @@
       )
    )
    (c:&sl&)
-   (setvar "cmdecho" 1))
+   (setvar "cmdecho" 1)
+)
    (princ)
 )
 
@@ -90,7 +91,8 @@
 (defun c:ashow ()
    (progn(setq ppss sspp)
  (setvar "cmdecho" 0)
- (command "layer" "on" "*" ""))
+ (command "layer" "on" "*" "")
+)
  (princ)
 )
 
@@ -325,7 +327,8 @@
   (setq b (entget e))
   (setq c (cdr (assoc 8 b)))
   (command "layer" "s" c "")
-  (princ))
+  (princ)
+)
  (princ)
 )
 
@@ -437,7 +440,8 @@
    (progn(setq ppss sspp)
  (setvar "cmdecho" 0)
  (command "layer" "t" "*" "")
- (setvar "cmdecho" 1))
+ (setvar "cmdecho" 1)
+)
  (princ)
 )
 
@@ -456,7 +460,8 @@
           showlay (car (entsel (strcat "," showlay))))
  )
  (if (/= aaa "") (command "layer" "f" aaa ""))
- (setvar "cmdecho" 1))
+ (setvar "cmdecho" 1)
+)
  (princ)
 )
 
@@ -471,7 +476,8 @@
   )
   (getint "\n請按任意鍵繼續! ")
   (redraw)
-  (setvar "cmdecho" 1))
+  (setvar "cmdecho" 1)
+)
   (princ)
 )
 
@@ -505,7 +511,8 @@
                    );T
               );cond
 	      (if (tblsearch "layer" "defpoints")(command "layer" "off" "defpoints" ""));;sam
-              (setvar "expert" oex))
+              (setvar "expert" oex)
+)
  (princ)
 )
 
@@ -592,7 +599,8 @@
                       (if (= "Yes" yesno) (command "layer" "m" ccc ""))
                   );T
               );cond
-              (setvar "expert" oex))
+              (setvar "expert" oex)
+)
        (princ)
 )
 
@@ -756,7 +764,8 @@
  (unload_dialog dcl_id)
  (if lcontrolfg (command "layer" act_txt lname ""))
 
- (setvar "cmdecho" 1))
+ (setvar "cmdecho" 1)
+)
  (prin1)
 )
 
@@ -843,7 +852,8 @@
  (unload_dialog dcl_id)
  (if ltcontrolfg (control_ltype))
 
- (setvar "cmdecho" 1))
+ (setvar "cmdecho" 1)
+)
  (prin1)
 )
 

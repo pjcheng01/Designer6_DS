@@ -129,7 +129,8 @@
               );progn
           );if
                     (setvar "cmdecho" 1)
-                    (setvar "osmode" old_osmode))
+                    (setvar "osmode" old_osmode)
+)
    (princ)
 )
 
@@ -361,7 +362,8 @@
               );progn
           );if
                     (setvar "cmdecho" 1)
-                    (setvar "osmode" old_osmode))
+                    (setvar "osmode" old_osmode)
+)
    (princ)
 )
 

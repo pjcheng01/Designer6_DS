@@ -81,7 +81,8 @@
   (command "line" p13 p1 "")
 ; (command "arc" "c" p1 cp1 cp2)
   (c:&sl&)
-  (setvar "osmode" oldosmode))
+  (setvar "osmode" oldosmode)
+)
   (setvar "cmdecho" 1)
   (princ)
 )
@@ -154,7 +155,8 @@
   (if (= oldcolor "BYLAYER") (command "color" oldcolor) (command "color" (atoi oldcolor)))
   (setvar "cmdecho" 1)
   (setvar "osmode" os)
-  (setq *error* olderr))(princ)
+  (setq *error* olderr)
+)(princ)
 )
 
 ;;OFFSET 變換線型
@@ -184,7 +186,8 @@
  (unload_dialog dcl_id)
  (if aoff_fg (draw_aoff))
 
- (setvar "cmdecho" 1))
+ (setvar "cmdecho" 1)
+)
  (prin1)
 )
 
@@ -266,7 +269,8 @@
          last (subst color62 last62 last)
    )
    (entmod last)
-   (setvar "cmdecho" 1))
+   (setvar "cmdecho" 1)
+)
    (princ)
 )
 
@@ -297,7 +301,8 @@
           (command "change" "p" "" "p" "la" type "")))
   )
  )
- (setvar "cmdecho" 1))
+ (setvar "cmdecho" 1)
+)
  (princ)
 )
 ;;;
@@ -333,7 +338,8 @@
           (setq ttype (cdr (assoc 6 ty)))
           (command "change" "p" "" "p" "lt" ttype ""))))
  )
- (setvar "cmdecho" 1))
+ (setvar "cmdecho" 1)
+)
  (princ)
 )
 ;╭════════════════════════════════════════════╮
@@ -360,7 +366,8 @@
    (prompt "\n輸入縮放比例: ")
    (command "scale" "p" "" (getvar "lastpoint") pause)
   )
- ))
+ )
+)
  (setvar "cmdecho" 1)
  (princ)
 )
@@ -454,7 +461,8 @@
   (command "color" c-color)
   (command "linetype" "s" c-linetype "")
   (command "layer" "s" c-layer "")
-  (setvar "osmode" old_osmode))
+  (setvar "osmode" old_osmode)
+)
   (setvar "cmdecho" 1)(princ)
 )
 ;;=============================================================================================
@@ -513,7 +521,8 @@
      (setq sfes1 (entsel "\n選不圓角線: "))
    );while
    (setvar "cmdecho" 1)
-   (setvar "osmode" old_osmode))
+   (setvar "osmode" old_osmode)
+)
    (princ)
 )
 
