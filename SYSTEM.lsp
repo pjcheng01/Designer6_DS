@@ -77,6 +77,46 @@
   needdata
 )
 
+;; 2026-09-14：從 System.ini 讀設定值的三個小工具。
+;;
+;; 背景：底下的 get_bomdef / get_bomlistdef / get_layerdef 原本只回傳程式
+;; 內建的預設值，完全沒讀 System.ini。但 DFSYSTEM.lsp 的三個設定對話框
+;; 都會把結果寫進 System.ini（LAYER_DEF、BOM_FIELD_DEF + QTY_POS、
+;; BALLOON_DEF），而且寫完就緊接著呼叫這三個函式
+;; （DFSYSTEM.lsp:356 的 (get_layerdef)、:517 的 (get_bomlistdef)）——
+;; 原意顯然就是要它們重新讀檔。讀取端沒接上，等於這三個對話框
+;; 「設了沒有作用」，與 DWG_MANAGE_PATH 是同一類問題。
+;;
+;; getval（本檔上方）已經是 nil-safe 的，直接沿用。注意它會把檔案裡的
+;; key 轉大寫再比對，所以傳進來的 key 一律用大寫。
+(defun sysini_raw (key / raw)
+  (setq raw (getval key))
+  (if raw (setq raw (strip_cr (getrealstr2 raw))))
+  (if (and raw (/= "" raw)) raw)
+)
+
+;; 值形如 (("a" "b")("c" "d")) 或 ("1" "8" …) 才解析，否則回 nil，
+;; 讓呼叫端沿用內建預設值。
+;;
+;; ⚠ 這裡只擋「沒有這個 key／空值／不是以 ( 開頭」三種情形。若字串以 (
+;;   開頭但內容壞掉，(read) 仍會出錯——這與 DFSYSTEM.lsp:4213 既有的
+;;   (read (getfile_val …)) 是同樣的風險，沒有額外惡化。
+(defun sysini_list (key / raw)
+  (setq raw (sysini_raw key))
+  (if (and raw (= "(" (substr raw 1 1))) (read raw))
+)
+
+;; 值形如 "5"（含引號）才解析，回傳字串；否則回 nil。
+(defun sysini_str (key / raw v)
+  (setq raw (sysini_raw key))
+  (if (and raw (= "\"" (substr raw 1 1)))
+    (progn
+      (setq v (read raw))
+      (if (= 'STR (type v)) v)
+    )
+  )
+)
+
 ;所有程式文字資料串列
 (defun get_language_data(/ gg data)
   (setq language_flag "TC")
@@ -121,8 +161,13 @@
 
 ;格式:      ("圓球有無" "圓球直徑" "圓點有無" "圓點直徑" "字高")
 ;指標球定義=("1" "10" "0" "0" "6")
-(defun get_bomdef()
+(defun get_bomdef( / lst)
+  ;; 內建預設；System.ini 的 BALLOON_DEF 讀得到就覆蓋
   (setq defball_list (list "1" "8" "1" "1" "3"))
+  (setq lst (sysini_list "BALLOON_DEF"))
+  (if (and lst (= 5 (length lst)) (= 'STR (type (car lst))))
+    (setq defball_list lst)
+  )
   (setq sys_ball_yesno     (nth 0 defball_list)
         sys_ball_dia        (nth 1 defball_list)
         sys_ballpoint_type  (nth 2 defball_list)
@@ -131,9 +176,24 @@
 )
 
 ;材料清單欄位定義=(("件號" "10") ("品名" "20")("材質" "10") ("料號" "10") ("數量" "10") ("材質" "16") ("備註" "20"))
-(defun get_bomlistdef()
+(defun get_bomlistdef( / lst q)
+  ;; 內建預設；System.ini 的 BOM_FIELD_DEF / QTY_POS 讀得到就覆蓋。
+  ;; 這一項的預設值與 System.ini 的實際內容**差很多**（預設是 5 欄英文，
+  ;; ini 裡是 6 欄中文且每欄多一個資料來源欄），所以先前「定義材料清單
+  ;; 欄位」對話框設了完全沒作用。
+  ;;
+  ;; 欄位筆數是可變的（寫回端支援 1~20 筆）。消費端只取每筆的
+  ;; (nth 0)=名稱 與 (nth 1)=欄寬：BOM.lsp 的 add_bomball_xdata 只用
+  ;; (nth 0)，PUB-LISP.lsp 的 free_list 用 (nth 0) 與 (nth 1)。
+  ;; 第 3 個元素（資料來源）不會被這兩處碰到，多帶著無妨。
   (setq defbomlist_list (list (list "No." "15") (list "Part Name" "20") (list "Material" "10") (list "Qty" "10") (list "Remark" "16")))
   (setq defbomqty_id "5")
+  (setq lst (sysini_list "BOM_FIELD_DEF"))
+  (if (and lst (listp (car lst)) (nth 1 (car lst)))
+    (setq defbomlist_list lst)
+  )
+  (setq q (sysini_str "QTY_POS"))
+  (if q (setq defbomqty_id q))
 )
 
 
@@ -147,7 +207,11 @@
 ;;=============================================================================================
 
 ;圖層定義=(("圖紙層" "BORDER" "BYBLOCK") ("尺寸標註層" "DIM" "2") ("文字註解層"　"TEXT"　"4")("指標圓球層"　"BALLBOM" "2")("材料清單層"　"MATLIST" "2")("投影線層" "PROJ" "143"))
-(defun get_layerdef()
+(defun get_layerdef( / lst e)
+  ;; 內建預設；System.ini 的 LAYER_DEF 讀得到就覆蓋。
+  ;; 每筆格式為 ("中文顯示名" "圖層名" "顏色")，DFSYSTEM.lsp 的
+  ;; 「設定圖層系統變數」對話框就是照這個格式讀寫的
+  ;; （(nth 0)=label、(nth 1)=圖層名、(nth 2)=顏色）。
   (setq deflayer_list (list
     (list "BORDER_LAYER" "BORDER" "7")
     (list "DIM_LAYER" "DIM" "2")
@@ -162,6 +226,28 @@
   (setq sys_ball_layer     "BALLBOM" sys_ball_layercol   "2")
   (setq sys_proj_layer     "PROJ"    sys_proj_layercol   "143")
   (setq sys_bomlist_layer  "MATLIST" sys_bomlist_layercol "4")
+
+  (setq lst (sysini_list "LAYER_DEF"))
+  (if (and lst (listp (car lst)))
+    (progn
+      (setq deflayer_list lst)
+      ;; 位置對應固定：0 圖紙層、1 尺寸標註層、2 文字註解層、
+      ;; 3 指標圓球層、4 材料清單層、5 投影線層。
+      ;; 逐筆檢查，ini 給的筆數比較少或某筆缺欄位時就維持該項的預設值。
+      (setq e (nth 0 lst))
+      (if (and e (nth 1 e) (nth 2 e)) (setq sys_sheet_layer   (nth 1 e) sys_sheet_layercol   (nth 2 e)))
+      (setq e (nth 1 lst))
+      (if (and e (nth 1 e) (nth 2 e)) (setq sys_dim_layer     (nth 1 e) sys_dim_layercol     (nth 2 e)))
+      (setq e (nth 2 lst))
+      (if (and e (nth 1 e) (nth 2 e)) (setq sys_text_layer    (nth 1 e) sys_text_layercol    (nth 2 e)))
+      (setq e (nth 3 lst))
+      (if (and e (nth 1 e) (nth 2 e)) (setq sys_ball_layer    (nth 1 e) sys_ball_layercol    (nth 2 e)))
+      (setq e (nth 4 lst))
+      (if (and e (nth 1 e) (nth 2 e)) (setq sys_bomlist_layer (nth 1 e) sys_bomlist_layercol (nth 2 e)))
+      (setq e (nth 5 lst))
+      (if (and e (nth 1 e) (nth 2 e)) (setq sys_proj_layer    (nth 1 e) sys_proj_layercol    (nth 2 e)))
+    )
+  )
 )
 
 
