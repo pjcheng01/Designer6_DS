@@ -30,6 +30,10 @@ pdmbom3.txt
 # 已追蹤的檔案脫離追蹤；要退出版控需另外 git rm --cached。
 delfile.scr
 openfile.scr
+# btplot.scr 是批次出圖產生的 script，跑完就沒用了。2026-09-14 取消納管；
+# 原本 HEAD 裡存的是 2003 年的執行殘留，指向早已不存在的 \\W2000s2\powertech\...
+btplot.scr
+BTPLOT.SCR
 
 # ---- ini 寫回時的中繼檔 ----
 # file_update 與 c:defbom 的流程是 xxx.ini -> 中繼檔 -> xxx.ini，
