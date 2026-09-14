@@ -198,27 +198,43 @@
   	(setvar "cmdecho" 1)
   	(princ)
 )
-(defun exec_script_btplot(/ fle_plot str_ver int_i lst_item str_fname str_cmd)
+;; 2026-09-14：原本用 (substr (getvar "acadver") 1 2) 比對 "14" / "15" 來決定
+;; script 的寫法。DraftSight 2025 回的是 "17.0"（實測），兩條都不成立，
+;; 迴圈裡一行都沒寫進去 —— BTPLOT.SCR 是空檔，接著 ._script 跑一個空檔，
+;; 不出錯也沒動作。這是手冊 §5.18 那種無聲失敗。
+;;
+;; 版本分支整個拿掉：DraftSight 不是 AutoCAD R14 也不是 2000，那兩條
+;; 永遠不會再成立。統一用原本 "15" 那條（開檔、出圖、關檔）。
+;;
+;; ⚠ 兩個還沒實機查核的前提，見手冊 §7.3：
+;;   1. DraftSight 的 OPEN 能否從 script 吃檔名。說明文件寫 FILEDIA
+;;      （DraftSight 叫 EnblNavDlgs）預設 1 = 走命令列提示，理論上可以。
+;;   2. DraftSight 是多文件介面，open 會另開分頁而不是取代目前的圖，
+;;      script 是否會在新分頁裡繼續執行，未知。這點若不成立，整個
+;;      「寫 .scr 再 ._script」的路線就得換掉。
+;;      （內建的 BatchPrint 不是替代品：它是對話框工具，而且要求每張圖
+;;        都先有 Print Configuration，沒辦法從 LISP 驅動。）
+(defun exec_script_btplot(/ fle_plot int_i lst_item str_fname str_cmd int_cnt)
+  	(setq int_cnt 0)
   	(if glst_plot (progn
 		(setq fle_plot (open (strcat powdesign_path "BTPLOT.SCR") "w"))
-		(setq str_ver (substr (getvar "acadver") 1 2))
 		(setq int_i 0)
 		(repeat (length glst_plot)
 		  	(setq lst_item  (nth int_i glst_plot))
 		  	(setq str_fname (nth 0 lst_item))
 		  	(repeat (atoi (nth 1 lst_item))
-		  		(cond ((= "14" str_ver)
-			       	       (setq str_cmd (strcat "open " str_fname " &hp3\n"))
-				       (princ str_cmd fle_plot))
-			      	      ((= "15" str_ver)
-			       	       (setq str_cmd (strcat "open " str_fname " Y &hp3 close Y\n"))
-				       (princ str_cmd fle_plot))
-				)
+			  	(setq str_cmd (strcat "open " str_fname " Y &hp3 close Y\n"))
+			  	(princ str_cmd fle_plot)
+			  	(setq int_cnt (1+ int_cnt))
 			)
 		  	(setq int_i (1+ int_i))
 		)
 		(close fle_plot)
-		(command "._script" (strcat powdesign_path "btplot.scr"))
+		;; 寫不出任何一行就不要跑空的 script，直接講原因
+		(if (= 0 int_cnt)
+		    (princ "\n[批次出圖] 清單裡沒有任何一筆張數大於 0，沒有產生出圖指令。")
+		    (command "._script" (strcat powdesign_path "btplot.scr"))
+		)
 		(princ)
 	))
 )
