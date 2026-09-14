@@ -61,7 +61,25 @@ git config --get core.autocrlf   # 必須是 true，不是就設定它
 - 不要動 `SHEET/*.dwg`、`DWG/*.dwg`、`SLD/*.sld` 等圖檔與圖庫二進位檔，除非使用者明確要求。
 - 不要刪除 `C:\DESIGNER6` / `C:\POWPARTS`（原版對照組）裡的任何東西。
 - 不要把執行期輸出（`campro.txt`、`CamproBom.txt`、`*.dwl`、`Thumbs.db`）加回版控，`.gitignore` 已擋。
-- 不要幫使用者 push；commit 後告知，由使用者自行推送（此環境沒有 GitHub 憑證）。
+
+## 推送
+
+**commit 隨時可以做；push 要使用者說了才做。**
+
+2026-09-14 更正：原本這裡寫「不要幫使用者 push（此環境沒有 GitHub 憑證）」，
+但實測 `git push origin main` 是會成功的，憑證是有的。使用者也明確表示
+要求時就可以推。
+
+所以現在的規則是：
+
+- 做完一段工作 → commit，並告知推送了幾個 commit
+- 使用者說「push」→ 直接推，不用再問
+- 沒說 → 不要自己推
+
+> 附帶一提：Claude Code 的權限機制偶爾會攔下 `git push`（回報
+> 「Blocked by classifier」）。那不是 git 或憑證的問題，也不是穩定規則——
+> 同一道指令稍後再試可能就通過。被攔下時不要想辦法繞過，
+> 告訴使用者讓他自己跑就好。
 
 ## 這個 repo 的 git 環境陷阱
 
