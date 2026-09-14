@@ -1,39 +1,39 @@
 ;;;
-;;;³Í¬f³sµ²´¹­^ ERP ¨t²Î pdmbom3
+;;;å‡±æŸé€£çµæ™¶è‹± ERP ç³»çµ± pdmbom3
 (defun c:cap_sybom( / qq bomball_grp partdata count balllist num ff fname rf tittxt title_list
                      qty ent data8 qf data bomdata outtxt tag txt num outf)
   (load "manapart")
   (setq typ 1)
   (if (findfile (strcat POWdesign_path "atitle.txt"))
     (progn
-      (setq needlayer (coll_all_layer))  ;; ¿ï¾Ü©Ò¦³¹Ï¼h,¨Ã¹LÂo¤£«Ø¥ß¸ê°TÂIªº¹Ï¼h
+      (setq needlayer (coll_all_layer))  ;; é¸æ“‡æ‰€æœ‰åœ–å±¤,ä¸¦éæ¿¾ä¸å»ºç«‹è³‡è¨Šé»çš„åœ–å±¤
       (foreach nn needlayer
         (progn
           (setq ggg (ssget "x" (list (cons 8 nn))))
           (if (null ggg) (setq needlayer (removelist nn needlayer)))
         );progn
       );foreach
-      (setq bomball_grp (ssget "x" (list (cons 0 "INSERT") (cons 2 "PARTREF"))))  ;;¨ú©Ò¦³¸ê°TÂI
+      (setq bomball_grp (ssget "x" (list (cons 0 "INSERT") (cons 2 "PARTREF"))))  ;;å–æ‰€æœ‰è³‡è¨Šé»
       (setq partdata (read (getfile_val (strcat POWdesign_path "SYSTEM.ini") "PART_DEF")))
       (setq count 0 balllist '() num 1)
 
       (cond
        ((or (= typ 2)(= typ 0)(= typ 3))(setq ff (open (strcat  POWDESIGN_path "bom.out") "w")))
        ((= typ 1)
-        ;(setq fname (getstring "\nÀÉ¦W: "))
+        ;(setq fname (getstring "\næª”å: "))
         ;(setq ff (open (strcat  fname ".xls") "w")))
         (setq ff (open (strcat  powdesign_path "pdmbom3.txt") "w")))
       )
 
       (setq rf (open (strcat  POWDESIGN_path "atitle.txt") "r"))
-      (setq tittxt (read-line rf))                               ;;tittxt ¼h¦W;«~¦W;§÷½è;¹Ï¸¹;»s¹Ï;»¡©ú;¼Æ¶q;ªí­±³B²z;¾÷ºØ;³W®æ;­^¤å«~¦W
-      (close rf)                                                 ;; ¼g¥X¥»²Õ¦X¹Ï¦W
+      (setq tittxt (read-line rf))                               ;;tittxt å±¤å;å“å;æè³ª;åœ–è™Ÿ;è£½åœ–;èªªæ˜;æ•¸é‡;è¡¨é¢è™•ç†;æ©Ÿç¨®;è¦æ ¼;è‹±æ–‡å“å
+      (close rf)                                                 ;; å¯«å‡ºæœ¬çµ„åˆåœ–å
 
 ;;;======================================================================================================
-;;;¨ú¥X[ÀÉ¸¹]»P [²Õ¥ß¹Ï®Æ¸¹]
-      (setq str_filename(curdwgname)) ;¨ú¥X[ÀÉ¸¹]
-      (setq str_attdef "DWGNO")   ;;[²Õ¥ß¹Ï®Æ¸¹]
-      (setq str_assmatno "") ;;[²Õ¥ß¹Ï®Æ¸¹]
+;;;å–å‡º[æª”è™Ÿ]èˆ‡ [çµ„ç«‹åœ–æ–™è™Ÿ]
+      (setq str_filename(curdwgname)) ;å–å‡º[æª”è™Ÿ]
+      (setq str_attdef "DWGNO")   ;;[çµ„ç«‹åœ–æ–™è™Ÿ]
+      (setq str_assmatno "") ;;[çµ„ç«‹åœ–æ–™è™Ÿ]
       (setq set_blk (ssget "x" '((0 . "INSERT")(-3 ("SHEETFLAG")))))
       (if set_blk (progn
 	(setq ent_obj (ssname set_blk 0))
@@ -47,10 +47,10 @@
 	)
       ))
 ;;;======================================================================================================
-;;;¼g¥X title¦Üpdmbom3.txt
-      (write-line (strcat "ÀÉ¸¹;²Õ¥ß¹Ï®Æ¸¹;" tittxt) ff)
+;;;å¯«å‡º titleè‡³pdmbom3.txt
+      (write-line (strcat "æª”è™Ÿ;çµ„ç«‹åœ–æ–™è™Ÿ;" tittxt) ff)
 
-      (setq title_list (TXT_TRAN_LIST tittxt))                   ;;title_list ("¼h¦W" "«~¦W" "§÷½è" ...)
+      (setq title_list (TXT_TRAN_LIST tittxt))                   ;;title_list ("å±¤å" "å“å" "æè³ª" ...)
       (if (or (= typ 2)(= typ 0)(= typ 3))(write-line (curdwgname) ff))
 
       (if (/= nil bomball_grp)
@@ -61,15 +61,15 @@
             (setq ent (ssname bomball_grp count))
             (setq data8 (cdr (assoc 8 (entget ent))))
             (if (member data8 needlayer)
-                (setq needlayer (removelist data8 needlayer))     ;;needlayer ¨S¦³¸ê°TÂIªº¹s¥ó¹Ï¼h
+                (setq needlayer (removelist data8 needlayer))     ;;needlayer æ²’æœ‰è³‡è¨Šé»çš„é›¶ä»¶åœ–å±¤
             );if
-;;¼g¥X¦³¸ê°TÂIªº¹s¥ó¹Ï¼h
+;;å¯«å‡ºæœ‰è³‡è¨Šé»çš„é›¶ä»¶åœ–å±¤
             (setq qf (open (strcat POWDESIGN_path "atitle.txt") "r"))
             (setq data (read-line qf))(close qf)
             (setq bomdata (reverse (get_bomdata ent)))
-;;title_list ("¼h¦W" "«~¦W" "§÷½è" "#¹Ï¸¹" "»s¹Ï" "¼Æ¶q" "ªí­±³B²z" "­^¤å«~¦W" "³W®æ" "¾÷ºØ" "»¡©ú")
-;;bomdata (("TAG3" "¤º¤»¨¤©ÓºÛÁ³µ·") ("TAG8" "") ("TAG13" "") ("TAG1" "") ("TAG2" "") ("TAG6" "") ("TAG7" "") ("TAG11" "") ("TAG12" "") ("TAG4" "") ("TAG5" "") ("TAG10" "8mm*20mm*P1.25") ("TAG9" "Screw.SKT.HD CAP") ("TAG14" "") ("TAG15" ""))
-;;partdata (("²Õ¦X¥ó¸¹" "" "TAG1") ("¦¸²Õ¦X¦WºÙ" "" "TAG2") ("«~¦W" "PARTNAME" "TAG3") ("§÷½è" "MATERIAL" "TAG4") ("#¹Ï¸¹" "DWGNO" "TAG5") ("»s¹Ï" "DRAWER" "TAG6") ("¼Æ¶q" "QTY" "TAG7") ("ªí­±³B²z" "SURFACE" "TAG8") ("­^¤å«~¦W" "" "TAG9") ("³W®æ" "" "TAG10") ("¾÷ºØ" "ITEM" "TAG11") ("»¡©ú" "" "TAG12"))
+;;title_list ("å±¤å" "å“å" "æè³ª" "#åœ–è™Ÿ" "è£½åœ–" "æ•¸é‡" "è¡¨é¢è™•ç†" "è‹±æ–‡å“å" "è¦æ ¼" "æ©Ÿç¨®" "èªªæ˜")
+;;bomdata (("TAG3" "å…§å…­è§’æ‰¿çª©èºçµ²") ("TAG8" "") ("TAG13" "") ("TAG1" "") ("TAG2" "") ("TAG6" "") ("TAG7" "") ("TAG11" "") ("TAG12" "") ("TAG4" "") ("TAG5" "") ("TAG10" "8mm*20mm*P1.25") ("TAG9" "Screw.SKT.HD CAP") ("TAG14" "") ("TAG15" ""))
+;;partdata (("çµ„åˆä»¶è™Ÿ" "" "TAG1") ("æ¬¡çµ„åˆåç¨±" "" "TAG2") ("å“å" "PARTNAME" "TAG3") ("æè³ª" "MATERIAL" "TAG4") ("#åœ–è™Ÿ" "DWGNO" "TAG5") ("è£½åœ–" "DRAWER" "TAG6") ("æ•¸é‡" "QTY" "TAG7") ("è¡¨é¢è™•ç†" "SURFACE" "TAG8") ("è‹±æ–‡å“å" "" "TAG9") ("è¦æ ¼" "" "TAG10") ("æ©Ÿç¨®" "ITEM" "TAG11") ("èªªæ˜" "" "TAG12"))
             (if (or (= typ 0)(= typ 2)(= typ 3))
                 (progn
                       (if (assoc count subdata_list)                                     ;rex
@@ -97,7 +97,7 @@
             );foreach
 
 ;;;======================================================================================================
-;;;¥[¤J[ÀÉ¸¹]»P [²Õ¥ß¹Ï®Æ¸¹]
+;;;åŠ å…¥[æª”è™Ÿ]èˆ‡ [çµ„ç«‹åœ–æ–™è™Ÿ]
             (setq outtxt(strcat str_filename ";" str_assmatno ";" outtxt))
 ;;;======================================================================================================
 
@@ -110,18 +110,18 @@
           );repeat
         );progn
       );if
-    ;;needlayer¨S¦³¸ê°TÂIªº¹s¥ó¹Ï¼h¸ê®Æ¼g¥X               ;; outtxt ¨S¦³¸ê°TÂIªº¸ê®Æ 0;5;0;nil;nil;nil;nil;nil;nil;nil;nil;nil;nil;nil
+    ;;needlayeræ²’æœ‰è³‡è¨Šé»çš„é›¶ä»¶åœ–å±¤è³‡æ–™å¯«å‡º               ;; outtxt æ²’æœ‰è³‡è¨Šé»çš„è³‡æ–™ 0;5;0;nil;nil;nil;nil;nil;nil;nil;nil;nil;nil;nil
     (if (/= nil needlayer)
         (progn
              (foreach nn needlayer
                 (progn
                      (if (or (= typ 0)(= typ 2)(= typ 3))                          ;; 0;5;0;nil;nil;nil;nil;nil;nil;nil;nil;nil;nil;nil
-                         (progn                                                    ;; ¢x¢x¢x ¢x
-                              (setq outtxt (strcat "0;" (rtos num 2 ) ";0;" nn))   ;; ¢x¢x¢x ¢|¢w¢w¢w¢w¢w  ²Ä 4 µ§¥H«á: »P title_list Äæ¦ì¹ïÀ³ªº¸ê®Æ
-                              (repeat (- (length title_list) 1)                    ;; ¢x¢x¢|¢w¢w¢w¢w¢w¢w¢w ²Ä 3 µ§: ¤÷¨t½s¸¹
-                              (setq outtxt (strcat outtxt ";nil")))                ;; ¢x¢|¢w¢w¢w¢w¢w¢w¢w¢w ²Ä 2 µ§: ¬y¤ô¸¹
-                         );progn                                                   ;; ¢|¢w¢w¢w¢w¢w¢w¢w¢w¢w ²Ä 1 µ§: 0 ->¨S¸ê°TÂI(treeª¬¤£Åã¥Ü¹Ï¥Ü)
-                         (progn                                                    ;;                               1 ->¦³¸ê°TÂI(treeª¬Åã¥Ü¹Ï¥Ü)
+                         (progn                                                    ;; â”‚â”‚â”‚ â”‚
+                              (setq outtxt (strcat "0;" (rtos num 2 ) ";0;" nn))   ;; â”‚â”‚â”‚ â””â”€â”€â”€â”€â”€  ç¬¬ 4 ç­†ä»¥å¾Œ: èˆ‡ title_list æ¬„ä½å°æ‡‰çš„è³‡æ–™
+                              (repeat (- (length title_list) 1)                    ;; â”‚â”‚â””â”€â”€â”€â”€â”€â”€â”€ ç¬¬ 3 ç­†: çˆ¶ç³»ç·¨è™Ÿ
+                              (setq outtxt (strcat outtxt ";nil")))                ;; â”‚â””â”€â”€â”€â”€â”€â”€â”€â”€ ç¬¬ 2 ç­†: æµæ°´è™Ÿ
+                         );progn                                                   ;; â””â”€â”€â”€â”€â”€â”€â”€â”€â”€ ç¬¬ 1 ç­†: 0 ->æ²’è³‡è¨Šé»(treeç‹€ä¸é¡¯ç¤ºåœ–ç¤º)
+                         (progn                                                    ;;                               1 ->æœ‰è³‡è¨Šé»(treeç‹€é¡¯ç¤ºåœ–ç¤º)
                               (setq outtxt nn)
                               (repeat (length title_list)
 
@@ -132,7 +132,7 @@
                     );if
                     (setq num (1+ num))
 ;;;======================================================================================================
-;;;¥[¤J[ÀÉ¸¹]»P [²Õ¥ß¹Ï®Æ¸¹]
+;;;åŠ å…¥[æª”è™Ÿ]èˆ‡ [çµ„ç«‹åœ–æ–™è™Ÿ]
                     (setq outtxt(strcat str_filename ";" str_assmatno ";" outtxt))
 ;;;======================================================================================================
                     ;;(write-line outtxt ff) ;;SAM
@@ -142,24 +142,24 @@
         );progn
      );if
      (close ff)
-;;; 2026-09-10¡G²¾°£¨â­Ó¥~°e¨BÆJ¡A¥u«O¯d¶×¥X pdmbom3.txt¡C
+;;; 2026-09-10ï¼šç§»é™¤å…©å€‹å¤–é€æ­¥é©Ÿï¼Œåªä¿ç•™åŒ¯å‡º pdmbom3.txtã€‚
 ;;;
-;;; ­ì¥»³o¸Ì¦b¼g§¹ÀÉ®×¤§«áÁÙ°µ¨â¥ó¨Æ¡G
-;;;   (startapp "pdmbom3.exe")          §â¸ê®Æ°e¶i´¹­^ ERP
-;;;   (load "pdm-cad")(c:cad_to_pdm)    §â¹Ï®ØÄİ©Ê¼g¶i POWERPDM
+;;; åŸæœ¬é€™è£¡åœ¨å¯«å®Œæª”æ¡ˆä¹‹å¾Œé‚„åšå…©ä»¶äº‹ï¼š
+;;;   (startapp "pdmbom3.exe")          æŠŠè³‡æ–™é€é€²æ™¶è‹± ERP
+;;;   (load "pdm-cad")(c:cad_to_pdm)    æŠŠåœ–æ¡†å±¬æ€§å¯«é€² POWERPDM
 ;;;
-;;; ¨â­Ó¥Ø¼Ğ¨t²Î¦b²¾´Óª©³£¤w¤£¦s¦b¡G
-;;;   - ´¹­^ ERP ªº¸ê®Æ®w¤w°±¥Î¡]¦P campro¡A¨£¤â¥U ¡±10.5¡^
-;;;   - PDM ¼Ò²Õ©ó²¾´Ó®É¨è·N²¾°£¡]¤â¥U ¡±6 ¤w§¹¦¨²Ä 3 ¶µ¡^¡Cpdm-cad.lsp
-;;;     ¥u³Ñ PDMSERVER\Autocad\ ©³¤Uªº´İ¯d¡A¤£¦b¤ä´©¸ô®|¤W¡A
-;;;     (load "pdm-cad") ¥²©w¥¢±Ñ¡C´Nºâ¸ü±o¨ì¡Ac:cad_to_pdm ¥Îªº
-;;;     powerpdm_attribdata_path »P powerpdm_path ¦b config.doc ¸Ì
-;;;     ®Ú¥»¨S¦³³]©w¡A¤@¼Ë·|¬µ¡C
+;;; å…©å€‹ç›®æ¨™ç³»çµ±åœ¨ç§»æ¤ç‰ˆéƒ½å·²ä¸å­˜åœ¨ï¼š
+;;;   - æ™¶è‹± ERP çš„è³‡æ–™åº«å·²åœç”¨ï¼ˆåŒ camproï¼Œè¦‹æ‰‹å†Š Â§10.5ï¼‰
+;;;   - PDM æ¨¡çµ„æ–¼ç§»æ¤æ™‚åˆ»æ„ç§»é™¤ï¼ˆæ‰‹å†Š Â§6 å·²å®Œæˆç¬¬ 3 é …ï¼‰ã€‚pdm-cad.lsp
+;;;     åªå‰© PDMSERVER\Autocad\ åº•ä¸‹çš„æ®˜ç•™ï¼Œä¸åœ¨æ”¯æ´è·¯å¾‘ä¸Šï¼Œ
+;;;     (load "pdm-cad") å¿…å®šå¤±æ•—ã€‚å°±ç®—è¼‰å¾—åˆ°ï¼Œc:cad_to_pdm ç”¨çš„
+;;;     powerpdm_attribdata_path èˆ‡ powerpdm_path åœ¨ config.doc è£¡
+;;;     æ ¹æœ¬æ²’æœ‰è¨­å®šï¼Œä¸€æ¨£æœƒç‚¸ã€‚
 ;;;
-;;; ¸ê®ÆÀÉ¥»¨­ªº²£¥Í¬O¥¿½Tªº¡A¿ù»~¥uµo¥Í¦b³o¨â­Ó¥~°e¨BÆJ¡C
-;;; ²{¦b§ï¬°¦L¥XÀÉ®×¸ô®|¡A¥Ñ¨Ï¥ÎªÌ¦Û¦æ¨ú¥Î¡C
+;;; è³‡æ–™æª”æœ¬èº«çš„ç”¢ç”Ÿæ˜¯æ­£ç¢ºçš„ï¼ŒéŒ¯èª¤åªç™¼ç”Ÿåœ¨é€™å…©å€‹å¤–é€æ­¥é©Ÿã€‚
+;;; ç¾åœ¨æ”¹ç‚ºå°å‡ºæª”æ¡ˆè·¯å¾‘ï¼Œç”±ä½¿ç”¨è€…è‡ªè¡Œå–ç”¨ã€‚
      (if (and (= 1 typ) (findfile (strcat  powdesign_path "pdmbom3.txt")))
-         (princ (strcat "\nª«®Æ²M³æ¤w¶×¥X: " powdesign_path "pdmbom3.txt"))
+         (princ (strcat "\nç‰©æ–™æ¸…å–®å·²åŒ¯å‡º: " powdesign_path "pdmbom3.txt"))
      )
     );progn
     (progn
