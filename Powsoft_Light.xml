@@ -434,7 +434,7 @@
             </menu>
         </menus>
         <toolbars>
-            <toolbar UID="{86711597-6438-4104-b2b2-ac99944abea1}" movable="true" def_x_location="200" def_y_location="200" name="藝祥資訊機械設計" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
+            <toolbar UID="{86711597-6438-4104-b2b2-ac99944abea1}" movable="true" def_x_location="200" def_y_location="200" name="藝祥資訊機械設計" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="true">
                 <toolbar type="2" UID="{d8750ded-6f2a-429a-89d5-7a8e5e983f5d}" name="輔助繪圖(一)" definition_ref="POWSOFT.AUXDRAW1"/>
                 <toolbar type="2" UID="{9e8f5360-a63a-455c-972b-09d0bb1d6892}" name="輔助繪圖(二)" definition_ref="POWSOFT.AUXDRAW2"/>
                 <toolbar type="2" UID="{5d5c9b88-7d83-4748-8b32-443756e05609}" name="輔助編輯(一)" definition_ref="POWSOFT.AUXEDIT1"/>
@@ -737,7 +737,7 @@
                 <toolbar name="" definition_ref=""/>
                 <toolbar UID="{45e18eb7-332e-4c4d-9f22-0798e26c80b4}" name="設定成剖面線(HH)" definition_ref="{56ab6564-05d4-49b4-9a5b-2127adfb9f93}"/>
             </toolbar>
-            <toolbar UID="{969a3275-5c55-40f4-9686-8f5162f64079}" movable="true" def_x_location="200" def_y_location="200" name="設定目前圖層" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="false">
+            <toolbar UID="{969a3275-5c55-40f4-9686-8f5162f64079}" movable="true" def_x_location="200" def_y_location="200" name="設定目前圖層" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="true">
                 <toolbar UID="{c012b4aa-7d8a-4653-8177-697ecc15a352}" name="設定成 0 層(LL0)" definition_ref="{f577c5df-b120-4280-a763-56b05e108b7c}"/>
                 <toolbar UID="{1797f798-4e62-4973-88f4-2c934aa18601}" name="設定成文字層(LLT)" definition_ref="{6c7c3316-9812-4301-b65e-c7e8556f0b82}"/>
                 <toolbar UID="{e1b6a16d-9996-4faa-a0cf-2b54bf742182}" name="設定成尺寸線(LLD)" definition_ref="{689024a0-0991-4ee3-b7c7-15a0b95fa4c2}"/>
