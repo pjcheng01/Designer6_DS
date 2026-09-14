@@ -163,8 +163,19 @@
      )
     );progn
     (progn
-      (c:sortcol)
-      (c:outbom_out)
+      ;; 2026-09-14：原本這裡是 (c:sortcol)(c:outbom_out)。
+      ;; c:outbom_out 全專案沒有定義（詳見 MANAPART.lsp 的 bomtree 同一處註解）。
+      ;;
+      ;; ⚠ 這一處還有另一個問題：本函式檢查的是 **atitle.txt**，但
+      ;; c:sortcol 寫出來的是 **title.txt**。而 atitle.txt **全專案只有讀、
+      ;; 沒有任何程式會寫**（本檔第 7、28、67 行都是讀）。所以就算改成
+      ;; 「設定完自動重跑」也永遠不會成立——atitle.txt 不會憑空出現。
+      ;; 它必須手動建立，格式是一行、以分號分隔的欄位名，例如：
+      ;;     層名;數量;組合件號;機種;英文品名
+      (princ "\n找不到 atitle.txt，無法產生凱柏連結晶英 ERP 的物料清單。")
+      (princ "\n這個檔案沒有任何程式會自動產生，需手動建立於 ")
+      (princ POWdesign_path)
+      (princ "\n格式為一行、以分號分隔的欄位名，例如：層名;數量;組合件號;機種;英文品名")
     );progn
   );if
   (princ)

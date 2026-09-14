@@ -1592,8 +1592,19 @@
      );if
     );progn
     (progn
+      ;; 2026-09-14：原本這裡是 (c:sortcol)(c:outbom_out)。
+      ;; c:outbom_out **全專案沒有定義**——原版 C:\DESIGNER6 也只呼叫不定義，
+      ;; 是 20 年的舊缺陷，走到這裡就會炸「no function definition」。
+      ;;
+      ;; 原意應該是「設定完欄位順序之後把剛才的匯出重跑一次」，但那一半
+      ;; 從來沒被實作。使用者決定採最保守做法：設定完就結束，請使用者
+      ;; 自己再執行一次，不做自動重跑（避免對話框按取消時無限遞迴）。
+      ;;
+      ;; c:sortcol 按確定會執行 sortcol_ok，寫出 title.txt 與 dwgdata.txt，
+      ;; 所以再執行一次就會走正常流程。
       (c:sortcol)
-      (c:outbom_out)
+      (princ "\n找不到欄位順序設定檔 title.txt，已開啟「物料結構顯示欄位順序」。")
+      (princ "\n設定完成後請再執行一次本功能。")
     );progn
   );if
   (princ)
