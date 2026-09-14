@@ -59,7 +59,7 @@
 
 (defun c:callcalc()(c:autoload) (startapp "calc"))
 (defun c:manauser_menu()(c:autoload)(cond ((null c:manamenu)(load "userMENU"))(t (princ))) (c:manamenu "usermenu.mnu" "usermenu" "manamenu"))
-(defun loaddesigner()(cond ((null c:#setting)(load "system"))(t (princ))))
+(defun loaddesigner()(cond ((null c:ds_setting)(load "system"))(t (princ))))   ;; 2026-09-14：原為 c:#setting，那是加密狗版的函式名，移植時已改名為 c:ds_setting（SYSTEM.lsp:240），守衛卻沒跟著改，導致判斷永遠成立、system 每次都重載
 
 
 (setq  sysdrawbar1     "���Uø��(�@)"
