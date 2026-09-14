@@ -199,7 +199,7 @@
 
 (defun c:batch_plot(/ int_flag glst_plot)
   	(setvar "cmdecho" 0)
-  	(actdcl (strcat powdesign_path "btplot.dcl") "btplot")
+  	(actdcl (strcat powdesign_path "btplot") "btplot")   ;; 2026-09-14：actdcl 會自己補 .dcl，這裡再寫一次會變成 xxx.dcl.dcl
 
      	(set_tile "NUM" "1")
 	(mode_tile "DEL" 1)

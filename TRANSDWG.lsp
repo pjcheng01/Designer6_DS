@@ -15,7 +15,7 @@
 ;(setq powdesign_path "c:\\designer6\\")
 
 
-(actdcl (strcat powdesign_dcl_path "transdwg.dcl") "transheet")
+(actdcl (strcat powdesign_dcl_path "transdwg") "transheet")   ;; 2026-09-14：actdcl 會自己補 .dcl，這裡再寫一次會變成 xxx.dcl.dcl
 
      ;;初始化
      (read_list 0)              ;;產生 #g_file_list #g_item_list 並(act_pop_list)在下拉選單
@@ -68,7 +68,7 @@
 ;;CALL_DCL STYLE
 (defun ed_style(/ ~get_lock)
  (setq ~get_lock (get_tile "pop_style"))
- (actdcl (strcat powdesign_dcl_path "transdwg.dcl") "ed_style")
+ (actdcl (strcat powdesign_dcl_path "transdwg") "ed_style")   ;; 2026-09-14：actdcl 會自己補 .dcl，這裡再寫一次會變成 xxx.dcl.dcl
  (read_list 1)
  (st_button 1)
  (action_tile "style_list" "(st_button 0)")
@@ -105,7 +105,7 @@
 
     (setq ~prop_name (nth #g_prop '("LineType" "Font" "Layer")))
     (setq ~dialog_name (nth #g_mode (nth ~prop '(("add_line" "mod_line")("add_font" "mod_font")("add_layer" "mod_layer")))))
-    (actdcl (strcat powdesign_dcl_path "transdwg.dcl") ~dialog_name)
+    (actdcl (strcat powdesign_dcl_path "transdwg") ~dialog_name)   ;; 2026-09-14：actdcl 會自己補 .dcl，這裡再寫一次會變成 xxx.dcl.dcl
     (if (= 0 ~prop) (progn (line_define)(act_pop_list #g_item1 "new_dat")))
     (if (and (= 0 ~prop)(= 1 ~mode)) (setq #g_Init_new (get_sublist_num #g_item2 #g_Init_new)))
     (set_tile "old_dat" #g_Init_old)                         ;;在(xxx_xxxx)之前的(tile_box)會產生 #g_Init_old #g_Init_new
@@ -121,7 +121,7 @@
     (setq #g_mode ~mode)
 
     (setq ~dialog_name (nth #g_mode '("add_style" "mod_style" "del_style")))
-    (actdcl (strcat powdesign_dcl_path "transdwg.dcl") ~dialog_name)
+    (actdcl (strcat powdesign_dcl_path "transdwg") ~dialog_name)   ;; 2026-09-14：actdcl 會自己補 .dcl，這裡再寫一次會變成 xxx.dcl.dcl
     (set_tile "xxx_st" #g_Init_Tile)
     (action_tile "accept" "(write_st)(done_dialog)(read_list 1)(st_button 1)") ;;有(act_pop_list)函式必須在(done_dialog)之後
     (start_dialog)

@@ -4271,7 +4271,7 @@
               (setvar "cmdecho" 0)
                 (setq gint_flag nil)
                 (setq gint_image nil)
-                (actdcl (strcat powdesign_dcl_path "keydim.dcl") "keydim")
+                (actdcl (strcat powdesign_dcl_path "keydim") "keydim")   ;; 2026-09-14：actdcl 會自己補 .dcl，這裡再寫一次會變成 xxx.dcl.dcl
                 (show_sld_col "KP1" (strcat powdesign_sld_path "keydim1.sld") 166)(setq gint_image 1)
                 (show_sld_col "KP2" (strcat powdesign_sld_path "keydim2.sld") -2)
                 (getkey_keydim)

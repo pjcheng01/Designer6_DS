@@ -629,7 +629,7 @@
 	)
 
   	(setq flt_dist (getdist "\n孔徑: "))
-  	(actdcl (strcat powdesign_dcl_path "hkring.dcl") "hkring1")
+  	(actdcl (strcat powdesign_dcl_path "hkring") "hkring1")   ;; 2026-09-14：actdcl 會自己補 .dcl，這裡再寫一次會變成 xxx.dcl.dcl
 	(if (not (null flt_dist))
 	    (progn (set_tile "D1" (rtos flt_dist 2 2))
 	           (setq lst_stdlist (stdfile_data_hkring1 "DRINGDIM.DOC"))
@@ -816,7 +816,7 @@
 		   ))
 	)
   	(setq gflt_dist (getdist "\n軸徑: "))
-  	(actdcl (strcat powdesign_dcl_path "hkring.dcl") "hkring2")
+  	(actdcl (strcat powdesign_dcl_path "hkring") "hkring2")   ;; 2026-09-14：actdcl 會自己補 .dcl，這裡再寫一次會變成 xxx.dcl.dcl
 	(style_hkring2 0)
 	
   	(show_sld "type1" (strcat powdesign_sld_path "hkring03.sld"))

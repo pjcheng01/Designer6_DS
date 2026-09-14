@@ -16,7 +16,7 @@
        ;(setq powdesign_ini_path (strcat powdesign_path "ini\\"))
 
        (setvar "cmdecho" 0)
-       (actdcl (strcat powdesign_dcl_path "transdwg.dcl") "trs")
+       (actdcl (strcat powdesign_dcl_path "transdwg") "trs")   ;; 2026-09-14：actdcl 會自己補 .dcl，這裡再寫一次會變成 xxx.dcl.dcl
        (setq #g_syslt (read (getfile_val (strcat powdesign_path "system.ini") "LTYPE_DEF")))
        (read_list_transact)
        (action_tile "accept" "(get_key_tranact)(setq ~flag 1)")
