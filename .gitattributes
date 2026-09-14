@@ -1,7 +1,0 @@
-# 2026-09-14：這兩支不是原始碼，是 AutoCAD PROTECTED LISP（加密的二進位）。
-# 檔頭是 "AutoCAD PROTECTED LISP file"。早期那次 Big5->UTF-8 批次轉換把它們
-# 當成文字處理，直接毀掉（SCRWLINE 9067->14743、AUXEDIT2 2336->3738 bytes），
-# 也是手冊 §3.3 那份 U+FFFD 清單裡「原檔不是合法 cp950」的真正原因。
-# 明確標成 binary，避免 git 的 CRLF 轉換再動到它們。
-SCRWLINE.lsp -text
-AUXEDIT2.lsp -text
