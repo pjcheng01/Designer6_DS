@@ -199,7 +199,7 @@ xxx.exe
 | `安裝Key程式/` | 27 | — |
 | `SYSDRVR/`（Sentinel 驅動，含 WIN_31 / WIN_9X / WIN_NT） | 13 | — |
 
-合計 **45 檔，約 6.05 MB**。
+合計 **75 檔，15.22 MB**。（原本寫 45 檔 6.05 MB 是漏算了 `安裝Key程式/`——git ls-files 對非 ASCII 路徑會做 C-style 跳脫，比對時沒對上。）
 
 移植時已經移除加密狗判斷（`CONFIG.lsp` 第 2 條），`KB/LOADSYS.LSP` 的
 `findkey.exe` 從未被載入。`SYSDRVR` 裡甚至有 Windows 3.1 與 Alpha/PowerPC 的
@@ -293,7 +293,7 @@ xxx.exe
 | **5** | `bomtree` typ=2 改 .csv，移除 `tree1.exe` | 低 | **完成** `f7092da` + `1765c24` |
 | **6** | `bomtree` typ=0 改 .csv，移除 `bom1.exe` | 中 | 待辦 — 需先確認次組立名稱回寫還用不用 |
 | **7** | 刪 5 支重複／舊版 .lsp | 極低 | **完成** `ad83f2d` |
-| **8** | 加密狗相關（`KB/`、`安裝Key程式/`、`SYSDRVR/`） | 極低 | 待辦 — 您決定是否保留授權來源 |
+| **8** | 加密狗相關（`KB/`、`安裝Key程式/`、`SYSDRVR/`） | 極低 | **完成** — 75 檔 15.22 MB（非 45 檔 6 MB，原估計漏算） |
 
 ### 階段 2 的做法與原計畫不同
 
