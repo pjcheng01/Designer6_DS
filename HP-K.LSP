@@ -15,7 +15,7 @@
               	(setq block_sz 6))
               ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "ASMA3tzt"))))
 		(setq block_sz 7))
-	      (t (princ (strcat (getvar "DWGNAME") " §ä¤£¨ì¹Ï®Ø! µLªk¦C¦L")))
+	      (t (princ (strcat (getvar "DWGNAME") " æ‰¾ä¸åˆ°åœ–æ¡†! ç„¡æ³•åˆ—å°")))
  	)
 
   	(cond ((= 1 block_sz)(hp_plot "A3" "A1"))
@@ -37,16 +37,16 @@
      	(setq ltscale_setvar (getvar "ltscale"))
      	
   	(if (or (= "A3" paper_style)(= "A4" paper_style))
-	    (setq scale_size (/ 1.0 (* ltscale_setvar 1)))         ;;¥X¹Ï¤ñ¨Ò       A1= A3 * 2
+	    (setq scale_size (/ 1.0 (* ltscale_setvar 1)))         ;;å‡ºåœ–æ¯”ä¾‹       A1= A3 * 2
             (setq scale_size "fit")
   	)
 
   	(command "cmddia" 0)
 	(command ".plot" "Y" "MODEL" "HP LaserJet 5100 PCL 6" paper_size "M" "L" "N" "E" scale_size "c" "Y" "acad.ctb" "Y" "N" "N" "N" "y")
-  	;(command ".plot" "Y" "MODEL" "HP..." paper_size "M" "L" "N" "L" scale_size pp1 "Y" "§Î¦¡ªí¦WºÙ" "N" "N" "N" "N" "N")
+  	;(command ".plot" "Y" "MODEL" "HP..." paper_size "M" "L" "N" "L" scale_size pp1 "Y" "å½¢å¼è¡¨åç¨±" "N" "N" "N" "N" "N")
   	;(command ".plot" "e" "5" "y" "HP DesignJet 350C" "e" "5" "n" "y" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.3" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.35" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2"  "x" "n" "m" pp1 paper_size  "0" "n" scale_size "" )
      	(command "cmddia" "1")
-  	(prompt (strcat "<<<<   " paper_style "  ¥X¹Ï§¹¦¨    >>>>"))
+  	(prompt (strcat "<<<<   " paper_style "  å‡ºåœ–å®Œæˆ    >>>>"))
      	(command "zoom" "P")
 
 )
@@ -68,16 +68,16 @@
               	(setq block_sz 6))
               ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "ASMA3tzt"))))
 		(setq block_sz 7))
-	      (t (princ (strcat (getvar "DWGNAME") " §ä¤£¨ì¹Ï®Ø! µLªk¦C¦L")))
+	      (t (princ (strcat (getvar "DWGNAME") " æ‰¾ä¸åˆ°åœ–æ¡†! ç„¡æ³•åˆ—å°")))
  	)
 
-  	(cond ((= 1 block_sz)(hp2_plot "¸û¤j¤Ø¤o¡GISO A1  (portrait)" "A1"))
-	      ((= 2 block_sz)(hp2_plot "¸û¤j¤Ø¤o¡GISO A2  (landscape)" "A2"))
-	      ((= 3 block_sz)(hp2_plot "¸û¤j¤Ø¤o¡GISO A3  (landscape)" "A3"))
-	      ((= 4 block_sz)(hp2_plot "¸û¤j¤Ø¤o¡GISO A4  (landscape)" "A4"))
-	      ((= 5 block_sz)(hp2_plot "¸û¤j¤Ø¤o¡GISO A1  (portrait)" "A1"))
-              ((= 6 block_sz)(hp2_plot "¸û¤j¤Ø¤o¡GISO A2  (landscape)" "A2"))
-              ((= 7 block_sz)(hp2_plot "¸û¤j¤Ø¤o¡GISO A3  (landscape)" "A3"))
+  	(cond ((= 1 block_sz)(hp2_plot "è¼ƒå¤§å°ºå¯¸ï¼šISO A1  (portrait)" "A1"))
+	      ((= 2 block_sz)(hp2_plot "è¼ƒå¤§å°ºå¯¸ï¼šISO A2  (landscape)" "A2"))
+	      ((= 3 block_sz)(hp2_plot "è¼ƒå¤§å°ºå¯¸ï¼šISO A3  (landscape)" "A3"))
+	      ((= 4 block_sz)(hp2_plot "è¼ƒå¤§å°ºå¯¸ï¼šISO A4  (landscape)" "A4"))
+	      ((= 5 block_sz)(hp2_plot "è¼ƒå¤§å°ºå¯¸ï¼šISO A1  (portrait)" "A1"))
+              ((= 6 block_sz)(hp2_plot "è¼ƒå¤§å°ºå¯¸ï¼šISO A2  (landscape)" "A2"))
+              ((= 7 block_sz)(hp2_plot "è¼ƒå¤§å°ºå¯¸ï¼šISO A3  (landscape)" "A3"))
 	)
   	(setvar "cmdecho" 1)
 )
@@ -88,13 +88,13 @@
      	(setq pp1 '(5 7 0))
      	(setq cmddia_setvar (getvar "cmddia"))
      	(setq ltscale_setvar (getvar "ltscale"))
-     	(setq scale_size (/ 1.0 (* ltscale_setvar 1)))         ;;¥X¹Ï¤ñ¨Ò       A1= A3 * 2
+     	(setq scale_size (/ 1.0 (* ltscale_setvar 1)))         ;;å‡ºåœ–æ¯”ä¾‹       A1= A3 * 2
 
   	(command "cmddia" 0)
 	(command ".plot" "Y" "MODEL" "HP DesignJet 500 42 by HP(POWER)" paper_size "M" "L" "N" "E" scale_size "c" "Y" "acad.ctb" "Y" "N" "N" "N" "y")
   	;(command ".plot" "e" "5" "y" "HP DesignJet 350C" "e" "5" "n" "y" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.3" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.35" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2" "7" "0" "0.2"  "x" "n" "m" pp1 paper_size  "0" "n" scale_size "" )
      	(command "cmddia" "1")
-  	(prompt (strcat "<<<<   " paper_style "  ¥X¹Ï§¹¦¨    >>>>"))
+  	(prompt (strcat "<<<<   " paper_style "  å‡ºåœ–å®Œæˆ    >>>>"))
      	(command "zoom" "P")
 )
 (defun c:hp3(/ block_con block_sz)
@@ -114,15 +114,15 @@
               	(setq block_sz 6))
               ((setq block_con (ssget "X" (list (cons 0 "INSERT")(cons 2 "ASMA3tzt"))))
 		(setq block_sz 7))
-	      (t (princ (strcat (getvar "DWGNAME") " §ä¤£¨ì¹Ï®Ø! µLªk¦C¦L")))
+	      (t (princ (strcat (getvar "DWGNAME") " æ‰¾ä¸åˆ°åœ–æ¡†! ç„¡æ³•åˆ—å°")))
  	)
 
-  	(cond ((= 1 block_sz)(hp3_plot "¸û¤j¤Ø¤o¡GISO A1  (portrait)" "A1"))
-	      ((= 2 block_sz)(hp3_plot "¸û¤j¤Ø¤o¡GISO A2  (landscape)" "A2"))
+  	(cond ((= 1 block_sz)(hp3_plot "è¼ƒå¤§å°ºå¯¸ï¼šISO A1  (portrait)" "A1"))
+	      ((= 2 block_sz)(hp3_plot "è¼ƒå¤§å°ºå¯¸ï¼šISO A2  (landscape)" "A2"))
 	      ((= 3 block_sz)(hp3_plot "A3" "A3"))
 	      ((= 4 block_sz)(hp3_plot "A4" "A4"))
-	      ((= 5 block_sz)(hp3_plot "¸û¤j¤Ø¤o¡GISO A1  (portrait)" "A1"))
-              ((= 6 block_sz)(hp3_plot "¸û¤j¤Ø¤o¡GISO A2  (landscape)" "A2"))
+	      ((= 5 block_sz)(hp3_plot "è¼ƒå¤§å°ºå¯¸ï¼šISO A1  (portrait)" "A1"))
+              ((= 6 block_sz)(hp3_plot "è¼ƒå¤§å°ºå¯¸ï¼šISO A2  (landscape)" "A2"))
               ((= 7 block_sz)(hp3_plot "A3" "A3"))
 	)
   	(setvar "cmdecho" 1)
@@ -133,7 +133,7 @@
      	(setq pp1 '(5 7 0))
      	(setq cmddia_setvar (getvar "cmddia"))
      	(setq ltscale_setvar (getvar "ltscale"))
-     	(setq scale_size (/ 1.0 (* ltscale_setvar 1)))         ;;¥X¹Ï¤ñ¨Ò       A1= A3 * 2
+     	(setq scale_size (/ 1.0 (* ltscale_setvar 1)))         ;;å‡ºåœ–æ¯”ä¾‹       A1= A3 * 2
 
   	(command "cmddia" 0)
   	(cond ((or (= "A1" paper_style)(= "A2" paper_style))
@@ -144,23 +144,23 @@
 	      )
 	)
 	(command "cmddia" "1")
-  	(prompt (strcat "<<<<   " paper_style "  ¥X¹Ï§¹¦¨    >>>>"))
+  	(prompt (strcat "<<<<   " paper_style "  å‡ºåœ–å®Œæˆ    >>>>"))
      	(command "zoom" "P")
 )
-;;;¢z¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢{
-;;;¢x  µ{  ¦¡ : §å¦¸¥X¹Ï			                     ¢x
-;;;¢x  ¥Dµ{¦¡ : hp-k.lsp                                             ¢x
-;;;¢x  ¤é  ´Á : 2003/11/12                                           ¢x
-;;;¢x  ©m  ¦W : SAM                                                  ¢x
-;;;¢x  ¹ï¸Ü®Ø : 	                                             ¢x
-;;;¢x  ¤è  ªk : batch_plot                                           ¢x
-;;;¢x  ¬ÛÃöÀÉ®×:                                                     ¢x
-;;;¢|¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢w¢}
+;;;â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+;;;â”‚  ç¨‹  å¼ : æ‰¹æ¬¡å‡ºåœ–			                     â”‚
+;;;â”‚  ä¸»ç¨‹å¼ : hp-k.lsp                                             â”‚
+;;;â”‚  æ—¥  æœŸ : 2003/11/12                                           â”‚
+;;;â”‚  å§“  å : SAM                                                  â”‚
+;;;â”‚  å°è©±æ¡† : 	                                             â”‚
+;;;â”‚  æ–¹  æ³• : batch_plot                                           â”‚
+;;;â”‚  ç›¸é—œæª”æ¡ˆ:                                                     â”‚
+;;;â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ;;;====================================================================
 ;|(defun c:batch_plot()
 	(setvar "cmdecho" 0)
         (startapp (strcat powdesign_path "selfile.exe"))
-        (getpoint "\n½Ğ¿ï¨úÀÉ®×«á«ö Enter Áä!")
+        (getpoint "\nè«‹é¸å–æª”æ¡ˆå¾ŒæŒ‰ Enter éµ!")
   	(exec_script_btplot)
   	(setvar "cmdecho" 1)
   	(princ)
@@ -199,7 +199,7 @@
 
 (defun c:batch_plot(/ int_flag glst_plot)
   	(setvar "cmdecho" 0)
-  	(actdcl (strcat powdesign_path "btplot") "btplot")   ;; 2026-09-14¡Gactdcl ·|¦Û¤v¸É .dcl¡A³o¸Ì¦A¼g¤@¦¸·|ÅÜ¦¨ xxx.dcl.dcl
+  	(actdcl (strcat powdesign_path "btplot") "btplot")   ;; 2026-09-14ï¼šactdcl æœƒè‡ªå·±è£œ .dclï¼Œé€™è£¡å†å¯«ä¸€æ¬¡æœƒè®Šæˆ xxx.dcl.dcl
 
      	(set_tile "NUM" "1")
 	(mode_tile "DEL" 1)
@@ -243,8 +243,8 @@
   	(setq int_num (atoi (get_tile "NUM")))
   	(if (or (= "" (string_space_btplot str_fle))(= 0 int_num))
 	    (progn
-	    	(if (= 0 int_num)(alert "¥¼¿é¤J±i¼Æ")
-		  		 (alert "¥¼¿é¤JÀÉ®×¦WºÙ"))
+	    	(if (= 0 int_num)(alert "æœªè¼¸å…¥å¼µæ•¸")
+		  		 (alert "æœªè¼¸å…¥æª”æ¡ˆåç¨±"))
 	    )
 	    (progn
 	        (if (findfile str_fle)
@@ -253,7 +253,7 @@
 	            	(setq glst_plot (cons lst_tmp (reverse glst_plot)))
 	      	    	(setq glst_plot (reverse glst_plot))
 		    )
-		    (alert "§ä¤£¨ìÀÉ®×")
+		    (alert "æ‰¾ä¸åˆ°æª”æ¡ˆ")
 		)
 	    )
 	)
@@ -274,7 +274,7 @@
   	(mode_tile "DEL" 1)
 )
 (defun select_file_btplot(/ str_fname)
-	(setq str_fname (getfiled "¿ï¨úÀÉ®×" "" "DWG" 16))
+	(setq str_fname (getfiled "é¸å–æª”æ¡ˆ" "" "DWG" 16))
   	(if str_fname (set_tile "FLE" str_fname))
 )
 (defun trans_strlist_btplot(lst_plot / int_i str_tmp1 str_tmp2 str_tmp3 lst_tmp)
@@ -282,7 +282,7 @@
   	(repeat (length lst_plot)
 	  	(setq str_tmp1 (nth 0 (nth int_i lst_plot)))
 	  	(setq str_tmp2 (nth 1 (nth int_i lst_plot)))
-	  	(setq str_tmp3 (strcat "±i¼Æ: " str_tmp2 (col_tab (- 5 (strlen str_tmp2))) str_tmp1))
+	  	(setq str_tmp3 (strcat "å¼µæ•¸: " str_tmp2 (col_tab (- 5 (strlen str_tmp2))) str_tmp1))
 	  	(setq lst_tmp  (cons str_tmp3 lst_tmp))
 	  	(setq int_i (1+ int_i))
 	)
@@ -299,14 +299,13 @@
 	)))
   	str
 )
-;; 2026-09-14¡G­ì¥»¬O (defun *error* (msg) (princ)) ¡X¡X ¦¬¨ì°T®§«o¤°»ò³£¤£°µ¡C
-;; ³o¬O¡i³»¼h¡j©w¸q¡A¸ü¤J³o¤äÀÉ®×´N·|¥Ã¤[´«±¼¥ş°ì *error*¡A©ó¬O¾ã­Ó¤u§@
-;; ¶¥¬q¤§«áªº¿ù»~¥ş³¡µLÁn¡C¥ş±M®×¦@ 19 ³B¦P¼Ëªº¼gªk¡A¤À¥¬¦b 8 ¤äÀÉ®×¡A
-;; ¦Ó MANAPART »P DFSYSTEM ´X¥G¨C­Ó¥\¯à³£·|¸ü¤J¡X¡X³o¬O¤â¥U ¡±5.16 ¨º­Ó
-;; ¡u©Ò¦³¿ù»~°T®§³£³Q§]±¼¡vªº¯u¥¿·½ÀY¡C
-;; §ï¬°·Ó±`Åã¥Ü¡A¥uÂo±¼¨Ï¥ÎªÌ¥D°Ê¨ú®ø¡ş¤¤Â_³oÃş¤£ºâ¿ù»~ªº°T®§¡C
-;; °T®§¤å¦r¨è·N¥Î ASCII¡GHP-K.LSP ¬O cp950 ¦Ó DraftSight ¥H UTF-8 Åª .lsp¡A
-;; ¼g¤¤¤å·|ÅÜ¶Ã½X¡F"\nError: " ¤]¬O¥»±M®×¬J¦³ªº¥D¬y¼gªk¡C
+;; 2026-09-14ï¼šåŸæœ¬æ˜¯ (defun *error* (msg) (princ)) â€”â€” æ”¶åˆ°è¨Šæ¯å»ä»€éº¼éƒ½ä¸åšã€‚
+;; é€™æ˜¯ã€é ‚å±¤ã€‘å®šç¾©ï¼Œè¼‰å…¥é€™æ”¯æª”æ¡ˆå°±æœƒæ°¸ä¹…æ›æ‰å…¨åŸŸ *error*ï¼Œæ–¼æ˜¯æ•´å€‹å·¥ä½œ
+;; éšæ®µä¹‹å¾Œçš„éŒ¯èª¤å…¨éƒ¨ç„¡è²ã€‚å…¨å°ˆæ¡ˆå…± 19 è™•åŒæ¨£çš„å¯«æ³•ï¼Œåˆ†å¸ƒåœ¨ 8 æ”¯æª”æ¡ˆï¼Œ
+;; è€Œ MANAPART èˆ‡ DFSYSTEM å¹¾ä¹æ¯å€‹åŠŸèƒ½éƒ½æœƒè¼‰å…¥â€”â€”é€™æ˜¯æ‰‹å†Š Â§5.16 é‚£å€‹
+;; ã€Œæ‰€æœ‰éŒ¯èª¤è¨Šæ¯éƒ½è¢«åæ‰ã€çš„çœŸæ­£æºé ­ã€‚
+;; æ”¹ç‚ºç…§å¸¸é¡¯ç¤ºï¼Œåªæ¿¾æ‰ä½¿ç”¨è€…ä¸»å‹•å–æ¶ˆï¼ä¸­æ–·é€™é¡ä¸ç®—éŒ¯èª¤çš„è¨Šæ¯ã€‚
+;; è¨Šæ¯æ–‡å­—ç”¨ ASCIIï¼š"\nError: " æ˜¯æœ¬å°ˆæ¡ˆæ—¢æœ‰çš„ä¸»æµå¯«æ³•ã€‚
 (defun *error* (msg)
    (if (and msg
             (/= msg "Function cancelled")
