@@ -546,7 +546,12 @@
 
 (defun append_to_dwg_db_ok (/ tdata count data ff fname newfile)
   (setq tdata (get_tile "data1"))
-  (if (= "" tdata) (setq tdata "nil"))
+  ;; 2026-09-14：料號（第一欄）是空的就不寫入。查無料號時對話框全空，
+  ;; 若使用者直接按確定，原本會寫出一整列 "nil"——那不是資料，
+  ;; 只會讓圖庫檔累積無意義的列。其餘欄位可以留空（會存成 nil）。
+  (if (or (null tdata) (= "" tdata))
+     (alert "料號是空的，沒有寫入圖庫檔。")
+     (progn
   (setq count 2)
   (repeat (- (length lab_list) 1)
     (setq data (get_tile (strcat "data" (rtos count 2 0))))
@@ -576,6 +581,8 @@
         (princ (strcat "\n物料資訊已寫入: " fname))
      )
   )
+     );progn
+  );if
   (princ)
 );defun
 

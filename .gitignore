@@ -36,7 +36,10 @@ openfile.scr
 # 每次用到那些設定對話框都會重寫，不該進版控。
 system.swr
 SYSTEM.NEW
+# 注意大小寫：實際檔名是 SWAPFILE.TXT，git 的索引是區分大小寫的，
+# 只寫小寫不會擋到它（而且它本來就已納管，要先 git rm --cached）。
 swapfile.txt
+SWAPFILE.TXT
 
 # ---- 手動備份檔 ----
 *.bak
