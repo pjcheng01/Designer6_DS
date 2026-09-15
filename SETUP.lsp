@@ -204,20 +204,9 @@
 (defun write_configdoc (/ wf out_lsppath ffname)
   (setq out_lsppath (get_support_path))
 
-  ;; 複製 powsoft.mns
-  (if (findfile (strcat disk_path "\\powsoft.mns"))
-    (progn
-      (setq mnsf1 (open (strcat disk_path "\\powsoft.mns") "r"))
-      (setq mnsf2 (open (strcat out_lsppath "powsoft.mns") "w"))
-      (setq data (read-line mnsf1))
-      (while data
-        (write-line data mnsf2)
-        (setq data (read-line mnsf1))
-      )
-      (close mnsf1)
-      (close mnsf2)
-    )
-  )
+  ;; 原本這裡會把 powsoft.mns 複製到支援路徑。
+  ;; DraftSight 不吃 AutoCAD 的 .mns 選單（load_softmenu 也還是空的），
+  ;; 選單改由 Powsoft_Light.xml 提供，所以這段是死碼，2026-09-15 移除。
 
   ;; 寫入 STARTUP.LSP
   (writeto_startup_lsp)
