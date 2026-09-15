@@ -100,8 +100,7 @@
 (defun c:&jis_finish()(c:autoload) (cond ((null c:jis_finish)(load "auxdim"))(t (princ))) (c:jis_finish))            ;[JIS 加工符號]
 ;;-------
 (defun c:&autoSHSCAL()(c:autoload) (cond ((null c:SHSCAL)(load "SHSCAL"))(t (princ))) (c:autoSHSCAL)) ;[放圖框定比例]
-(defun c:&resetting()(c:autoload) (cond ((null c:resetting)(load "SHSCAL"))(t (princ))) (c:resetting)) ;[重設比例]
-(defun c:&SCAL()(c:autoload) (cond ((null c:scal)(load "aux-qury"))(t (princ))) (c:SCAL)) ;[比例查詢]
+;;此處原有 &resetting、&SCAL 的重複定義，2026-09-15 刪除（後面同名者勝出，手冊 §7.8）
 (defun c:&chsheet_att()(c:autoload) (cond ((null c:chsheet_att)(load "SHSCAL"))(t (princ))) (c:chsheet_att)) ;[修改圖框屬性]
 (defun c:&autoplot()(c:autoload) (cond ((null c:autoplot)(load "autoplot"))(t (princ))) (c:autoplot)) ;[自動連續出圖]
 (defun c:&draw_autoplot()(c:autoload) (cond ((null c:draw_autoplot)(load "plotset"))(t (princ))) (c:draw_autoplot)) ;[自動連續出圖]
@@ -115,23 +114,18 @@
 ;;-------
 (defun c:&asctext()(c:autoload) (cond ((null c:asctext)(load "asctext"))(t (princ))) (c:asctext)) ;[載入文字檔]
 ;;-------
-(defun c:&chtosl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtosl))   ;[粗連續線]
-(defun c:&chtotl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtotl))   ;[細連續線]
-(defun c:&chtocl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtocl))   ;[標準中心線]
-(defun c:&chtocl2()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtocl2)) ;[短中心線]
-(defun c:&chtodl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtodl))   ;[標準虛線]
+;;此處原有 &chtosl/&chtotl/&chtocl/&chtocl2/&chtodl 的重複定義，2026-09-15 刪除（後面同名者勝出，手冊 §7.8）
 (defun c:&chtoSdl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtoSdl)) ;[短虛線]
-(defun c:&chtopl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtopl))   ;[標準假想線]
+;;此處原有 &chtopl 的重複定義，2026-09-15 刪除
 (defun c:&chtoSpl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtoSpl)) ;[短假想線]
-(defun c:&chtohl()(c:autoload) (cond ((null c:chtobyl)(load "auxedit"))(t (princ))) (c:chtohl))   ;[剖面線]
-(defun c:&chtodim()(c:autoload) (chltype "continuous" "3")) ;[尺寸線]
+;;此處原有 &chtohl 的重複定義，以及一個做「改線型」的 &chtodim（勝出的是本檔後段那個做「改圖層」的），2026-09-15 刪除
 
 ;;--------系統變數設定
 (defun c:&tran_act()(c:autoload)(load "tran_act") (c:tran_act));舊圖轉新圖(應用)
 
 (defun c:&transdwg()(c:autoload)(load "transdwg") (c:transdwg));舊圖轉新圖(設定)
 (defun c:&auto_ch_clk_scal()(c:autoload) (cond ((null c:setosmode)(load "dfsystem"))(t (princ))) (c:auto_ch_clk_scal)) ;[比例變動時會連動的BLOCK
-(defun c:&setosmode()(c:autoload) (cond ((null c:setosmode)(load "dfsystem"))(t (princ))) (c:setosmode)) ;[鎖點模式組別定義]
+;;此處原有 &setosmode 的重複定義，2026-09-15 刪除
 (defun c:&defball()(c:autoload) (cond ((null c:defball)(load "dfsystem"))(t (princ)))(c:defball)) ;[指標球定義]
 (defun c:&defbomlist()(c:autoload) (cond ((null c:defbomlist)(load "dfsystem"))(t (princ)))(c:defbomlist)) ;[材料清單欄寬定義]
 (defun c:&defltype()(c:autoload) (cond ((null c:defltype)(load "dfsystem"))(t (princ)))(c:defltype)) ;[設定線型系統變數]
@@ -395,15 +389,7 @@
 (defun c:&fieldset()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:fieldset)(load "dfsystem"))(t (princ)))(c:fieldset))          ;圖檔管理資料庫欄位設定值
 
 ;;Power Offset
-(defun c:offtosl() (c:autoload) (cond ((null aoff_to_which_ltype)(load "auxedit2"))(t (princ))) (aoff_to_which_ltype sys_CONT_ltype sys_CONT_ltypecol) )
-(defun c:offtotl() (c:autoload) (cond ((null aoff_to_which_ltype)(load "auxedit2"))(t (princ)))(aoff_to_which_ltype  sys_CONT1_ltype sys_CONT1_ltypecol))
-(defun c:offtodl() (c:autoload) (cond ((null aoff_to_which_ltype)(load "auxedit2"))(t (princ)))(aoff_to_which_ltype  sys_dashed_ltype sys_dashed_ltypecol))
-(defun c:offtosdl()(c:autoload) (cond ((null aoff_to_which_ltype)(load "auxedit2"))(t (princ))) (aoff_to_which_ltype sys_dashed1_ltype sys_dashed1_ltypecol))
-(defun c:offtocl() (c:autoload) (cond ((null aoff_to_which_ltype)(load "auxedit2"))(t (princ)))(aoff_to_which_ltype  sys_center_ltype sys_center_ltypecol))
-(defun c:offtoscl()(c:autoload) (cond ((null aoff_to_which_ltype)(load "auxedit2"))(t (princ))) (aoff_to_which_ltype sys_stcenter_ltype sys_stcenter_ltypecol))
-(defun c:offtopl() (c:autoload) (cond ((null aoff_to_which_ltype)(load "auxedit2"))(t (princ)))(aoff_to_which_ltype  sys_phantom_ltype sys_phantom_ltypecol))
-(defun c:offtospl()(c:autoload) (cond ((null aoff_to_which_ltype)(load "auxedit2"))(t (princ))) (aoff_to_which_ltype sys_phantom1_ltype sys_phantom1_ltypecol))
-(defun c:offtohl() (c:autoload) (cond ((null aoff_to_which_ltype)(load "auxedit2"))(t (princ)))(aoff_to_which_ltype  sys_hatch_ltype sys_hatch_ltypecol))
+;;此處原有 9 個 offto* 的重複定義（載入 auxedit2），2026-09-15 刪除；勝出的是檔尾那組（載入 auxedit）
 
 (defun c:&chtodim() (c:autoload) (cond ((null aoff_to_which_ltype)(load "auxedit2")) (t (princ)) ) (ch_to_objlayer sys_dim_layer) )
 (defun c:&chtotxt() (c:autoload) (cond ((null aoff_to_which_ltype)(load "auxedit2"))(t (princ)))(ch_to_objlayer sys_text_layer))
