@@ -474,7 +474,7 @@
 ;║相關檔案:                                                                               ║
 ;╰════════════════════════════════════════════╯
 (defun c:1fill(/ col typ aye fiivr frea1 sfes1 sfes11 sfes2 sfcar srss6 srss8 srss62)
-   (setvar "cmdecho" 1)
+   (setvar "cmdecho" 0)   ;原版即誤寫為 1（姊妹函式 c:1cham 是 0），手冊 §7.8
    (progn(setq ppss sspp)
    (setq col (getvar "cecolor") typ (getvar "celtype") aye (getvar "clayer"))
    (setq fiivr (getvar "filletrad"))
