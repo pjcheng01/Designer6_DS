@@ -186,7 +186,6 @@
       (if setup_fg
         (progn
           (write_configdoc)
-          (load_softmenu)
           (c:config_ok)
         )
         (faile_setup)
@@ -207,11 +206,11 @@
   (unload_dialog dcl_id)
 )
 
-(defun load_softmenu ()
-  ;; [待移植] DraftSight 選單系統待後續移植
-  (princ "\n[提示] 選單載入功能待移植至 DraftSight，暫時略過。")
-  (princ)
-)
+;; 原本這裡有 load_softmenu，安裝結束時印一行「選單載入功能待移植至
+;; DraftSight，暫時略過」。那個訊息會誤導——DraftSight 的選單與工具列
+;; 早就由使用者設定檔裡的 application.xml 參照 Powsoft_Light.xml 自動載入
+;; （手冊 §2.1），安裝程式不需要、也不該去載選單。函式與呼叫於
+;; 2026-09-15 一併移除。
 
 ;;----------------------------------------------------------------
 ;; 寫入 config.doc（全用英文 key，避免編碼問題）
@@ -219,9 +218,8 @@
 (defun write_configdoc (/ wf out_lsppath ffname)
   (setq out_lsppath (get_support_path))
 
-  ;; 原本這裡會把 powsoft.mns 複製到支援路徑。
-  ;; DraftSight 不吃 AutoCAD 的 .mns 選單（load_softmenu 也還是空的），
-  ;; 選單改由 Powsoft_Light.xml 提供，所以這段是死碼，2026-09-15 移除。
+  ;; 原本這裡會把 powsoft.mns 複製到支援路徑。DraftSight 不吃 AutoCAD 的
+  ;; .mns 選單，選單由 Powsoft_Light.xml 提供，所以這段是死碼，2026-09-15 移除。
 
   ;; 寫入 STARTUP.LSP
   (writeto_startup_lsp)
