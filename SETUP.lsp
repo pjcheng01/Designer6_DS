@@ -1,14 +1,29 @@
 ;;;;
 ;; setup.lsp - DraftSight 2025 移植版本
 ;; 移植說明：
-;;   1. get_support_path 改用 SRCHPATH
+;;   1. get_support_path 的系統變數改成了 SRCHPATH——那是錯的，見下方說明
 ;;   2. writeto_acaddoc_lsp 改為 writeto_startup_lsp
 ;;   3. 移除 AutoCAD LT 判斷
 ;;   4. config.doc 改用英文 key，避免編碼問題
 
 ;;----------------------------------------------------------------
-;; 取得 Support 路徑
+;; 取得 Support 路徑（與 config.lsp 同一份實作）
 ;;----------------------------------------------------------------
+;; ⚠ 這裡的 "SRCHPATH" 是移植時選錯的變數，不是刻意的設計。
+;;    DraftSight 的 325 個系統變數裡沒有 SRCHPATH（原版 AutoCAD 用的是
+;;    acadprefix），實測 (getvar "SRCHPATH") 回 nil——不報錯，所以下面
+;;    整個 if 的第一分支走不到，一律掉到 fallback 回 disk_path\。
+;;
+;;    ★ 不要「順手修正」成 acadprefix：DraftSight 回傳的每一段結尾是
+;;      "Support\;"（多一個反斜線），sub_get_support_path 比對的是
+;;      "SUPPORT;"，取最後 8 字元得到 "upport\;"，一段都不會 match，
+;;      結果仍然是 fallback。兩個變數一樣，改了只是多繞一圈，而且會讓
+;;      sub_get_support_path 的 (substr typ (- str_len 7)) 活過來
+;;      （路徑段少於 8 字元時起始位置 <= 0，substr 會報錯）。
+;;
+;;    而且對「從資料夾直接跑 setup.lsp」的安裝流程來說，fallback 到
+;;    disk_path 反而是唯一正確的答案——那個時間點搜尋路徑還沒設。
+;;    詳見手冊 §2.0。
 (defun get_support_path (/ text_data k_num test_txt support_path)
   (setq text_data (getvar "SRCHPATH"))
   (if (and text_data (/= "" text_data))
