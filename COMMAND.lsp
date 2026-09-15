@@ -389,10 +389,10 @@
 (defun c:&fieldset()(c:autoload)(cond ((null powdesign_path)(load "designer")(loaddesIgner))(t (princ))) (cond ((null c:fieldset)(load "dfsystem"))(t (princ)))(c:fieldset))          ;圖檔管理資料庫欄位設定值
 
 ;;Power Offset
-;;此處原有 9 個 offto* 的重複定義（載入 auxedit2），2026-09-15 刪除；勝出的是檔尾那組（載入 auxedit）
+;;此處原有 9 個 offto* 的重複定義（載入已刪除的 auxedit2），2026-09-15 刪除；勝出的是檔尾那組（載入 auxedit）
 
-(defun c:&chtodim() (c:autoload) (cond ((null aoff_to_which_ltype)(load "auxedit2")) (t (princ)) ) (ch_to_objlayer sys_dim_layer) )
-(defun c:&chtotxt() (c:autoload) (cond ((null aoff_to_which_ltype)(load "auxedit2"))(t (princ)))(ch_to_objlayer sys_text_layer))
+(defun c:&chtodim() (c:autoload) (cond ((null aoff_to_which_ltype)(load "auxedit")) (t (princ)) ) (ch_to_objlayer sys_dim_layer) )
+(defun c:&chtotxt() (c:autoload) (cond ((null aoff_to_which_ltype)(load "auxedit"))(t (princ)))(ch_to_objlayer sys_text_layer))
 ;;=============================================================================================
 ;;等角立體圖
 (defun c:&isomenu1()(c:autoload)(c:isomenu1))  ;等角圖１
