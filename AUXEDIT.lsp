@@ -530,7 +530,7 @@
 ;;功能說明: Power Offset 變換線型
 (defun aoff_to_which_ltype(newltype newcolor / offent ent1 data0 offent10 p1 entnum)
 ;   (progn(setq ppss sspp)
-   (setvar "cmdecho" 1)
+   (setvar "cmdecho" 0)   ;原版即誤寫為 1，使 offset/change 的回應全噴在命令列（手冊 §7.8）
    (cond
      ((or (= "T" ofdist)(null ofdist))
        (initget "T")
@@ -572,6 +572,7 @@
 )
 
 (defun ch_to_objlayer(objlayer)
+   (setvar "cmdecho" 0)
    (princ (strcat "\n選擇要變換到 " objlayer " 層的圖形: "))
    (setq selent (ssget))
    (while (/= nil selent)
@@ -584,6 +585,7 @@
      (setq selent (ssget))
    )
    (princ (strcat "\n所選擇的圖形已經變換到 " objlayer " 層!" ))
+   (setvar "cmdecho" 1)
    (princ)
 )
 
