@@ -176,8 +176,19 @@
       (if setup_fg
         (progn
           (write_configdoc)
-          (c:config_ok)
-          (chk_support_paths)
+          (sp_want_set)
+          (if (null (sp_missing))
+            ;; 路徑本來就齊 → 直接顯示完成
+            (c:config_ok)
+            ;; 缺目錄 → 印出缺什麼，再用 script 串「開選項 → 重新檢查 → 完成」
+            (progn
+              (princ "\n⚠ 支援檔搜尋路徑還缺下列目錄，沒加的話重開後整套功能不會載入：")
+              (sp_manual (sp_missing))
+              (princ "\n\n接著會開啟「選項」對話框，請在上面那個位置按「新增」把目錄")
+              (princ "\n加進去並按「確定」。關閉之後會重新檢查，通過才算安裝完成。")
+              (command "script" (strcat disk_path "\\setuppth"))
+            )
+          )
         )
         (faile_setup)
       )
@@ -272,7 +283,7 @@
 )
 
 ;;----------------------------------------------------------------
-;; 檢查支援檔搜尋路徑，缺目錄時開啟「選項」對話框
+;; 支援檔搜尋路徑：檢查 →（缺的話）開「選項」→ 重新檢查 → 完成
 ;;----------------------------------------------------------------
 ;; ⚠ 這一步「檢查但不能自動設定」，原因見下。
 ;;
@@ -304,9 +315,22 @@
 ;; 等使用者關掉、再繼續」串起來。DraftSight 沿用同一個思路，指令名稱換成
 ;; OPTIONS（選項）。
 ;;
-;; 與原版不同的是位置：原版是在 c:setup **之前**無條件開啟，這裡改成安裝
-;; 對話框結束後、而且**只在真的缺目錄時**才開。因為 des50_path 與 parts_path
-;; 要等對話框關掉才知道，這樣才講得出「缺的是哪幾個」。
+;; 與原版不同的是位置與條件：原版在 c:setup **之前**無條件開啟；這裡改成
+;; 安裝對話框結束後、而且**只在真的缺目錄時**才開。因為 des50_path 與
+;; parts_path 要等對話框關掉才知道，這樣才講得出「缺的是哪幾個」。
+;;
+;; 流程（缺目錄時）：
+;;   write_configdoc
+;;     → 印出缺哪些目錄
+;;     → (command "script" …\setuppth)   SETUPPTH.SCR = 「_OPTIONS」+「(setup_finish)」
+;;         → 選項對話框（強制回應，script 會等到關閉）
+;;         → (setup_finish) 重新檢查 ACADPREFIX
+;;             齊了   → c:config_ok      「系統安裝完成」
+;;             還缺   → setup_pathfail   「安裝尚未完成」
+;;
+;; ⚠ 用 script 而不是直接 (command "_OPTIONS") 的理由跟原版一樣：只有 script
+;;    能保證「等對話框關掉再跑下一步」。直接呼叫若不阻塞，重新檢查會在使用者
+;;    還沒設定完就執行，一定判成失敗。
 
 ;; 去掉結尾反斜線並轉大寫，讓兩個路徑可以比對
 (defun sp_norm (p)
@@ -342,37 +366,52 @@
   (princ)
 )
 
-(defun chk_support_paths (/ cur want miss)
-  (setq want (list des50_path))
+;; 把「這次安裝需要哪些目錄」記成全域，供 setup_finish 使用。
+;; ⚠ 不能在 sp_missing 裡直接讀 parts_path——那是 c:setup 的區域變數，
+;;    script 跑到 (setup_finish) 時 c:setup 早就返回了，讀到的會是 nil。
+(defun sp_want_set ()
+  (setq sp_want (list des50_path))
   (if (and parts_path (/= "" parts_path))
-    (setq want (append want (list parts_path)))
+    (setq sp_want (append sp_want (list parts_path)))
   )
+  sp_want
+)
+
+;; 回傳還缺的目錄清單；nil 表示都齊了
+(defun sp_missing (/ cur miss)
   (setq cur (getvar "ACADPREFIX"))
-  (cond
-    ((or (null cur) (= "" cur))
-      (princ "\n[提示] 讀不到 ACADPREFIX，無法檢查支援檔搜尋路徑。")
-      (sp_manual want)
-    )
-    (T
+  (if (or (null cur) (= "" cur))
+    sp_want                                   ; 讀不到就當全部都缺
+    (progn
       (setq miss nil)
-      (foreach p want
+      (foreach p sp_want
         (if (null (sp_member cur p)) (setq miss (append miss (list p))))
       )
-      (if (null miss)
-        (princ "\n支援檔搜尋路徑已包含安裝目錄。")
-        (progn
-          (princ "\n⚠ 支援檔搜尋路徑還缺下列目錄，沒加的話重開後整套功能不會載入：")
-          (sp_manual miss)
-          (princ "\n\n接著會開啟「選項」對話框，請在上面那個位置按「新增」把目錄加進去，")
-          (princ "\n然後重新啟動 DraftSight。")
-          ;; 同原版 (command "preferences") 的用意：不能程式化寫入，就把對話框
-          ;; 開給使用者。放在本函式最後一行，萬一 DraftSight 不接受從 LISP 叫
-          ;; 這個指令，前面印出的手動步驟仍然完整。
-          (command "_OPTIONS")
-        )
-      )
+      miss
     )
   )
+)
+
+;; 安裝的最後一關，由 SETUPPTH.SCR 在「選項」對話框關閉後呼叫。
+;; 路徑真的加進去了才顯示「系統安裝完成」。
+(defun setup_finish (/ miss)
+  (setq miss (sp_missing))
+  (if (null miss)
+    (c:config_ok)
+    (setup_pathfail miss)
+  )
+  (princ)
+)
+
+(defun setup_pathfail (miss)
+  (princ "\n⚠ 支援檔搜尋路徑仍然缺少下列目錄，安裝尚未完成：")
+  (sp_manual miss)
+  (actdcl (strcat disk_path "\\setup") "allert1")
+  (set_tile "messlable"  "安裝尚未完成")
+  (set_tile "ms_allert1" "支援檔搜尋路徑未設定,請重新執行 setup.lsp!")
+  (action_tile "accept" "(done_dialog)")
+  (start_dialog)
+  (unload_dialog dcl_id)
   (princ)
 )
 
