@@ -340,7 +340,20 @@
 ;;; 機率降到最低就不會累積。
 (defun actdcl(filename gg / dclfile)
  (setq dcl_pt '(-1 -1))
- (setq dclfile (strcat filename ".dcl"))
+ ;; ⚠ 兩種呼叫慣例都要吃得下。
+ ;;    DESIGNER6_DS 的 125 處呼叫傳「不含副檔名」的名字，靠這裡補 ".dcl"。
+ ;;    POWPARTS_DS 的慣例相反——它自己那份 PUB-LISP.LSP 的 actdcl 不補副檔名
+ ;;    （(load_dialog filename) 直接用），所以有 27 處呼叫把 "xxx.dcl" 整個
+ ;;    傳進來，例如 5-1.lsp:96 的 (strcat powparts_dcl_path "std_gear.dcl")。
+ ;;    而 POWPARTS 那份 PUB-LISP.LSP 被本檔遮蔽（支援路徑 DESIGNER6_DS 在前），
+ ;;    於是變成 "std_gear.dcl.dcl" 找不到檔——2026-09-16 測 &5-1_gear 時發現。
+ (setq dclfile
+   (if (and (> (strlen filename) 4)
+            (= ".DCL" (strcase (substr filename (- (strlen filename) 3)))))
+     filename
+     (strcat filename ".dcl")
+   )
+ )
  ;; 2026-09-11：先用 findfile 解析成絕對路徑。以裸檔名交給 load_dialog 時，
  ;; DraftSight 的支援路徑搜尋實測不穩定（同一指令有時成功有時失敗）。
  ;; 專案裡多數呼叫本來就帶絕對路徑（如 powdesign_dcl_path），
