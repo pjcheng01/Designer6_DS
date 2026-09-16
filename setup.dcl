@@ -7,8 +7,6 @@ setup:dialog{
                                         key="design50";}
                                 :toggle{label="POWERPARTS 機械元件系統";
                                         key="powparts";}
-                    //          :toggle{label="POWER MANAGER 圖檔管理系統";
-                    //                     key="fm";}
                                }
                        :boxed_column{label="機械設計家";
                                      :edit_box{label="機械設計家安裝路徑:";
@@ -24,9 +22,6 @@ setup:dialog{
                                 :edit_box{label="POWERPARTS安裝路徑:";
                                            key="powparts_path";
                                            edit_width=50;}
-           //                   :edit_box{label="POWER MANAGER安裝路徑:";
-           //                             key="fm_path";
-           //                            edit_width=30;}
              spacer_1;
              ok_cancel;
              errtile;

@@ -153,9 +153,9 @@
 ;;----------------------------------------------------------------
 ;; 設定對話框主函式
 ;;----------------------------------------------------------------
-(defun c:setup (/ yesno design50_id powparts_id fm_id
+(defun c:setup (/ yesno design50_id powparts_id
                    des50database_path des50item_path
-                   parts_path flm_path sp_fg setup_fg ffname)
+                   parts_path sp_fg setup_fg ffname)
   (setq ffname (findfile (strcat disk_path "\\setup.lsp")))
   (if (null ffname)
     (princ "\n機械設計家系統安裝路徑輸入錯誤!")
@@ -164,13 +164,11 @@
       (load ffname)
       (actdcl (strcat disk_path "\\setup") "setup")
       (mode_tile "powparts_path" 1)
-      (mode_tile "fm_path" 1)
       (set_tile "design50_path" (strcase disk_path))
       (set_tile "database_path" (strcase (strcat disk_path "\\DATABASE")))
       (set_tile "block_path"    (strcase disk_path))
       (action_tile "design50"  "(set_tile \"design50\" \"1\")")
       (action_tile "powparts"  "(set_powparts)")
-      (action_tile "fm"        "(set_fm)")
       (action_tile "accept"    "(setup_ok)")
       (action_tile "cancel"    "(done_dialog)")
       (start_dialog)
@@ -237,16 +235,12 @@
   (write-line (strcat "AUTOPLOT_DWGPATH=" (strcase des50_path) "\\") wf)
   (write-line (strcat "AUTOPLOT_FILEPATH=" (strcase des50_path) "\\") wf)
   (write-line "" wf)
-  (if (= "1" fm_id)
-    (progn
-      (write-line (strcat "POWERMANAGER_PATH=" (strcase flm_path) "\\") wf)
-      (write-line "POWERMANAGER_VER=1" wf)
-    )
-    (progn
-      (write-line ";;POWERMANAGER_PATH=" wf)
-      (write-line ";;POWERMANAGER_VER=1" wf)
-    )
-  )
+  ;; POWER MANAGER（圖檔管理系統）同樣不在本專案內。它的兩個對話框元件
+  ;; 早在移植前就被註解掉了，fm_id 永遠是 nil，這裡固定走「未安裝」那一支；
+  ;; 2026-09-16 把整條死路一併移除。config.lsp 裡 (if (and fmpath …)) 的守衛靠這
+  ;; 兩行維持關閉，否則會去 (load "fm") 而 fm.lsp 並不存在。
+  (write-line ";;POWERMANAGER_PATH=" wf)
+  (write-line ";;POWERMANAGER_VER=1" wf)
   (write-line "" wf)
   ;; POWERISO 是另一套產品，不在本專案內（工具列已於 5cb62a8 移除，見手冊 §2.1.2），
   ;; 2026-09-16 一併從安裝對話框移除。這一行固定寫成註解，config.lsp:155 的守衛
@@ -282,12 +276,10 @@
 (defun setup_ok ()
   (setq design50_id       (get_tile "design50"))
   (setq powparts_id       (get_tile "powparts"))
-  (setq fm_id             (get_tile "fm"))
   (setq des50_path        (getrealstr3 (get_tile "design50_path")))
   (setq des50database_path (getrealstr3 (get_tile "database_path")))
   (setq des50item_path    (getrealstr3 (get_tile "block_path")))
   (if (= "1" powparts_id) (setq parts_path (canceltxt (getrealstr3 (get_tile "powparts_path")))))
-  (if (= "1" fm_id)       (setq flm_path   (canceltxt (getrealstr3 (get_tile "fm_path")))))
   (cond
     ((null (findfile (strcat des50_path "\\config.lsp")))
      (set_tile "error" "機械設計家安裝目錄輸入錯誤!"))
@@ -297,8 +289,7 @@
      (set_tile "error" "圖庫系統路徑輸入錯誤!"))
     ((and (= "1" powparts_id) (null (findfile (strcat parts_path "\\V1PARTS.lsp"))))
      (set_tile "error" "POWERPARTS安裝目錄輸入錯誤!"))
-    ((and (= "1" fm_id) (null (findfile (strcat flm_path "\\fm.lsp"))))
-     (set_tile "error" "POWER MANAGER安裝目錄輸入錯誤!"))
+
     (T (done_dialog) (setq setup_fg t))
   )
   (princ)
@@ -317,13 +308,7 @@
   )
 )
 
-(defun set_fm (/ fm_id)
-  (setq fm_id (get_tile "fm"))
-  (if (= "1" fm_id)
-    (progn (mode_tile "fm_path" 0) (set_tile "fm_path" "C:\\FM"))
-    (progn (mode_tile "fm_path" 1) (set_tile "fm_path" ""))
-  )
-)
+;; 這裡原本有 set_fm，2026-09-16 隨 POWER MANAGER 一併移除。
 
 ;; 這裡原本有 set_pdm（PowerPDM 的 Server／Client／屬性萃取檔路徑，以及
 ;; 「CAD拆零件時機種命名方式」「存圖時自動PURGE不存在的BLOCK」兩個下拉）。
