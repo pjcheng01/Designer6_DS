@@ -177,6 +177,7 @@
         (progn
           (write_configdoc)
           (c:config_ok)
+          (add_support_paths)
         )
         (faile_setup)
       )
@@ -268,6 +269,101 @@
     )
   )
   (close wf)
+)
+
+;;----------------------------------------------------------------
+;; 把安裝目錄加進 DraftSight 的支援檔搜尋路徑
+;;----------------------------------------------------------------
+;; 對應的系統變數是 ACADPREFIX（DraftSight 說明檔 sv_acadprefix.htm，
+;; 本地化名稱 GetPthDS，Read/Write，存在使用者的設定檔裡）。
+;; ⚠ 不是 SRCHPATH——那個在 DraftSight 不存在，見手冊 §2.0。
+;;
+;; 這一步沒做的話，重開 DraftSight 後 start.lsp 用 (findfile "startup.lsp")
+;; 找不到我們這支，而它的載入旗標是 0（靜默、失敗也不中斷），所以整套功能
+;; 會無聲消失、完全沒有錯誤訊息。
+
+;; 去掉結尾反斜線並轉大寫，讓兩個路徑可以比對
+(defun sp_norm (p)
+  (setq p (strcase p))
+  (while (and (> (strlen p) 0) (= "\\" (substr p (strlen p) 1)))
+    (setq p (substr p 1 (1- (strlen p))))
+  )
+  p
+)
+
+;; 以分號分隔的 cur 裡，有沒有路徑 p
+(defun sp_member (cur p / i c seg hit)
+  (setq p (sp_norm p) i 1 seg "" hit nil)
+  (if (/= "" p)
+    (progn
+      (repeat (strlen cur)
+        (setq c (substr cur i 1))
+        (if (= c ";")
+          (progn (if (= (sp_norm seg) p) (setq hit t)) (setq seg ""))
+          (setq seg (strcat seg c))
+        )
+        (setq i (1+ i))
+      )
+      (if (= (sp_norm seg) p) (setq hit t))
+    )
+  )
+  hit
+)
+
+(defun sp_manual (paths)
+  (princ "\n       請手動加入：選項 → 檔案位置 → 系統 → 支援檔搜尋路徑")
+  (foreach p paths (princ (strcat "\n         " p)))
+  (princ)
+)
+
+(defun add_support_paths (/ cur want new added old_err)
+  (setq want (list des50_path))
+  (if (and parts_path (/= "" parts_path))
+    (setq want (append want (list parts_path)))
+  )
+  (setq cur (getvar "ACADPREFIX"))
+  (cond
+    ((or (null cur) (= "" cur))
+      (princ "\n[提示] 讀不到 ACADPREFIX，無法自動設定支援檔搜尋路徑。")
+      (sp_manual want)
+    )
+    (T
+      (setq new cur added 0)
+      (foreach p want
+        (if (null (sp_member new p))
+          (setq new (strcat new ";" p "\\") added (1+ added))
+        )
+      )
+      (if (= 0 added)
+        (princ "\n支援檔搜尋路徑已包含安裝目錄，不需變更。")
+        (progn
+          ;; DraftSight 沒有 vl-catch-all-apply（242 個函式裡沒有），只能用
+          ;; *error* 存回復的寫法接管。setvar 若失敗會直接 unwind 出這個函式，
+          ;; 所以本函式是 c:setup 的最後一步——就算掛掉也不會少做任何事。
+          (setq old_err *error*)
+          (defun *error* (msg)
+            (setq *error* old_err)
+            (princ "\n[提示] 無法寫入 ACADPREFIX，支援檔搜尋路徑要手動設定。")
+            (princ "\n       （config.doc 與 STARTUP.LSP 都已寫好，安裝本身是完成的）")
+            (sp_manual want)
+            (princ)
+          )
+          (setvar "ACADPREFIX" new)
+          (setq *error* old_err)
+          ;; 寫完一定要讀回來確認，不要只相信 setvar 沒報錯
+          (setq cur (getvar "ACADPREFIX"))
+          (if (sp_member cur (car want))
+            (princ (strcat "\n已將 " (itoa added) " 個目錄加入支援檔搜尋路徑，重新啟動後生效。"))
+            (progn
+              (princ "\n[提示] ACADPREFIX 寫入後讀不回來，支援檔搜尋路徑要手動設定。")
+              (sp_manual want)
+            )
+          )
+        )
+      )
+    )
+  )
+  (princ)
 )
 
 ;;----------------------------------------------------------------
