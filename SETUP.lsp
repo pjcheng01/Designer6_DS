@@ -177,7 +177,7 @@
         (progn
           (write_configdoc)
           (c:config_ok)
-          (add_support_paths)
+          (chk_support_paths)
         )
         (faile_setup)
       )
@@ -272,15 +272,26 @@
 )
 
 ;;----------------------------------------------------------------
-;; 把安裝目錄加進 DraftSight 的支援檔搜尋路徑
+;; 檢查 DraftSight 的支援檔搜尋路徑有沒有包含安裝目錄
 ;;----------------------------------------------------------------
-;; 對應的系統變數是 ACADPREFIX（DraftSight 說明檔 sv_acadprefix.htm，
-;; 本地化名稱 GetPthDS，Read/Write，存在使用者的設定檔裡）。
-;; ⚠ 不是 SRCHPATH——那個在 DraftSight 不存在，見手冊 §2.0。
+;; ⚠ 這一步「檢查但不能自動設定」，原因見下。
+;;
+;; 支援檔搜尋路徑對應的系統變數是 ACADPREFIX（DraftSight 說明檔
+;; sv_acadprefix.htm，本地化名稱 GetPthDS）。說明檔寫著 Status: Read / Write，
+;; **但實測是唯讀的**——2026-09-16 試 (setvar "ACADPREFIX" …)，DraftSight 回
+;; 「ACADPREFIX 為唯讀。」。所以這裡只讀不寫，缺了就印出手動步驟。
+;; （不是 SRCHPATH——那個在 DraftSight 根本不存在，見手冊 §2.0。）
+;;
+;; 其餘管道都查過，沒有一個能寫 DraftSight 的支援路徑：
+;;   setcfg  只能寫 appdata.ini 的 [AppData/…] 區段，不是 DraftSight 本身的設定
+;;   setenv  文件寫的是「作業系統環境變數」，不會進使用者設定檔
+;;   242 個 LISP 函式裡沒有其他寫設定的管道
+;; 真正的設定存在 %APPDATA%\DraftSight\<版本>\Profiles\…\profile.xml 的
+;; support_paths，那個檔由 DraftSight 擁有、執行中改了會被蓋掉（同 §2.1.1）。
 ;;
 ;; 這一步沒做的話，重開 DraftSight 後 start.lsp 用 (findfile "startup.lsp")
 ;; 找不到我們這支，而它的載入旗標是 0（靜默、失敗也不中斷），所以整套功能
-;; 會無聲消失、完全沒有錯誤訊息。
+;; 會無聲消失、完全沒有錯誤訊息。**所以寧可囉唆也要印出來。**
 
 ;; 去掉結尾反斜線並轉大寫，讓兩個路徑可以比對
 (defun sp_norm (p)
@@ -316,7 +327,7 @@
   (princ)
 )
 
-(defun add_support_paths (/ cur want new added old_err)
+(defun chk_support_paths (/ cur want miss)
   (setq want (list des50_path))
   (if (and parts_path (/= "" parts_path))
     (setq want (append want (list parts_path)))
@@ -324,41 +335,19 @@
   (setq cur (getvar "ACADPREFIX"))
   (cond
     ((or (null cur) (= "" cur))
-      (princ "\n[提示] 讀不到 ACADPREFIX，無法自動設定支援檔搜尋路徑。")
+      (princ "\n[提示] 讀不到 ACADPREFIX，無法檢查支援檔搜尋路徑。")
       (sp_manual want)
     )
     (T
-      (setq new cur added 0)
+      (setq miss nil)
       (foreach p want
-        (if (null (sp_member new p))
-          (setq new (strcat new ";" p "\\") added (1+ added))
-        )
+        (if (null (sp_member cur p)) (setq miss (append miss (list p))))
       )
-      (if (= 0 added)
-        (princ "\n支援檔搜尋路徑已包含安裝目錄，不需變更。")
+      (if (null miss)
+        (princ "\n支援檔搜尋路徑已包含安裝目錄。")
         (progn
-          ;; DraftSight 沒有 vl-catch-all-apply（242 個函式裡沒有），只能用
-          ;; *error* 存回復的寫法接管。setvar 若失敗會直接 unwind 出這個函式，
-          ;; 所以本函式是 c:setup 的最後一步——就算掛掉也不會少做任何事。
-          (setq old_err *error*)
-          (defun *error* (msg)
-            (setq *error* old_err)
-            (princ "\n[提示] 無法寫入 ACADPREFIX，支援檔搜尋路徑要手動設定。")
-            (princ "\n       （config.doc 與 STARTUP.LSP 都已寫好，安裝本身是完成的）")
-            (sp_manual want)
-            (princ)
-          )
-          (setvar "ACADPREFIX" new)
-          (setq *error* old_err)
-          ;; 寫完一定要讀回來確認，不要只相信 setvar 沒報錯
-          (setq cur (getvar "ACADPREFIX"))
-          (if (sp_member cur (car want))
-            (princ (strcat "\n已將 " (itoa added) " 個目錄加入支援檔搜尋路徑，重新啟動後生效。"))
-            (progn
-              (princ "\n[提示] ACADPREFIX 寫入後讀不回來，支援檔搜尋路徑要手動設定。")
-              (sp_manual want)
-            )
-          )
+          (princ "\n⚠ 支援檔搜尋路徑還缺下列目錄，沒加的話重開後整套功能不會載入：")
+          (sp_manual miss)
         )
       )
     )
