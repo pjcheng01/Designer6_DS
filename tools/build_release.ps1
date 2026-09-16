@@ -31,10 +31,19 @@ $OUT      = 'C:\DESIGNER6_RELEASE'
 $STAMP    = Get-Date -Format 'yyyyMMdd'
 $SEVENZIP = 'C:\Program Files\7-Zip\7z.exe'
 
-# 納管但不交付的檔案：文件與開發用檔
+# 納管但不交付的檔案：文件與開發用檔。
+# docs\ 是整個目錄排除（裡面有明文密碼，見 §9.7），這樣日後往 docs\ 新增
+# 任何檔案都預設不會外流——要交付的必須明列在 $KEEP 裡。
 $EXCLUDE = @{
   'C:\DESIGNER6_DS' = @('docs', 'tools', '功能對照表.md', 'CLAUDE.md', '.gitignore')
   'C:\POWPARTS_DS'  = @('CLAUDE.md', '.gitignore')
+}
+
+# 父目錄被 $EXCLUDE 排除、但仍要跟著交付的個別檔案。
+# 安裝說明是寫給收件者看的，性質與 docs\ 其他內部文件不同。
+$KEEP = @{
+  'C:\DESIGNER6_DS' = @('docs\藝祥機械設計家 DraftSight 版安裝流程.docx')
+  'C:\POWPARTS_DS'  = @()
 }
 
 if (-not (Test-Path $SEVENZIP)) { throw "找不到 7-Zip：$SEVENZIP" }
@@ -62,10 +71,29 @@ foreach ($repo in $EXCLUDE.Keys | Sort-Object) {
   $got     = (Get-ChildItem $dst -Recurse -File).Count
   if ($tracked -ne $got) { throw "$name 檔數不符：納管 $tracked、匯出 $got" }
 
+  # 先把「要保留但父目錄會被排除」的檔案搬到暫存
+  $stash = @{}
+  foreach ($k in $KEEP[$repo]) {
+    $src = Join-Path $dst $k
+    if (-not (Test-Path -LiteralPath $src)) { throw "$name\$k 不存在，保留清單過時了" }
+    $tmp = Join-Path $env:TEMP ('keep_' + [guid]::NewGuid().ToString('N'))
+    Copy-Item -LiteralPath $src -Destination $tmp -Force
+    $stash[$k] = $tmp
+  }
+
   foreach ($e in $EXCLUDE[$repo]) {
     $t = Join-Path $dst $e
     if (Test-Path -LiteralPath $t) { Remove-Item -LiteralPath $t -Recurse -Force; "  排除 $name\$e" }
     else { throw "$name\$e 不存在，排除清單過時了" }
+  }
+
+  # 再放回去
+  foreach ($k in $KEEP[$repo]) {
+    $back = Join-Path $dst $k
+    $dir = Split-Path $back -Parent
+    if (-not (Test-Path -LiteralPath $dir)) { New-Item -ItemType Directory -Path $dir -Force | Out-Null }
+    Move-Item -LiteralPath $stash[$k] -Destination $back -Force
+    "  保留 $name\$k"
   }
   $after = (Get-ChildItem $dst -Recurse -File).Count
   $mb    = ((Get-ChildItem $dst -Recurse -File | Measure-Object Length -Sum).Sum / 1MB)
@@ -82,6 +110,14 @@ else { "  1. .git                無 OK" }
 
 $md = Get-ChildItem $OUT -Recurse -File -Filter '*.md'
 if ($md) { "★ 還有 .md：$($md.Name -join ', ')"; $bad++ } else { "  2. .md 文件            無 OK" }
+
+foreach ($repo in $KEEP.Keys | Sort-Object) {
+  foreach ($k in $KEEP[$repo]) {
+    $f = Join-Path (Join-Path $OUT (Split-Path $repo -Leaf)) $k
+    if (Test-Path -LiteralPath $f) { "  2b. 保留檔 $k OK" }
+    else { "★ 保留檔不見了：$k"; $bad++ }
+  }
+}
 
 # git 歷史與 docs/ 裡那組明文 Oracle 密碼，不可出現在交付內容裡
 $pw = 'campro' + '35638042'
