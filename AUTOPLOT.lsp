@@ -1,10 +1,10 @@
 ;;;
 
 ;自動出圖
-AUTOPLOT 程式共有以下檔案:
-   1. AUTOPLOT.LSP  主程式
-   2. AUTOPLOT.DCL  對話框
-   3. AUTOPLOT.INI  客戶印表機出圖流程腳本
+;AUTOPLOT 程式共有以下檔案:
+;   1. AUTOPLOT.LSP  主程式
+;   2. AUTOPLOT.DCL  對話框
+;   3. AUTOPLOT.INI  客戶印表機出圖流程腳本
 
 (defun c:autoplot_right()
 ; (princ "\n自動連續出圖程式, 版權所有歸屬 藝祥資訊工程有限公司!")
