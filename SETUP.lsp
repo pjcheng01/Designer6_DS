@@ -153,9 +153,9 @@
 ;;----------------------------------------------------------------
 ;; 設定對話框主函式
 ;;----------------------------------------------------------------
-(defun c:setup (/ yesno design50_id poweriso_id powparts_id fm_id
+(defun c:setup (/ yesno design50_id powparts_id fm_id
                    des50database_path des50item_path
-                   iso_path parts_path flm_path sp_fg setup_fg ffname)
+                   parts_path flm_path sp_fg setup_fg ffname)
   (setq ffname (findfile (strcat disk_path "\\setup.lsp")))
   (if (null ffname)
     (princ "\n機械設計家系統安裝路徑輸入錯誤!")
@@ -163,22 +163,14 @@
       (setq ffname (strcat disk_path "\\pub-lisp"))
       (load ffname)
       (actdcl (strcat disk_path "\\setup") "setup")
-      (mode_tile "poweriso_path" 1)
       (mode_tile "powparts_path" 1)
       (mode_tile "fm_path" 1)
-      (mode_tile "pdmserver_path" 1)
-      (mode_tile "pdmclient_path" 1)
-      (mode_tile "atttxt_path" 1)
-      (mode_tile "pout_typ" 1)
-      (mode_tile "purg_blk" 1)
       (set_tile "design50_path" (strcase disk_path))
       (set_tile "database_path" (strcase (strcat disk_path "\\DATABASE")))
       (set_tile "block_path"    (strcase disk_path))
       (action_tile "design50"  "(set_tile \"design50\" \"1\")")
-      (action_tile "poweriso"  "(set_poweriso)")
       (action_tile "powparts"  "(set_powparts)")
       (action_tile "fm"        "(set_fm)")
-      (action_tile "powerpdm"  "(set_pdm)")
       (action_tile "accept"    "(setup_ok)")
       (action_tile "cancel"    "(done_dialog)")
       (start_dialog)
@@ -256,10 +248,10 @@
     )
   )
   (write-line "" wf)
-  (if (= "1" poweriso_id)
-    (write-line (strcat "POWERISO_PATH=" (strcase iso_path) "\\") wf)
-    (write-line ";;POWERISO_PATH=" wf)
-  )
+  ;; POWERISO 是另一套產品，不在本專案內（工具列已於 5cb62a8 移除，見手冊 §2.1.2），
+  ;; 2026-09-16 一併從安裝對話框移除。這一行固定寫成註解，config.lsp:155 的守衛
+  ;; 才會維持「未安裝」而不去定義那 4 個 c:iso* 指令。
+  (write-line ";;POWERISO_PATH=" wf)
   (write-line "" wf)
   (if (= "1" powparts_id)
     (progn
@@ -289,25 +281,13 @@
 ;;----------------------------------------------------------------
 (defun setup_ok ()
   (setq design50_id       (get_tile "design50"))
-  (setq poweriso_id       (get_tile "poweriso"))
   (setq powparts_id       (get_tile "powparts"))
   (setq fm_id             (get_tile "fm"))
-  (setq pdm_id            (get_tile "powerpdm"))
   (setq des50_path        (getrealstr3 (get_tile "design50_path")))
   (setq des50database_path (getrealstr3 (get_tile "database_path")))
   (setq des50item_path    (getrealstr3 (get_tile "block_path")))
-  (if (= "1" poweriso_id) (setq iso_path   (canceltxt (getrealstr3 (get_tile "poweriso_path")))))
   (if (= "1" powparts_id) (setq parts_path (canceltxt (getrealstr3 (get_tile "powparts_path")))))
   (if (= "1" fm_id)       (setq flm_path   (canceltxt (getrealstr3 (get_tile "fm_path")))))
-  (if (= "1" pdm_id)
-    (progn
-      (setq powerpdmclient_path  (getrealstr3 (get_tile "pdmclient_path")))
-      (setq powerpdm_path        (getrealstr3 (get_tile "pdmserver_path")))
-      (setq powerpdm_atttxt_path (getrealstr3 (get_tile "atttxt_path")))
-      (setq pout_typ   (nth (atoi (get_tile "pout_typ"))  pout_list))
-      (setq atttxt_typ (nth (atoi (get_tile "purg_blk")) pg_list))
-    )
-  )
   (cond
     ((null (findfile (strcat des50_path "\\config.lsp")))
      (set_tile "error" "機械設計家安裝目錄輸入錯誤!"))
@@ -315,8 +295,6 @@
      (set_tile "error" "系統資料庫路徑輸入錯誤!"))
     ((null (findfile (strcat des50item_path "\\userblkm.lsp")))
      (set_tile "error" "圖庫系統路徑輸入錯誤!"))
-    ((and (= "1" poweriso_id) (null (findfile (strcat iso_path "\\isosha.lsp"))))
-     (set_tile "error" "POWERISO安裝目錄輸入錯誤!"))
     ((and (= "1" powparts_id) (null (findfile (strcat parts_path "\\V1PARTS.lsp"))))
      (set_tile "error" "POWERPARTS安裝目錄輸入錯誤!"))
     ((and (= "1" fm_id) (null (findfile (strcat flm_path "\\fm.lsp"))))
@@ -329,13 +307,7 @@
 ;;----------------------------------------------------------------
 ;; 模組勾選事件
 ;;----------------------------------------------------------------
-(defun set_poweriso (/ iso_id)
-  (setq iso_id (get_tile "poweriso"))
-  (if (= "1" iso_id)
-    (progn (mode_tile "poweriso_path" 0) (set_tile "poweriso_path" "C:\\POWERISO"))
-    (progn (mode_tile "poweriso_path" 1) (set_tile "poweriso_path" ""))
-  )
-)
+;; 這裡原本有 set_poweriso，2026-09-16 隨 POWERISO 欄位一併移除。
 
 (defun set_powparts (/ parts_id)
   (setq parts_id (get_tile "powparts"))
@@ -353,35 +325,10 @@
   )
 )
 
-(defun set_pdm (/ pdm_id)
-  (setq pdm_id (get_tile "powerpdm"))
-  (if (= "1" pdm_id)
-    (progn
-      (mode_tile "pdmserver_path" 0)
-      (mode_tile "pdmclient_path" 0)
-      (mode_tile "atttxt_path"    0)
-      (mode_tile "pout_typ"       0)
-      (mode_tile "purg_blk"       0)
-      (setq pout_list (list "自訂" "一般" "子圖" "組圖"))
-      (setq pg_list   (list "YES" "NO"))
-      (act_pop_list pout_list "pout_typ")
-      (act_pop_list pg_list   "purg_blk")
-      (set_tile "pdmserver_path" "\\\\NTSERVER\\POWERTECH")
-      (set_tile "pdmclient_path" "C:\\PowerPDM")
-      (set_tile "atttxt_path"    "\\\\NTSERVER\\POWERTECH\\atttxt")
-    )
-    (progn
-      (mode_tile "pdmclient_path" 1)
-      (mode_tile "pdmserver_path" 1)
-      (mode_tile "atttxt_path"    1)
-      (mode_tile "pout_typ"       1)
-      (mode_tile "purg_blk"       1)
-      (set_tile "pdmserver_path" "")
-      (set_tile "pdmclient_path" "")
-      (set_tile "atttxt_path"    "")
-    )
-  )
-)
+;; 這裡原本有 set_pdm（PowerPDM 的 Server／Client／屬性萃取檔路徑，以及
+;; 「CAD拆零件時機種命名方式」「存圖時自動PURGE不存在的BLOCK」兩個下拉）。
+;; PDM 模組不在本專案內：write_configdoc 從來沒有把這些值寫進 config.doc，
+;; 全專案也沒有任何程式讀它們，設完即丟。2026-09-16 連同對話框欄位一併移除。
 
 ;;----------------------------------------------------------------
 ;; 設定完成訊息
