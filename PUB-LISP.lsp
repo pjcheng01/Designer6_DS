@@ -2161,7 +2161,11 @@
   (if (or (null clineyesno) (= clineyesno "Yes"))
     (progn
       (setq clineyesno "Yes")
-      (setq flt_ext (read (getfile_val (strcat powdesign_path "SYSTEM.ini") "中心線延伸距離")))
+      ;; 2026-09-17：key 原本是「中心線延伸距離」。ini key 英文化那一輪改了
+      ;; SYSTEM.ini（現在是 CENTER_LINE_EXT=3），但漏掉這個讀取端，
+      ;; getfile_val 回 nil → (read nil) → 錯誤: 無效的參數。
+      ;; 這支被 AUXDRAW.lsp 的 10 個地方呼叫，等於一次打掉 6 個指令。
+      (setq flt_ext (read (getfile_val (strcat powdesign_path "SYSTEM.ini") "CENTER_LINE_EXT")))
       (setq ext_length (getdist (strcat "\n延伸距離<" (rtos (* (getvar "dimscale") flt_ext) 2 2) ">: ")))
       (if (null ext_length) (setq ext_length (* (getvar "dimscale") flt_ext)))
     );progn
