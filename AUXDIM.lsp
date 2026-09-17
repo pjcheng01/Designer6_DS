@@ -888,9 +888,13 @@
 ;**************************
  (defun chg_dim_ok(tol_up tol_down)
           (setq up_dim(entsel "\n選取欲變更之尺寸"))
-          (setq updim_data (entget (car up_dim)))
-          (setq olddim (assoc 1 updim_data))
+          ;; 2026-09-17：原本 entget/assoc 兩行在 (if up_dim …) 之前就先解參照，
+          ;; 按 Enter 結束（entsel 回 nil）時 (entget (car nil)) 直接爆「無效的參數」。
+          ;; 把兩行移進 if 的成立分支，按 Enter 就安靜結束。見手冊 §5.29。
           (if up_dim
+              (progn
+              (setq updim_data (entget (car up_dim)))
+              (setq olddim (assoc 1 updim_data))
               (cond
         ;         ((/= (cdr (assoc 0 (entget (car up_dim)))) "DIMENSION")(chg_dim_errmsg))
                  ((/= (cdr (assoc 0 updim_data)) "DIMENSION")(chg_dim_errmsg))
@@ -916,6 +920,7 @@
                  )
                  ((/= (cdr (assoc 1 updim_data)) "") (chg_dim_edited_txt))
                );cond
+               );progn
                (princ "\n未選到任何圖元!")
           );if
  );defun ok
