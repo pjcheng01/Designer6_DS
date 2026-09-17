@@ -53,3 +53,9 @@ SWAPFILE.TXT
 # ---- Python 工具的產物 ----
 __pycache__/
 *.pyc
+
+# ---- 執行期產生的使用者設定 ----
+# DFSYSTEM.lsp 的 wr_osmode_to_supp 會在 get_support_path() 下建立 osmode.ini，
+# 存「鎖點模式組」O1~O5 的五組設定。第一次執行 &setosmode 或 O1~O5 時自動產生，
+# 內容因人而異，不該進版控。詳見手冊 §5.27。
+osmode.ini
