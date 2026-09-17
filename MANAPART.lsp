@@ -1723,7 +1723,10 @@
       (setq data1 (read-line ff))
       (close ff)
       (setq needlist (TXT_TRAN_LIST data))
-      (if (/= "" data1) (setq noneedlist (TXT_TRAN_LIST data1)))
+      ;; 2026-09-17：DraftSight 的 read-line 讀不到檔尾空行，直接回 nil（§5.2）。
+      ;; sortcol_ok 在沒有「不顯示」欄位時會 (write-line "" ff)，title.txt 就以 \r\n\r\n 結尾，
+      ;; 於是 data1 是 nil 而不是 ""，(/= "" nil) 成立 → (TXT_TRAN_LIST nil) → get_word 引數型態錯誤。
+      (if (and data1 (/= "" data1)) (setq noneedlist (TXT_TRAN_LIST data1)))
       (princ)
      );progn
   );if
