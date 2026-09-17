@@ -565,9 +565,11 @@
               (progn
                   (setvar "dimtp" (atof tol_up))
                   (setvar "dimtm" (atof tol_down))
-                 (command "dim")
-                 (command "update" up_dim "")
-                 (command "exit")
+                 ;; 2026-09-17：原本拆成三個 command 呼叫。DraftSight 會把第二個
+                 ;; (command "update" …) 當成新的頂層指令解析，頂層沒有 update，
+                 ;; 於是「使用者斷開」、DIM 模式卡住。併成一句才是餵給進行中的指令。
+                 ;; 實測 DIM 模式的 UP 選項存在（會問「指定尺寸」）。見手冊 §5.28。
+                 (command "dim" "up" up_dim "" "exit")
 
               );progn
             )
@@ -898,9 +900,8 @@
                     (setvar "dimtm" (atof tol_down))
         ;            (setvar "dimtp" (atof tol_up))
         ;            (setvar "dimtm" (- 0 (atof tol_down)))
-                    (command "dim")
-                    (command "update" up_dim "")
-                    (command "exit")
+                    ;; 2026-09-17：併成一句，理由見手冊 §5.28
+                    (command "dim" "up" up_dim "" "exit")
                  )
                  ((and (wcmatch (cdr olddim) "*<*") (wcmatch (cdr olddim) "*>*")
                        (null (wcmatch (cdr olddim) "*{*")) (null (wcmatch (cdr olddim) "*}*")))
@@ -910,9 +911,8 @@
                     (setvar "dimtm" (atof tol_down))
          ;           (setvar "dimtp" (atof tol_up))
          ;           (setvar "dimtm" (- 0 (atof tol_down)))
-                    (command "dim")
-                    (command "update" up_dim "")
-                    (command "exit")
+                    ;; 2026-09-17：併成一句，理由見手冊 §5.28
+                    (command "dim" "up" up_dim "" "exit")
                  )
                  ((/= (cdr (assoc 1 updim_data)) "") (chg_dim_edited_txt))
                );cond
