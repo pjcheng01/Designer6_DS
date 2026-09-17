@@ -575,12 +575,12 @@
             <toolbar UID="{1429b24d-ea99-451d-95bd-8a78305bc339}" movable="true" def_x_location="200" def_y_location="200" name="指標球(不含資訊點)" rows="1" orientation="16" definition_ref="" dock_row="0" dock_column="0" on_by_default="true">
                 <toolbar UID="{80958add-e97d-4bc6-b03b-00a12c4bd0a4}" name="向上定距(連續號)" definition_ref="{9903eea9-542f-404b-9602-99b91a06f2c9}"/>
                 <toolbar UID="{7ebfd81e-8ecd-4b41-a7e7-e09df703fcef}" name="向下定距(連續號)" definition_ref="{b02a095d-3df0-4b6d-9d31-b343912ed5f0}"/>
-                <toolbar UID="{650f3bf6-718c-4637-b3ce-c326d326e514}" name="向左定距(連續號)" definition_ref="{6907bed5-04e1-47b1-ae44-694e1dc3e1f4}"/>
-                <toolbar UID="{60c71f66-10fa-4765-b8b1-655fe783c065}" name="向右定距(連續號)" definition_ref="{6deb5abc-58d8-47e3-a09e-28a8cd70c21d}"/>
+                <toolbar UID="{650f3bf6-718c-4637-b3ce-c326d326e514}" name="向右定距(連續號)" definition_ref="{6907bed5-04e1-47b1-ae44-694e1dc3e1f4}"/>
+                <toolbar UID="{60c71f66-10fa-4765-b8b1-655fe783c065}" name="向左定距(連續號)" definition_ref="{6deb5abc-58d8-47e3-a09e-28a8cd70c21d}"/>
                 <toolbar UID="{02a5cc39-22ff-4b8b-ac4c-14129efe0d75}" name="向上定距(不連續號)" definition_ref="{56b8f2de-5e08-43df-87fa-94bb8b352a03}"/>
                 <toolbar UID="{46bcf322-bd83-4993-9a1c-2792382002a5}" name="向下定距(不連續號)" definition_ref="{2eb41309-9a36-435d-9615-318301bc3306}"/>
-                <toolbar UID="{fad31058-79ff-4be3-a366-813622692475}" name="向左定距(不連續號)" definition_ref="{84d56d74-7e7a-4eba-81fe-9f6dc7b2912f}"/>
-                <toolbar UID="{6314133a-c63b-47de-b746-9d405d8b8776}" name="向右定距(不連續號)" definition_ref="{dd2d5144-d1e8-4779-9b24-f9a3df8ca76d}"/>
+                <toolbar UID="{fad31058-79ff-4be3-a366-813622692475}" name="向右定距(不連續號)" definition_ref="{84d56d74-7e7a-4eba-81fe-9f6dc7b2912f}"/>
+                <toolbar UID="{6314133a-c63b-47de-b746-9d405d8b8776}" name="向左定距(不連續號)" definition_ref="{dd2d5144-d1e8-4779-9b24-f9a3df8ca76d}"/>
                 <toolbar UID="{2e9d3731-ca1e-451b-9360-a142d3bd90f0}" name="自由拉出(連續號)" definition_ref="{2727a3f7-cbf0-4ae8-882c-c32a29d70c07}"/>
                 <toolbar UID="{ce8022c4-7b26-4b5e-a29e-2c2e317bc13f}" name="自由拉出(不連續號)" definition_ref="{a9069ff9-35dc-4662-80d6-8242f65fa0b1}"/>
                 <toolbar UID="{35620f8d-1dd4-48a6-8608-8e7f77764434}" name="編輯指標球" definition_ref="{14d4d4c7-84d8-4a4c-bc08-9ddbc203a40a}"/>
@@ -910,7 +910,7 @@
             <definition iconRecource="" lightIconName="plathot.bmp" iconName="" id="{37018e9d-acf8-4a0c-9ca0-04cb43ee8ebb}" name="方(扁)管" darkIconName="bplathot.bmp" smallIconName="" command="^C^C&amp;carqury2" description=""/>
             <definition iconRecource="" lightIconName="" iconName="" id="{37348626-26aa-41e0-9c21-15635d90fffd}" name="L型" darkIconName="" smallIconName="" command="^C^C&amp;lbase" description="L型"/>
             <definition iconRecource="" lightIconName="AUXHL.bmp" iconName="" id="{374d4764-2856-4c5a-bc75-fc70c4f37a25}" name="改變成剖面線" darkIconName="BAUXHL.bmp" smallIconName="" command="^C^C&amp;chtohl" description=""/>
-            <definition iconRecource="" lightIconName="BALLNFR.BMP" iconName="" id="{374fc0e6-367c-4ad7-a481-87ec951d1016}" name="向左定距(不連續號)" darkIconName="bBALLNFR.bmp" smallIconName="" command="^C^C&amp;keyin_bom180_info" description=""/>
+            <definition iconRecource="" lightIconName="BALLNFL.BMP" iconName="" id="{374fc0e6-367c-4ad7-a481-87ec951d1016}" name="向左定距(不連續號)" darkIconName="bBALLNFL.bmp" smallIconName="" command="^C^C&amp;keyin_bom180_info" description=""/>
             <definition iconRecource="" lightIconName="drrect5.bmp" iconName="" id="{37b19e64-a260-4c56-b679-6622eba245bf}" name="矩形" darkIconName="bdrrect5.bmp" smallIconName="" command="^C^C&amp;mrect" description=""/>
             <definition iconRecource="" lightIconName="" iconName="" id="{38789e6c-7a65-4468-8be7-4fdc8fd39d4b}" name="G 型 未帶彈簧橡膠外周" darkIconName="" smallIconName="" command="^C^C&amp;goilseal" description="G 型 未帶彈簧橡膠外周"/>
             <definition iconRecource="" lightIconName="" iconName="" id="{38d32e5e-744b-4a5b-8c1e-34afc72193df}" name="次組合部份解除" darkIconName="" smallIconName="" command="^C^C&amp;part_del" description="次組合部份解除"/>
@@ -1011,7 +1011,7 @@
             <definition iconRecource="" lightIconName="drcir2.bmp" iconName="" id="{689fbd7f-d36d-4af0-862f-f69ac72b2da1}" name="X-Y 圓" darkIconName="bdrcir2.bmp" smallIconName="" command="^C^C&amp;XYCIR" description=""/>
             <definition iconRecource="" lightIconName="PRhVL.bmp" iconName="" id="{68a3cfa7-bad3-449c-a4c1-931d7838c531}" name="十字投影線" darkIconName="bPRhVL.bmp" smallIconName="" command="^C^C&amp;hvline" description=""/>
             <definition iconRecource="" lightIconName="" iconName="" id="{68be2e3e-c0a6-4a18-8231-867ddea0f3f2}" name="選擇零件新顏色" darkIconName="" smallIconName="" command="^C^C&amp;chlacol" description="選擇零件新顏色"/>
-            <definition iconRecource="" lightIconName="BALLFL.BMP" iconName="" id="{6907bed5-04e1-47b1-ae44-694e1dc3e1f4}" name="向左定距(連續號)" darkIconName="bBALLFL.bmp" smallIconName="" command="^C^C&amp;AUTObom0" description=""/>
+            <definition iconRecource="" lightIconName="BALLFL.BMP" iconName="" id="{6907bed5-04e1-47b1-ae44-694e1dc3e1f4}" name="向右定距(連續號)" darkIconName="bBALLFL.bmp" smallIconName="" command="^C^C&amp;AUTObom0" description=""/>
             <definition iconRecource="" lightIconName="AUTOMLC.Bmp" iconName="" id="{6967c650-982d-413a-b150-a1f84dbc50ec}" name="建立連續圖層" darkIconName="bAUTOMLC.bmp" smallIconName="" command="^C^C&amp;AUTOMLC" description=""/>
             <definition iconRecource="" lightIconName="SHET&amp;SCA.bmp" iconName="" id="{6976f9c2-7e64-415d-a3bd-6bcf7175a1cd}" name="放圖框定比例" darkIconName="BHET&amp;SCA.bmp" smallIconName="" command="^C^C&amp;autoSHSCAL" description=""/>
             <definition iconRecource="" lightIconName="" iconName="" id="{6a0c8505-2994-492b-9c32-1a7149ee9722}" name="推拔鍵(斜鍵)" darkIconName="" smallIconName="" command="^C^C&amp;parkey5" description="推拔鍵(斜鍵)"/>
@@ -1022,7 +1022,7 @@
             <definition iconRecource="" lightIconName="SETLLT.bmp" iconName="" id="{6c7c3316-9812-4301-b65e-c7e8556f0b82}" name="設定成文字層(LLT)" darkIconName="BSETLLT.bmp" smallIconName="" command="^C^C&amp;T&amp;" description=""/>
             <definition iconRecource="" lightIconName="drill4.bmp" iconName="" id="{6d1074e4-7239-4da1-982a-650af0c4d7e1}" name="推拔螺絲孔" darkIconName="bdrill4.bmp" smallIconName="" command="^C^C&amp;thrill4" description=""/>
             <definition iconRecource="" lightIconName="" iconName="" id="{6d9b3df5-24c7-40cf-ae23-85252b117f08}" name="圓鑽底承窩 . 杯形端" darkIconName="" smallIconName="" command="^C^C&amp;6f_ndeup" description="圓鑽底承窩 . 杯形端"/>
-            <definition iconRecource="" lightIconName="BALLFR.BMP" iconName="" id="{6deb5abc-58d8-47e3-a09e-28a8cd70c21d}" name="向右定距(連續號)" darkIconName="bBALLFR.bmp" smallIconName="" command="^C^C&amp;AUTObom180" description=""/>
+            <definition iconRecource="" lightIconName="BALLFR.BMP" iconName="" id="{6deb5abc-58d8-47e3-a09e-28a8cd70c21d}" name="向左定距(連續號)" darkIconName="bBALLFR.bmp" smallIconName="" command="^C^C&amp;AUTObom180" description=""/>
             <definition iconRecource="" lightIconName="drco1.bmp" iconName="" id="{6e263383-0e15-4011-bb7b-5a30e5be1cff}" name="圓角輔助標註圖形" darkIconName="bdrco1.bmp" smallIconName="" command="^C^C&amp;codim" description=""/>
             <definition iconRecource="" lightIconName="" iconName="" id="{6e75d891-0ab6-4a88-8bb1-f7974e49dd46}" name="平形端" darkIconName="" smallIconName="" command="^C^C&amp;sqscwp" description="平形端"/>
             <definition iconRecource="" lightIconName="" iconName="" id="{6ecc0531-e811-4d76-87ec-d55d67c12261}" name="六角螺帽(大)" darkIconName="" smallIconName="" command="^C^C&amp;six-bnut" description="六角螺帽(大)"/>
@@ -1064,7 +1064,7 @@
             <definition iconRecource="" lightIconName="drsec3.bmp" iconName="" id="{8422e7e1-8d6b-4ccb-bf37-5f0dcd0ea441}" name="剖面文字" darkIconName="bdrsec3.bmp" smallIconName="" command="^C^C&amp;sec2" description=""/>
             <definition iconRecource="" lightIconName="auxbl.bmp" iconName="" id="{848b4bc8-0a7b-4e21-bf89-9fdb08c41407}" name="變換成BYLAYER線性" darkIconName="bauxbl.bmp" smallIconName="" command="^C^C&amp;chtobyl" description=""/>
             <definition iconRecource="" lightIconName="dmsha.bmp" iconName="" id="{84c7452e-e1e9-4038-9420-d9cd8aa55dbe}" name="配合軸尺寸容許差" darkIconName="bdmsha.bmp" smallIconName="" command="^C^C&amp;toler_sha" description=""/>
-            <definition iconRecource="" lightIconName="BALLNFL.BMP" iconName="" id="{84d56d74-7e7a-4eba-81fe-9f6dc7b2912f}" name="向左定距(不連續號)" darkIconName="bBALLNFL.bmp" smallIconName="" command="^C^C&amp;keyin_bom0" description=""/>
+            <definition iconRecource="" lightIconName="BALLNFR.BMP" iconName="" id="{84d56d74-7e7a-4eba-81fe-9f6dc7b2912f}" name="向右定距(不連續號)" darkIconName="bBALLNFR.bmp" smallIconName="" command="^C^C&amp;keyin_bom0" description=""/>
             <definition iconRecource="" lightIconName="BALLFU.BMP" iconName="" id="{84ff88e6-f4ae-4af8-8472-9ecf4212cbd3}" name="向上定距(連續號)" darkIconName="bBALLFU.bmp" smallIconName="" command="^C^C&amp;AUTObom90_info" description=""/>
             <definition iconRecource="" lightIconName="" iconName="" id="{855fd91b-8e20-41c5-a636-0914b26a92a2}" name="粗連續線(SLL)" darkIconName="" smallIconName="" command="^C^CSLL" description="粗連續線(SLL)"/>
             <definition iconRecource="" lightIconName="AUXDIM1.bmp" iconName="" id="{857eea21-0491-4a75-b751-91cfbed5ab7d}" name="輔助標註一" darkIconName="BAUXDIM1.bmp" smallIconName="" command="^C^C777" description=""/>
@@ -1210,7 +1210,7 @@
             <definition iconRecource="" lightIconName="AUXSL.bmp" iconName="" id="{cc9c736c-4ce6-406d-a95b-baf4d8de1651}" name="改變成粗連續線" darkIconName="BAUXSL.bmp" smallIconName="" command="^C^C&amp;chtosl" description=""/>
             <definition iconRecource="" lightIconName="" iconName="" id="{cc9d9425-cbda-4286-91e6-80f40effc626}" name="設定線型系統變數" darkIconName="" smallIconName="" command="^C^C&amp;defltype" description="設定線型系統變數"/>
             <definition iconRecource="" lightIconName="dmwed2.bmp" iconName="" id="{cd55a42b-6a48-49d8-93c7-199287d1fcd5}" name="箭頭對邊熔接" darkIconName="bdmwed2.bmp" smallIconName="" command="^C^C&amp;wedding2" description=""/>
-            <definition iconRecource="" lightIconName="BALLNFL.BMP" iconName="" id="{cd784847-5170-42b1-90b8-96306d193d1d}" name="向右定距(不連續號)" darkIconName="bBALLNFL.bmp" smallIconName="" command="^C^C&amp;keyin_bom0_info" description=""/>
+            <definition iconRecource="" lightIconName="BALLNFR.BMP" iconName="" id="{cd784847-5170-42b1-90b8-96306d193d1d}" name="向右定距(不連續號)" darkIconName="bBALLNFR.bmp" smallIconName="" command="^C^C&amp;keyin_bom0_info" description=""/>
             <definition iconRecource="" lightIconName="" iconName="" id="{cdc7568c-c0d6-4283-ba0f-0beb617a627d}" name="蝸輪" darkIconName="" smallIconName="" command="^C^C&amp;5-6_gear" description="蝸輪"/>
             <definition iconRecource="" lightIconName="AUXEDIT1.bmp" iconName="" id="{ce8f5b6e-f9dd-46ef-9f05-2a82ecbbd941}" name="輔助編輯(一)" darkIconName="BUXEDIT1.bmp" smallIconName="" command="^C^C222" description=""/>
             <definition iconRecource="" lightIconName="" iconName="" id="{ced61f50-33ff-45a7-b37c-ada192a23ad7}" name="管理線性滑軌圖塊" darkIconName="" smallIconName="" command="^C^CLINERULE1" description="管理線性滑軌圖塊"/>
@@ -1240,7 +1240,7 @@
             <definition iconRecource="" lightIconName="PDMWBLK.bmp" iconName="" id="{dc9f7505-619f-46c9-b229-4d8d2ce3618f}" name="建立公用 BLOCK" darkIconName="BPDMWBLK.bmp" smallIconName="" command="^C^C^P&amp;pdmwblk" description=""/>
             <definition iconRecource="" lightIconName="" iconName="" id="{dcb18f56-e080-4956-9689-6215ad381a0a}" name="平形端" darkIconName="" smallIconName="" command="^C^C&amp;outsixp" description="平形端"/>
             <definition iconRecource="" lightIconName="DRWSDL.bmp" iconName="" id="{dd0abc03-9a1f-423a-8261-dd48d2fc6df3}" name="畫短虛線(SDLL)" darkIconName="BDRWSDL.bmp" smallIconName="" command="^C^CSDLL" description=""/>
-            <definition iconRecource="" lightIconName="BALLNFR.BMP" iconName="" id="{dd2d5144-d1e8-4779-9b24-f9a3df8ca76d}" name="向右定距(不連續號)" darkIconName="bBALLNFR.bmp" smallIconName="" command="^C^C&amp;keyin_bom180" description=""/>
+            <definition iconRecource="" lightIconName="BALLNFL.BMP" iconName="" id="{dd2d5144-d1e8-4779-9b24-f9a3df8ca76d}" name="向左定距(不連續號)" darkIconName="bBALLNFL.bmp" smallIconName="" command="^C^C&amp;keyin_bom180" description=""/>
             <definition iconRecource="" lightIconName="shaft1.bmp" iconName="" id="{dd908bcc-7135-4771-bab9-ff5cc88fb2f4}" name="軸外形" darkIconName="bshaft1.bmp" smallIconName="" command="^C^C&amp;sha" description=""/>
             <definition iconRecource="" lightIconName="dimnori.bmp" iconName="" id="{ddbf8b20-bd1e-4e82-a728-6f3c2a875fc1}" name="設定 x,y 新原點" darkIconName="bdimnori.bmp" smallIconName="" command="^C^C&amp;newmo" description=""/>
             <definition iconRecource="" lightIconName="" iconName="" id="{ddc17060-e33b-4ba8-96a9-6cc066c43e8c}" name="粗連續線(SS)" darkIconName="" smallIconName="" command="^C^C&amp;SL&amp;" description="粗連續線(SS)"/>

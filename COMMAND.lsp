@@ -253,14 +253,17 @@
 (defun c:&lealine()(c:autoload) (cond ((null c:lealine)(load "auxdim"))(t (princ)))(c:lealine))            ;指引線
 (defun c:&dim-gbase()(c:autoload)(cond ((null c:dim-gbase)(load "auxdim"))(t (princ)))(c:dim-gbase))       ;基準面
 ;;組合圖與材料清單
+;; 2026-09-17 更正方向註解：角度 0 是 +X（向右）、180 是 -X（向左）。
+;; 原註解把這兩個寫反了，選單標籤也跟著錯，見 MANABALL.lsp / BOM.lsp 的
+;; (setq bomtxtp (polar bomtxtp ballang di))。
 (defun c:&AUTObom90()(c:autoload)  (cond ((null bom)(load "bom"))(t (princ))) (AUTObom 90))   ;向上定距(連續號)
 (defun c:&AUTObom270()(c:autoload) (cond ((null bom)(load "bom"))(t (princ))) (AUTObom 270))  ;向下定距(連續號)
-(defun c:&AUTObom0()(c:autoload)   (cond ((null bom)(load "bom"))(t (princ))) (AUTObom 0))    ;向左定距(連續號)
-(defun c:&AUTObom180()(c:autoload) (cond ((null bom)(load "bom"))(t (princ))) (AUTObom 180))  ;向右定距(連續號)
+(defun c:&AUTObom0()(c:autoload)   (cond ((null bom)(load "bom"))(t (princ))) (AUTObom 0))    ;向右定距(連續號)
+(defun c:&AUTObom180()(c:autoload) (cond ((null bom)(load "bom"))(t (princ))) (AUTObom 180))  ;向左定距(連續號)
 (defun c:&keyin_bom90()(c:autoload)     (cond ((null bom)(load "bom"))(t (princ)))(keyin_bom 90))   ;向上定距(不連續號)
 (defun c:&keyin_bom270()(c:autoload)    (cond ((null bom)(load "bom"))(t (princ)))(keyin_bom 270))  ;向下定距(不連續號)
-(defun c:&keyin_bom0()(c:autoload)      (cond ((null bom)(load "bom"))(t (princ)))(keyin_bom 0))    ;向左定距(不連續號)
-(defun c:&keyin_bom180()(c:autoload)    (cond ((null bom)(load "bom"))(t (princ)))(keyin_bom 180))  ;向右定距(不連續號)
+(defun c:&keyin_bom0()(c:autoload)      (cond ((null bom)(load "bom"))(t (princ)))(keyin_bom 0))    ;向右定距(不連續號)
+(defun c:&keyin_bom180()(c:autoload)    (cond ((null bom)(load "bom"))(t (princ)))(keyin_bom 180))  ;向左定距(不連續號)
 (defun c:&autobom1()(c:autoload)        (cond ((null bom)(load "bom"))(t (princ)))(autobom 1))      ;自由拉出(連續號)
 (defun c:&keyin_bom1()(c:autoload)      (cond ((null bom)(load "bom"))(t (princ)))(keyin_bom 1))    ;自由拉出(不連續號)
 (defun c:&addbomtxt_xdata()(c:autoload) (cond ((null bom)(load "bom"))(t (princ)))(C:addbomtxt_xdata))   ;編輯指標球
@@ -272,12 +275,12 @@
 ;;;;;;由資訊點產生指標球
 (defun c:&AUTObom90_info()(c:autoload)  (cond ((null manaball)(load "manaball"))(t (princ))) (AUTObom_info 90))   ;向上定距(連續號)
 (defun c:&AUTObom270_info()(c:autoload) (cond ((null manaball)(load "manaball"))(t (princ))) (AUTObom_info 270))  ;向下定距(連續號)
-(defun c:&AUTObom0_info()(c:autoload)   (cond ((null manaball)(load "manaball"))(t (princ))) (AUTObom_info 0))    ;向左定距(連續號)
-(defun c:&AUTObom180_info()(c:autoload) (cond ((null manaball)(load "manaball"))(t (princ))) (AUTObom_info 180))  ;向右定距(連續號)
+(defun c:&AUTObom0_info()(c:autoload)   (cond ((null manaball)(load "manaball"))(t (princ))) (AUTObom_info 0))    ;向右定距(連續號)
+(defun c:&AUTObom180_info()(c:autoload) (cond ((null manaball)(load "manaball"))(t (princ))) (AUTObom_info 180))  ;向左定距(連續號)
 (defun c:&keyin_bom90_info()(c:autoload)     (cond ((null manaball)(load "manaball"))(t (princ)))(keyin_bom_info 90))   ;向上定距(不連續號)
 (defun c:&keyin_bom270_info()(c:autoload)    (cond ((null manaball)(load "manaball"))(t (princ)))(keyin_bom_info 270))  ;向下定距(不連續號)
-(defun c:&keyin_bom0_info()(c:autoload)      (cond ((null manaball)(load "manaball"))(t (princ)))(keyin_bom_info 0))    ;向左定距(不連續號)
-(defun c:&keyin_bom180_info()(c:autoload)    (cond ((null manaball)(load "manaball"))(t (princ)))(keyin_bom_info 180))  ;向右定距(不連續號)
+(defun c:&keyin_bom0_info()(c:autoload)      (cond ((null manaball)(load "manaball"))(t (princ)))(keyin_bom_info 0))    ;向右定距(不連續號)
+(defun c:&keyin_bom180_info()(c:autoload)    (cond ((null manaball)(load "manaball"))(t (princ)))(keyin_bom_info 180))  ;向左定距(不連續號)
 (defun c:&autobom1_info()(c:autoload)        (cond ((null manaball)(load "manaball"))(t (princ)))(autobom_info 1))          ;自由拉出(連續號)
 (defun c:&keyin_bom1_info()(c:autoload)      (cond ((null manaball)(load "manaball"))(t (princ)))(keyin_bom_info 1))      ;自由拉出(不連續號)
 ;;圖層控制
