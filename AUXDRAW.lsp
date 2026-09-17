@@ -225,6 +225,11 @@
  (setvar "osmode" oldos)
  (setq oldos nil)
    (setq *error* olderr)
+   ;; 2026-09-17：補上 (princ)。少了它，函式的回傳值就是前一行 (setq *error* olderr)
+   ;; 的結果——也就是 olderr 這個函式物件，DraftSight 會把它回顯成
+   ;; <Sub: #00000200:0c9a95f8 *ERROR*>。那不是錯誤，是「函式名稱 *ERROR* 的物件」。
+   ;; 同一支檔案的 c:keyway_2（第 182 行）本來就有 (princ)，所以「無圓」那個按鈕正常。
+   (princ)
 ) ;end
 
  (defun user_keyin(typ)
