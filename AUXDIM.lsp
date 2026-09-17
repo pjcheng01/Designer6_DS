@@ -921,7 +921,11 @@
                  ((/= (cdr (assoc 1 updim_data)) "") (chg_dim_edited_txt))
                );cond
                );progn
-               (princ "\n未選到任何圖元!")
+               ;; 2026-09-17：原本是 (princ "\n未選到任何圖元!")。entsel 不論
+               ;; 「按 Enter 結束」或「點到空白處」都回 nil，分不出來，於是正常
+               ;; 收工也會被當成誤操作報一句。c:chg_dim 的設計就是按 Enter 結束
+               ;; 迴圈，所以改成安靜結束。要恢復訊息只要改回這一行。
+               (princ)
           );if
  );defun ok
        (defun chg_dim_errmsg()
