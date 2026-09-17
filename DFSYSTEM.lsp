@@ -19,8 +19,11 @@
 ;;typ= 0 建立 osmode.ini
 ;;typ= 1 更新 osmode.ini
 (defun wr_osmode_to_supp(typ)
-   (setq prefix (getvar "dctcust"))
-   (setq OUT_LSPPATH (substr PREFIX 1 (- (strlen prefix) 10)))
+   ;; 2026-09-17：原本是 (setq prefix (getvar "dctcust")) 再截掉尾端 10 個字元。
+   ;; dctcust 在 DraftSight 指向「我的文件」，與 c:O1~c:O5 用的 get_support_path
+   ;; 算出不同位置——寫在 Documents、讀在 C:\DESIGNER6_DS，O1~O5 永遠讀不到。
+   ;; 統一改用 get_support_path，設定檔跟程式放在一起。
+   (setq OUT_LSPPATH (get_support_path))
    (setq osnapfile (strcat OUT_LSPPATH "osmode.ini"))
    (cond
      ((null (findfile osnapfile))
