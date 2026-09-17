@@ -1,5 +1,5 @@
 cen2:dialog{
-           label=選擇使用方式;
+           label="選擇使用方式";
            :boxed_column{
              :radio_button{
                             label="延伸距離";
