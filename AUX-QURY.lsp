@@ -560,7 +560,13 @@
  (setq ent (entget (car (entsel "\n選擇欲計算的直線: ")))
        sp (cdr (assoc 10 ent))
        ep (cdr (assoc 11 ent))
-       d (+ (distance sp ep) ppss)
+       ;; 2026-09-17：原本是 (+ (distance sp ep) ppss)。ppss 是加密狗時代的
+       ;; 位移量，由 (setq ppss sspp) 取得，而 SYSTEM.lsp 的 (setq sspp 0)
+       ;; 保證它永遠是 0——加密狗檢查 (= #### 85) 要成立，sspp 就必須是 0。
+       ;; 移除加密狗那一輪連 (setq ppss sspp) 一起拿掉了，ppss 變 nil，
+       ;; (+ 數字 nil) 直接中斷指令（畫面只看到 *Cancel*）。加 0 是空操作，
+       ;; 所以直接拿掉，不要把加密狗的殘渣補回來。
+       d (distance sp ep)
        in (/ d 25.4)
        dtxt (rtos d 2 2)
        intxt (rtos in 2 2)

@@ -110,6 +110,8 @@
 (defun c:slot5(/ p1 p2 p3 p4 p5 p6 p7 p102 p103 p104 p105 y r d ang)
    (setvar "cmdecho" 0)
    ;; DraftSight: 移除加密狗 WHILE 迴圈
+   ;; 2026-09-17：連帶拿掉了 ppss（加密狗時代的位移量，永遠是 0）。
+   ;; 那一輪把 (setq ppss sspp) 一起移掉，ppss 變 nil，算式就中斷。見手冊 §7.12。
    (setq p1 (getpoint "\n選擇插入點: "))
   (if p1 (progn
     (setq r (getdist "\n輸入半徑: "))
@@ -136,8 +138,8 @@
    (setvar "osmode" 0)
    (setq p2 (polar p1 ang r))
    (setq p3 (polar p2 ang (- d (* 2 r))))
-   (setq p4 (polar p2 (+ (* pi 0.5) ang ppss) r)
-         p5 (polar p2 (+ (- (* pi 0.5)) ang ppss) r)
+   (setq p4 (polar p2 (+ (* pi 0.5) ang) r)
+         p5 (polar p2 (+ (- (* pi 0.5)) ang) r)
          p6 (polar p5 ang (- d (* r 2)))
          p7 (polar p4 ang (- d (* r 2))))
    (command "arc" "c" p2 p4 p5)
@@ -160,6 +162,8 @@
 (defun c:slot4(/ y p1 p2 p3 p4 p5 p6 p7 p102 p103 p104 p105 r d ang)
    (setvar "cmdecho" 0)
    ;; DraftSight: 移除加密狗 WHILE 迴圈
+   ;; 2026-09-17：連帶拿掉了 ppss（加密狗時代的位移量，永遠是 0）。
+   ;; 那一輪把 (setq ppss sspp) 一起移掉，ppss 變 nil，算式就中斷。見手冊 §7.12。
     (setq p1 (getpoint "\n輸入插入點: "))
   (if p1 (progn
     (setq r (getdist "\n輸入半徑: "))
@@ -186,8 +190,8 @@
    (setvar "osmode" 0)
    (setq p2 (polar p1 (+ pi ang) (/ (- d (* 2 r)) 2.0)))
    (setq p3 (polar p1 ang (/ (- d (* 2 r)) 2.0)))
-   (setq p4 (polar p2 (+ (* pi 0.5) ang ppss) r)
-         p5 (polar p2 (+ (- (* pi 0.5)) ang ppss) r)
+   (setq p4 (polar p2 (+ (* pi 0.5) ang) r)
+         p5 (polar p2 (+ (- (* pi 0.5)) ang) r)
          p6 (polar p5 ang (- d (* r 2)))
          p7 (polar p4 ang (- d (* r 2))))
    (command "arc" "c" p2 p4 p5)
@@ -260,6 +264,8 @@
 (defun c:slot2(/ y p p1 p2 p3 p4 p5 p6 p102 p103 p104 p105 flat r d)
    (setvar "cmdecho" 0)
    ;; DraftSight: 移除加密狗 WHILE 迴圈
+   ;; 2026-09-17：連帶拿掉了 ppss（加密狗時代的位移量，永遠是 0）。
+   ;; 那一輪把 (setq ppss sspp) 一起移掉，ppss 變 nil，算式就中斷。見手冊 §7.12。
    (setq p1 (getpoint "\n輸入插入點: "))
   (if p1 (progn
    (setq r (getdist "\n輸入半徑: "))
@@ -284,8 +290,8 @@
    (if (or (= ang nil) (= ang 0)) (setq ang 0))
    (setq oldosmode (getvar "osmode"))
    (setvar "osmode" 0)
-   (setq p2 (polar p1 (+ (* pi 0.5) ang ppss) r)
-         p3 (polar p1 (+ (- (* pi 0.5)) ang ppss) r)
+   (setq p2 (polar p1 (+ (* pi 0.5) ang) r)
+         p3 (polar p1 (+ (- (* pi 0.5)) ang) r)
          p4 (polar p3 ang (- d (* 2 r)))
          p5 (polar p2 ang (- d (* 2 r)))
          p6 (polar p1 ang (- d (* 2 r))))
@@ -310,6 +316,8 @@
 (defun c:slot1()
    (setvar "cmdecho" 0)
    ;; DraftSight: 移除加密狗 WHILE 迴圈
+   ;; 2026-09-17：連帶拿掉了 ppss（加密狗時代的位移量，永遠是 0）。
+   ;; 那一輪把 (setq ppss sspp) 一起移掉，ppss 變 nil，算式就中斷。見手冊 §7.12。
     (setq p1 (getpoint "\n請選擇插入點: "))
   (if p1 (progn
      (setq r (getdist "\n輸入半徑: "))
@@ -326,7 +334,7 @@
    (if (or (= ang nil) (= ang 0)) (setq ang 0))
    (setq oldosmode (getvar "osmode"))
    (setvar "osmode" 0)
-   (setq p2 (polar p1 (+ (* pi 0.5) ang ppss) r)
+   (setq p2 (polar p1 (+ (* pi 0.5) ang) r)
          p3 (polar p1 (+ (- (* pi 0.5)) ang) r)
          p4 (polar p3 ang d)
          p5 (polar p2 ang d)

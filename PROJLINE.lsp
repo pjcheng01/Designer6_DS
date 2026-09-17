@@ -43,6 +43,8 @@
 (defun rotproj(typ typ1 / curlayer curcolor curltype la bl flag s-bl e-bl y p1 p102 p103 p104
                           tl ang p1 ph pv interh interv int_y1 int_y2 p-high p-lower)
    ;; DraftSight: 移除加密狗 WHILE 迴圈
+   ;; 2026-09-17：連帶拿掉了 ppss（加密狗時代的位移量，永遠是 0）。
+   ;; 那一輪把 (setq ppss sspp) 一起移掉，ppss 變 nil，算式就中斷。見手冊 §7.12。
   (setq curlayer (getvar "clayer"))
   (setq curcolor (getvar "cecolor"))
   (setq curltype (getvar "celtype"))
@@ -60,14 +62,14 @@
               (setq S-BL (getpoint "\n選擇旋轉基準線之基準點: "))
               (setq Y (getvar "viewsize"))
               (setq p1 S-BL)
-              (setq p103 (polar p1 (- (* pi 0.25)) (+ (/ Y 5) ppss))
+              (setq p103 (polar p1 (- (* pi 0.25)) (/ Y 5))
                     p102 (polar p103 (/ (* pi 2) 3) (/ Y 22))
                     p104 (polar p103 (/ (* 5 pi) 6) (/ Y 22)))
               (grdraw p1 p103 2)
               (grdraw p103 p104 2)
               (grdraw p103 p102 2)
               (setq TL (getdist S-BL "\n輸入基準線長度: ")
-                    E-BL (polar S-BL (- (/ pi 4.)) (+ TL ppss)))
+                    E-BL (polar S-BL (- (/ pi 4.)) TL))
               (grdraw p1 p103 0)
               (grdraw p103 p104 0)
               (grdraw p103 p102 0)
