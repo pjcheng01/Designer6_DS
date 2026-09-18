@@ -102,7 +102,7 @@
      (action_tile "add"      "(part_add&outblk)")
      (action_tile "del"      "(part_del&outblk)")
      (action_tile "accept"   "(setq oker 1)(get_tilevalue)(done_dialog)")
-     (action_tile "cancel"   "(done_dialog)(unload_dialog dcL_id)(setq oker 0)")
+     (action_tile "cancel"   "(done_dialog)(setq oker 0)")  ;; 2026-09-18 移除重複的 unload，見§5.31
      (start_dialog)
     
      (unload_dialog dcl_id)

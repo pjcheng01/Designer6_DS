@@ -102,7 +102,7 @@
           (action_tile "gin"      "(setq selmode 0)")
           (action_tile "sch"      "(setq selmode 1)")
           (action_tile "accept"   "(setq oker 1)(done_dialog)")
-          (action_tile "cancel"   "(done_dialog)(unload_dialog dcL_id)(setq oker 0)")
+          (action_tile "cancel"   "(done_dialog)(setq oker 0)")  ;; 2026-09-18 移除重複的 unload，見§5.31
           (start_dialog)
           (unload_dialog dcl_id)
           (if (= oker 0)
@@ -188,7 +188,7 @@
    (action_tile "gin"      "(setq selmode 0)")
    (action_tile "sch"      "(setq selmode 1)")
    (action_tile "accept"   "(setq oker 1)(done_dialog)")
-   (action_tile "cancel"   "(done_dialog)(unload_dialog dcL_id)(setq oker 0)")
+   (action_tile "cancel"   "(done_dialog)(setq oker 0)")  ;; 2026-09-18 移除重複的 unload，見§5.31
    (start_dialog)
    (unload_dialog dcl_id)
    (if (or (= oker 0)
@@ -2817,7 +2817,7 @@
        (action_tile "sdtobd" "(setq #sdtobd_flag 0)(show_sld&trap_dir \"trapsld\" \"trap_dir1\" -2)")
        (action_tile "traplst" "(ltd_edit_link&trap_dir)")  
        (action_tile "accept" "(setq oker 1)(setq #ang (get_tile \"trapang\"))(done_dialog)")
-       (action_tile "cancel" "(setq oker 0)(done_dialog)(unload_dialog dcL_id)")
+       (action_tile "cancel" "(setq oker 0)(done_dialog)")  ;; 2026-09-18 移除重複的 unload，見§5.31
        (start_dialog)
        (unload_dialog dcl_id)
        (if (= oker 1)

@@ -976,7 +976,7 @@
        (action_tile "del"        "(del_pro&passdfac)")
      
        (action_tile "accept" "(setq exe_st 1)(done_dialog)(write_systemini&passdfac)")
-       (action_tile "cancel" "(setq exe_st 0)(done_dialog)(unload_dialog dcL_id)")
+       (action_tile "cancel" "(setq exe_st 0)(done_dialog)")  ;; 2026-09-18 移除重複的 unload，見§5.31
        (start_dialog)
        (unload_dialog dcl_id)
        (if (= exe_st 1)
@@ -1338,7 +1338,7 @@
        (action_tile "del"    "(del_pro&lt_dcltr)")
      
        (action_tile "accept" "(setq exe_st 1)(done_dialog)(write_systemini&lt_dcltr)")
-       (action_tile "cancel" "(setq exe_st 0)(done_dialog)(unload_dialog dcL_id)")
+       (action_tile "cancel" "(setq exe_st 0)(done_dialog)")  ;; 2026-09-18 移除重複的 unload，見§5.31
        (start_dialog)
        (unload_dialog dcl_id)
        (if (= exe_st 1)
@@ -1665,7 +1665,7 @@
        (action_tile "del" "(delpro&lt_prtdd)")
        (action_tile "fieldset" "(c:fieldset)(get_infp_set)(act_pop_list lab_list \"msdbfn-r\")")
        (action_tile "accept" "(setq exe_st 1)(done_dialog)(write_systemini&lt_prtdd)")
-       (action_tile "cancel" "(setq exe_st 0)(done_dialog)(unload_dialog dcL_id)")
+       (action_tile "cancel" "(setq exe_st 0)(done_dialog)")  ;; 2026-09-18 移除重複的 unload，見§5.31
        (start_dialog)
        (unload_dialog dcl_id)
        (if (= exe_st 1)
@@ -2404,7 +2404,7 @@
        (action_tile "mod" "(modpro&goac_inp)")
        (action_tile "del" "(delpro&goac_inp)")
        (action_tile "accept" "(setq exe_st 1)(done_dialog)(write_systemini&goac_inp)")
-       (action_tile "cancel" "(setq exe_st 0)(done_dialog)(unload_dialog dcL_id)")
+       (action_tile "cancel" "(setq exe_st 0)(done_dialog)")  ;; 2026-09-18 移除重複的 unload，見§5.31
        (start_dialog)
        (unload_dialog dcl_id)
        (if (= exe_st 1)
@@ -3030,7 +3030,7 @@
        (action_tile "mod" "(modpro&lt_map)")
        (action_tile "del" "(delpro&lt_map)")
        (action_tile "accept" "(setq exe_st 1)(done_dialog)(write_systemini&lt_map)")
-       (action_tile "cancel" "(setq exe_st 0)(done_dialog)(unload_dialog dcL_id)")
+       (action_tile "cancel" "(setq exe_st 0)(done_dialog)")  ;; 2026-09-18 移除重複的 unload，見§5.31
        (start_dialog)
        (unload_dialog dcl_id)
        (if (= exe_st 1)
@@ -3581,7 +3581,7 @@
        (action_tile "mod" "(modpro&signing)")
        (action_tile "del" "(delpro&signing)")
        (action_tile "accept" "(setq exe_st 1)(done_dialog)(write_systemini&signing)")
-       (action_tile "cancel" "(setq exe_st 0)(done_dialog)(unload_dialog dcL_id)")
+       (action_tile "cancel" "(setq exe_st 0)(done_dialog)")  ;; 2026-09-18 移除重複的 unload，見§5.31
        (start_dialog)
        (unload_dialog dcl_id)
        (if (= exe_st 1)
@@ -4914,7 +4914,7 @@
        (action_tile "mod" "(modpro&fieldset)")
        ;(action_tile "del" "(delpro&fieldset)")
        (action_tile "accept" "(setq exe_st 1)(done_dialog)(write_systemini&fieldset)")
-       (action_tile "cancel" "(setq exe_st 0)(done_dialog)(unload_dialog dcL_id)")
+       (action_tile "cancel" "(setq exe_st 0)(done_dialog)")  ;; 2026-09-18 移除重複的 unload，見§5.31
        (start_dialog)
        (unload_dialog dcl_id)
        ;(if (= exe_st 1)
@@ -5176,7 +5176,7 @@
        (action_tile "mod" "(modpro&trapmage)")
        (action_tile "del" "(delpro&trapmage)")
        (action_tile "accept" "(setq exe_st 1)(done_dialog)(write_systemini&trapmage)")
-       (action_tile "cancel" "(setq exe_st 0)(done_dialog)(unload_dialog dcL_id)")
+       (action_tile "cancel" "(setq exe_st 0)(done_dialog)")  ;; 2026-09-18 移除重複的 unload，見§5.31
        (start_dialog)
        (unload_dialog dcl_id)
        (if (= exe_st 1)
