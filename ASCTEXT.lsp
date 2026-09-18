@@ -62,8 +62,11 @@
 ;;; Save modes
 ;;;
 (defun MODES (a)
-  (setq MLST '
-        ())
+  ;; 2026-09-18：原本是 (setq MLST '  換行  ())——引號在行尾、值在下一行。
+  ;; DraftSight 的 LISP 讀取器處理不了這種寫法，modes 會直接 *Cancel*（不報錯），
+  ;; 於是 &asctext 一執行就中斷。改成 nil，與同一份程式碼的另一個副本
+  ;; REC_ENLG.lsp:6 的 (setq MLST nil) 一致。全庫「引號在行尾」僅此一處。
+  (setq MLST nil)
   (repeat (length a)
     (setq MLST (append MLST (list (list (car a) (getvar (car a))))))
     (setq a (cdr a))
@@ -397,8 +400,14 @@
   (princ)
 )
 
-(defun c:at () (vmon) (asctxt))
-(defun c:asctext () (vmon) (asctxt))
+;; 2026-09-18：移除 (vmon)。VMON 是 AutoCAD R12 時代的「虛擬記憶體開啟」函式，
+;; 早就沒有作用；全庫沒有定義，SYSTEM.lsp:372 那一處移植時也已註解掉，這兩處
+;; 漏網。原版 C:\DESIGNER6\ASCTEXT.lsp 一模一樣。
+;; ⚠ 但它**不是** &asctext 失敗的原因——真正的原因是 MODES 裡那個跨行引號
+;; （見本檔 65 行與手冊 §5.35）。當初誤判是因為拿 alias.xml 當證據，
+;; 那張表列的是「指令別名」，不是 AutoLISP 函式，用它判斷函式存在與否無效。
+(defun c:at () (asctxt))
+(defun c:asctext () (asctxt))
 (princ "\n\tc:AscTxt loaded.  Start command with AT or ASCTEXT.")
 (princ)
 
