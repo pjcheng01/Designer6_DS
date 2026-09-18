@@ -50,11 +50,25 @@ git config --get core.autocrlf   # 必須是 true，不是就設定它
 1. **先看原版。** `C:\DESIGNER6`（AutoCAD 版）與 `C:\POWPARTS` 是未移植的對照組，
    多數「移植版壞掉」的問題可以靠 diff 原版快速定位。
 2. **確認編碼**（見上）。
-3. **用指令或腳本就地修改**，例如 `sed -i` 或 python read-modify-write。
+3. **就地修改，但不要用 `sed -i`。** 這個環境的 `sed`／`awk`／`grep` 都是文字模式，
+   讀寫都會吃掉 `\r`——`sed -i` 會把 CRLF 檔整份剝成 LF 檔，而且
+   **`grep -c $'\r'` 驗不出來**（它自己也吃 CR，改前改後都回報同一個數字）。
+   本機也**沒有 python**。改 CRLF 檔請用逐位元組安全的 `head`／`tail`／`cat`／`printf`
+   拼接，替換行自己帶 `\r\n`（詳見手冊 §5.38）。LF 檔則不受影響，`sed -i` 可用。
    不要憑工具輸出重打整份檔案內容——輸出可能被截斷。
-4. **驗證括號平衡**（LISP 檔改完必做）。注意：Big5 檔的第二位元組可能是 `(` `)` `"` `\`，
-   位元組層級的掃描對 Big5 檔不可靠，只對 UTF-8 檔有效。
-5. **請使用者在 DraftSight 實測**，通過後才 commit。
+4. **驗證括號平衡**（LISP 檔改完必做）。要用**會跳過字串與註解的**掃描器，
+   單純數 `(` `)` 會把字串裡的括號算進去（手冊 §5.37 附 `balance.awk`）。
+   它也不認得 `;| … |;` 區塊註解（§5.20）。另外 Big5 檔的第二位元組可能是
+   `(` `)` `"` `\`，位元組層級的掃描對 Big5 檔一律不可靠，只對 UTF-8 檔有效。
+5. **改完驗換行與編碼**：
+   ```bash
+   tr -cd '\r' < FILE | wc -c      # 真正的 CR 個數，改前改後要一致
+   tail -c 4 FILE | od -c          # 檔尾（S_ASMSET.lsp 結尾有 0x1A EOF 標記）
+   iconv -f UTF-8 -t UTF-8 FILE >/dev/null && echo OK
+   ```
+   已 commit 過的內容不受 CR 影響（`autocrlf=true` 本來就存 LF）；
+   工作檔要還原成 CRLF 用 `rm -f FILE && git checkout -- FILE`。
+6. **請使用者在 DraftSight 實測**，通過後才 commit。
 
 ## 不要做的事
 
