@@ -54,7 +54,12 @@
 (defun c:QUICKTAH1()(c:autoload)  (setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblkm)(load "userblkm"))(t (princ))) (userblkm "userblkm" "userblkm" "QUICKTAH" "poweriso" 0))
 (defun c:QUICKTAH2()(c:autoload)  (setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblku)(load "userblku"))(t (princ))) (userblku "userblku" "userblku" "QUICKTAH" "poweriso" 0))
 ;;環首桿
-(defun c:HRINGS1()(c:autoload)  (setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblkm)(load "userblkm"))(t (princ))) (userblku "userblkm" "userblkm" "HRINGS" "poweriso" 0))
+;; 2026-09-18：原本呼叫的是 (userblku "userblkm" "userblkm" …)——載入 userblkm
+;; 卻呼叫 userblku，等於拿「管理」的對話框去跑「使用」的邏輯，tile 對不上就中斷
+;; （畫面只看到 *Cancel*）。八組「管理」指令裡只有這一支這樣寫，其餘七組
+;; （userblk1／oilgas1／OILTANK1／GASTANK1／LINEBUSH1／LINESWITCH1／LINERULE1
+;; ／QUICKTAH1）都是 userblkm。原版 C:\DESIGNER6 一模一樣，是 20 年的舊筆誤。
+(defun c:HRINGS1()(c:autoload)  (setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblkm)(load "userblkm"))(t (princ))) (userblkm "userblkm" "userblkm" "HRINGS" "poweriso" 0))
 (defun c:HRINGS2()(c:autoload)  (setq dclmenu_path bmanager_path)(PRINC)(cond ((null userblku)(load "userblku"))(t (princ))) (userblku "userblku" "userblku" "HRINGS" "poweriso" 0))
 
 (defun c:callcalc()(c:autoload) (startapp "calc"))

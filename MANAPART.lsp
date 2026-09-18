@@ -2436,7 +2436,7 @@
      (princ "資訊點建立完成!")
      (setvar "attdia" oldattdia)
      (command "color" curcolor)
-     (command "linetype" "s" curltyle "")
+     (command "linetype" "s" curltype "")  ;; 2026-09-18 curltyle -> curltype（原版錯字），見§5.34
      (command "layer" "s" curlayer "")
 ;    (if (/= 0 sno) (setq sno (1+ sno)))
      (setq count (1+ count))
@@ -2528,6 +2528,8 @@
     (makepart 0)
   );if
   (setq ent nil)
+  ;; 2026-09-18 補 (princ)，不再回顯 (setq ent nil) 的 nil，見§5.25
+  (princ)
 )
 ;;零件圖中建立資訊點
 (defun c:addbom_olddwg(/ datatxt_list ent)
@@ -2640,7 +2642,7 @@
      (addatt_tobomball (entlast) attdata_list)
      (command "regen")
      (command "color" curcolor)
-     (command "linetype" "s" curltyle "")
+     (command "linetype" "s" curltype "")  ;; 2026-09-18 curltyle -> curltype（原版錯字），見§5.34
      (command "layer" "s" curlayer "")
    ; (cond
    ;   ((= typ 1)(command "script" (strcat powdesign_path "movebomp")))
@@ -2674,7 +2676,7 @@
         (addatt_tobomball (ssname set_partref 0) attdata_list)
         (command "regen")
         (command "color" curcolor)
-        (command "linetype" "s" curltyle "")
+        (command "linetype" "s" curltype "")  ;; 2026-09-18 curltyle -> curltype（原版錯字），見§5.34
         (command "layer" "s" curlayer "")
 )
 (defun seltxt_toeditbox(txtlist)

@@ -229,7 +229,7 @@
 	     (addatt_tobomball ent_obj attdata_list)
 	))
      	(command "color" curcolor)
-    	(command "linetype" "s" curltyle "")
+    	(command "linetype" "s" curltype "")  ;; 2026-09-18 curltyle -> curltype（原版錯字），見§5.34
      	(command "layer" "s" curlayer "")
 )
 ;鏡射零件
