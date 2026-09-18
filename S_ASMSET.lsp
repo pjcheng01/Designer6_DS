@@ -420,7 +420,7 @@
     (if (and msg
              (/= msg "Function cancelled")
              (/= msg "quit / exit abort")
-             (/= msg "console break"))
+             (/= msg "console break") (null (wcmatch msg "*EXIT*"))) ;*EXIT* = DraftSight 的 (exit) 正常中止，非錯誤
        (princ (strcat "\nError: " msg))
     )
     (princ)
@@ -1121,7 +1121,7 @@
     (if (and msg
              (/= msg "Function cancelled")
              (/= msg "quit / exit abort")
-             (/= msg "console break"))
+             (/= msg "console break") (null (wcmatch msg "*EXIT*"))) ;*EXIT* = DraftSight 的 (exit) 正常中止，非錯誤
        (princ (strcat "\nError: " msg))
     )
     (princ)
@@ -1790,7 +1790,7 @@
     (if (and msg
              (/= msg "Function cancelled")
              (/= msg "quit / exit abort")
-             (/= msg "console break"))
+             (/= msg "console break") (null (wcmatch msg "*EXIT*"))) ;*EXIT* = DraftSight 的 (exit) 正常中止，非錯誤
        (princ (strcat "\nError: " msg))
     )
     (princ)
@@ -2445,7 +2445,7 @@
     (if (and msg
              (/= msg "Function cancelled")
              (/= msg "quit / exit abort")
-             (/= msg "console break"))
+             (/= msg "console break") (null (wcmatch msg "*EXIT*"))) ;*EXIT* = DraftSight 的 (exit) 正常中止，非錯誤
        (princ (strcat "\nError: " msg))
     )
     (princ)
@@ -3122,7 +3122,7 @@
     (if (and msg
              (/= msg "Function cancelled")
              (/= msg "quit / exit abort")
-             (/= msg "console break"))
+             (/= msg "console break") (null (wcmatch msg "*EXIT*"))) ;*EXIT* = DraftSight 的 (exit) 正常中止，非錯誤
        (princ (strcat "\nError: " msg))
     )
     (princ)
@@ -3611,7 +3611,7 @@
    (if (and msg
             (/= msg "Function cancelled")
             (/= msg "quit / exit abort")
-            (/= msg "console break"))
+            (/= msg "console break") (null (wcmatch msg "*EXIT*"))) ;*EXIT* = DraftSight 的 (exit) 正常中止，非錯誤
       (princ (strcat "\nError: " msg))
    )
    (princ)
