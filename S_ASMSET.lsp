@@ -579,7 +579,22 @@
 
 (defun layeroff&fun1(en)
      (setq en (strcat "," en))
-     (if (/= (string_search&fun1 (strcase en) (strcat ","(getvar "clayer") ",") ) nil)
+     ;; 2026-09-18：原本是
+     ;;   (string_search&fun1 (strcase en) (strcat "," (getvar "clayer") ","))
+     ;; string_search&fun1(string search_s) 是「在 string 裡找 search_s」，
+     ;; 但這裡把「要找的」放在第一個參數——變成在 ",圖層名" 裡找 ",目前圖層,"，
+     ;; 後者更長又多一個結尾逗號，**永遠找不到**。於是帶 "y" 的那個分支是死碼，
+     ;; 一律走沒有 "y" 的那條：要關的若正好是目前圖層，DraftSight 會跳確認、
+     ;; 沒人回答，圖層就維持開啟。原版一模一樣，是 20 年的舊缺陷。
+     ;;
+     ;; 另一個錯：(strcase en) 轉了大寫但 (getvar "clayer") 沒轉，就算方向對了
+     ;; 大小寫不同也比不中。現在兩邊都 strcase。
+     ;;
+     ;; en 已經是 ",圖層名"，再補一個結尾逗號成 ",圖層名," 才能避免
+     ;; 「名稱是目前圖層的前綴」造成的誤判（例如 AB 與 ABC）。
+     (if (/= (string_search&fun1 (strcase (strcat "," (getvar "clayer") ","))
+                                 (strcase (strcat en ",")))
+             nil)
          (command "-layer" "off" en "y" "")
          (command "-layer" "off" en "")
      );if
