@@ -979,9 +979,7 @@
        (action_tile "cancel" "(setq exe_st 0)(done_dialog)")  ;; 2026-09-18 移除重複的 unload，見§5.31
        (start_dialog)
        (unload_dialog dcl_id)
-       (if (= exe_st 1)
-           (c:passdfac)
-       );if      
+       ;; 2026-09-18 移除「確定後重開自己」，見§5.32
        (setvar "cmdecho" cmdecho_v)
        (princ)
   );defun
@@ -1341,9 +1339,7 @@
        (action_tile "cancel" "(setq exe_st 0)(done_dialog)")  ;; 2026-09-18 移除重複的 unload，見§5.31
        (start_dialog)
        (unload_dialog dcl_id)
-       (if (= exe_st 1)
-           (lt_dcltr dclname systemname)
-       );if      
+       ;; 2026-09-18 移除「確定後重開自己」，見§5.32
        (setvar "cmdecho" cmdecho_v)
        (princ)
   );defun
@@ -1668,9 +1664,7 @@
        (action_tile "cancel" "(setq exe_st 0)(done_dialog)")  ;; 2026-09-18 移除重複的 unload，見§5.31
        (start_dialog)
        (unload_dialog dcl_id)
-       (if (= exe_st 1)
-           (c:lt_prtdd)
-       );if      
+       ;; 2026-09-18 移除「確定後重開自己」，見§5.32
        (setvar "cmdecho" cmdecho_v)
        (princ)
   );defun
@@ -2232,7 +2226,9 @@
         );foreach
         (setq ff (open (strcat POWDESIGN_path "title.txt") "w"))
         (write-line txt ff)
-        (princ txt)
+        ;; 2026-09-18：移除開發時期留下的除錯輸出 (princ txt)。它把剛寫進
+        ;; title.txt 的那一行再印到指令列，按確定後會多出一長串欄位名。
+        ;; 原版也有這一行，不是移植造成的；全庫僅此一處。
         (if (/= 0 (length noneedlist))
           (progn
             (setq noneedlist (reverse noneedlist))
@@ -2407,9 +2403,7 @@
        (action_tile "cancel" "(setq exe_st 0)(done_dialog)")  ;; 2026-09-18 移除重複的 unload，見§5.31
        (start_dialog)
        (unload_dialog dcl_id)
-       (if (= exe_st 1)
-           (c:goac_inp)
-       );if      
+       ;; 2026-09-18 移除「確定後重開自己」，見§5.32
        (setvar "cmdecho" cmdecho_v)
        (princ)
   );defun
@@ -3033,9 +3027,7 @@
        (action_tile "cancel" "(setq exe_st 0)(done_dialog)")  ;; 2026-09-18 移除重複的 unload，見§5.31
        (start_dialog)
        (unload_dialog dcl_id)
-       (if (= exe_st 1)
-           (c:lt_map)
-       );if      
+       ;; 2026-09-18 移除「確定後重開自己」，見§5.32
        (setvar "cmdecho" cmdecho_v)
        (princ)
   );defun
@@ -3584,9 +3576,7 @@
        (action_tile "cancel" "(setq exe_st 0)(done_dialog)")  ;; 2026-09-18 移除重複的 unload，見§5.31
        (start_dialog)
        (unload_dialog dcl_id)
-       (if (= exe_st 1)
-           (c:signing)
-       );if      
+       ;; 2026-09-18 移除「確定後重開自己」，見§5.32
        (setvar "cmdecho" cmdecho_v)
        (princ)
   );defun
@@ -5179,9 +5169,7 @@
        (action_tile "cancel" "(setq exe_st 0)(done_dialog)")  ;; 2026-09-18 移除重複的 unload，見§5.31
        (start_dialog)
        (unload_dialog dcl_id)
-       (if (= exe_st 1)
-           (c:trapmage)
-       );if      
+       ;; 2026-09-18 移除「確定後重開自己」，見§5.32
        (setvar "cmdecho" cmdecho_v)
        (princ)
   );defun
