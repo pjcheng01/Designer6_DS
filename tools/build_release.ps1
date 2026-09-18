@@ -51,10 +51,16 @@ $KEEP = @{
   'C:\POWPARTS_DS'  = @()
 }
 
-# 交付內容裡一定要有的檔案。$KEEP 清空後，這是安裝說明的防呆：
+# 交付內容裡一定要有的檔案。兩個用途：
+#   1. $KEEP 清空後，安裝說明失去防呆，改由這裡把關。
+#   2. partdata.txt 是「自動建立資訊點」的料號資料，缺了那個功能就不能用。
+#      它納入版控又不在 $EXCLUDE 裡，checkout-index 本來就會帶出去；列在這裡
+#      是為了防止它哪天被誤加進 .gitignore 或移出版控，害我們安靜地交付一包
+#      不能用的程式。
 # 檔案改名或搬走而忘了更新腳本時，這裡會擋下來。
 $MUSTHAVE = @{
-  'C:\DESIGNER6_DS' = @('安裝說明\藝祥機械設計家 DraftSight 版安裝流程.docx')
+  'C:\DESIGNER6_DS' = @('安裝說明\藝祥機械設計家 DraftSight 版安裝流程.docx',
+                            'partdata.txt')
   'C:\POWPARTS_DS'  = @()
 }
 
