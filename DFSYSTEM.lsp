@@ -958,7 +958,7 @@
                 (setq #process_list (read gf_val))
                 (foreach mm #process_list
                          ;(setq #process_temp (append #process_temp (list (strcase (rtos mm))) ))
-                         (setq #process_temp (append #process_temp (list (strcase (rtos mm 2 0))) ))
+                         (setq #process_temp (append #process_temp (list (strcase_ascii (rtos mm 2 0))) ))
                 );foreach
                 (setq #process_list  #process_temp)
            );progn        
@@ -1049,7 +1049,7 @@
 
 
 (defun add_pro&passdfac(/ add_key total_list)
-       (setq add_key (strcase (get_tile "clr")))
+       (setq add_key (strcase_ascii (get_tile "clr")))
        (if (and (/= add_key "")
                 ;(= (member add_key #process_list) nil)
            );and        
@@ -1067,7 +1067,7 @@
 );defun cadd
 
 (defun mod_pro&passdfac(/ mod_key i olddatakey nth_data prs_temp #process_list_temp i)
-       (setq mod_key (strcase (get_tile "clr")))
+       (setq mod_key (strcase_ascii (get_tile "clr")))
        (if (and (= linkflag&passdfac t)
                 (/= mod_key "")
                 ;(= (member mod_key #process_list) nil)
@@ -1323,7 +1323,7 @@
            (progn
                 (setq #process_list (read gf_val))
                 (foreach mm #process_list
-                         (setq #process_temp (append #process_temp (list (strcase mm)) ))
+                         (setq #process_temp (append #process_temp (list (strcase_ascii mm)) ))
                 );foreach
                 (setq #process_list (acad_strlsort #process_temp))
            );progn        
@@ -1379,7 +1379,7 @@
 
 
 (defun add_pro&lt_dcltr(/ add_key total_list)
-       (setq add_key (strcase (get_tile "datadef")))
+       (setq add_key (strcase_ascii (get_tile "datadef")))
        (if (and (/= add_key "")
                 (= (member add_key #process_list) nil)
            );and        
@@ -1398,7 +1398,7 @@
 );defun cadd
 
 (defun mod_pro&lt_dcltr(/ mod_key i olddatakey nth_data prs_temp)
-       (setq mod_key (strcase (get_tile "datadef")))
+       (setq mod_key (strcase_ascii (get_tile "datadef")))
        (if (and (= linkflag&lt_dcltr t)
                 (/= mod_key "")
                 (= (member mod_key #process_list) nil)
@@ -1621,10 +1621,10 @@
            (progn
                 (setq #process_list (read gf_val))
                 (foreach mm #process_list
-                         (setq car1 (strcase (car mm)))
-                         (setq cadr2  (strcase (cadr mm)))
-                         (setq caddr3  (strcase (caddr mm)))
-                         (setq cadddr4  (strcase (cadddr mm)))
+                         (setq car1 (strcase_ascii (car mm)))
+                         (setq cadr2  (strcase_ascii (cadr mm)))
+                         (setq caddr3  (strcase_ascii (caddr mm)))
+                         (setq cadddr4  (strcase_ascii (cadddr mm)))
 
                          (if (or (= cadr2 nil) (= cadr2 "") );or
                              (setq cadr2 "***")
@@ -1725,10 +1725,10 @@
                             (setq 4th_word "")
                         );if
                    
-                        (setq 1st_word (etos&lt_prtdd (strcase 1st_word)))
-                        (setq 2nd_word (etos&lt_prtdd (strcase 2nd_word)))
-                        (setq 3rd_word (etos&lt_prtdd (strcase 3rd_word)))
-                        (setq 4th_word (etos&lt_prtdd (strcase 4th_word)))
+                        (setq 1st_word (etos&lt_prtdd (strcase_ascii 1st_word)))
+                        (setq 2nd_word (etos&lt_prtdd (strcase_ascii 2nd_word)))
+                        (setq 3rd_word (etos&lt_prtdd (strcase_ascii 3rd_word)))
+                        (setq 4th_word (etos&lt_prtdd (strcase_ascii 4th_word)))
                    
                         (setq temp&L   (cons (list 1st_word 2nd_word 3rd_word 4th_word ) temp&L))
  
@@ -1746,8 +1746,8 @@
 
   (defun addpro&lt_prtdd(/ pnamingdata sheetattrdata insdata s_num 1st_word 2nd_word i)
          (pnaming_sheetattr_init&lt_prtdd)
-         (setq pnamingdata (strcase (get_tile "pnaming")))
-         (setq sheetattrdata (strcase (get_tile "sheetattr")))
+         (setq pnamingdata (strcase_ascii (get_tile "pnaming")))
+         (setq sheetattrdata (strcase_ascii (get_tile "sheetattr")))
          (setq iptagdata (nth (atoi (get_tile "iptag")) #iptag_init_value ))
          (setq msdbfndata (nth (atoi (get_tile "msdbfn")) #msdbfn_init_value ))
          (if (and (not (member pnamingdata    #1st_set))
@@ -1895,8 +1895,8 @@
          ;(set_tile "msdbfn" msdbfndata)
 
          (cond
-           ((or (= (strcase iptagdata) "TAG1")
-                 (= (strcase iptagdata) "TAG2"))
+           ((or (= (strcase_ascii iptagdata) "TAG1")
+                 (= (strcase_ascii iptagdata) "TAG2"))
                   (mode_tile "mod"        1)
                   (mode_tile "add"        1)
                   (mode_tile "del"        1) 
@@ -1904,7 +1904,7 @@
                   (mode_tile "sheetattr"  0)
                   (mode_tile "iptag"      1)
                   (mode_tile "msdbfn"     0))
-            ((= (strcase iptagdata) "TAG3")
+            ((= (strcase_ascii iptagdata) "TAG3")
                   (mode_tile "mod"        0)
                   (mode_tile "add"        1)
                   (mode_tile "del"        1) 
@@ -1978,8 +1978,8 @@
                   (setq process_list_temp&lt_prtdd  #process_list)
 
                   ;(setq oldstr  (nth (atoi num) #process_list))
-                  (setq pnamingdata (strcase (get_tile "pnaming")))
-                  (setq sheetattrdata (strcase (get_tile "sheetattr")))
+                  (setq pnamingdata (strcase_ascii (get_tile "pnaming")))
+                  (setq sheetattrdata (strcase_ascii (get_tile "sheetattr")))
                   ;(setq iptagdata (strcase (get_tile "iptag")))
                   (setq iptagdata (nth (atoi (get_tile "iptag")) #iptag_init_value ))
                   ;(setq msdbfndata (strcase (get_tile "msdbfn")))
@@ -2290,14 +2290,14 @@
      (setq #4th_set     nil)
      (foreach mm #process_list
             (setq s_num (string_search&lt_prtdd mm "=>"))
-            (setq 1st_word (str_trim_blank&lt_prtdd (strcase (substr  mm 1 (1- s_num)))))
-            (setq mm       (str_trim_blank&lt_prtdd (strcase (substr  mm   (+ s_num 3)))))
+            (setq 1st_word (str_trim_blank&lt_prtdd (strcase_ascii (substr  mm 1 (1- s_num)))))
+            (setq mm       (str_trim_blank&lt_prtdd (strcase_ascii (substr  mm   (+ s_num 3)))))
             (setq s_num (string_search&lt_prtdd mm "=>"))
-            (setq 2nd_word (str_trim_blank&lt_prtdd (strcase (substr  mm 1 (1- s_num)))))
-            (setq mm       (str_trim_blank&lt_prtdd (strcase (substr  mm   (+ s_num 3)))))
+            (setq 2nd_word (str_trim_blank&lt_prtdd (strcase_ascii (substr  mm 1 (1- s_num)))))
+            (setq mm       (str_trim_blank&lt_prtdd (strcase_ascii (substr  mm   (+ s_num 3)))))
             (setq s_num (string_search&lt_prtdd mm "=>"))
-            (setq 3rd_word (str_trim_blank&lt_prtdd (strcase (substr  mm 1 (1- s_num)))))
-            (setq 4th_word (str_trim_blank&lt_prtdd (strcase (substr  mm   (+ s_num 3)))))
+            (setq 3rd_word (str_trim_blank&lt_prtdd (strcase_ascii (substr  mm 1 (1- s_num)))))
+            (setq 4th_word (str_trim_blank&lt_prtdd (strcase_ascii (substr  mm   (+ s_num 3)))))
            ; (setq 1st_word (str_trim_blank&lt_prtdd 1st_word))
            ; (setq 2nd_word (str_trim_blank&lt_prtdd 2nd_word))
             (setq #1st_set     (append #1st_set     (list 1st_word)))
@@ -2367,9 +2367,9 @@
                 (setq #process_list (read gf_val))
                 ;(setq loop_3_head_i 1)
                 (foreach mm #process_list
-                         (setq car1 (strcase (car mm)))
-                         (setq cadr2  (strcase (cadr mm)))
-                         (setq caddr3  (strcase (caddr mm)))
+                         (setq car1 (strcase_ascii (car mm)))
+                         (setq cadr2  (strcase_ascii (cadr mm)))
+                         (setq caddr3  (strcase_ascii (caddr mm)))
                          (if (or (= cadr2 nil)
                                  (= cadr2 "")
                              );or
@@ -2471,9 +2471,9 @@
                 ;           (setq 4th_word "")
                 ;       );if
                    
-                        (setq 1st_word (etos&goac_inp (strcase 1st_word)))
-                        (setq 2nd_word (etos&goac_inp (strcase 2nd_word)))
-                        (setq 3rd_word (etos&goac_inp (strcase 3rd_word)))
+                        (setq 1st_word (etos&goac_inp (strcase_ascii 1st_word)))
+                        (setq 2nd_word (etos&goac_inp (strcase_ascii 2nd_word)))
+                        (setq 3rd_word (etos&goac_inp (strcase_ascii 3rd_word)))
                         ;(setq 4th_word (etos&goac_inp (strcase 4th_word)))
                    
                         (setq temp&L   (cons (list 1st_word 2nd_word 3rd_word ) temp&L))
@@ -2492,8 +2492,8 @@
  
   (defun addpro&goac_inp(/ namingdata oldattrdata insdata s_num 1st_word 2nd_word)
          (naming_oldattr_init&goac_inp)
-         (setq namingdata (strcase (get_tile "naming")))
-         (setq oldattrdata (strcase (get_tile "oldattr")))
+         (setq namingdata (strcase_ascii (get_tile "naming")))
+         (setq oldattrdata (strcase_ascii (get_tile "oldattr")))
          ;(setq inptagdata (strcase (get_tile "inptag")))
          (setq inptagdata (nth (atoi (get_tile "inptag")) #inptag_init_value ))
          ;(setq vfydatetagdata (strcase (get_tile "vfydatetag")))
@@ -2608,9 +2608,9 @@
              (set_tile "inptag" (rtos seek_p 2 0))
              (alert (strcat "\n " inptagdata "資料不存在!!\n"))
          );if  
-         (if (or (= (strcase inptagdata) "TAG1")
-                 (= (strcase inptagdata) "TAG2")
-                 (= (strcase inptagdata) "TAG3")
+         (if (or (= (strcase_ascii inptagdata) "TAG1")
+                 (= (strcase_ascii inptagdata) "TAG2")
+                 (= (strcase_ascii inptagdata) "TAG3")
              );or
              (progn
                   (mode_tile "add"     1)
@@ -2687,8 +2687,8 @@
                   (setq process_list_mult #process_list)
                   
                   ;(setq oldstr  (nth (atoi num) #process_list))
-                  (setq namingdata (strcase (get_tile "naming")))
-                  (setq oldattrdata (strcase (get_tile "oldattr")))
+                  (setq namingdata (strcase_ascii (get_tile "naming")))
+                  (setq oldattrdata (strcase_ascii (get_tile "oldattr")))
                   (setq inptagdata (nth (atoi (get_tile "inptag")) #inptag_init_value ))
                   ;(setq inptagdata (strcase (get_tile "inptag")))
                   ;(setq vfydatetagdata (strcase (get_tile "vfydatetag")))
@@ -2933,11 +2933,11 @@
      ;(setq #4th_set     nil)
      (foreach mm #process_list
             (setq s_num (string_search&goac_inp mm "=>"))
-            (setq 1st_word (str_trim_blank&goac_inp (strcase (substr  mm 1 (1- s_num)))))
-            (setq mm       (str_trim_blank&goac_inp (strcase (substr  mm   (+ s_num 3)))))
+            (setq 1st_word (str_trim_blank&goac_inp (strcase_ascii (substr  mm 1 (1- s_num)))))
+            (setq mm       (str_trim_blank&goac_inp (strcase_ascii (substr  mm   (+ s_num 3)))))
             (setq s_num (string_search&goac_inp mm "=>"))
-            (setq 2nd_word (str_trim_blank&goac_inp (strcase (substr  mm 1 (1- s_num)))))
-            (setq 3rd_word (str_trim_blank&goac_inp (strcase (substr  mm   (+ s_num 3)))))
+            (setq 2nd_word (str_trim_blank&goac_inp (strcase_ascii (substr  mm 1 (1- s_num)))))
+            (setq 3rd_word (str_trim_blank&goac_inp (strcase_ascii (substr  mm   (+ s_num 3)))))
             ;(setq s_num (string_search&goac_inp mm "=>"))
             ;(setq 3rd_word (str_trim_blank&goac_inp (strcase (substr  mm 1 (1- s_num)))))
             ;(setq 4th_word (str_trim_blank&goac_inp (strcase (substr  mm   (+ s_num 3)))))
@@ -3009,7 +3009,7 @@
                 (setq a 2)
                 (setq #process_list (read gf_val))
                 (foreach mm #process_list
-                         (setq #process_temp (cons (strcat (strcase (car mm)) " => " (strcase (cadr mm))) #process_temp))
+                         (setq #process_temp (cons (strcat (strcase_ascii (car mm)) " => " (strcase_ascii (cadr mm))) #process_temp))
                 );foreach
                 (setq #process_list (reverse #process_temp))
            );progn        
@@ -3052,7 +3052,7 @@
            (progn
                 (setq process_temp nil)
                 (foreach mm #Process_list
-                         (setq process_temp (cons (strcat (strcase (car mm)) " => " (strcase (cadr mm))) process_temp))
+                         (setq process_temp (cons (strcat (strcase_ascii (car mm)) " => " (strcase_ascii (cadr mm))) process_temp))
                 )
                 (setq #Process_list (reverse process_temp))
            );progn        
@@ -3080,8 +3080,8 @@
                         (setq 1st_word (str_trim_blank&lt_map (substr mm 1 (1- 1st_num))))
                         (setq 2nd_word (str_trim_blank&lt_map (substr mm (+  1st_num 3))))
                        
-                        (setq 1st_word (etos&lt_map (strcase 1st_word)))
-                        (setq 2nd_word (etos&lt_map (strcase 2nd_word)))
+                        (setq 1st_word (etos&lt_map (strcase_ascii 1st_word)))
+                        (setq 2nd_word (etos&lt_map (strcase_ascii 2nd_word)))
                    
                         (setq temp&L   (cons (list 1st_word 2nd_word) temp&L))
  
@@ -3099,7 +3099,7 @@
  
   (defun addpro&lt_map(/ dwgattrdata inptdata insdata s_num s_word s_postword)
          (dwgattr_inp_init&lt_map)
-         (setq dwgattrdata (strcase (get_tile "dwgattrt")))
+         (setq dwgattrdata (strcase_ascii (get_tile "dwgattrt")))
          (setq inptdata (nth (atoi (get_tile "inpt")) #inpt_init_value ))
          ;(setq inptdata (strcase (get_tile "inpt")))
          (if (and (not (member dwgattrdata #s_word_set))
@@ -3223,7 +3223,7 @@
                   (setq oldstr  (nth (atoi num) #process_list))
                   ;(setq #process_str (vl-prin1-to-string #process_list))
          
-                  (setq dwgattrdata (strcase (get_tile "dwgattrt")))
+                  (setq dwgattrdata (strcase_ascii (get_tile "dwgattrt")))
                   (setq inptdata (nth (atoi (get_tile "inpt")) #inpt_init_value ))
                   ;(setq inptdata (strcase (get_tile "inpt")))
          
@@ -3482,8 +3482,8 @@
      (setq #s_postword_set nil)
      (foreach mm #process_list
             (setq s_num (string_search&lt_map mm "=>"))
-            (setq s_word (strcase (substr  mm 1 (1- s_num))))
-            (setq s_postword (strcase (substr  mm (+ s_num 3))))
+            (setq s_word (strcase_ascii (substr  mm 1 (1- s_num))))
+            (setq s_postword (strcase_ascii (substr  mm (+ s_num 3))))
             (setq s_word (str_trim_blank&lt_map s_word))
             (setq s_postword (str_trim_blank&lt_map s_postword))
             (setq #s_word_set     (append #s_word_set     (list s_word)))
@@ -3547,10 +3547,10 @@
            (progn
                 (setq #process_list (read gf_val))
                 (foreach mm #process_list
-                         (setq car1 (strcase (car mm)))
-                         (setq cadr2  (strcase (cadr mm)))
-                         (setq caddr3  (strcase (caddr mm)))
-                         (setq cadddr4  (strcase (cadddr mm)))
+                         (setq car1 (strcase_ascii (car mm)))
+                         (setq cadr2  (strcase_ascii (cadr mm)))
+                         (setq caddr3  (strcase_ascii (caddr mm)))
+                         (setq cadddr4  (strcase_ascii (cadddr mm)))
                         
                          (if (or (= cadr2 nil)
                                  (= cadr2 "")
@@ -3643,10 +3643,10 @@
                 ;           (setq 4th_word "")
                 ;       );if
                    
-                        (setq 1st_word (etos&signing (strcase 1st_word)))
-                        (setq 2nd_word (etos&signing (strcase 2nd_word)))
-                        (setq 3rd_word (etos&signing (strcase 3rd_word)))
-                        (setq 4th_word (etos&signing (strcase 4th_word)))
+                        (setq 1st_word (etos&signing (strcase_ascii 1st_word)))
+                        (setq 2nd_word (etos&signing (strcase_ascii 2nd_word)))
+                        (setq 3rd_word (etos&signing (strcase_ascii 3rd_word)))
+                        (setq 4th_word (etos&signing (strcase_ascii 4th_word)))
                    
                         (setq temp&L   (cons (list 1st_word 2nd_word 3rd_word 4th_word ) temp&L))
  
@@ -3664,10 +3664,10 @@
  
   (defun addpro&signing(/ accountdata imagefiledata insdata s_num 1st_word 2nd_word)
          (account_imagefile_init&signing)
-         (setq accountdata (strcase (get_tile "account")))
-         (setq imagefiledata (strcase (get_tile "imagefile")))
-         (setq vfyertagdata (strcase (get_tile "vfyertag")))
-         (setq vfydatetagdata (strcase (get_tile "vfydatetag")))
+         (setq accountdata (strcase_ascii (get_tile "account")))
+         (setq imagefiledata (strcase_ascii (get_tile "imagefile")))
+         (setq vfyertagdata (strcase_ascii (get_tile "vfyertag")))
+         (setq vfydatetagdata (strcase_ascii (get_tile "vfydatetag")))
         ; ;|(if (= accountdata "")
         ;     (setq accountdata "***")
         ; );if
@@ -3804,10 +3804,10 @@
                   (setq process_list_temp&signing #process_list)
                   
                   ;(setq oldstr  (nth (atoi num) #process_list))
-                  (setq accountdata (strcase (get_tile "account")))
-                  (setq imagefiledata (strcase (get_tile "imagefile")))
-                  (setq vfyertagdata (strcase (get_tile "vfyertag")))
-                  (setq vfydatetagdata (strcase (get_tile "vfydatetag")))
+                  (setq accountdata (strcase_ascii (get_tile "account")))
+                  (setq imagefiledata (strcase_ascii (get_tile "imagefile")))
+                  (setq vfyertagdata (strcase_ascii (get_tile "vfyertag")))
+                  (setq vfydatetagdata (strcase_ascii (get_tile "vfydatetag")))
          
                   (if (and 
                          (/= accountdata "")
@@ -4091,14 +4091,14 @@
      (setq #4th_set     nil)
      (foreach mm #process_list
             (setq s_num (string_search&signing mm "=>"))
-            (setq 1st_word (str_trim_blank&signing (strcase (substr  mm 1 (1- s_num)))))
-            (setq mm       (str_trim_blank&signing (strcase (substr  mm   (+ s_num 3)))))
+            (setq 1st_word (str_trim_blank&signing (strcase_ascii (substr  mm 1 (1- s_num)))))
+            (setq mm       (str_trim_blank&signing (strcase_ascii (substr  mm   (+ s_num 3)))))
             (setq s_num (string_search&signing mm "=>"))
-            (setq 2nd_word (str_trim_blank&signing (strcase (substr  mm 1 (1- s_num)))))
-            (setq mm       (str_trim_blank&signing (strcase (substr  mm   (+ s_num 3)))))
+            (setq 2nd_word (str_trim_blank&signing (strcase_ascii (substr  mm 1 (1- s_num)))))
+            (setq mm       (str_trim_blank&signing (strcase_ascii (substr  mm   (+ s_num 3)))))
             (setq s_num (string_search&signing mm "=>"))
-            (setq 3rd_word (str_trim_blank&signing (strcase (substr  mm 1 (1- s_num)))))
-            (setq 4th_word (str_trim_blank&signing (strcase (substr  mm   (+ s_num 3)))))
+            (setq 3rd_word (str_trim_blank&signing (strcase_ascii (substr  mm 1 (1- s_num)))))
+            (setq 4th_word (str_trim_blank&signing (strcase_ascii (substr  mm   (+ s_num 3)))))
            ; (setq 1st_word (str_trim_blank&signing 1st_word))
            ; (setq 2nd_word (str_trim_blank&signing 2nd_word))
             (setq #1st_set     (append #1st_set     (list 1st_word)))
@@ -4988,12 +4988,12 @@
                   (foreach mm #process_list
                         (setq s_num (string_search&fieldset  mm ";"))
                         (setq chaccountdata   (str_trim_blank&fieldset (substr  mm (+ s_num 1))))
-                        (setq s_postword (append s_postword (list (strcase chaccountdata))))
+                        (setq s_postword (append s_postword (list (strcase_ascii chaccountdata))))
                   );foreach  
                   (setq oldstr  (nth (atoi num) #process_list))
          
-                  (setq fldvdata      (strcase (get_tile "fldv")))
-                  (setq chaccountdata (strcase (get_tile "chaccount")))
+                  (setq fldvdata      (strcase_ascii (get_tile "fldv")))
+                  (setq chaccountdata (strcase_ascii (get_tile "chaccount")))
                   (if (= chaccountdata "")
                       (setq  chaccountdata "未定")
                   );if  
@@ -5091,8 +5091,8 @@
      (setq #s_postword_set nil)
      (foreach mm #process_list
             (setq s_num (string_search&fieldset mm ";"))
-            (setq s_word (strcase (substr  mm 1 (1- s_num))))
-            (setq s_postword (strcase (substr  mm (+ s_num 1))))
+            (setq s_word (strcase_ascii (substr  mm 1 (1- s_num))))
+            (setq s_postword (strcase_ascii (substr  mm (+ s_num 1))))
             (setq s_word (str_trim_blank&fieldset s_word))
             (setq s_postword (str_trim_blank&fieldset s_postword))
             (setq #s_word_set     (append #s_word_set     (list s_word)))
@@ -5191,7 +5191,7 @@
            (progn
                 (setq process_temp nil)
                 (foreach mm #Process_list
-                         (setq process_temp (cons (strcat (strcase (car mm)) " => " (strcase (cadr mm))) process_temp))
+                         (setq process_temp (cons (strcat (strcase_ascii (car mm)) " => " (strcase_ascii (cadr mm))) process_temp))
                 )
                 (setq #Process_list (reverse process_temp))
            );progn        
@@ -5219,8 +5219,8 @@
                         (setq 1st_word (str_trim_blank&trapmage (substr mm 1 (1- 1st_num))))
                         (setq 2nd_word (str_trim_blank&trapmage (substr mm (+  1st_num 3))))
                        
-                        (setq 1st_word (etos&trapmage (strcase 1st_word)))
-                        (setq 2nd_word (etos&trapmage (strcase 2nd_word)))
+                        (setq 1st_word (etos&trapmage (strcase_ascii 1st_word)))
+                        (setq 2nd_word (etos&trapmage (strcase_ascii 2nd_word)))
                    
                         (setq temp&L   (cons (list 1st_word 2nd_word) temp&L))
  
@@ -5238,8 +5238,8 @@
  
   (defun addpro&trapmage(/ traptypedata trapangdata insdata   )
          (traptype_inp_init&trapmage)
-         (setq traptypedata (strcase (get_tile "traptype")))
-         (setq trapangdata  (strcase (get_tile "trapang")))
+         (setq traptypedata (strcase_ascii (get_tile "traptype")))
+         (setq trapangdata  (strcase_ascii (get_tile "trapang")))
          (if (and (not (member traptypedata #s_word_set))
                   (/= traptypedata "")
                   (/= trapangdata "")
@@ -5330,8 +5330,8 @@
              (progn
                   (setq oldstr  (nth (atoi num) #process_list))
          
-                  (setq traptypedata (strcase (get_tile "traptype")))
-                  (setq trapangdata  (strcase (get_tile "trapang")))
+                  (setq traptypedata (strcase_ascii (get_tile "traptype")))
+                  (setq trapangdata  (strcase_ascii (get_tile "trapang")))
                   ;(setq trapangdata (nth (atoi (get_tile "trapang")) #trapang_init_value ))
          
                   (if (and 
@@ -5560,8 +5560,8 @@
      (setq #s_postword_set nil)
      (foreach mm #process_list
             (setq s_num (string_search&trapmage mm "=>"))
-            (setq s_word (strcase (substr  mm 1 (1- s_num))))
-            (setq s_postword (strcase (substr  mm (+ s_num 3))))
+            (setq s_word (strcase_ascii (substr  mm 1 (1- s_num))))
+            (setq s_postword (strcase_ascii (substr  mm (+ s_num 3))))
             (setq s_word (str_trim_blank&trapmage s_word))
             (setq s_postword (str_trim_blank&trapmage s_postword))
             (setq #s_word_set     (append #s_word_set     (list s_word)))
