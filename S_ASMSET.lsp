@@ -85,6 +85,22 @@
                        (setq #partref_group_set (ssget "x" (list  (cons 0 "INSERT")(cons 2 "PARTREF"))))
                        
                   );progn  
+                  ;; 2026-09-18：原本沒有 else——答 N 就直接往下跑，沒有資訊點的
+                  ;; 零件會安靜地不出現在次組合清單裡，使用者不知道自己漏掉了什麼。
+                  ;; 這裡不擋（可能是刻意只處理已建資訊點的那些），只把狀況說明白。
+                  ;;
+                  ;; 訊息刻意寫成「圖層數與資訊點數不一致」而不是「N 個零件沒有
+                  ;; 資訊點」——判斷式比的是 (length #all_group) 與
+                  ;; (sslength #partref_group_set)，而 #all_group 來自
+                  ;; coll_layer&fun1，收的是**全部圖層**（含 0、尺寸層等非零件層），
+                  ;; 所以那個差值不等於「缺資訊點的零件數」，不要寫成那樣誤導人。
+                  (alert (strcat "圖層數與資訊點數不一致（相差 "
+                                 (itoa (abs (- (length #all_group)
+                                               (sslength #partref_group_set))))
+                                 " 個）。\n\n"
+                                 "沒有建立資訊點的零件不會出現在次組合清單中，\n"
+                                 "也無法被指派到次組合。\n\n"
+                                 "若要納入，請先執行「自動建立資訊點」。"))
               );if
            );2 
      );cond
