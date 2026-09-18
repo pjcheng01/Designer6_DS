@@ -27,6 +27,11 @@
     ; (if (not (and (= piec_designer1 "#$%&") (=  piec_designer2 "###@")))
     ;     (exit)
     ; );if    
+     ;; 2026-09-18：addatt_tobomball 定義在 MANAPART.lsp，原本只在「答 Y 自動
+     ;; 建立資訊點」的分支裡才 (load "manapart")。答 N 就不會載入，選完零件按
+     ;; Enter 時 subsys_ok&fun1 呼叫它就報「無函數」。照 ASSEMBLY.lsp:85 的
+     ;; 寫法在進入點無條件確保載入。
+     (if (or (null get_bomdata)(null addatt_tobomball))(load "manapart"))
      (if (= (ssget "x") nil)
          (progn
               (alert "圖面無資料")
@@ -85,22 +90,6 @@
                        (setq #partref_group_set (ssget "x" (list  (cons 0 "INSERT")(cons 2 "PARTREF"))))
                        
                   );progn  
-                  ;; 2026-09-18：原本沒有 else——答 N 就直接往下跑，沒有資訊點的
-                  ;; 零件會安靜地不出現在次組合清單裡，使用者不知道自己漏掉了什麼。
-                  ;; 這裡不擋（可能是刻意只處理已建資訊點的那些），只把狀況說明白。
-                  ;;
-                  ;; 訊息刻意寫成「圖層數與資訊點數不一致」而不是「N 個零件沒有
-                  ;; 資訊點」——判斷式比的是 (length #all_group) 與
-                  ;; (sslength #partref_group_set)，而 #all_group 來自
-                  ;; coll_layer&fun1，收的是**全部圖層**（含 0、尺寸層等非零件層），
-                  ;; 所以那個差值不等於「缺資訊點的零件數」，不要寫成那樣誤導人。
-                  (alert (strcat "圖層數與資訊點數不一致（相差 "
-                                 (itoa (abs (- (length #all_group)
-                                               (sslength #partref_group_set))))
-                                 " 個）。\n\n"
-                                 "沒有建立資訊點的零件不會出現在次組合清單中，\n"
-                                 "也無法被指派到次組合。\n\n"
-                                 "若要納入，請先執行「自動建立資訊點」。"))
               );if
            );2 
      );cond
@@ -593,27 +582,62 @@
        );COND
  );defun
 
+;; ── 2026-09-18 新增：送進 -LAYER 之前先把圖層清單洗乾淨 ─────────────────
+;;
+;; 六個家族（&fun1 / &part_cr / &part_DEL / &Sub_REmove / &Sub_On_Off /
+;; &Sub_Reverse）共用這一份，不再各複製一次。這支檔案歷來多數「改了一份
+;; 忘了另外五份」的毛病都出在那種複製。
+;;
+;; 洗掉兩種東西：
+;;
+;; 其一、目前圖層（clayer）
+;;    AutoCAD 的 -LAYER OFF 碰到目前圖層會問「確定要關閉嗎」，原版補一個
+;;    "y" 回答就過了。DraftSight 不問，也關不掉，而且**指令不會結束**——
+;;    它就停在「指定選項」等輸入，後面的 entsel 提示跟它的選項清單交錯，
+;;    最後 init_finish 的 "finish" 那批被當成選項關鍵字，跳「無效的選項
+;;    關鍵字。」。
+;;    2026-09-18 實測 &subsys：非資訊點清單是 "TEST-6,DIM,TEXT,DEFPOINTS,0"，
+;;    而 clayer 正好是 "0"，卡住的就是這一下。coll_layer&fun1 收的是圖面上
+;;    的全部圖層，所以 "0" 出現在清單裡是原始設計，不是上游的錯。
+;;
+;; 其二、空項目（結尾逗號、連續逗號）
+;;    DraftSight 會回「找不到相符的圖層名稱。」，一樣把指令懸住。
+;;    來源是 str_merge&* 每次合併都補結尾逗號（已一併修掉）。
+;;
+;; 行為差異，必須知道：AutoCAD 版連目前圖層也會關掉，移植版關不掉，所以
+;; 目前圖層上的物件在選取階段仍看得見、選得到。DraftSight 沒有辦法做到
+;; 原本的效果，這是取捨。
+;;
+;; strcase 只用在比對兩邊，不會送進指令。它在 DraftSight 是按位元組轉換、
+;; 會破壞中文，但同樣的輸入必得同樣的輸出，拿來做相等比較仍然成立；真正
+;; 送出去的是未經 strcase 的原字串 tok。
+(defun layer_list_clean (en / i n c tok cl out)
+     (if (null en) (setq en ""))
+     (setq cl  (strcase (getvar "clayer")))
+     (setq i 1  n (strlen en)  tok ""  out "")
+     (while (<= i (1+ n))
+          (setq c (if (<= i n) (substr en i 1) ","))
+          (if (= c ",")
+              (progn
+                   (if (and (/= tok "") (/= (strcase tok) cl))
+                       (setq out (if (= out "") tok (strcat out "," tok)))
+                   );if
+                   (setq tok "")
+              );progn
+              (setq tok (strcat tok c))
+          );if
+          (setq i (1+ i))
+     );while
+     out
+);defun
+
 (defun layeroff&fun1(en)
-     (setq en (strcat "," en))
-     ;; 2026-09-18：原本是
-     ;;   (string_search&fun1 (strcase en) (strcat "," (getvar "clayer") ","))
-     ;; string_search&fun1(string search_s) 是「在 string 裡找 search_s」，
-     ;; 但這裡把「要找的」放在第一個參數——變成在 ",圖層名" 裡找 ",目前圖層,"，
-     ;; 後者更長又多一個結尾逗號，**永遠找不到**。於是帶 "y" 的那個分支是死碼，
-     ;; 一律走沒有 "y" 的那條：要關的若正好是目前圖層，DraftSight 會跳確認、
-     ;; 沒人回答，圖層就維持開啟。原版一模一樣，是 20 年的舊缺陷。
-     ;;
-     ;; 另一個錯：(strcase en) 轉了大寫但 (getvar "clayer") 沒轉，就算方向對了
-     ;; 大小寫不同也比不中。現在兩邊都 strcase。
-     ;;
-     ;; en 已經是 ",圖層名"，再補一個結尾逗號成 ",圖層名," 才能避免
-     ;; 「名稱是目前圖層的前綴」造成的誤判（例如 AB 與 ABC）。
-     (if (/= (string_search&fun1 (strcase (strcat "," (getvar "clayer") ","))
-                                 (strcase (strcat en ",")))
-             nil)
-         (command "-layer" "off" en "y" "")
+     ;; 清單洗乾淨再送：拿掉目前圖層與空項目，理由見 layer_list_clean。
+     (setq en (layer_list_clean en))
+     (if (/= en "")
          (command "-layer" "off" en "")
      );if
+     (princ)
 );defun
 
 
@@ -626,7 +650,7 @@
       (if (= merge_str nil)
           (setq merge_str ",")
       );if
-      (if (<= (strlen (setq mergedata (strcat merge_str  "," str ","))) 240)
+      (if (<= (strlen (setq mergedata (strcat merge_str  "," str))) 240)
           (progn
                (if (= merge_str ",")
                    (setq merge_str str)
@@ -698,6 +722,11 @@
     ; (if (not (and (= piec_designer1 "#$%&") (=  piec_designer2 "###@")))
     ;     (exit)
     ; );if    
+     ;; 2026-09-18：addatt_tobomball 定義在 MANAPART.lsp，原本只在「答 Y 自動
+     ;; 建立資訊點」的分支裡才 (load "manapart")。答 N 就不會載入，選完零件按
+     ;; Enter 時 subsys_ok&fun1 呼叫它就報「無函數」。照 ASSEMBLY.lsp:85 的
+     ;; 寫法在進入點無條件確保載入。
+     (if (or (null get_bomdata)(null addatt_tobomball))(load "manapart"))
      (if (= (ssget "x") nil)
          (progn
               (alert "圖面無資料")
@@ -1264,11 +1293,12 @@
  );defun
 
 (defun layeroff&part_cr(en)
-     (setq en (strcat "," en))
-     (if (/= (string_search&part_cr (strcase en) (strcat ","(getvar "clayer") ",") ) nil)
-         (command "-layer" "off" en "y" "")
+     ;; 清單洗乾淨再送：拿掉目前圖層與空項目，理由見 layer_list_clean。
+     (setq en (layer_list_clean en))
+     (if (/= en "")
          (command "-layer" "off" en "")
      );if
+     (princ)
 );defun
 
 
@@ -1281,7 +1311,7 @@
       (if (= merge_str nil)
           (setq merge_str ",")
       );if
-      (if (<= (strlen (setq mergedata (strcat merge_str  "," str ","))) 240)
+      (if (<= (strlen (setq mergedata (strcat merge_str  "," str))) 240)
           (progn
                (if (= merge_str ",")
                    (setq merge_str str)
@@ -1354,6 +1384,11 @@
     ; (if (not (and (= piec_designer1 "#$%&") (=  piec_designer2 "###@")))
     ;     (exit)
     ; );if    
+     ;; 2026-09-18：addatt_tobomball 定義在 MANAPART.lsp，原本只在「答 Y 自動
+     ;; 建立資訊點」的分支裡才 (load "manapart")。答 N 就不會載入，選完零件按
+     ;; Enter 時 subsys_ok&fun1 呼叫它就報「無函數」。照 ASSEMBLY.lsp:85 的
+     ;; 寫法在進入點無條件確保載入。
+     (if (or (null get_bomdata)(null addatt_tobomball))(load "manapart"))
      (if (= (ssget "x") nil)
          (progn
               (alert "圖面無資料")
@@ -1932,12 +1967,13 @@
            );finish
        );COND
  );defun
- (defun layeroff&part_DEL(en)
-     (setq en (strcat "," en))
-     (if (/= (string_search&part_DEL (strcase en) (strcat ","(getvar "clayer") ",") ) nil)
-         (command "-layer" "off" en "y" "")
+(defun layeroff&part_DEL(en)
+     ;; 清單洗乾淨再送：拿掉目前圖層與空項目，理由見 layer_list_clean。
+     (setq en (layer_list_clean en))
+     (if (/= en "")
          (command "-layer" "off" en "")
      );if
+     (princ)
 );defun
 
 
@@ -1950,7 +1986,7 @@
       (if (= merge_str nil)
           (setq merge_str ",")
       );if
-      (if (<= (strlen (setq mergedata (strcat merge_str  "," str ","))) 240)
+      (if (<= (strlen (setq mergedata (strcat merge_str  "," str))) 240)
           (progn
                (if (= merge_str ",")
                    (setq merge_str str)
@@ -2024,6 +2060,11 @@
     ; (if (not (and (= piec_designer1 "#$%&") (=  piec_designer2 "###@")))
     ;     (exit)
     ; );if    
+     ;; 2026-09-18：addatt_tobomball 定義在 MANAPART.lsp，原本只在「答 Y 自動
+     ;; 建立資訊點」的分支裡才 (load "manapart")。答 N 就不會載入，選完零件按
+     ;; Enter 時 subsys_ok&fun1 呼叫它就報「無函數」。照 ASSEMBLY.lsp:85 的
+     ;; 寫法在進入點無條件確保載入。
+     (if (or (null get_bomdata)(null addatt_tobomball))(load "manapart"))
      (if (= (ssget "x") nil)
          (progn
               (alert "圖面無資料")
@@ -2547,11 +2588,12 @@
 );defun
 
 (defun layeroff&Sub_REmove(en)
-     (setq en (strcat "," en))
-     (if (/= (string_search&Sub_REmove (strcase en) (strcat ","(getvar "clayer") ",") ) nil)
-         (command "-layer" "off" en "y" "")
+     ;; 清單洗乾淨再送：拿掉目前圖層與空項目，理由見 layer_list_clean。
+     (setq en (layer_list_clean en))
+     (if (/= en "")
          (command "-layer" "off" en "")
      );if
+     (princ)
 );defun
 
 ;(defun init_finish&Sub_REmove(in_fi / mm  source_state_group_on_240 source_state_asm_off_240 non_inp_set_240);in_fi:init_finish
@@ -2595,7 +2637,7 @@
       (if (= merge_str nil)
           (setq merge_str ",")
       );if
-      (if (<= (strlen (setq mergedata (strcat merge_str  "," str ","))) 240)
+      (if (<= (strlen (setq mergedata (strcat merge_str  "," str))) 240)
           (progn
                (if (= merge_str ",")
                    (setq merge_str str)
@@ -2667,6 +2709,11 @@
     ; (if (not (and (= piec_designer1 "#$%&") (=  piec_designer2 "###@")))
     ;     (exit)
     ; );if    
+     ;; 2026-09-18：addatt_tobomball 定義在 MANAPART.lsp，原本只在「答 Y 自動
+     ;; 建立資訊點」的分支裡才 (load "manapart")。答 N 就不會載入，選完零件按
+     ;; Enter 時 subsys_ok&fun1 呼叫它就報「無函數」。照 ASSEMBLY.lsp:85 的
+     ;; 寫法在進入點無條件確保載入。
+     (if (or (null get_bomdata)(null addatt_tobomball))(load "manapart"))
      (if (= (ssget "x") nil)
          (progn
               (alert "圖面無資料")
@@ -3268,16 +3315,13 @@
 );defun
 
 (defun layeroff&Sub_On_Off(en)
-     (setq en (strcat "," en ))
-     (if (/= (string_search&Sub_On_Off (strcase en) (strcat ","(getvar "clayer") ",") ) nil)
-         (progn
-              (command "-layer" "off" en "y" "")
-         );progn
-         (progn
-              (command "-layer" "off" en "")
-         );progn  
-     );if
      (setq ass en)
+     ;; 清單洗乾淨再送：拿掉目前圖層與空項目，理由見 layer_list_clean。
+     (setq en (layer_list_clean en))
+     (if (/= en "")
+         (command "-layer" "off" en "")
+     );if
+     (princ)
 );defun
 
 (defun init_finish&Sub_On_Off(in_fi / mm    );in_fi:init_finish  
@@ -3320,7 +3364,7 @@
       (if (= merge_str nil)
           (setq merge_str ",")
       );if
-      (if (<= (strlen (setq mergedata (strcat merge_str  "," str ","))) 240)
+      (if (<= (strlen (setq mergedata (strcat merge_str  "," str))) 240)
           (progn
                (if (= merge_str ",")
                    (setq merge_str str)
@@ -3785,11 +3829,12 @@
 );defun
 
 (defun layeroff&Sub_Reverse(en)
-     (setq en (strcat "," en))
-     (if (/= (string_search&Sub_Reverse (strcase en) (strcat ","(getvar "clayer") ",") ) nil)
-         (command "-layer" "off" en "y" "")
+     ;; 清單洗乾淨再送：拿掉目前圖層與空項目，理由見 layer_list_clean。
+     (setq en (layer_list_clean en))
+     (if (/= en "")
          (command "-layer" "off" en "")
      );if
+     (princ)
 );defun
 
 
@@ -3802,7 +3847,7 @@
       (if (= merge_str nil)
           (setq merge_str ",")
       );if
-      (if (<= (strlen (setq mergedata (strcat merge_str  "," str ","))) 240)
+      (if (<= (strlen (setq mergedata (strcat merge_str  "," str))) 240)
           (progn
                (if (= merge_str ",")
                    (setq merge_str str)
