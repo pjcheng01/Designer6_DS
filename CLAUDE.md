@@ -24,8 +24,8 @@ DESIGNER6（AutoCAD LISP）移植到 DraftSight 的專案。完整背景、現�
 **動手前先驗編碼，不要憑檔名或印象猜**：
 
 ```bash
-python3 -c "d=open('SHSCAL.lsp','rb').read(); d.decode('utf-8'); print('UTF-8 OK')"
-python3 -c "d=open('shscal.ini','rb').read(); d.decode('cp950'); print('cp950 OK')"
+python -c "d=open('SHSCAL.lsp','rb').read(); d.decode('utf-8'); print('UTF-8 OK')"
+python -c "d=open('shscal.ini','rb').read(); d.decode('cp950'); print('cp950 OK')"
 ```
 
 - **絕不可在單一檔案內混用編碼。** 曾經發生過：往 UTF-8 的 `SHSCAL.lsp` 插入 Big5 中文註解，
@@ -53,8 +53,10 @@ git config --get core.autocrlf   # 必須是 true，不是就設定它
 3. **就地修改，但不要用 `sed -i`。** 這個環境的 `sed`／`awk`／`grep` 都是文字模式，
    讀寫都會吃掉 `\r`——`sed -i` 會把 CRLF 檔整份剝成 LF 檔，而且
    **`grep -c $'\r'` 驗不出來**（它自己也吃 CR，改前改後都回報同一個數字）。
-   本機也**沒有 python**。改 CRLF 檔請用逐位元組安全的 `head`／`tail`／`cat`／`printf`
-   拼接，替換行自己帶 `\r\n`（詳見手冊 §5.38）。LF 檔則不受影響，`sed -i` 可用。
+   改 CRLF 檔請用逐位元組安全的 `head`／`tail`／`cat`／`printf` 拼接，替換行自己帶
+   `\r\n`（詳見手冊 §5.38）。LF 檔則不受影響，`sed -i` 可用。
+   python 也可以（讀 bytes、自己處理換行）；注意**指令是 `python`，不是 `python3`**，
+   後者指到 Microsoft Store 的轉接殼，會直接失敗。
    不要憑工具輸出重打整份檔案內容——輸出可能被截斷。
 4. **驗證括號平衡**（LISP 檔改完必做）。要用**會跳過字串與註解的**掃描器，
    單純數 `(` `)` 會把字串裡的括號算進去（手冊 §5.37 附 `balance.awk`）。
