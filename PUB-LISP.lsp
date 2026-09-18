@@ -1562,6 +1562,36 @@
 )
 
 ;;去除文字串前面所有空格 "    123" ==> "123"
+
+;;----------------------------------------------------------------
+;; strcase_ascii —— 只把 ASCII 的 a-z 轉大寫，中文原樣保留
+;;----------------------------------------------------------------
+;; 2026-09-18 新增。DraftSight 的 strcase 是**逐位元組**處理的，Big5 中文字的
+;; 第二位元組若落在 a-z（0x61~0x7A）就會被一起大寫化，資料就此損毀：
+;;
+;;     製 BB73 → 祛 BB53      量 B671 → B651
+;;     理 B27A → B25A         廠 BC74 → BC54
+;;
+;; AutoCAD 的 strcase 認得雙位元組字，所以原版沒事；這是移植後才浮現的問題。
+;; 症狀特別難抓——它不報錯，只是安靜地把設定檔裡的中文改壞。
+;;
+;; 實測（2026-09-18）DraftSight 的 strlen / substr 是**按字元**的
+;; （PART_DEF 的值 strlen=360、位元組數 395），只有 strcase 是按位元組，
+;; 所以這裡按字元走就對了。(ascii 中文) 回傳 Big5 前導碼（如 178），恆 > 127。
+;;
+;; 用在哪：凡是「結果會被寫回設定檔」的地方都要用這支，不要用 strcase。
+;; 純比較（例如 (= "PARTREF" (strcase x))）可以繼續用 strcase——改壞了也只是
+;; 比不中，不會損毀資料。
+(defun strcase_ascii (s / i n c out)
+  (if (null s) (setq s ""))
+  (setq i 1 n (strlen s) out "")
+  (while (<= i n)
+    (setq c (substr s i 1))
+    (setq out (strcat out (if (< (ascii c) 128) (strcase c) c)))
+    (setq i (1+ i))
+  )
+  out
+)
 (defun getrealstr2(txt)
    (if txt (progn
    (if (> (strlen txt) 0)
