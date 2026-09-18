@@ -4611,6 +4611,8 @@
    (start_dialog)
 
    (unload_dialog dcl_id)
+   ;; 2026-09-18 補 (princ)，不再回顯 unload_dialog 的 nil，見§5.25
+   (princ)
 )
              
                   
@@ -4690,6 +4692,8 @@
   (action_tile "cancel" "(done_dialog)")
   (start_dialog)
   (unload_dialog dcl_id)
+  ;; 2026-09-18 補 (princ)，不再回顯 unload_dialog 的 nil，見§5.25
+  (princ)
 )
 
 (defun df_bom_sortcol_ok(/ ff txt txt1 dbcol qf partdata)

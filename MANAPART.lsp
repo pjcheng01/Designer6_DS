@@ -48,6 +48,8 @@
       (action_tile "cancel" "(done_dialog)")
       (start_dialog)
       (unload_dialog dcl_id)
+      ;; 2026-09-18 補 (princ)，不再回顯 unload_dialog 的 nil，見§5.25
+      (princ)
 )
 ;;--------------------2003.09.02 SAM 搜尋&篩選-------------------------
 ;; 篩選後資料 gbol_flag = 0 串列變數 database_sift
@@ -1754,6 +1756,8 @@
   (action_tile "cancel" "(done_dialog)")
   (start_dialog)
   (unload_dialog dcl_id)
+  ;; 2026-09-18 補 (princ)，不再回顯 unload_dialog 的 nil，見§5.25
+  (princ)
 )
 
 (defun sortcol_ok(/ ff txt txt1 dbcol qf partdata)
@@ -2999,6 +3003,8 @@
         (action_tile "accept" "(done_dialog)")
         (start_dialog)
         (unload_dialog dcl_id)
+        ;; 2026-09-18 補 (princ)，不再回顯 unload_dialog 的 nil，見§5.25
+        (princ)
       );progn
       )
     );progn
