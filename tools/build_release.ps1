@@ -40,9 +40,21 @@ $EXCLUDE = @{
 }
 
 # 父目錄被 $EXCLUDE 排除、但仍要跟著交付的個別檔案。
-# 安裝說明是寫給收件者看的，性質與 docs\ 其他內部文件不同。
+# 2026-09-18 起清空：安裝說明已從 docs\ 搬到 安裝說明\，
+# 那個目錄不在 $EXCLUDE 裡，整包跟著交付，不必再特例保留。
+#
+# ⚠ 兩個目錄的預設方向相反，往裡面放東西前先想清楚：
+#     docs\      預設「不」交付——新增檔案自動被擋（含明文密碼那份就是這樣擋下的）
+#     安裝說明\  預設「會」交付——只放寫給收件者看的東西
 $KEEP = @{
-  'C:\DESIGNER6_DS' = @('docs\藝祥機械設計家 DraftSight 版安裝流程.docx')
+  'C:\DESIGNER6_DS' = @()
+  'C:\POWPARTS_DS'  = @()
+}
+
+# 交付內容裡一定要有的檔案。$KEEP 清空後，這是安裝說明的防呆：
+# 檔案改名或搬走而忘了更新腳本時，這裡會擋下來。
+$MUSTHAVE = @{
+  'C:\DESIGNER6_DS' = @('安裝說明\藝祥機械設計家 DraftSight 版安裝流程.docx')
   'C:\POWPARTS_DS'  = @()
 }
 
@@ -116,6 +128,14 @@ foreach ($repo in $KEEP.Keys | Sort-Object) {
     $f = Join-Path (Join-Path $OUT (Split-Path $repo -Leaf)) $k
     if (Test-Path -LiteralPath $f) { "  2b. 保留檔 $k OK" }
     else { "★ 保留檔不見了：$k"; $bad++ }
+  }
+}
+
+foreach ($repo in $MUSTHAVE.Keys | Sort-Object) {
+  foreach ($k in $MUSTHAVE[$repo]) {
+    $f = Join-Path (Join-Path $OUT (Split-Path $repo -Leaf)) $k
+    if (Test-Path -LiteralPath $f) { "  2c. 必含檔 $k OK" }
+    else { "★ 必含檔不見了：$k"; $bad++ }
   }
 }
 
