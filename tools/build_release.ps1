@@ -32,10 +32,11 @@ $STAMP    = Get-Date -Format 'yyyyMMdd'
 $SEVENZIP = 'C:\Program Files\7-Zip\7z.exe'
 
 # 納管但不交付的檔案：文件與開發用檔。
-# docs\ 是整個目錄排除（裡面有明文密碼，見 §9.7），這樣日後往 docs\ 新增
-# 任何檔案都預設不會外流——要交付的必須明列在 $KEEP 裡。
+# docs\ 與 資料來源\ 都是整個目錄排除，這樣日後往裡面新增任何檔案都
+# 預設不會外流。docs\ 裡有明文密碼（見 §9.7）；資料來源\ 裡的 CPII 料號
+# 匯出 XML 含員工帳號與建檔異動軌跡，都不該交付。
 $EXCLUDE = @{
-  'C:\DESIGNER6_DS' = @('docs', 'tools', '功能對照表.md', 'CLAUDE.md', '.gitignore')
+  'C:\DESIGNER6_DS' = @('docs', 'tools', '資料來源', '功能對照表.md', 'CLAUDE.md', '.gitignore')
   'C:\POWPARTS_DS'  = @('CLAUDE.md', '.gitignore')
 }
 
