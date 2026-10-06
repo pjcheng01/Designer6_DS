@@ -1,0 +1,102 @@
+# CLAUDE.md — AutoCAD 原版重整
+
+藝祥「機械設計家」AutoCAD 原版（`C:\DESIGNER6` + `C:\POWPARTS`）的重整專案。
+
+**接手時先讀 `C:\DESIGNER6_DS\docs\新機器起手包\README.md`。**
+這裡只放「每次動手前都必須記得的規則」。
+
+## 兩個任務
+
+1. **移除加密狗**　`C:\DESIGNER6_DS\docs\AutoCAD版-加密狗移除交接-20261006.md`
+2. **修正原版既有錯誤**　`C:\DESIGNER6_DS\docs\AutoCAD版回移植清單-20260918.md`
+
+順序：先做任務二的 **A-5**（`*error*` 三層，讓錯誤訊息看得見）→ 加密狗繞過 →
+建立行為基準 → 正式拆除 334 處 → 比對基準 → 任務二其餘。
+
+## ⚠ 編碼：與 DraftSight 版**相反**，這是最大的雷
+
+`C:\DESIGNER6_DS` 的 `CLAUDE.md` 寫「`.lsp` 必須 UTF-8」——**那是 DraftSight 版的
+規則。套到這裡會把中文全部毀掉。**
+
+| | DraftSight 版 | **本專案（AutoCAD 原版）** |
+|---|---|---|
+| `.lsp` | UTF-8 無 BOM | **cp950 / Big5** |
+| `.dcl` `.ini` `.doc` `.dat` | cp950 | cp950 |
+| `core.autocrlf` | `true` | **`false`** |
+
+- **沒有理由轉 UTF-8**，維持 Big5。
+- 絕不可在單一檔案內混用編碼。寫中文註解前先確認該檔編碼。
+- **不要整批重跑編碼轉換。** DraftSight 移植早期一次用 `errors='replace'` 的批次
+  轉換，在 6 個檔案裡留下約 11,953 個 U+FFFD，中文永久損毀。再跑只會製造更多損失。
+
+```bash
+python -c "d=open('AUXDIM.lsp','rb').read(); d.decode('cp950'); print('cp950 OK')"
+```
+
+## 沒有自動化測試
+
+程式是 AutoLISP，執行環境是 AutoCAD，**任何修改都只能靠人工跑指令驗證**。
+
+- 改完不要說「已修復」，說「已修改，待實測」。
+- 一次只改一個問題，讓使用者能單點驗證。
+- 推論要說清楚是推論。無法從檔案證實的，明確標示「未查核」。
+
+## 修改 LISP 的固定流程
+
+1. **先看原版副本**（未修改的那一份對照組）。多數問題靠 diff 快速定位。
+2. **確認編碼**（見上）。
+3. **不要用 `sed -i` 改 CRLF 檔。** 這個環境的 `sed`／`awk`／`grep` 都是文字模式，
+   讀寫都會吃掉 `\r`，而 **`grep -c $'\r'` 驗不出來**（它自己也吃 CR，改前改後
+   回報同一個數字）。改 CRLF 檔用逐位元組安全的 `head`／`tail`／`cat`／`printf`
+   拼接，替換行自己帶 `\r\n`。python 也可以（讀 bytes、自己處理換行）；
+   **指令是 `python` 不是 `python3`**。
+4. **驗括號平衡。** 要用**會跳過字串與註解**的掃描器（起手包 §6 附 `balance.awk`）。
+   它不認得 `;| … |;` 區塊註解。
+   ⚠ **Big5 第二位元組可能是 `(` `)` `"` `\`**——位元組層級掃描對 Big5 不可靠，
+   工具必須先 decode cp950 再以字元處理。
+5. **驗換行與編碼**：
+   ```bash
+   tr -cd '\r' < FILE | wc -c      # 真正的 CR 個數，改前改後要一致
+   python -c "open('FILE','rb').read().decode('cp950'); print('OK')"
+   ```
+6. **請使用者在 AutoCAD 實測**，通過後才 commit。
+
+## 掃原始碼一律加 `-i`
+
+這套程式的大小寫完全不一致：`KEYPRO_path` vs `KEYPRO_PATH`、`.lsp` vs `.LSP`、
+`HP-K._LS`。舊工作階段就因為沒加 `-i` 而誤判過「`KEYPRO_path` 從未被賦值」。
+
+## 拆加密狗外殼時的頭號陷阱
+
+外殼的 `WHILE` 開頭有 `(setq ppss sspp)`。整段刪掉會讓 `ppss` 變未繫結，
+而算式裡還留著 `(+ x ppss)` → `(+ 數字 nil)` → **指令中斷**。
+
+症狀誤導：錯誤在 `entsel` **之後**的同一個 `setq`，畫面會先出現「找到 1」才中斷。
+
+**`ppss` 永遠是 0，直接從算式拿掉。** 原版全庫 `(setq ppss sspp)` 138 處、
+讀取 `ppss` 161 處。每刪一個外殼就掃一次。
+
+## 不要做的事
+
+- 不要動未修改的**原版對照組副本**。
+- 不要改 `C:\DESIGNER6_DS` / `C:\POWPARTS_DS`（DraftSight 版，已結案）。
+- 不要動 `SHEET\*.dwg`、`DWG\*.dwg`、`SLD\*.sld` 等圖檔與圖庫二進位檔，
+  除非使用者明確要求。
+- 不要把執行期輸出（`campro.txt`、`CamproBom.txt`、`*.dwl`、`Thumbs.db`）加回版控。
+- **不要呼叫 `creat_keypro_data`**——它等 `c:\powsoft.ini` 的 `while` 沒有逾時，
+  沒有加密狗時會無限迴圈卡死 AutoCAD。
+
+## 引用舊文件的數字前，先回原版數一次
+
+`C:\DESIGNER6_DS\docs\移植專案交接手冊.md` 裡多數數字是**移植版**的，而移植版
+做過瘦身。例：`(setq ppss sspp)` 手冊寫 15 處，原版實際 **138 處**。
+
+## 推送
+
+**commit 隨時可以做；push 要使用者說了才做。**
+
+- 做完一段工作 → commit，並告知有幾個未推送
+- 使用者說「push」→ 直接推
+- 沒說 → 不要自己推
+
+推完用 `git ls-remote origin main` 向遠端查證，不要只看本地。
