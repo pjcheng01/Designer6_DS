@@ -75,8 +75,16 @@ getval          = nil                       SYSTEM.lsp 沒載入
 `creat_keypro_data` 的 `(while (null sysini) …)` 應該會**無限迴圈卡死 AutoCAD**
 ——但它沒有。所以實際發生什麼還不知道。
 
-**釐清方法**：重開 AutoCAD 時盯著指令列看載入訊息有沒有中斷。
-它影響「要不要順便把 `CONFIG.lsp:188-189` 註解掉」。
+**2026-10-06 晚補充**：實測 `powerpdm_path` 是**空字串 `""`**（不是 `nil`）。
+`""` 不等於 `nil`，所以第 190 行的 `(if (/= nil powerpdm_path) (load "powerpdm"))`
+條件**是成立的**，而原版**沒有 `powerpdm.lsp`**——跑到那行也會出錯。
+
+所以有**兩個候選中止點（189 或 190）**，目前分不出來。
+**實務上不重要**：190 是 `CONFIG.lsp` 的最後一行，兩種情況都沒有東西被跳過。
+
+**釐清方法**：看 AutoCAD 啟動時的錯誤訊息文字——提到 `findkey` / `startapp`
+就是停在 189，提到找不到 `powerpdm` 就是跑到了 190。
+它影響「要不要順便把 `CONFIG.lsp:188-190` 這三行註解掉」。
 
 ---
 
